@@ -2,13 +2,13 @@
 categories: gallery
 layout: gallery
 title: NodeBox 3 Warsaw Workshop
-thumb: workshop-2018-warsaw-thumb.png
+thumb: workshop-2018-warsaw-thumb.jpg
 images:
-  - gallery/workshop-2018-warsaw-1.png
-  - gallery/workshop-2018-warsaw-2.png
-  - gallery/workshop-2018-warsaw-3.png
-  - gallery/workshop-2018-warsaw-4.png
-  - gallery/workshop-2018-warsaw-5.png
+  - gallery/workshop-2018-warsaw-1.jpg
+  - gallery/workshop-2018-warsaw-2.jpg
+  - gallery/workshop-2018-warsaw-3.jpg
+  - gallery/workshop-2018-warsaw-4.jpg
+  - gallery/workshop-2018-warsaw-5.jpg
 ---
 
 We found the best way to continue developing [NodeBox Live](https://nodebox.live/) is to expose it to new users and see how they use the software, where they stumble, and how we can improve.
