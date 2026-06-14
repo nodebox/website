@@ -17,7 +17,7 @@ Installing on Mac
 Install [Xcode][] first.
 
     sudo gem update --system
-    sudo gem install rake jekyll github-markdown
+    sudo gem install jekyll github-markdown
     sudo easy_install pygments
 
 
@@ -26,23 +26,17 @@ Installing on Ubuntu
 
     sudo apt-get install ruby rubygems python-setuptools
     sudo gem install rubygems-update
-    sudo gem install rake jekyll github-markdown
+    sudo gem install jekyll github-markdown
     sudo easy_install pygments
 
 
 Running
 -------
-To build the website:
+To preview the website locally:
 
-    rake
+    bundle exec jekyll serve
 
-To run the built-in server:
-
-    rake server
-    
-To deploy to the live server:
-
-    rake deploy
+Deployment is automatic: GitHub Pages rebuilds and publishes the site on every push to `master`.
 
 
 Writing documentation
