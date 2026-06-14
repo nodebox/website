@@ -3,6 +3,12 @@ layout: default
 title: NodeBox 3 Release Notes
 section: node
 ---
+Version 3.1.0 (14 June 2026)
+-------------------------------
+* NodeBox is now a **native Apple Silicon (arm64)** application — it no longer runs through Rosetta and will keep working on macOS releases after Apple removes Rosetta. The bundled Java runtime, ffmpeg, and native libraries are all native arm64.
+* **Intel Macs:** this release is Apple Silicon only. Intel Mac users should stay on [v3.0.52](https://github.com/nodebox/nodebox/releases/download/v3.0.52/NodeBox-3.0.52.dmg).
+* macOS and Windows builds are now produced, signed, and notarized reproducibly via GitHub Actions.
+
 Version 3.0.52 (15 January 2021)
 -------------------------------
 * You can now export movies under Mac OS Catalina or later.
