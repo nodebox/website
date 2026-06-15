@@ -21,6 +21,10 @@ We did a presentation at [Choke2014] (http://choke2014.tumblr.com) organised by 
 
 At the right side some of the results.
 
+<video controls width="100%" poster="/media/gallery/piet.png">
+  <source src="https://nodebox.s3.amazonaws.com/media/gallery/SelfieBot-desktop.m4v" type="video/mp4">
+</video>
+
 Based on Masterclass by Giorgio Olivero
 ------------------------------------------------
 
