@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  {% if title %}
+  <title>{{ title }} | NodeBox</title>
+  {% else %}
+  <title>NodeBox</title>
+  {% endif %}
+  <meta name="author" content="Experimental Media Research Group">
+
+  <!--[if lt IE 9]>
+    <script src="/media/js/html5.js"></script>
+  <![endif]-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link type="text/css" rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/css/skeleton.css">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/css/normalize.css">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/css/syntax.css">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/fancybox/jquery.fancybox.css">
+  <link type="text/css" rel="stylesheet" media="screen" href="/media/css/screen.css">
+</head>
+<body id="{{ section }}">
+
+
+<div class="nbar">
+  <ol>
+    <li>
+      {% if section == "home" or section == "gallery" or section == "blog" %}
+        <a class="home" href="/">Home<span class="nbar-arrow"></span></a>
+      {% else %}
+        <a class="node" href="/node/">NodeBox 3<span class="nbar-arrow"></span></a>
+      {% endif %}
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/index.php/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="download" href="/download/">Download</a></li>
+    <li><a class="documentation" href="/node/documentation/">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+<div id="content" class="container">
+  {{ content }}
+</div><!-- .content -->
+
+<footer>
+  <div class="container">
+    <div class="four columns">
+      <h2>Software</h2>
+      <ul>
+        <li><a href="/node/">NodeBox 3</a></li>
+        <li><a href="/code/index.php/Home">NodeBox 1</a></li>
+        <li><a href="/opengl/">NodeBox OpenGL</a></li>
+      </ul>
+    </div>
+    <div class="four columns">
+      <h2>Exhibition</h2>
+      <ul>
+        <li><a href="/gallery/">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="four columns">
+      <h2>Documentation</h2>
+      <ul>
+        <li><a href="/node/documentation/">Documentation</a></li>
+        <li><a href="/node/documentation/tutorial/getting-started">Tutorial</a></li>
+        <li><a href="/node/reference/">Reference</a></li>
+      </ul>
+    </div>
+    <div class="four columns">
+      <h2>Community</h2>
+      <ul>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="http://support.nodebox.net/discussions">Forum</a></li>
+        <li><a href="http://twitter.com/nodebox">Twitter</a></li>
+        <li><a href="https://github.com/nodebox/nodebox">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="sixteen columns copyright">
+      <p>All content on this website is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a>. NodeBox is built and maintained by the <a href="http://www.emrg.be/">Experimental Media Research Group</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/media/js/jquery-1.8.2.min.js"></script>
+<script src="/media/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script src="/media/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1668598-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('a.thumb,a.fancybox').fancybox();
+});
+</script>
+<script src="https://nodebox.tenderapp.com/tender_widget.js" type="text/javascript"></script>
+</body>
+</html>

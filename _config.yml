@@ -1,8 +1,0 @@
-highlighter: rouge
-multiviews: true
-exclude:
-  - README.md
-plugins:
-  - jekyll-redirect-from
-whitelist:
-  - jekyll-redirect-from

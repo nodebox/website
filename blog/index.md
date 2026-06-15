@@ -4,6 +4,6 @@ section: blog
 title: Blog
 ---
 
-{% for post in site.categories.blog %}
-  {% include post.html %}
+{% for post in collections.blog %}
+  {% include "post.html" %}
 {% endfor %}

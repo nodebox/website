@@ -1,0 +1,70 @@
+---
+layout: base
+section: documentation
+---
+<article class="ten columns">
+  <h1 id="page-title">{{ title }}</h1>
+  {% if node %}
+    <div class="breadcrumbs">
+      <a href="/node/reference/">Reference</a> &rarr;
+      <a href="/node/reference/{{ library }}">{{ library|capitalize }}</a> &rarr;
+      {{ title }}
+    </div>
+  {% else %}
+    {% if library %}
+    <div class="breadcrumbs">
+      <a href="/node/reference/">Reference</a> &rarr;
+      {{ library|capitalize }}
+    </div>
+    {% endif %}
+  {% endif %}
+  {{ content }}
+</article>
+
+<aside class="five columns offset-by-one">
+  <ul class="sidebar">
+    <li>
+      <h3>For Beginners</h3>
+      <ul>
+        <li><a href="/node/documentation/tutorial/getting-started">Getting Started</a></li>
+        <li><a href="/node/documentation/tutorial/exploring">Exploring NodeBox</a></li>
+        <li><a href="/node/documentation/tutorial/animation">Basic Animation</a></li>
+      </ul>
+    </li>
+    <li>
+      <h3>Using NodeBox</h3>
+      <ul>
+        <li><a href="/node/documentation/using/generative-design">Creating Generative Design</a></li>
+        <li><a href="/node/documentation/using/data-visualization">Creating Data Visualizations</a></li>
+        <li><a href="/node/documentation/using/animation">Working with Animation</a></li>
+        <li><a href="/node/documentation/using/math">Working with Math</a></li>
+      </ul>
+    </li>
+    <li>
+      <h3>Concepts</h3>
+      <ul>
+        <li><a href="/node/documentation/concepts/gui">The Graphical User Interface</a></li>
+        <li><a href="/node/documentation/concepts/concepts">How NodeBox Works</a></li>
+        <li><a href="/node/documentation/concepts/coordinates">The Coordinate System</a></li>
+        <li><a href="/node/documentation/concepts/geometry">Geometry</a></li>
+        <li><a href="/node/documentation/concepts/subnetworks">Subnetworks</a></li>
+        <li><a href="/node/documentation/concepts/randomness">Randomness</a></li>
+      </ul>
+    </li>
+    <li>
+      <h3>Expert</h3>
+      <ul>
+        <li><a href="/node/documentation/advanced/programming-nodes">Writing your own Nodes <strong>(New!)</strong></a></li>
+        <li><a href="/node/documentation/advanced/contributing">Contributing To NodeBox</a></li>          
+        <li><a href="/node/documentation/advanced/hacking-nodebox-on-windows">Hacking NodeBox on Windows</a></li>          
+      </ul>
+    </li>
+    <li>
+      <h3>Reference</h3>
+      <ul>
+        <li><a href="/node/reference/">All Nodes By Category</a></li>
+        <li><a href="/node/api/">NodeBox Graphics API</a></li>          
+      </ul>
+    </li>
+  </ul>
+</aside>

@@ -3,6 +3,6 @@ layout: default
 section: gallery
 title: Gallery
 ---
-{% for post in site.categories.gallery %}
-  {% include post.html %}
+{% for post in collections.gallery %}
+  {% include "post.html" %}
 {% endfor %}
