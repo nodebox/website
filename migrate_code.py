@@ -212,6 +212,16 @@ def clean_content(content: str, name: str) -> str:
         flags=re.I,
     )
 
+    # Heavy example-code downloads (zip/pdf/mp3/…) are hosted on S3, not in the
+    # repo; point their links there. Recovered images stay under /code/data/.
+    content = re.sub(
+        r'((?:src|href|value)=")(/code/data/[^"]+\.'
+        r'(?:zip|pdf|mp3|wav|aif|aiff|py|xml|sit|dmg|mov|m4v|mp4))"',
+        r'\1https://nodebox.s3.amazonaws.com\2"',
+        content,
+        flags=re.I,
+    )
+
     return content.strip()
 
 

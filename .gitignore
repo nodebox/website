@@ -19,3 +19,6 @@ Thumbs.db
 
 # Compiled files
 *.pyc
+
+# S3 upload staging (heavy /code/ example downloads — not committed)
+_s3-upload/
