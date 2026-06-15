@@ -1,0 +1,8 @@
+.worktrees
+node_modules
+README.md
+documentation/README.md
+# Legacy NodeBox 1 wiki — copied verbatim via passthrough (Phase 2 will clean URLs).
+code
+# Underscore-prefixed reference drafts: Jekyll skips files starting with "_"; Eleventy doesn't.
+node/**/_*.md

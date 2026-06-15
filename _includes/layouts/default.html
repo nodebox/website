@@ -2,9 +2,9 @@
 layout: base
 ---
   <!-- Page Title -->
-  {% if page.title %}
+  {% if title %}
   <div id="page-title" class="sixteen columns">
-    <h1>{{ page.title }}</h1>
+    <h1>{{ title }}</h1>
   </div>
   {% endif %}
 
@@ -13,22 +13,23 @@ layout: base
     {{ content }}
   </div>
 
-  <!--{% if page.images %}
+  <!--{% if images %}
   <aside class="four columns">
-    {% for image in page.images %}
-      <a class="thumb" rel="images" href="/media/{{ image }}"><img src="/media/{{ image }}" alt="{{ page.title }}"></a>
+    {% for image in images %}
+      <a class="thumb" rel="images" href="/media/{{ image }}"><img src="/media/{{ image }}" alt="{{ title }}"></a>
     {% endfor %}
   </aside>
   {% endif %}-->
   
-{% if page.images %}
+{% if images %}
   <aside class="four columns">
-    {% for image in page.images %}
-      {% if image.size == 2 %}
+    {% for image in images %}
+      {% assign image_parts = image | size %}
+      {% if image_parts == 2 %}
         <a class="thumb" rel="images" href="/media/{{ image[0] }}" title="{{ image[1] }}"><img src="/media/{{ image[0] }}" alt="{{ image[1] }}"></a>
 		<div class="caption">{{ image[1] }}</div>
       {% else %}
-        <a class="thumb" rel="images" href="/media/{{ image }}"><img src="/media/{{ image }}" alt="{{ page.title }}"></a>      
+        <a class="thumb" rel="images" href="/media/{{ image }}"><img src="/media/{{ image }}" alt="{{ title }}"></a>      
       {% endif %}
     {% endfor %}
   </aside>

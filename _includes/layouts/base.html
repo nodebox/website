@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  {% if page.title %}
-  <title>{{ page.title }} | NodeBox</title>
+  {% if title %}
+  <title>{{ title }} | NodeBox</title>
   {% else %}
   <title>NodeBox</title>
   {% endif %}
@@ -22,13 +22,13 @@
   <link type="text/css" rel="stylesheet" media="screen" href="/media/fancybox/jquery.fancybox.css">
   <link type="text/css" rel="stylesheet" media="screen" href="/media/css/screen.css">
 </head>
-<body id="{{ page.section }}">
+<body id="{{ section }}">
 
 
 <div class="nbar">
   <ol>
     <li>
-      {% if page.section == "home" or page.section == "gallery" or page.section == "blog" %}
+      {% if section == "home" or section == "gallery" or section == "blog" %}
         <a class="home" href="/">Home<span class="nbar-arrow"></span></a>
       {% else %}
         <a class="node" href="/node/">NodeBox 3<span class="nbar-arrow"></span></a>

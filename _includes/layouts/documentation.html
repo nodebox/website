@@ -3,18 +3,18 @@ layout: base
 section: documentation
 ---
 <article class="ten columns">
-  <h1 id="page-title">{{ page.title }}</h1>
-  {% if page.node %}
+  <h1 id="page-title">{{ title }}</h1>
+  {% if node %}
     <div class="breadcrumbs">
       <a href="/node/reference/">Reference</a> &rarr;
-      <a href="/node/reference/{{ page.library }}">{{ page.library|capitalize }}</a> &rarr;
-      {{ page.title }}
+      <a href="/node/reference/{{ library }}">{{ library|capitalize }}</a> &rarr;
+      {{ title }}
     </div>
   {% else %}
-    {% if page.library %}
+    {% if library %}
     <div class="breadcrumbs">
       <a href="/node/reference/">Reference</a> &rarr;
-      {{ page.library|capitalize }}
+      {{ library|capitalize }}
     </div>
     {% endif %}
   {% endif %}
