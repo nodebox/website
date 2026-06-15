@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<title>NodeBox | Animation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Animation" />
+<link rel="canonical" href="https://www.nodebox.net/code/Animation" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Animation</h3>
+<p>NodeBox not only exports to PDF documents and images, but handles animation as well, which can be exported to QuickTime movies. Using the same syntax as drawing, your can turn your script into an animation, doing all kinds of wonderful, lively things.</p>  <h2>The speed(), setup(), and draw() commands</h2>  <p>For an animation to work, it needs three things:</p>  <ul> <li><b>speed()</b>: the speed() command indicates the speed of the animation in frames per second. Note that this is a maximum: big animations will require more work, and thus run slower.</li> <li><b>setup()</b>: your own setup() definition, declaring global variables and initializing them.</li> <li><b>draw()</b>: your own draw() definition, doing the actual drawing.</li> </ul>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/animation-example.jpg" height="586" width="658" /></span> </p>  <p>&nbsp;</p>  <p>You may already know a little bit about defining your own commands from the <a href="/code/Templating">Templating</a> tutorial. </p>  <p>The setup() command is run once, at the beginning of the animation, and draw() is run on each <i>frame</i>, or step, in the animation. Take a look at the example above. What I&#39;m doing there in the setup() definition, is declaring a <i>global variable</i> named <i>frame</i>, which I&#39;m going to use later on in the draw() to keep track of the animation frame being rendered on the canvas. The variable needs to be a global, because otherwise setup() and draw() can&#39;t communicate, or <i>share</i> the variable.</p>  <p>Now examine the draw() definition. It&#39;s a typical example of an animation script. The draw() command is called repetively by NodeBox, rendering frame after frame of animation. In the example above, the draw() definition basically does four things:</p>  <ul> <li>Increase the <i>frame</i> variable by one (this is my frame counter)</li> <li>Use a colored rectangle to draw a background</li> <li>Draw thirty rotated curves</li> <li>Use the math sin() function to distort the curves fluidly</li> </ul>  <h2>Fluid movement</h2>  <p>Notice the use of a mathematical sine function in the draw() definition. A sine is an <i>oscillating</i> function that yields values between -1.0 and 1.0 (and then back down to -1.0), but not in a linear fashion. When it reaches -1 or 1, it goes slower, and goes fastest when it crosses 0. This is useful for animation that <i>eases in</i> or <i>eases out</i>.</p>  <p>To use the <b>sin()</b> function, import it from the Python math package along with the radians() function (sines work with radians like PI). In the example above I supply the <i>frame</i> variable as radians to the sine function and multiply it with a differnt number for each curve, which gives me a fluid distortion vector that eases in and eases out each curve. </p>  <p>A sine function typically looks like this:</p>  <pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, radians
+ease = sin<span style="">&#40;</span>radians<span style="">&#40;</span>x<span style="">&#41;</span><span style="">&#41;</span> * y</pre></pre>  <h2>Tips for speed optimization<br /></h2><ul><li>If you plan to use a lot of lines in your animation, group them in a single path with <a href="/code/Reference_|_lineto()" target="_self">lineto()</a> and <a href="/code/Reference_|_moveto()" target="_self">moveto()</a>. A single big path renders faster than many small paths. All the lines would have the same stroke color and width however.</li><li>If you plan to use a lot of text in your animation, create cached <a href="/code/Reference_|_textpath()" target="_self">textpath()</a> versions in the setup() command and <a href="/code/Reference_|_translate()" target="_self">translate()</a> those when drawing instead of repeatedly calling <a href="/code/Reference_|_text()" target="_self">text()</a> in the draw() command.</li><li>Tune the speed() command to exactly the speed you need. Setting it as high as possible often works as a drawback because then NodeBox would attempt to update too much.</li><li>Tune the <a href="/code/Reference_|_size()" target="_self">size()</a> of the canvas to exactly what you need - a smaller canvas means less screen to refresh.<br /></li></ul><h2>Exporting as a Quicktime movie</h2>  <p>You can export an animation as a Quicktime movie. Select &quot;Export as Quicktime Movie...&quot; from the NodeBox File menu, or press shift-apple-e. You can select a number of frames to export, and a movie frame rate.</p>  <p>The Quicktime functionality in NodeBox is based on <a href="http://undefined.org/python/">PyQTSequence</a> written by Bob Ippolito.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/animation-export.jpg" height="586" width="658" /></span> </p>  <p>&nbsp;</p>  <p>The resulting movie is uncompressed, so it will likely be large in file size. You can compress it if you have Quicktime Pro, or some other movie editor.</p>  <p>...and you have a movie to put on your website!</p>  <p>&nbsp;</p>  <p><a href="javascript:pop(&#39;../data/media/sinfulCurves.mov&#39;,&#39;mecca&#39;,&#39;width=300,height=316&#39;)"><img src="/code/data/media/animation-movie.gif" class="border" /></a><br /> <a href="javascript:pop(&#39;../data/media/sinfulCurves.mov&#39;,&#39;mecca&#39;,&#39;width=300,height=316&#39;)">Play movie</a></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Aug 18 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

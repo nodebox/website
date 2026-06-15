@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<title>NodeBox | Texture tiles</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Texture tiles" />
+<link rel="canonical" href="https://www.nodebox.net/code/Texture_tiles" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Texture tiles</h3>
+<p><span class="big_text">I&#39;ve been wondering how to colorize <a href="/code/Mark_Meyer_|_Parametric_surfaces" target="_self">Mark Meyer&#39;s parametric surfaces</a> from an image. Since we can get pixel colors from an image using Core Image this is accomplished fairly easy. One problem is that at some point on the surface the edges of the image will meet, resulting in a &quot;break&quot; in the composition. To remedy this, we need a tileable image with a width and height equal to the <i>n</i> parameter in the parametric surface script.</span> </p><p> I&#39;ll start out from an image of a car engine. To make it a little more interesting, I composited it with an image of some rust. It looks a bit more grungy and tangible that way - and its colors are more harmonious. The result is my starting image file, <a href="/code/data/media/engine.jpg" target="_self">engine.jpg</a>.</p><p>&nbsp;</p><p><img src="/code/data/media/texture-tile0.jpg" alt="texture-tile0" /> <br /></p><p>The trick to create a tile from the image is to take a portion of the image that is smaller and then wrap around  the right and bottom parts. The <a href="/code/Core_Image" target="_self">Core Image</a> library is excellent to automate this process. </p><p>Here&#39;s how we start out:<br /> </p><p><img src="/code/data/media/texture-tile1.jpg" alt="texture-tile1" /></p><p>&nbsp;</p><table><tbody><tr><td><img src="/code/data/media/texture-tile2.jpg" alt="texture-tile2" /></td><td><span class="grey_box">Flip right</span> <p>We create a duplicate of the layer and move it to the left, exactly so that the part that falls outside of the tile&#39;s bounding box ends up at the left.</p></td></tr><tr><td><p><img src="/code/data/media/texture-tile3.jpg" alt="texture-tile3" /></p></td><td> <p>&nbsp;</p><p><span class="grey_box">Gradient mask</span> </p><p>When we place two copies of the tile next to each other we want them to transition smoothly into each other. To do that, we add a linear gradient mask on the layer we shifted to the left. </p><p>The layer&#39;s uttermost left edge will then be completely opaque (and it matches the right edge of the layer below). Then it will become more and more transparent and fade into the layer below.</p></td></tr><tr><td> <img src="/code/data/media/texture-tile4.jpg" alt="texture-tile4" /></td><td><span class="grey_box">Merge and flip bottom</span> <p> We can now merge the two layers together and use the new layer to flip the bottom to the top. The result is a tile that matches on all sides.</p><p>Now that you know how the principle works I might as well just add the Core Image script. It will save you some work fiddling with layer positions. </p></td></tr></tbody></table><pre class="python">img = <span style="color: #ff0080;">&quot;engine.jpg&quot;</span>
+&nbsp;
+coreimage = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;coreimage&quot;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>tile</span><span style="">&#40;</span>img, w=<span style="">350</span>, h=<span style="">350</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns a tileable canvas of given width and height.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+&nbsp;
+    <span style="color: grey;"># Create a canvas from the image.</span>
+    <span style="color: grey;"># The canvas will have the same size as the image.</span>
+    canvas = coreimage.<span style="">canvas</span><span style="">&#40;</span>img<span style="">&#41;</span>
+    l = canvas.<span style="">append</span><span style="">&#40;</span>img<span style="">&#41;</span>
+&nbsp;
+    <span style="color: grey;"># Place the top left corner of the image</span>
+    <span style="color: grey;"># in the top left of the canvas.</span>
+    <span style="color: grey;"># We'll &quot;wrap around&quot; the overflow on the right and bottom.</span>
+    l.<span style="">origin_top_left</span><span style="">&#40;</span><span style="">&#41;</span>
+    l.<span style="">x</span> = <span style="">0</span>
+    l.<span style="">y</span> = <span style="">0</span>
+&nbsp;
+    <span style="color: grey;"># Create a duplicate, shift it to the left</span>
+    <span style="color: grey;"># so only the overflow on the right is visible.</span>
+    wrap = l.<span style="">duplicate</span><span style="">&#40;</span><span style="">&#41;</span>
+    wrap.<span style="">x</span> = -w
+&nbsp;
+    <span style="color: grey;"># Add a horizontal linear gradient mask to the wrap.</span>
+    <span style="color: grey;"># It should gradually disappear revealing the original image.</span>
+    m = wrap.<span style="">mask</span>.<span style="">gradient</span><span style="">&#40;</span><span style="">&#41;</span>
+    m.<span style="color: #530035;">scale</span><span style="">&#40;</span><span style="">1.0</span>, <span style="">int</span><span style="">&#40;</span>l.<span style="">width</span>-w<span style="">&#41;</span><span style="">&#41;</span>
+    m.<span style="color: #530035;">rotate</span><span style="">&#40;</span><span style="">-90</span><span style="">&#41;</span>
+    m.<span style="">origin_top_left</span><span style="">&#40;</span><span style="">&#41;</span>
+    m.<span style="">x</span> = w
+    m.<span style="">y</span> = l.<span style="">height</span>
+&nbsp;
+    <span style="color: grey;"># We now have a composition that is horizontally tileable.</span>
+    <span style="color: grey;"># We'll flatten our work to a single layer which we can</span>
+    <span style="color: grey;"># then wrap vertically.</span>
+    merged = canvas.<span style="">flatten</span><span style="">&#40;</span><span style="">&#41;</span>
+    canvas<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>.<span style="">hidden</span> = <span style="color: #530035;">True</span>
+    canvas<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>.<span style="">hidden</span> = <span style="color: #530035;">True</span>
+    l = canvas.<span style="">append</span><span style="">&#40;</span>merged<span style="">&#41;</span>
+    l.<span style="">origin_top_left</span><span style="">&#40;</span><span style="">&#41;</span>
+    l.<span style="">x</span> = <span style="">0</span>
+    l.<span style="">y</span> = <span style="">0</span>
+&nbsp;
+    <span style="color: grey;"># Do the same for a vertical wrap.</span>
+    wrap = l.<span style="">duplicate</span><span style="">&#40;</span><span style="">&#41;</span>
+    wrap.<span style="">y</span> = -h
+    m = wrap.<span style="">mask</span>.<span style="">gradient</span><span style="">&#40;</span><span style="">&#41;</span>
+    m.<span style="color: #530035;">scale</span><span style="">&#40;</span><span style="">1.0</span>, <span style="">int</span><span style="">&#40;</span>l.<span style="">height</span>-h<span style="">&#41;</span><span style="">&#41;</span>
+    m.<span style="">origin_top_left</span><span style="">&#40;</span><span style="">&#41;</span>
+    m.<span style="">x</span> = <span style="">0</span>
+    m.<span style="">y</span> = h
+&nbsp;
+    <span style="color: grey;"># Crop the canvas to the tile size.</span>
+    <span style="color: grey;"># We do this at the end, because before we needed </span>
+    <span style="color: grey;"># the full image size to flatten.</span>
+    canvas.<span style="">w</span> = w
+    canvas.<span style="">h</span> = h
+&nbsp;
+    <span style="color: grey;"># This is our tile.</span>
+    <span style="color: grey;"># We can now add it to another canvas, or export it.</span>
+    tile = canvas.<span style="">flatten</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+    canvas = coreimage.<span style="">canvas</span><span style="">&#40;</span>w, h<span style="">&#41;</span>
+    canvas.<span style="">append</span><span style="">&#40;</span>tile<span style="">&#41;</span>
+    <span style="color: #530035;">return</span> canvas
+&nbsp;
+t = tile<span style="">&#40;</span>img<span style="">&#41;</span>
+t.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span>
+t.<span style="">draw</span><span style="">&#40;</span><span style="">0</span>, t.<span style="">h</span><span style="">&#41;</span>
+t.<span style="">draw</span><span style="">&#40;</span>t.<span style="">w</span>, <span style="">0</span><span style="">&#41;</span>
+t.<span style="">draw</span><span style="">&#40;</span>t.<span style="">w</span>, t.<span style="">h</span><span style="">&#41;</span></pre></pre><p><img src="/code/data/media/texture-tile5.jpg" alt="texture-tile5" /></p><p>We could improve our tiles even further. For example, we could add more layers to the tile with a radial gradient mask. This way the visible edges of the composition will be the tile (it matches with other tiles) but the center is something unique to the tile.</p><p>For now, we&#39;ll just stick with the basic tile and feed it into a parametric surface. Again using the Core Image library we can get the individual pixel colors from a layer in the canvas. To get the pixels from our tileable canvas:</p><pre class="python">t = tile<span style="">&#40;</span>img<span style="">&#41;</span>
+p = t<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>.<span style="">pixels</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre><p>The default width and height of a tile is 350 x 350. If we render a trefoil knot with <span class="inline_code">n = 350</span>, it will match the pixel colors exactly. Then in the <i>project()</i> command we can simply use the following coloring scheme for each facet:</p><pre class="python">clr = p.<span style="">get_pixel</span><span style="">&#40;</span>i,j<span style="">&#41;</span>
+<span style="color: #530035;">fill</span><span style="">&#40;</span>clr<span style="">&#41;</span></pre></pre><p><img src="/code/data/media/texture-tile6.jpg" alt="texture-tile6" /></p><p>As you can see the result is blocky in some areas, something we can probably remedy by using bigger tiles and bigger <span class="inline_code">n</span>. </p><p>&nbsp;</p><p>Created by Tom De Smedt </p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Feb 05 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

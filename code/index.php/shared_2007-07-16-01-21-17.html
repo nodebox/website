@@ -1,160 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Amending the BitBop.py Script</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2007-07-16-01-21-17, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2007-07-16-01-21-17" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Amending the BitBop.py Script</h1>
-<strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Jul 16, 2007</em></strong>
-<br /><br /><img src="../data/shared/2007-07-16-01-21-17_BitBop_JUL_00003.jpg" /><br /><br />
-<p>Dear NodeBoxers,<br><br>This Project has really inspired me and I would like to incorporate Nodebox into my illustration work but I'm really stuck on one particular script (BitBop.py) <br>I've played about with throttle in the to alter the composition, spaces between points, distribution of points, etc.<br><br>1)<br>In the same way that the text path is populated with primitives, I would really like to be able to import a vector path that I have designed in Illustrator and then populate it in the same way.<br>2)<br>Another thing puzzling me is how to change the primitive from a rectangular box to another type of primitive. I've created primitives from scratch in a new doc. but not sure how to amend this script. If I could import more artwork or images and use these to replace the primitive it would be a massive break through for me.<br>3)<br>Lastly, If for example I was to import artwork (varying shapes and scales) to use instead of primitives to populate the path how could I stop the shapes from touching or overlapping.<br><br><br>Any help would be hugely appreciated.<br>Thanks again for the good work you have done so far.<br>Viki x<br><br><br>Here is the Script as I currently have it:<br><br><br>size(700, 200)<br># BitBop -- a fun demonstration of path.contains.<br>#<br># The textpath command returns a BezierPath of the text that can<br># be manipulated or, as demonstrated here, queried using path.contains.<br># A grid is generated and everywhere a point in the path is encountered,<br># a random square is drawn.<br><br># Set the font and create the text path.<br>font("Verdana", 150)<br>tp = textpath("NodeBox", 10, 150)<br>#tp.draw() # Draws the underlying path<br><br># Here are the variables that influence the composition:<br>ovsx = 200 # The horizontal resolution<br>ovsy = 100 # The vertical resolution<br>ox = 0 # The horizontal randomness each point has<br>oy = 1 # The vertical randomness each point has<br>dotsize = 5 # The maximum size of one dot. <br>dx = WIDTH / float(ovsx) +2  # The width each dot covers<br>dy = HEIGHT / float(ovsy) +2 # The height each dot covers<br><br># We create a grid of the specified resolution.<br># Each x,y coordinate is a measuring point where<br># we check if it falls within the path.<br>for x, y in grid(ovsx, ovsy):<br>    sz=random(dotsize)<br>    # Create the point that will be checked<br>    px = x*dx-sz<br>    py = y*dy-sz<br>    # Only do something if the point falls within the path bounds.<br>    # You could add an "else" statement, that draws something in the<br>    # empty positions.<br>    if tp.contains(px, py):<br>        # Change the color for each point -- try it out!<br>        fill(random(), 0, 0, random())<br>        rect(px+random(-ox, ox), <br>             py+random(-oy, oy), <br>             sz, sz) </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">tom</span> on <em class="date">Jul 20, 2007</em></strong><p>Hi Viki,<br><br>1) You can import SVG as paths with the <a href="SVG.html">SVG library</a>. Download the library, save your Illustrator artwork as SVG files, and then you can do things in NodeBox like:<pre class="python">svg = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;svg&quot;</span><span style="">&#41;</span>
-data = <span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;artwork.svg&quot;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span>
-paths = svg.<span style="">parse</span><span style="">&#40;</span>data<span style="">&#41;</span> <span style="color: grey;">#a list of all the paths in the SVG file.</span>
-<span style="color: #530035;">drawpath</span><span style="">&#40;</span>paths<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span><span style="">&#41;</span></pre></pre>A version of the bitbop code with SVG would look like this:<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">500</span>, <span style="">500</span><span style="">&#41;</span> 
-&nbsp;
-ovsx = <span style="">200</span>
-ovsy = <span style="">100</span>
-ox = <span style="">0</span>
-oy = <span style="">1</span>
-dotsize = <span style="">5</span>
-dx = <span style="color: #530035;">WIDTH</span> / <span style="">float</span><span style="">&#40;</span>ovsx<span style="">&#41;</span> <span style="">+2</span>
-dy = <span style="color: #530035;">HEIGHT</span> / <span style="">float</span><span style="">&#40;</span>ovsy<span style="">&#41;</span> <span style="">+2</span>
-&nbsp;
-<span style="color: grey;"># SVG path instead of textpath</span>
-svg = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;svg&quot;</span><span style="">&#41;</span>
-data = <span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;path.svg&quot;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span>
-paths = svg.<span style="">parse</span><span style="">&#40;</span>data<span style="">&#41;</span>
-flower = paths<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>
-&nbsp;
-<span style="color: #530035;">for</span> x, y <span style="color: #530035;">in</span> <span style="color: #530035;">grid</span><span style="">&#40;</span>ovsx, ovsy<span style="">&#41;</span>: 
-    sz=<span style="color: #530035;">random</span><span style="">&#40;</span>dotsize<span style="">&#41;</span> 
-    px = x*dx-sz 
-    py = y*dy-sz 
-    <span style="color: #530035;">if</span> flower.<span style="">contains</span><span style="">&#40;</span>px, py<span style="">&#41;</span>: <span style="color: grey;"># flower.contains instead of tp.contains </span>
-        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>, <span style="">0</span>, <span style="">0</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span> 
-        <span style="color: #530035;">rect</span><span style="">&#40;</span>px+<span style="color: #530035;">random</span><span style="">&#40;</span>-ox, ox<span style="">&#41;</span>, py+<span style="color: #530035;">random</span><span style="">&#40;</span>-oy, oy<span style="">&#41;</span>, sz, sz<span style="">&#41;</span></pre></pre>2) The rect() command draws a rectangle. So where it says rect in the script, a rectangle is being drawn. If you replace that line with something else like oval() or drawpath() you're going to see different shapes.<br><br>For example, try replacing the line with:<pre class="python"><span style="color: #530035;">arrow</span><span style="">&#40;</span>px+<span style="color: #530035;">random</span><span style="">&#40;</span>-ox, ox<span style="">&#41;</span>, py+<span style="color: #530035;">random</span><span style="">&#40;</span>-oy, oy<span style="">&#41;</span>, sz*<span style="">4</span><span style="">&#41;</span></pre></pre>3) In general, determining if geometric shapes overlap is very hard. As to the code in bitbop, notice the line:<pre class="python">sz=<span style="color: #530035;">random</span><span style="">&#40;</span>dotsize<span style="">&#41;</span></pre></pre>The sz variable which is used to position and scale the rectangles is assigned a random value, causing bigger and smaller rectangles to overlap.<br><br>Try changing it to:<pre class="python">sz=dotsize</pre></pre>to get a much tighter grid.<br><br>Hope that helps! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Jul 24, 2007</em></strong><p>This is great. Thanks so much for the tips. I've managed to import the SVG path and populate it with primitives. <br><br>I'm still a bit stuck on the effect i'm looking for which is to populate a SVG shape with other SVG shapes that I import. It would be really cool if i could populate the main SVG shape with randomly selected SVG files from the same directory.<br><br>x </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Jul 26, 2007</em></strong><p>The <a href="Reference_|_choice().html">choice()</a> command picks a random element from a list. The <a href="Reference_|_files().html">files()</a> command returns a list of files in a folder. So those two are easily combined in a new command that returns random SVG paths:<pre class="python"><span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>randomsvg</span><span style="">&#40;</span><span style="">&#41;</span>:    
-    f = <span style="color: #530035;">files</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;paths/*.svg&quot;</span><span style="">&#41;</span>
-    data = <span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #530035;">choice</span><span style="">&#40;</span>f<span style="">&#41;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span>
-    paths = svg.<span style="">parse</span><span style="">&#40;</span>data<span style="">&#41;</span>
-    <span style="color: #530035;">return</span> paths<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span></pre></pre>Then, instead of drawing rect()s inside the main SVG path you would do something like:<pre class="python">path = randomsvg<span style="">&#40;</span><span style="">&#41;</span>
-<span style="color: grey;"># You would create each vector path in Illustrator </span>
-<span style="color: grey;"># at the same position, and then move it around in NodeBox </span>
-<span style="color: grey;"># with the translate command.</span>
-<span style="color: #530035;">translate</span><span style="">&#40;</span>px, py<span style="">&#41;</span>
-<span style="color: #530035;">drawpath</span><span style="">&#40;</span>path<span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Jul 27, 2007</em></strong><p>## I'm getting an error back from the following script: NodeBox/Examples/Path/Test2.21_.py", line 33, in ?<br>TypeError: 'BezierPath' object is not callable<br>###<br><br><br>size(300, 300) <br> <br>ovsx = 50<br>ovsy = 50<br>ox = 0<br>oy = 1<br>dotsize = 2<br>dx = WIDTH / float(ovsx) +2<br>dy = HEIGHT / float(ovsy) +2<br> <br># SVG path instead of textpath<br>svg = ximport("svg")<br>data = open("path.svg").read()<br>paths = svg.parse(data)<br>flower = paths[0]<br><br>########<br>def randomsvg():    <br>    f = files("paths/*.svg")<br>    data = open(choice(f)).read()<br>    paths = svg.parse(data)<br>    return paths[0]<br>    <br>path = randomsvg()<br>########<br><br>for x, y in grid(ovsx, ovsy): <br>    sz=dotsize<br>    px = x*dx-sz <br>    py = y*dy-sz <br>    if flower.contains(px, py): # flower.contains instead of tp.contains <br>        fill(random(), -5, 2, random()) <br>        path(px+random(-ox, ox), py+random(-oy, oy), sz*4) </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">nex</span> on <em class="date">Aug 09, 2007</em></strong><p>This must be long fixed now, but in case anyone else is wondering: path would have to be drawn with drawpath, it is not a method or function or anything else you could call. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 11 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

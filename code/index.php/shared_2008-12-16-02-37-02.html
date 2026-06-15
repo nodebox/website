@@ -1,141 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | data usage</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-12-16-02-37-02, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-12-16-02-37-02" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">data usage</h1>
-<strong>Posted by <span class="comment_by">spencer</span> on <em class="date">Dec 16, 2008</em></strong>
-<p>Hello,<br><br>I just started using NodeBox and love the possibilities of code and design. I would like a little help with importing and using string data.<br><br>here is the start of my code:<pre class="python"><span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">CMYK</span><span style="">&#41;</span>
-<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">400</span>, <span style="">800</span><span style="">&#41;</span>
-&nbsp;
-    
-<span style="color: #530035;">import</span> <span style="">csv</span>
-reader = <span style="">csv</span>.<span style="">reader</span><span style="">&#40;</span><span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;table.csv&quot;</span>, <span style="color: #ff0080;">&quot;rb&quot;</span><span style="">&#41;</span><span style="">&#41;</span>
-<span style="color: #530035;">for</span> row <span style="color: #530035;">in</span> reader:
-    <span style="color: #530035;">print</span> row<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>,row<span style="">&#91;</span><span style="">3</span><span style="">&#93;</span></pre></pre>it prints two columns of #'s<br><br>So my question is how do I utilize the individual numbers and or column of numbers.<br><br>Thanks </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 16, 2008</em></strong><p>This is really a Python problem, and it's difficult to say here without seeing the data file you're working from. Is it possible for you to open your .csv file in a text editor and paste the first few lines here so we can look at it?<br><br>To give you a couple of thoughts right now, and if you'll forgive me for making assumptions about your skill, have you tried printing other members of row, or even the whole thing, to see what it looks like? You may simply be using the wrong indices (row[0] is the first member of the list)? Also, I've just done a couple of quick tests with csv.reader and a .csv file of my own, and I don't believe that you need to call open() with the "rb" option -- which means read in binary mode. I can't say that is definitely causing trouble, but you might try opening the file for normal read (which is the default):<pre class="python"><span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;table.csv&quot;</span><span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">spencer</span> on <em class="date">Dec 16, 2008</em></strong><p>Josh,<br><br>Thanks for you help. I am truly a novice, so this is probably very simple and I don't think I explained myself well before.<br><br>I want to create sized shapes based off of my .csv data.<br>How would I create a rect. based off of my data? and how do I specify NodeBox to grab this particular data?<br><br>My example is this I have four columns of data, each column has 100 rows of various numbers. I want to draw 100 rectangles based off of that data.<pre class="python"><span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.2</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>Column<span style="color: grey;">#1, Column#2, Column#3, Column#4)</span></pre></pre>hope this makes more sense.<br><br><br><br><br><br>Good to know about the "rb" </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 17, 2008</em></strong><p>What you are trying to do makes sense, and is straightforward. It's difficult, like I said, to know exactly what you need to do without seeing a few example lines from your data file, but let me give you a made-up example and then you should be able to go back to your file and figure it out.<br><br>I'm going to assume that the first few lines in your file look something like this:<pre class="python"><span style="">25</span>, <span style="">35</span>, <span style="">45</span>, <span style="">55</span>
-<span style="">10</span>, <span style="">15</span>, <span style="">60</span>, <span style="">65</span>
-<span style="">75</span>, <span style="">30</span>, <span style="">95</span>, <span style="">40</span></pre></pre>The data that you get each time through the for loop looks like this:<pre class="python"><span style="">&#91;</span><span style="color: #ff0080;">'25'</span>, <span style="color: #ff0080;">' 35'</span>, <span style="color: #ff0080;">' 45'</span>, <span style="color: #ff0080;">' 55'</span><span style="">&#93;</span></pre></pre>This is a "list" made up of four "strings". There are NodeBox tutorials about these types of data which you should check out. To get each string, you access the list, which you have named "row":<pre class="python"><span style="color: #530035;">print</span> row<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>
-<span style="color: #530035;">print</span> row<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>
-<span style="color: #530035;">print</span> row<span style="">&#91;</span><span style="">2</span><span style="">&#93;</span></pre></pre>resulting in this output<pre class="python"><span style="color: #ff0080;">'25'</span>
-<span style="color: #ff0080;">' 35'</span>
-<span style="color: #ff0080;">' 45'</span></pre></pre>It's not important what the strings actually are. The important thing, since you are using the "comma-separated-values" (csv) module, is that the commas are separating the items that you want, and even more, that there isn't anything else on each line. If there are other items on the line, like this:<pre class="python"><span style="">25</span>, <span style="color: grey;">#, 35, #, 45, #, 55</span></pre></pre>then you're going to have to figure out what position they are in and access the list around them. This is why I suggest printing out the entirety of row to see what it looks like. If that was a line from your file, the data in row would look like this:<pre class="python"><span style="">&#91;</span><span style="color: #ff0080;">'25'</span>, <span style="color: #ff0080;">' #'</span>, <span style="color: #ff0080;">' 35'</span>, <span style="color: #ff0080;">' #'</span>, <span style="color: #ff0080;">' 45'</span>, <span style="color: #ff0080;">' #'</span>, <span style="color: #ff0080;">' 55'</span><span style="">&#93;</span></pre></pre>and when you run those three print statements above you'll get:<pre class="python"><span style="color: #ff0080;">'25'</span>
-<span style="color: #ff0080;">' #'</span>
-<span style="color: #ff0080;">' 35'</span></pre></pre>This is really the only problem you face: where are the items that you want located in the list called "row"? You've gotten most of the way there. Once you figure the locations out, you'll need to convert them so that NodeBox will use them as numbers. You can do this with the float() function:<pre class="python"><span style="color: #530035;">rect</span><span style="">&#40;</span> <span style="">float</span><span style="">&#40;</span>row<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span><span style="">&#41;</span>, <span style="">float</span><span style="">&#40;</span>row<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span><span style="">&#41;</span>, <span style="">float</span><span style="">&#40;</span>row<span style="">&#91;</span><span style="">2</span><span style="">&#93;</span><span style="">&#41;</span>, <span style="">float</span><span style="">&#40;</span>row<span style="">&#91;</span><span style="">3</span><span style="">&#93;</span><span style="">&#41;</span> <span style="">&#41;</span></pre></pre>I'm not sure I can do much more for you, but one last note: The Python <a href="http://docs.python.org/tutorial/index.html">tutorial</a> might also help you, despite its being kind of a heavy read: a <a href="http://docs.python.org/tutorial/inputoutput.html#reading-and-writing-files">file</a> object, which you get when you call open():<pre class="python">f = <span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;table.csv&quot;</span><span style="">&#41;</span></pre></pre>can give you each of its lines without your having to use csv.reader, and a <a href="http://docs.python.org/library/stdtypes.html#string-methods">string</a> can separate itself using a delimiter that you pick (like ", #, "). Using these more basic tools may make your problem easier to solve.<br><br>Hope you can figure it out! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">spencer</span> on <em class="date">Dec 18, 2008</em></strong><p>Thanks josh,<br><br>This gives me much better direction than I had before. I think with the information you provided me I have a much better grasp of the concept.<br><br>After a few tries I may have a few more questions for you, but this is a great start.<br><br><b>Thanks again.</b><br>S </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 24, 2008</em></strong><p>Sure thing, Spencer. Glad to be of help. If you have any further specific questions, I'll see what I can do. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Dec 24 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

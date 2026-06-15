@@ -1,0 +1,229 @@
+<html>
+
+<head>
+<title>NodeBox | Glacier</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Glacier" />
+<link rel="canonical" href="https://www.nodebox.net/code/Glacier" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Glacier</h3>
+<p><em>Glacier</em> draws a grid of interconnecting hexagonal elements with a recursive algorithm. The grid <em>fades</em> out after a certain amount of tiles. The algorithm contains a bug in the way hexes are spaced, but this actually creates a nice visual effect: the glaciers start drifting apart the further they are from the core. A global warming bug!</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/glacier1.jpg" alt="" width="600" height="600" /></span> </p>  <p>&nbsp;</p>  <p><strong>Source code:<br /></strong></p>  <pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">600</span><span style="">&#41;</span>
+&nbsp;
+hexwork = <span style="">&#123;</span><span style="">&#125;</span>
+&nbsp;
+<span style="color: #530035;">class</span> Hex:
+&nbsp;
+  <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, x, y, w, spacing=<span style="">0</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;">#Creates a new hexagonal at position x, y</span>
+    <span style="color: grey;">#with the given width w, and optional spacing.</span>
+    <span style="color: grey;">#Adds itself to the hexwork list.</span>
+&nbsp;
+    <span style="">self</span>.<span style="">x</span> = x
+    <span style="">self</span>.<span style="">y</span> = y
+    <span style="">self</span>.<span style="">w</span> = w
+    <span style="">self</span>.<span style="">spacing</span> = spacing
+&nbsp;
+    <span style="">self</span>.<span style="">sides</span> = <span style="">&#91;</span><span style="">&#93;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">6</span><span style="">&#41;</span>: 
+      <span style="">self</span>.<span style="">sides</span>.<span style="">append</span><span style="">&#40;</span><span style="color: #530035;">None</span><span style="">&#41;</span> 
+    <span style="color: #530035;">global</span> hexwork
+    hexwork<span style="">&#91;</span><span style="">&#40;</span><span style="">self</span>.<span style="">x</span>,<span style="">self</span>.<span style="">y</span><span style="">&#41;</span><span style="">&#93;</span> = <span style="">self</span>
+    <span style="">self</span>.<span style="">index</span> = <span style="">len</span><span style="">&#40;</span>hexwork<span style="">&#41;</span>
+&nbsp;
+  <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">self</span>, tag=<span style="color: #530035;">False</span>, visit=<span style="color: #530035;">None</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;">#Draws this hexagonal on screen.</span>
+    <span style="color: grey;">#Optionally, tags the hexagonal with its index</span>
+    <span style="color: grey;">#in the hexwork list.</span>
+&nbsp;
+    <span style="color: grey;">#Additionally, you can supply a visit function</span>
+    <span style="color: grey;">#that accepts this self as a parameter.</span>
+&nbsp;
+    <span style="color: #530035;">if</span> visit != <span style="color: #530035;">None</span>: visit<span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>
+&nbsp;
+    w = <span style="">self</span>.<span style="">w</span> * <span style="">0.5</span>
+    <span style="color: #530035;">star</span><span style="">&#40;</span><span style="">self</span>.<span style="">x</span>, <span style="">self</span>.<span style="">y</span>, <span style="">6</span>, w, w*<span style="">1.155</span><span style="">&#41;</span>
+&nbsp;
+    <span style="color: #530035;">if</span> tag:
+      <span style="color: #530035;">fontsize</span><span style="">&#40;</span>w*<span style="">0.25</span><span style="">&#41;</span>
+      f = <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">&#41;</span>
+      <span style="color: #530035;">fill</span><span style="">&#40;</span>f.<span style="">r</span>, f.<span style="">g</span>, f.<span style="">b</span>, <span style="">1</span><span style="">&#41;</span>
+      <span style="color: #530035;">align</span><span style="">&#40;</span><span style="color: #530035;">CENTER</span><span style="">&#41;</span>
+      <span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span><span style="">&#40;</span><span style="">self</span>.<span style="">index</span><span style="">&#41;</span>, <span style="">self</span>.<span style="">x</span>-<span style="">self</span>.<span style="">w*</span><span style="">0.5</span>, <span style="">self</span>.<span style="">y</span>, <span style="">self</span>.<span style="">w</span><span style="">&#41;</span>
+      <span style="color: #530035;">fill</span><span style="">&#40;</span>f<span style="">&#41;</span>
+&nbsp;
+  <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>rdraw</span><span style="">&#40;</span><span style="">self</span>, tag=<span style="color: #530035;">False</span>, visit=<span style="color: #530035;">None</span>, degrade=<span style="color: #530035;">True</span>, root=<span style="color: #530035;">None</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;">#Recursive draw:</span>
+    <span style="color: grey;">#draw all neighbours as well,</span>
+    <span style="color: grey;">#and their neighbours, and so on.</span>
+&nbsp;
+    <span style="color: #530035;">if</span> degrade == <span style="color: #530035;">True</span>: 
+      f = <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">&#41;</span>
+      <span style="color: #530035;">fill</span><span style="">&#40;</span>f.<span style="">r</span>, f.<span style="">g</span>, f.<span style="">b</span>, f.<span style="">a</span> * <span style="">0.98</span><span style="">&#41;</span>
+&nbsp;
+    <span style="">self</span>.<span style="">draw</span><span style="">&#40;</span>tag, visit<span style="">&#41;</span>
+    <span style="color: #530035;">if</span> root != <span style="color: #530035;">None</span>: <span style="color: #530035;">line</span><span style="">&#40;</span><span style="">self</span>.<span style="">x</span>,<span style="">self</span>.<span style="">y</span>,root.<span style="">x</span>,root.<span style="">y</span><span style="">&#41;</span>
+    <span style="color: #530035;">for</span> side <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">sides</span>:
+      <span style="color: #530035;">if</span> side != <span style="color: #530035;">None</span> <span style="color: #530035;">and</span> side != root:
+        side.<span style="">rdraw</span><span style="">&#40;</span>tag, visit, degrade, root=<span style="">self</span><span style="">&#41;</span>
+&nbsp;
+  <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>grow</span><span style="">&#40;</span><span style="">self</span>, <span style="">max</span>=<span style="">6</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;">#Creates neighbouring hexes for this hexagonal.</span>
+    <span style="color: grey;">#Creates all neighbours by default, or a given max</span>
+    <span style="color: grey;">#of random neighbours.</span>
+&nbsp;
+    <span style="color: #530035;">if</span> <span style="">max</span> &lt; <span style="">1</span> <span style="color: #530035;">or</span> <span style="">max</span> &gt; <span style="">6</span>: <span style="color: #530035;">return</span>
+&nbsp;
+    <span style="color: grey;">#The centerpoint offsets for neighbouring hexes.</span>
+&nbsp;
+    <span style="color: #530035;">from</span> <span style="color: #530035;">random</span> <span style="color: #530035;">import</span> shuffle
+    center = <span style="">&#91;</span><span style="">&#40;</span><span style="">0</span>,<span style="">-1</span><span style="">&#41;</span>, 
+              <span style="">&#40;</span><span style="">-0.865</span>,<span style="">-0.5</span><span style="">&#41;</span>,
+              <span style="">&#40;</span><span style="">-0.865</span>,<span style="">0.5</span><span style="">&#41;</span>,
+              <span style="">&#40;</span><span style="">0</span>,<span style="">1</span><span style="">&#41;</span>,
+              <span style="">&#40;</span><span style="">0.865</span>,<span style="">0.5</span><span style="">&#41;</span>,
+              <span style="">&#40;</span><span style="">0.865</span>,<span style="">-0.5</span><span style="">&#41;</span><span style="">&#93;</span>
+&nbsp;
+    shuffle<span style="">&#40;</span>center<span style="">&#41;</span>
+    center = center<span style="">&#91;</span>:<span style="">max</span><span style="">&#93;</span>
+    <span style="color: grey;">#center.sort() #doesn't do what supposed to do</span>
+&nbsp;
+    <span style="color: grey;">#Create neighbours only if the neighbour does</span>
+    <span style="color: grey;">#not exist yet: if it is not defined by this</span>
+    <span style="color: grey;">#hex as a neighbour already, or its position</span>
+    <span style="color: grey;">#occurs in the hexwork list (and thus it is</span>
+    <span style="color: grey;">#already defined as someone else's neighbour).</span>
+&nbsp;
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">max</span><span style="">&#41;</span>:
+      dx, dy = center<span style="">&#91;</span>i<span style="">&#93;</span>
+      dx = dx * <span style="">&#40;</span><span style="">self</span>.<span style="">w</span>+<span style="">self</span>.<span style="">spacing</span><span style="">&#41;</span> + <span style="">self</span>.<span style="">x</span>
+      dy = dy * <span style="">&#40;</span><span style="">self</span>.<span style="">w</span>+<span style="">self</span>.<span style="">spacing</span><span style="">&#41;</span> + <span style="">self</span>.<span style="">y</span>
+      <span style="color: #530035;">global</span> hexwork
+      <span style="color: #530035;">if</span> <span style="">self</span>.<span style="">sides</span><span style="">&#91;</span>i<span style="">&#93;</span> == <span style="color: #530035;">None</span> <span style="color: #530035;">and</span> <span style="color: #530035;">not</span> hexwork.<span style="">has_key</span><span style="">&#40;</span><span style="">&#40;</span>dx,dy<span style="">&#41;</span><span style="">&#41;</span>:
+        <span style="">self</span>.<span style="">sides</span><span style="">&#91;</span>i<span style="">&#93;</span> = Hex<span style="">&#40;</span>dx, dy, <span style="">self</span>.<span style="">w</span><span style="">&#41;</span>
+        <span style="">self</span>.<span style="">sides</span><span style="">&#91;</span>i<span style="">&#93;</span>.<span style="">sides</span><span style="">&#91;</span><span style="">&#40;</span>i<span style="">+3</span><span style="">&#41;</span>%<span style="">6</span><span style="">&#93;</span> = <span style="">self</span>
+&nbsp;
+  <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>rgrow</span><span style="">&#40;</span><span style="">self</span>, <span style="">max</span>=<span style="">6</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;">#Recursive growth:</span>
+    <span style="color: grey;">#grow neighbours for this hex,</span>
+    <span style="color: grey;">#grow neighbours for each neighbour, and so on.</span>
+&nbsp;
+    <span style="color: #530035;">if</span> <span style="">max</span> &gt; <span style="">0</span>:
+      <span style="">self</span>.<span style="">grow</span><span style="">&#40;</span><span style="">max</span><span style="">&#41;</span>
+      <span style="color: #530035;">for</span> side <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">sides</span>:
+        <span style="color: #530035;">if</span> side != <span style="color: #530035;">None</span>: 
+          side.<span style="">rgrow</span><span style="">&#40;</span>max<span style="">-1</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>visit</span><span style="">&#40;</span><span style="">hex</span><span style="">&#41;</span>:            
+  <span style="color: #530035;">scale</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.98</span>,<span style="">1.01</span><span style="">&#41;</span><span style="">&#41;</span>
+  <span style="color: #530035;">rotate</span><span style="">&#40;</span><span style="">0.1</span><span style="">&#41;</span>
+&nbsp;
+root = Hex<span style="">&#40;</span><span style="">400</span>,<span style="">400</span>,<span style="">70</span>, spacing=<span style="">100</span><span style="">&#41;</span>
+root.<span style="">rgrow</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0.2</span>,<span style="">0.2</span>,<span style="">0.2</span><span style="">&#41;</span>
+<span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.5</span><span style="">&#41;</span>
+<span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">0</span>,<span style="">0</span>,<span style="color: #530035;">WIDTH</span>,<span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Arial&quot;</span><span style="">&#41;</span>
+r = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.5</span>,<span style="">1</span><span style="">&#41;</span>
+<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span>,<span style="">0.5</span>,r,<span style="">0.75</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span>,<span style="">0.5</span>,r,<span style="">0.75</span><span style="">&#41;</span>
+<span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.25</span><span style="">&#41;</span>
+root.<span style="">rdraw</span><span style="">&#40;</span>tag=<span style="color: #530035;">True</span>, visit=visit<span style="">&#41;</span></pre></pre>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Nov 20 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

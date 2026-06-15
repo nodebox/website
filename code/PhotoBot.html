@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | PhotoBot</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, PhotoBot" />
+<link rel="canonical" href="https://www.nodebox.net/code/PhotoBot" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>PhotoBot</h3>
+<h2>Description</h2>  <p>PhotoBot implements Adobe Photoshop - or any other image manipulation software tool (like Corel PhotoPaint or <a href="http://www.gimp.org/">Gimp</a>) - functionality in NodeBox. For example: with PhotoBot, you can create a tranparent canvas and add image layers to it; transform each layer with rotations, scaling, distort, flip; blend it with the layers below using multiply, overlay, hue blend modes, apply filters like blur, use gradient masks, make polygonal lasso selections, flatten the canvas, and export it to a .png image file with a transparent background.</p>  <p>PhotoBot is built on PIL, the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a>, with an easy set of commands open to moderately experienced NodeBox-users. PIL 1.1.4 is bundled in the download below. The advantage of PhotoBot over Photoshop, although a lot slower, is that it can do things in a loop, or store your favourite image manipulations in a function, which you can then use on any image. This way you invent the technique once, store it as a NodeBox script, and apply it to your images while you go out to lunch.</p>  <p>Please report any errors (tom-at-organisms-dot-be). PhotoBot is currently at version Beta 0.8, read the <a href="/code/PhotoBot_to-do_list">to-do</a> list here for a future release.</p><p><span class="pink_text">If you have Mac OS X 10.4 we recommend using <a href="/code/Core_Image" target="_self">Core Image</a>. </span><br /></p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="/code/data/media/photobot.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/photobot-powerpc.zip" target="_self">PowerPC</a> | <a href="/code/data/media/photobot-intel.zip" target="_self">Intel</a> (450KB)<br /> <em>Last updated for NodeBox 1.0rc4.<br /></em><em>Author: Tom De Smedt</em><em><br /></em></td></tr></tbody></table>  <h2>Canvas commands in the PhotoBot library</h2>  <ul> <li><a href="/code/photobot.canvas()">canvas()</a></li> <li><a href="/code/photobot.Canvas.layers[]">Canvas.layers[]</a></li> <li><a href="/code/photobot.Canvas.layer()">Canvas.layer()</a></li> <li><a href="/code/photobot.Canvas.fill()">Canvas.fill()</a></li> <li><a href="/code/photobot.Canvas.gradient()">Canvas.gradient()</a></li> <li><a href="/code/photobot.Canvas.merge()">Canvas.merge()</a></li> <li><a href="/code/photobot.Canvas.flatten()">Canvas.flatten()</a></li> <li><a href="/code/photobot.Canvas.export()">Canvas.export()</a></li> <li><a href="/code/photobot.Canvas.draw()">Canvas.draw()</a></li> <li><a href="/code/photobot.Canvas.preferences()">Canvas.preferences()</a></li> </ul>  <h2>Layer commands in the PhotoBot library</h2>  <ul> <li><a href="/code/photobot.Layer.index()">Layer.index()</a></li> <li><a href="/code/photobot.Layer.duplicate()">Layer.duplicate()</a></li> <li><a href="/code/photobot.Layer.copy()">Layer.copy()</a></li> <li><a href="/code/photobot.Layer.delete()">Layer.delete()</a></li> <li><a href="/code/photobot.Layer.up()">Layer.up()</a></li> <li><a href="/code/photobot.Layer.down()">Layer.down()</a></li> <li><a href="/code/photobot.Layer.opacity()">Layer.opacity()</a></li> <li><a href="/code/photobot.Layer.multiply()">Layer.multiply()</a></li> <li><a href="/code/photobot.Layer.screen()">Layer.screen()</a></li> <li><a href="/code/photobot.Layer.overlay()">Layer.overlay()</a></li> <li><a href="/code/photobot.Layer.hue()">Layer.hue()</a></li> <li><a href="/code/photobot.Layer.color()">Layer.color()</a></li> <li><a href="/code/photobot.Layer.mask()">Layer.mask()</a></li> <li><a href="/code/photobot.Layer.translate()">Layer.translate()</a></li> <li><a href="/code/photobot.Layer.scale()">Layer.scale()</a></li> <li><a href="/code/photobot.Layer.distort()">Layer.distort()</a></li> <li><a href="/code/photobot.Layer.rotate()">Layer.rotate()</a></li> <li><a href="/code/photobot.Layer.flip()">Layer.flip()</a></li> <li><a href="/code/photobot.Layer.levels()">Layer.levels()</a></li> <li><a href="/code/photobot.Layer.brightness()">Layer.brightness()</a></li> <li><a href="/code/photobot.Layer.contrast()">Layer.contrast()</a></li> <li><a href="/code/photobot.Layer.sharpness()">Layer.sharpness()</a></li> <li><a href="/code/photobot.Layer.desaturate()">Layer.desaturate()</a></li> <li><a href="/code/photobot.Layer.invert()">Layer.invert()</a></li> <li><a href="/code/photobot.Layer.blur()">Layer.blur()</a></li> <li><a href="/code/photobot.Layer.bounds()">Layer.bounds()</a></li> <li><a href="/code/photobot.Layer.select()">Layer.select()</a></li> <li><a href="/code/photobot.Layer.statistics()">Layer.statistics()</a></li> </ul>  <h2>Pixel commands in the PhotoBot library</h2>  <ul> <li><a href="/code/photobot.Layer.pixels[]">Layer.pixels[]</a></li> <li><a href="/code/photobot.Layer.pixels.update()">Layer.pixels.update()</a></li> <li><a href="/code/photobot.Layer.pixels.convolute()">Layer.pixels.convolute()</a></li> </ul>  <p> </p>  <p><span class="media"><img src="/code/data/media/photobot.jpg" alt="" width="350" height="350" /></span> </p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Dec 19 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

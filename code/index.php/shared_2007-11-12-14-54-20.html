@@ -1,149 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Colors library</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2007-11-12-14-54-20, " />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2007-11-12-14-54-20" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Colors library</h1> <strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Nov 12, 2007</em></strong> <p>The new Colors library has finally been documented and can be downloaded <a href="Colors.html">here</a>. Check it out! </p><br /></div>  <hr /><div class="comment"><strong>Posted by <span class="comment_by">Mark M</span> on <em class="date">Nov 12, 2007</em></strong><p>That&#39;s terrific Tom. I&#39;ve been hoping this would be released soon. I&#39;ve been looking forward to it. </p><br /></div><hr /><div class="comment"><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Nov 14, 2007</em></strong><p>Thanks, a lot of work has gone into this library. Although the library may initially appear more subtle and less wicked than for example Core Image, there&#39;s some great tools in there that dramatically increase the visual effect of compositions you create (I especially like analog colors, shades and shadows). <br /> <br />Have fun! </p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Steve K</span> on <em class="date">Dec 05, 2007</em></strong><p>Hello,<br><br>I am currently poking around with the code for the Colors library, it looks really amazing... I haven't seen something that let's you do such nice operations on colors programmatically (and in Python no less).<br><br>My only problem is that since I do not have access to an OS X machine I can't actually run the code.  I've had limited success by hacking up mock objects for some dependencies.  I got all the way down to things like NSColor before I saw that wasn't really going to get me very far.<br><br>I've also tried rewriting certain functionality from scratch, which has been pretty good.  I chose the theme loader as an initial goal, because it seems the most interesting.  I have a rudimentary version of it running now.<br><br>My thought is... what do you think of freeing the Colors library from the Core Image dependencies?  It seems useful for doing all kinds of things, more than just NodeBox's functionality on OS X provides (I'm dreaming of automatic generation of color schemes in CSS based on page content).  I don't necessarily need a full blown port of NodeBox, the ability to play with colors would be great.  The bonus of a platform independent color library means you could re-use it for other endeavors... I see the Java and .Net branches in svn :)<br><br>I figure it'd take a week to get a basic version that's roughly equivalent to the current version (minus any drawing features, which would be a whole 'nother project).  Any tips or pointers on working with the code? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Dec 06, 2007</em></strong><p>Looking at the code the separation can be fairly easy I think. You can wait a bit till I have the time to do it myself or you can get started on your own (I need to review the Graph library and a Perlin noise function first).<br><br>First, the library imports from nodebox.graphics, nodebox.util and AppKit so these  import need to be try-expected. Then an alternative to the NodeBox random() command needs to be included (it takes a min and a max parameter).<br><br>Second, all commands that use _ctx (the NodeBox drawing context) won't work on other system but they can just keep being the way they are I think. These include outline(), shadow(), gradientpath(), colorwheel() and the swatch() and swarm() methods in the Color, ColorList and ColorRange classes.<br><br>This, the image_to_rgb() method in ColorList uses Core Image to find pixel color values. Perhaps when this doesn't work it can fall back to PIL (Python Imaging Library).<br><br>Most work will probably go into separating the Color class from NSColor. The Color class inherits from the nodebox.graphics.cocoa.Color class which  builds on NSColor. So you will have to write a pure-Python alternative with r, g, b, c, m, y, k and h, s, b properties and the internal magic to keep those in synch.<br><br>This might get you started:<pre class="python"><span style="color: #530035;">class</span> Color:
-    
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, r, g, b<span style="">&#41;</span>:
-        
-        <span style="">self</span>._r = r
-        <span style="">self</span>._g = g
-        <span style="">self</span>._b = b
-        
-        c, m, y, k = rgb2cmyk<span style="">&#40;</span>r, g, b<span style="">&#41;</span>
-        <span style="">self</span>._c = c
-        <span style="">self</span>._m = m
-        <span style="">self</span>._y = y
-        <span style="">self</span>._k = k
-        
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>_get_c</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-        
-        <span style="color: #530035;">return</span> <span style="">self</span>._c
-    
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>_set_c</span><span style="">&#40;</span><span style="">self</span>, v<span style="">&#41;</span>:
-        
-        <span style="">self</span>._c = <span style="">max</span><span style="">&#40;</span><span style="">0</span>, <span style="">min</span><span style="">&#40;</span>v, <span style="">1</span><span style="">&#41;</span><span style="">&#41;</span>
-        
-        r, g, b = cmyk2rgb<span style="">&#40;</span><span style="">self</span>._c, <span style="">self</span>._m, <span style="">self</span>._y, <span style="">self</span>._k<span style="">&#41;</span>
-        <span style="">self</span>._r = r
-        <span style="">self</span>._g = g
-        <span style="">self</span>._b = b
-        
-    c = cyan = <span style="">property</span><span style="">&#40;</span>_get_c, _set_c<span style="">&#41;</span></pre></pre>I've included color space conversion commands (like rgb2cmyk) in the latest download of the library but these may be a bit naive, maybe you should google around for more robust conversion methods.<br><br>The yahoo() and morguefile() commands build on the NodeBox Web library but that one should already be cross-platform.<br><br>Best regards,<br>Tom </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Dec 10, 2007</em></strong><p>Hi Steve,<br><br>I've done the necessary modifications to make the library work outside of NodeBox. I did a few quick tests and everything seems to be working fine.<br><br>Color lists from image pixels will try to import PIL.<br><br>outline(), shadow(), gradientpath() won't work (but they don't make any sense outside of a drawing context so that's no problem).<br><br>Let me know if you run into any problems! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Julien L</span> on <em class="date">Mar 22, 2008</em></strong><p>Outstanding work !! And outstanding documentation !! </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 11 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

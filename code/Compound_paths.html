@@ -1,0 +1,154 @@
+<html>
+
+<head>
+<title>NodeBox | Compound paths</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Compound paths" />
+<link rel="canonical" href="https://www.nodebox.net/code/Compound_paths" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Compound paths</h3>
+<p>Paths in NodeBox support so-called <i>boolean</i> operations. This means you can create a new c<b>ompound path from a combination of other paths</b>. This is useful if you want to create a shape from a combination of other shapes (like ovals and rectangles) and then flatten the group into a single path. Manipulating a single shape is much easier and faster than manipulating a group of shapes.</p><pre class="python">path1.<span style="">union</span><span style="">&#40;</span>path2, flatness=<span style="">0.6</span><span style="">&#41;</span></pre></pre><pre class="python">path1.<span style="">intersect</span><span style="">&#40;</span>path2, flatness=<span style="">0.6</span><span style="">&#41;</span></pre></pre><pre class="python">path1.<span style="">difference</span><span style="">&#40;</span>path2, flatness=<span style="">0.6</span><span style="">&#41;</span></pre></pre><p>Each of the three methods returns a new <a href="/code/Reference_|_BezierPath" target="_self">path</a> combined from the two given paths. The way in which the new path is traced differs for each method, as you can observe below:</p><p>&nbsp;</p><table><tbody><tr><td><img src="/code/data/media/paths-compound1.jpg" alt="paths-compound1" /></td><td><p><b>Union</b> traces and merges the two paths, removing any overlapping parts. </p><pre class="python"><span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+path1 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">40</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+path2 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">90</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+compound = path1.<span style="">union</span><span style="">&#40;</span>path2<span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre></td></tr><tr><td><img src="/code/data/media/paths-compound2.jpg" alt="paths-compound2" /></td><td><p> <b>Intersect</b> traces the overlapping region and removes everything else.</p><pre class="python"><span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+path1 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">40</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+path2 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">90</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+compound = path1.<span style="">intersect</span><span style="">&#40;</span>path2<span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre> <p>&nbsp;</p></td></tr><tr><td><img src="/code/data/media/paths-compound3.jpg" alt="paths-compound3" /> <br /></td><td><p><b>Difference</b> subtracts the second shape from the first shape.</p><pre class="python"><span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+path1 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">40</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+path2 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">90</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+compound = path1.<span style="">difference</span><span style="">&#40;</span>path2<span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre> <p>&nbsp;</p></td></tr><tr><td><img src="/code/data/media/paths-compound4b.jpg" alt="paths-compound4b" /> <br /></td><td><p>&nbsp;<b>XOR</b> traces non-overlapping regions, excluding any areas that overlap.</p><pre class="python"><span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.8</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+path1 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">40</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+path2 = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">90</span>, <span style="">40</span>, <span style="">80</span>, <span style="">80</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+compound = path1.<span style="">xor</span><span style="">&#40;</span>path2<span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre></p>&nbsp;</td></tr></tbody></table><p>&nbsp;</p><p>The returned path can be manipulated like any other path in NodeBox, you can <a href="/code/Reference_|_fill()" target="_self">fill()</a> and <a href="/code/Reference_|_stroke()" target="_self">stroke()</a> it, <a href="/code/Reference_|_rotate()" target="_self">rotate()</a> it and put it (or multiple copies of it) onscreen with <a href="/code/Reference_|_drawpath()" target="_self">drawpath()</a>. </p><p>One thing to note is that the compound path will not contain any curves, rather, it is made up of numerous straight line segments (we say that the path is <b>flattened</b>)<i>.</i> Each of the compound methods has an optional <i>flatness</i> parameter. The lower it gets, the more line segments will be drawn (and hence the smoother the resulting shape).  </p><h2>Flattening stack</h2><p>With a for-loop we can keep adding new paths to the compound path. In the example below, we create a number of circles varying in size, and append them to one flattened compound path:</p><pre class="python">compound = <span style="color: #530035;">None</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">50</span><span style="">&#41;</span>:
+    r = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">75</span><span style="">&#41;</span>
+    path = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">300</span><span style="">&#41;</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">200</span><span style="">&#41;</span>, r, r, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+    <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> compound:
+        compound = path
+    compound = compound.<span style="">union</span><span style="">&#40;</span>path<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre></p>&nbsp;         <p><img src="/code/data/media/paths-compound4.jpg" alt="paths-compound4" /></p><p>&nbsp;</p><h2>Using a Transform object </h2><p>It&#39;s easy enough to draw transformed and colored copies of the compound path, but what if we want to <b>rotate and scale the individual shapes</b> before flattening them? We can use the <a href="/code/Reference_|_Transform" target="_self">Transform</a> object in NodeBox for this purpose.</p><pre class="python"><span style="color: grey;"># We construct our indivual shape in the top-left corner.</span>
+<span style="color: grey;"># This is where corner-mode transforms originate.</span>
+<span style="color: grey;"># We'll later on place the eventual compound path </span>
+<span style="color: grey;"># where we want it with translate().</span>
+path = <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">-10</span>, <span style="">0</span>, <span style="">20</span>, <span style="">100</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># Let's chip away small piece of the rectangle:</span>
+path = path.<span style="">difference</span><span style="">&#40;</span><span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">-15</span>, <span style="">80</span>, <span style="">20</span>, <span style="">15</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span><span style="">&#41;</span>
+&nbsp;
+compound = path
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">17</span><span style="">&#41;</span>:
+    
+    <span style="color: grey;"># Before adding the rectangle shape to</span>
+    <span style="color: grey;"># the flattened compound, we rotate it a bit.</span>
+    t = Transform<span style="">&#40;</span><span style="">&#41;</span>
+    t.<span style="color: #530035;">rotate</span><span style="">&#40;</span><span style="">20</span><span style="">&#41;</span>
+    path = t.<span style="">transformBezierPath</span><span style="">&#40;</span>path<span style="">&#41;</span>
+    
+    compound = compound.<span style="">union</span><span style="">&#40;</span>path<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">translate</span><span style="">&#40;</span><span style="">275</span>, <span style="">275</span><span style="">&#41;</span>
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>compound<span style="">&#41;</span></pre></pre><p> <img src="/code/data/media/paths-compound5.jpg" alt="paths-compound5" /></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 22 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

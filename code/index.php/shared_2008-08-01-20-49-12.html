@@ -1,125 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Export Crash by HD Resolution</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-08-01-20-49-12, bug" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-08-01-20-49-12" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Export Crash by HD Resolution</h1>
-<strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Aug 01, 2008</em></strong>
-<p>Dear NodeBox-Team,<br><br>I just start to Render some simple Animations in high Resolutions like::<br><br>1920 x 900   by   30Frames/s   - 500 total frames.<br><br>But NodeBox start to crash after the first 190 Frames.<br><br>Seems to be a TIF overflow because you keep the rendered pictures in a buffer before they get written into a QuickTime Movie?<br><br>I am using a Mac Pro, 4Gig of memory, enought disc space.<br>The Report start like that::<br><br>Date/Time:      2008-08-01 20:37:52.071 +0200<br>OS Version:     10.4.11 (Build 8S2167)<br>Report Version: 4<br><br>Command: NodeBox<br>Path:    /Applications/NodeBox/NodeBox.app/Contents/MacOS/NodeBox<br>Parent:  WindowServer [139]<br><br>Version: 1.9.4 ()<br><br>PID:    835<br>Thread: 0<br><br>Exception:  EXC_BREAKPOINT (0x0006)<br>Code[0]:    0x00000002<br>Code[1]:    0x00000000<br><br><br>Thread 0 Crashed:<br>0   com.apple.CoreFoundation       	0x908273b8 __CFDataGrow + 214<br>1   com.apple.CoreFoundation       	0x908270f9 CFDataReplaceBytes + 217<br>2   com.apple.CoreFoundation       	0x908272d7 CFDataAppendBytes + 157<br>3   com.apple.ImageIO.framework    	0x91903f8f CGImageWriteSessionPutBytes + 109<br>4   libTIFF.dylib                  	0x91b8ae31 TIFFAppendToStrip + 474<br>5   libTIFF.dylib                  	0x91b89633 TIFFFlushData1 + 100<br>6   libTIFF.dylib                  	0x91b89716 DumpModeEncode + 190<br>7   libTIFF.dylib                  	0x91b8925c _cg_TIFFWriteScanline + 656<br>8   com.apple.ImageIO.framework    	0x91903d1e _CGImagePluginWriteTIFF + 3749<br>9   com.apple.ImageIO.framework    	0x91902e54 CGImageDestinationFinalize + 113<br>10  com.apple.AppKit               	0x933ddf05 +[NSBitmapImageRep(NSBitmapImageFileTypeExtensions) representationOfImageRepsInArray:usingType:properties:] + 2345<br>11  com.apple.AppKit               	0x933dd5cc +[NSBitmapImageRep TIFFRepresentationOfImageRepsInArray:] + 561<br>12  com.apple.AppKit               	0x933dd2f6 -[NSImage TIFFRepresentationUsingCompression:factor:] + 1062<br>13  com.apple.AppKit               	0x933dceca -[NSImage TIFFRepresentation] + 49<br>14  _objc.so                       	0x005430ed ffi_call_SYSV + 29<br>15  _objc.so                       	0x00543092 ffi_call + 98<br>16  _objc.so                       	0x005501e1 PyObjCFFI_Caller + 2582<br>17  _objc.so                       	0x005622de PyObjCAPI_Register + 929<br>18  org.python.python              	0x0040e278 PyObject_Call + 45<br>19  org.python.python              	0x00495851 PyEval_EvalFrameEx + 9242<br>20  org.python.python              	0x004994d8 PyEval_EvalFrameEx + 24737<br>21  org.python.python              	0x00499cdc PyEval_EvalCodeEx + 1819<br>22  org.python.python              	0x004975b1 PyEval_EvalFrameEx + 16762<br>23  org.python.python              	0x004994d8 PyEval_EvalFrameEx + 24737<br>24  org.python.python              	0x00499cdc PyEval_EvalCodeEx + 1819<br>25  org.python.python              	0x0042f537 PyFunction_SetClosure + 2019<br>26  org.python.python              	0x0040e278 PyObject_Call + 45<br>27  _objc.so                       	0x005634ea PyObjCSelector_FindNative + 1302<br>28  org.python.python              	0x0040e278 PyObject_Call + 45<br>29  org.python.python              	0x00495851 PyEval_EvalFrameEx + 9242<br>30  org.python.python              	0x00499cdc PyEval_EvalCodeEx + 1819<br>31  org.python.python              	0x0042f537 PyFunction_SetClosure + 2019<br>32  org.python.python              	0x0040e278 PyObject_Call + 45<br>33  _objc.so                       	0x005635ad PyObjCSelector_FindNative + 1497<br>34  org.python.python              	0x0040e278 PyObject_Call + 45<br>35  _objc.so                       	0x0054cc12 PyObjCFFI_CountArguments + 1091<br>36  _objc.so                       	0x00542dbc ffi_prep_cif_machdep + 336 </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">anonymous</span> on <em class="date">Aug 02, 2008</em></strong><p>My recommendation is to save individual images rather than one QT movie, then use QT pro, some Python magic, or some other program like iMovie to stitch them together. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Aug 04, 2008</em></strong><p>Thanks !!!<br><br>Thats it.<br><br>Much better solution to export frame Sequences.<br>I just open QuickTime Player and import an Image Sequence.<br><br>This is much better then the Movie Export.<br>It is also fantastic to work with PDF Movies for Resolution independent rendering & Alpha in a later step.<br><br>Also After Effects works better with Image Sequences.<br><br>Thanks a lot - this makes me happy again to continue my work in NodeBox!<br><br>cheers,<br><br>Toby </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Aug 04 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

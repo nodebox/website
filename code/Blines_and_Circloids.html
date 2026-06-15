@@ -1,0 +1,130 @@
+<html>
+
+<head>
+<title>NodeBox | Blines and Circloids</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Blines and Circloids" />
+<link rel="canonical" href="https://www.nodebox.net/code/Blines_and_Circloids" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Blines and Circloids</h3>
+<p><a href="/code/Boids">Boids</a> are elements that describe leaderless groups like flocks, herds or schools, according to the algorithm made in 1986 by Craig Reynolds. Boids have no mathematical equations describing their path: they move along individually, and as an emergent group steering clear of each other and moving in the direction everyone else is going.</p><p>Boids provide a good a way to describe <a href="http://research.nodebox.net/Composition_Algorithm">natural compositions</a>.</p>  <p>Below is an example of curves drawn with a combination of the <a href="/code/Boids">Boids</a> library and the <a href="/code/Cornu">Cornu</a> spline library, a spiralling curve algorithm by Raph Levien.</p>  <p>&nbsp;</p>  <p><img src="/code/data/media/blines1.jpg" alt="blines1" /></p><p><img src="/code/data/media/blines2.jpg" alt="blines2" /></p><p><img src="/code/data/media/blines3.jpg" alt="blines3" /></p><p><img src="/code/data/media/blines4.jpg" alt="blines4" /> </p>  <p>&nbsp;</p><p><strong>Source code:</strong></p><pre class="python"><span style="color: grey;"># You'll need the Boids and Cornu libraries.</span>
+boids = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;boids&quot;</span><span style="">&#41;</span>
+cornu = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;cornu&quot;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">550</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.1</span>, <span style="">0.1</span>, <span style="">0.0</span><span style="">&#41;</span>
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+flock = boids.<span style="">flock</span><span style="">&#40;</span><span style="">10</span>, <span style="">0</span>, <span style="">0</span>, <span style="color: #530035;">WIDTH</span>, <span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
+&nbsp;
+n = <span style="">70</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>n<span style="">&#41;</span>:
+    
+    flock.<span style="">update</span><span style="">&#40;</span>shuffled=<span style="color: #530035;">False</span><span style="">&#41;</span>
+    
+    <span style="color: grey;"># Each flying boid is a point.</span>
+    points = <span style="">&#91;</span><span style="">&#93;</span>
+    <span style="color: #530035;">for</span> boid <span style="color: #530035;">in</span> flock:
+        points.<span style="">append</span><span style="">&#40;</span><span style="">&#40;</span>boid.<span style="">x</span>, boid.<span style="">y</span><span style="">&#41;</span><span style="">&#41;</span>
+&nbsp;
+    <span style="color: grey;"># Relativise points for Cornu.</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">len</span><span style="">&#40;</span>points<span style="">&#41;</span><span style="">&#41;</span>:
+        x, y = points<span style="">&#91;</span>i<span style="">&#93;</span>
+        x /= <span style="">1.0</span> * <span style="color: #530035;">WIDTH</span>
+        y /= <span style="">1.0</span> * <span style="color: #530035;">HEIGHT</span>
+        points<span style="">&#91;</span>i<span style="">&#93;</span> = <span style="">&#40;</span>x,y<span style="">&#41;</span>
+    
+    t = <span style="">float</span><span style="">&#40;</span>i<span style="">&#41;</span> / n
+    <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0.9</span>, <span style="">0.9</span>, <span style="">4</span>*t, <span style="">0.6</span>*t<span style="">&#41;</span>
+    cornu.<span style="color: #530035;">drawpath</span><span style="">&#40;</span>points, tweaks=<span style="">0</span><span style="">&#41;</span></pre></pre>    <p>&nbsp;</p>  <p>Some older examples, the Circloids, can be viewed <a href="/code/Circloids">here</a>.</p>  <p>Created by Tom De Smedt.</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Nov 20 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

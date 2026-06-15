@@ -1,0 +1,199 @@
+<html>
+
+<head>
+<title>NodeBox | Superfolia | source code</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Superfolia | source code" />
+<link rel="canonical" href="https://www.nodebox.net/code/Superfolia_|_source_code" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Superfolia | source code</h3>
+<p><img src="/code/data/media/superfolia9.jpg" alt="superfolia9" /></p><pre class="python"><span style="color: grey;"># Author: Tom De Smedt, 2006</span>
+&nbsp;
+zoom = <span style="">3</span>
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">2012.6</span>/zoom, <span style="">2863</span>/zoom<span style="">&#41;</span>
+&nbsp;
+bg = <span style="">&#91;</span>
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.70</span>, <span style="">0.70</span>, <span style="">0.65</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.97</span>, <span style="">0.97</span>, <span style="">0.92</span><span style="">&#41;</span>
+<span style="">&#93;</span>
+&nbsp;
+colors = <span style="">&#91;</span>
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.57</span>, <span style="">0.57</span>, <span style="">0.44</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.29</span>, <span style="">0.27</span>, <span style="">0.08</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.16</span>, <span style="">0.16</span>, <span style="">0.05</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="">0</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="">0</span><span style="">&#41;</span>
+<span style="">&#93;</span>
+colors.<span style="">reverse</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># Given a list of colors,</span>
+<span style="color: grey;"># calculate intermediary steps.</span>
+<span style="color: grey;"># The plants go from black to green,</span>
+<span style="color: grey;"># giving them a nice sense of depth.</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>gradient</span><span style="">&#40;</span>colors, i, n<span style="">&#41;</span>:
+    l = <span style="">len</span><span style="">&#40;</span>colors<span style="">&#41;</span><span style="">-1</span>
+    a = <span style="">int</span><span style="">&#40;</span><span style="">1.0</span>*i/n*l<span style="">&#41;</span>
+    a = <span style="">min</span><span style="">&#40;</span>a<span style="">+0</span>, l<span style="">&#41;</span>
+    b = <span style="">min</span><span style="">&#40;</span>a<span style="">+1</span>, l<span style="">&#41;</span>
+    base = <span style="">1.0</span> * n/l * a
+    d = <span style="">&#40;</span>i-base<span style="">&#41;</span> / <span style="">&#40;</span>n/l<span style="">&#41;</span>
+    r = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">r*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">r*d</span>
+    g = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">g*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">g*d</span>
+    b = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">b*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">b*d</span>
+    <span style="color: #530035;">return</span> <span style="color: #530035;">color</span><span style="">&#40;</span>r, g, b<span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># Radial gradient background.</span>
+<span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sqrt
+n = <span style="">800</span>/zoom
+r = sqrt<span style="">&#40;</span><span style="color: #530035;">WIDTH</span>*<span style="color: #530035;">WIDTH</span> + <span style="color: #530035;">HEIGHT</span>*<span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>n<span style="">&#41;</span>:
+    dx = <span style="">&#40;</span>WIDTH-r<span style="">&#41;</span>/<span style="">2</span>
+    dy = <span style="">&#40;</span>HEIGHT-r<span style="">&#41;</span>/<span style="">2</span>
+    <span style="color: #530035;">fill</span><span style="">&#40;</span>gradient<span style="">&#40;</span>bg, i, n<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">oval</span><span style="">&#40;</span>dx+i, dy+i, r-i*<span style="">2</span>, r-i*<span style="">2</span><span style="">&#41;</span>
+&nbsp;
+svg = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;svg&quot;</span><span style="">&#41;</span>
+paths = svg.<span style="">parse</span><span style="">&#40;</span><span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;plant.svg&quot;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>
+points = <span style="">100</span> <span style="color: grey;"># this will take a while to render.</span>
+&nbsp;
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+<span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.5</span><span style="">&#41;</span>
+<span style="color: #530035;">transform</span><span style="">&#40;</span>CORNER<span style="">&#41;</span>
+<span style="color: #530035;">scale</span><span style="">&#40;</span><span style="">4.5</span> / zoom<span style="">&#41;</span>
+<span style="color: #530035;">translate</span><span style="">&#40;</span><span style="">-110</span>, <span style="">35</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># Quick preview of the SVG:</span>
+<span style="color: grey;">#for path in paths:</span>
+<span style="color: grey;">#    if random() &gt; 0.25:</span>
+<span style="color: grey;">#        drawpath(path)</span>
+&nbsp;
+<span style="color: #530035;">for</span> path <span style="color: #530035;">in</span> paths:
+    <span style="color: #530035;">if</span> path.<span style="">length</span> &gt; <span style="">900</span>:
+        n = points * <span style="">2</span>
+        d = <span style="">10</span>
+    <span style="color: #530035;">else</span>:
+        n = points
+        d = <span style="">30</span>
+        
+    prev = <span style="color: #530035;">None</span>
+    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+    <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+    <span style="color: #530035;">for</span> i, pt <span style="color: #530035;">in</span> <span style="">zip</span><span style="">&#40;</span><span style="">range</span><span style="">&#40;</span>n<span style="">&#41;</span>, path.<span style="">points</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:
+        
+        clr = gradient<span style="">&#40;</span>colors, i, n<span style="">&#41;</span>
+        clr.<span style="">alpha</span> = <span style="">0.7</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.3</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span>clr<span style="">&#41;</span>
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.04</span>,<span style="">0.2</span><span style="">&#41;</span> * zoom<span style="">&#41;</span>
+        
+        <span style="color: #530035;">if</span> prev != <span style="color: #530035;">None</span>:
+            <span style="color: #530035;">beginpath</span><span style="">&#40;</span>prev.<span style="">x</span>, prev.<span style="">y</span><span style="">&#41;</span>
+            <span style="color: #530035;">curveto</span><span style="">&#40;</span>
+                pt.<span style="">ctrl1</span>.<span style="">x</span> - <span style="color: #530035;">random</span><span style="">&#40;</span>d<span style="">&#41;</span>, 
+                pt.<span style="">ctrl1</span>.<span style="">y</span>,
+                pt.<span style="">ctrl2</span>.<span style="">x</span>, 
+                pt.<span style="">ctrl2</span>.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>d<span style="">&#41;</span>,
+                pt.<span style="">x</span>, 
+                pt.<span style="">y</span>
+            <span style="">&#41;</span>
+            <span style="color: #530035;">curveto</span><span style="">&#40;</span>
+                pt.<span style="">ctrl1</span>.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>d/<span style="">3</span><span style="">&#41;</span>, 
+                pt.<span style="">ctrl1</span>.<span style="">y</span>,
+                pt.<span style="">ctrl2</span>.<span style="">x</span>, 
+                pt.<span style="">ctrl2</span>.<span style="">y</span> - <span style="color: #530035;">random</span><span style="">&#40;</span>d/<span style="">3</span><span style="">&#41;</span>,
+                pt.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-d*<span style="">2</span>/<span style="">3</span>, d*<span style="">2</span>/<span style="">3</span><span style="">&#41;</span>, 
+                pt.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-d/<span style="">3</span>, d/<span style="">3</span><span style="">&#41;</span>
+            <span style="">&#41;</span>
+            <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+        prev = pt</pre></pre>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Mar 15 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

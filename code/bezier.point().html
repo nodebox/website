@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<title>NodeBox | bezier.point()</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, bezier.point()" />
+<link rel="canonical" href="https://www.nodebox.net/code/bezier.point()" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>bezier.point()</h3>
+<h2>Syntax</h2>  <pre class="python">point<span style="">&#40;</span>path, t, segments=<span style="color: #530035;">None</span><span style="">&#41;</span></pre></pre>  <h2>Description</h2>  <p>Returns coordinates for the point at <em>t</em> on the <em>path</em>, which is a value ranging between 0.0 and 1.0. When t is 0.5 for example, coordinates are returned for the point that would be in the middle of the path.</p>  <p>The return value is a PathElement object that has a number of properties: like <em>x</em>, <em>y</em> and <em>cmd</em> for example. Read the <a href="/code/Paths">tutorial on paths</a> to see what you can do with the points of a path.</p>  <h2>Example</h2>  <pre class="python">bezier = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;bezier&quot;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+<span style="color: #530035;">beginpath</span><span style="">&#40;</span><span style="">100</span>,<span style="">100</span><span style="">&#41;</span>
+<span style="color: #530035;">curveto</span><span style="">&#40;</span><span style="">150</span>,<span style="">200</span>, <span style="">200</span>,<span style="">450</span>, <span style="">300</span>,<span style="">300</span><span style="">&#41;</span>
+path = <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> t <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>:
+  pt = bezier.<span style="">point</span><span style="">&#40;</span>path, t*<span style="">0.1</span><span style="">&#41;</span>
+  <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span><span style="">-2</span>, pt.<span style="">y</span><span style="">-2</span>, <span style="">4</span>, <span style="">4</span><span style="">&#41;</span>
+  <span style="color: #530035;">line</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span>, pt.<span style="">ctrl1</span>.<span style="">x</span>, pt.<span style="">ctrl1</span>.<span style="">y</span><span style="">&#41;</span></pre></pre><p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/pathmatics-point.gif" alt="" width="204" height="305" /></span> </p>  <p>&nbsp;</p>  <p>The <em>point()</em> command calculates the <a href="/code/bezier.length()">length(</a>) of the path before determining where <em>t</em> is. When you supply the list of segment lengths yourself, as returned from length(path, segmented=True), point() works considerably faster in a for-loop, since it doesn&#39;t need to recalculate the length during each iteration:</p>  <pre class="python"><span style="color: #530035;">import</span> bezier
+&nbsp;
+<span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+<span style="color: #530035;">beginpath</span><span style="">&#40;</span><span style="">100</span>,<span style="">100</span><span style="">&#41;</span>
+<span style="color: #530035;">curveto</span><span style="">&#40;</span><span style="">150</span>,<span style="">200</span>, <span style="">200</span>,<span style="">450</span>, <span style="">300</span>,<span style="">300</span><span style="">&#41;</span>
+path = <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+lengths = bezier.<span style="">length</span><span style="">&#40;</span>path, segmented=<span style="color: #530035;">True</span><span style="">&#41;</span>
+<span style="color: #530035;">for</span> t <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>:
+    pt = bezier.<span style="">point</span><span style="">&#40;</span>path, t*<span style="">0.1</span>, segments=lengths<span style="">&#41;</span>
+    <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span><span style="">-2</span>, pt.<span style="">y</span><span style="">-2</span>, <span style="">4</span>, <span style="">4</span><span style="">&#41;</span>
+    <span style="color: #530035;">line</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span>, pt.<span style="">ctrl1</span>.<span style="">x</span>, pt.<span style="">ctrl1</span>.<span style="">y</span><span style="">&#41;</span></pre></pre><p>&nbsp;</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 20 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

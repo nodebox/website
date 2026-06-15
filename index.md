@@ -29,13 +29,13 @@ section: home
     <a class="read-more" href="/node/">Read More</a>
   </div>
   <div class="four columns app">
-    <a href="/code/index.php/Home.html">
+    <a href="/code/Home">
       <img src="/media/homepage/nodebox-1.jpg" alt="NodeBox 1 screenshot">
     </a>
     <h2>NodeBox 1</h2>
     <small>Code, Iterate, Print</small>
     <p>Mac app for creating 2D visuals using Python programming code.</p>
-    <a class="read-more" href="/code/index.php/Home.html">Read More</a>
+    <a class="read-more" href="/code/Home">Read More</a>
   </div>
   <div class="four columns app">
     <a href="/opengl/">

@@ -1,6 +1,9 @@
 # Build directories
 _site/
 
+# Playwright MCP screenshots / snapshots
+.playwright-mcp/
+
 # Node
 node_modules/
 

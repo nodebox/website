@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<title>NodeBox | WordNet</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, WordNet" />
+<link rel="canonical" href="https://www.nodebox.net/code/WordNet" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>WordNet</h3>
+<h2>Description</h2>  <p><a href="http://www.cogsci.princeton.edu/~wn/">WordNet</a> is a dictionary of nouns, verbs, adverbs, adjectives, and their lexical relations: definition, different interpretations, category, and examples. Wordnet knows that black is the opposite of white, that birds are animals.</p><p class="pink_text"><i>This library is part of the NodeBox <a href="/code/Linguistics" target="_self">Linguistics</a> library. If you need more linguistical power we recommend trying out that library.</i></p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="/code/data/media/wordnet2.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/wordnet.zip" target="_self">wordnet.zip</a> (11.2MB) <br /> <i>Last updated for NodeBox 1.9.2</i></td></tr></tbody></table>  <p>&nbsp;</p><hr /><h2>How to get the library up and running</h2><p>Put the <i>wordnet</i> library folder in the same folder as your script so NodeBox can find the library. You can also put it in <i>~/Library/Application Support/NodeBox/ </i>so all scripts can find it.<i><br /></i></p>  <pre class="python">wordnet = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;wordnet&quot;</span><span style="">&#41;</span></pre></pre></p>&nbsp;        <hr /><h2>Documentation </h2><p>WordNet describes semantic relations between synonym sets.</p>  <p>The <i>noun_gloss()</i> command returns the dictionary description of a word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_gloss</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;book&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; a written work <span style="color: #530035;">or</span> composition that has been published <span style="">&#40;</span>printed on pages 
+&gt;&gt;&gt; bound together<span style="">&#41;</span>; <span style="color: #ff0080;">&quot;I am reading a good book on economics&quot;</span></pre></pre>  <p>A word can have multiple senses, for example &quot;tree&quot; can mean a tree in a forest but also a tree diagram, or a person named Sir Herbert Beerbohm Tree. Sense indices start from 0.<br /></p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_senses</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;tree&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'tree'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'tree'</span>, <span style="color: #ff0080;">'tree diagram'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'Tree'</span>, <span style="color: #ff0080;">'Sir Beerbohm Tree'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_gloss</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;tree&quot;</span>, sense=<span style="">1</span><span style="">&#41;</span>
+&gt;&gt;&gt; a figure that branches <span style="color: #530035;">from</span> a single root; <span style="color: #ff0080;">&quot;genealogical tree&quot;</span></pre></pre>  <p>The <i>noun_lexname()</i> command returns a categorization for the given word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_lexname</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;book&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; communication</pre></pre>  <p>The <i>noun_hyponym()</i> command returns examples of the given word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_hyponym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;vehicle&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'bumper car'</span>, <span style="color: #ff0080;">'Dodgem'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'craft'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'military vehicle'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'rocket'</span>, 
+&gt;&gt;&gt;  <span style="color: #ff0080;">'projectile'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'skibob'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'sled'</span>, <span style="color: #ff0080;">'sledge'</span>, <span style="color: #ff0080;">'sleigh'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'steamroller'</span>, 
+&gt;&gt;&gt;  <span style="color: #ff0080;">'road roller'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'wheeled vehicle'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_hyponym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;tree&quot;</span>, sense=<span style="">1</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'cladogram'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'stemma'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>The <i>noun_hypernym()</i> command returns abstractions of the given word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_hypernym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;earth&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">print</span> wordnet.<span style="">noun_hypernym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;earth&quot;</span>, sense=<span style="">1</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'terrestrial planet'</span><span style="">&#93;</span><span style="">&#93;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'material'</span>, <span style="color: #ff0080;">'stuff'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>You can also execute a deep query with <i>noun_hypernyms()</i> and <i>noun_hyponyms()</i>. Notice how returned values become more and more abstract:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_hypernyms</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;vehicle&quot;</span>, sense=<span style="">0</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'vehicle'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'conveyance'</span>, <span style="color: #ff0080;">'transport'</span><span style="">&#93;</span>, 
+&gt;&gt;&gt;  <span style="">&#91;</span><span style="color: #ff0080;">'instrumentality'</span>, <span style="color: #ff0080;">'instrumentation'</span><span style="">&#93;</span>, 
+&gt;&gt;&gt;  <span style="">&#91;</span><span style="color: #ff0080;">'artifact'</span>, <span style="color: #ff0080;">'artefact'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'whole'</span>, <span style="color: #ff0080;">'unit'</span><span style="">&#93;</span>, 
+&gt;&gt;&gt;  <span style="">&#91;</span><span style="color: #ff0080;">'object'</span>, <span style="color: #ff0080;">'physical object'</span><span style="">&#93;</span>, 
+&gt;&gt;&gt;  <span style="">&#91;</span><span style="color: #ff0080;">'physical entity'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'entity'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>The <i>noun_holonym()</i> command returns components of the given word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_holonym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;computer&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'busbar'</span>, <span style="color: #ff0080;">'bus'</span><span style="">&#93;</span>, <span style="">&#91;</span><span style="color: #ff0080;">'cathode-ray tube'</span>, <span style="color: #ff0080;">'CRT'</span><span style="">&#93;</span>, 
+&gt;&gt;&gt;  <span style="">&#91;</span><span style="color: #ff0080;">'central processing unit'</span>, <span style="color: #ff0080;">'CPU'</span>, <span style="color: #ff0080;">'C.P.U.'</span>, <span style="color: #ff0080;">'central processor'</span>, 
+&gt;&gt;&gt;   <span style="color: #ff0080;">'processor'</span>, <span style="color: #ff0080;">'mainframe'</span><span style="">&#93;</span> ...</pre></pre>  <p>The <i>noun_meronym()</i> command returns the collection in which the given word can be found:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_meronym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;tree&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'forest'</span>, <span style="color: #ff0080;">'wood'</span>, <span style="color: #ff0080;">'woods'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>The <i>noun_antonym()</i> returns the semantic opposite of the word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_antonym</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;black&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'white'</span>, <span style="color: #ff0080;">'whiteness'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>Find out what two words have in common:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_meet</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;cat&quot;</span>, <span style="color: #ff0080;">&quot;dog&quot;</span>, sense1=<span style="">0</span>, sense2=<span style="">0</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="color: #ff0080;">'carnivore'</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre>  <p>The <i>noun_absurd_gloss()</i> returns an absurd description for the word:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">noun_absurd_gloss</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;typography&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; a business deal on a trivial <span style="color: #530035;">scale</span></pre></pre>  <p>The return value of a WordNet command is usually a list containing other lists of related words. You can use the <i>wordnet.flatten()</i> command to flatten the list:</p>  <pre class="python"><span style="color: #530035;">print</span> wordnet.<span style="">flatten</span><span style="">&#40;</span>wordnet.<span style="">noun_senses</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;tree&quot;</span><span style="">&#41;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="color: #ff0080;">'tree'</span>, <span style="color: #ff0080;">'tree'</span>, <span style="color: #ff0080;">'tree diagram'</span>, <span style="color: #ff0080;">'Tree'</span>, <span style="color: #ff0080;">'Sir Herbert Beerbohm Tree'</span><span style="">&#93;</span></pre></pre>  <p>If you want a list of all nouns/verbs/adjectives/adverbs there&#39;s the <i>wordnet.all_nouns()</i>, <i>wordnet.all_verbs()</i> ... commands:</p>  <pre class="python"><span style="color: #530035;">print</span> <span style="">len</span><span style="">&#40;</span>wordnet.<span style="">all_nouns</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">117096</span></pre></pre>  <p>All of the commands shown here for nouns are <b>also available for verbs, adjectives and adverbs</b>, <i>verb_hypernyms(&quot;run&quot;)</i>, <i>djective_gloss(&quot;beautiful&quot;)</i> etc. are valid commands.</p><p>&nbsp;</p><hr /><h2>Example</h2>  <p>The NodeBox WordNet library has a small gizmo bundled in called <b><i>explode</i></b><i> </i>(you won&#39;t find it in the Linguistics library however)<i>.</i> You can use it to quickly visualise WordNet:  </p>    <pre class="python">wordnet = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;wordnet&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">from</span> wordnet <span style="color: #530035;">import</span> explode
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Georgia-BoldItalic&quot;</span>, <span style="">10</span><span style="">&#41;</span>
+<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.3</span><span style="">&#41;</span>
+q = <span style="color: #ff0080;">&quot;container&quot;</span>
+explode.<span style="">draw</span><span style="">&#40;</span>q, wordnet.<span style="">noun_hyponyms</span><span style="">&#40;</span>q<span style="">&#41;</span>, <span style="">300</span>, <span style="">300</span>, <span style="">max</span>=<span style="">30</span><span style="">&#41;</span></pre></pre></p>&nbsp;       <p><span class="image_border"><img src="/code/data/media/explode2.jpg" alt="explode2" /></span> </p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: May 17 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

@@ -1,182 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Lichtenstein kind'a</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-02-18-05-29-09, artwork, source code" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-02-18-05-29-09" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Lichtenstein kind'a</h1>
-<strong>Posted by <span class="comment_by">Frank</span> on <em class="date">Feb 18, 2008</em></strong>
-<br /><br /><img src="../data/shared/2008-02-18-05-29-09_bud.png" /><br /><br />
-<p>Folks...<br><br>Just thought I would share some code I cobbled together. It makes newspaper print or comic book printing. The image is made from varying sized black ovals... sized to the shade of gray at that point in the image. Keep your image at around 640x480 or the number of ovals gets hard to process on something like a laptop. By playing around with this you can make lots of interesting variations. This code is a variation on code I found in the coreimage notes.<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">800</span>,<span style="">800</span><span style="">&#41;</span>
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">0</span>,<span style="">0</span>,<span style="color: #530035;">WIDTH</span>,<span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
-&nbsp;
-coreimage = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;coreimage&quot;</span><span style="">&#41;</span>
-canvas = coreimage.<span style="">canvas</span><span style="">&#40;</span><span style="">150</span>,<span style="">150</span><span style="">&#41;</span>
-&nbsp;
-l = canvas.<span style="">append</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;bud.jpg&quot;</span><span style="">&#41;</span>
-l.<span style="">desaturate</span><span style="">&#40;</span><span style="">&#41;</span>
-p = l.<span style="">pixels</span><span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">RGB</span>, <span style="">255</span><span style="">&#41;</span>
-w,h = l.<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">&#41;</span>
-<span style="color: #530035;">for</span> x, y <span style="color: #530035;">in</span> <span style="color: #530035;">grid</span><span style="">&#40;</span>w/<span style="">5</span>,h/<span style="">5</span>,<span style="">5</span>,<span style="">5</span><span style="">&#41;</span>:
-    clr = p.<span style="">get_pixel</span><span style="">&#40;</span>x,y<span style="">&#41;</span>
-    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
-    <span style="color: #530035;">oval</span><span style="">&#40;</span>x,y,<span style="">10</span>*<span style="">&#40;</span><span style="">1</span>-clr.<span style="">r</span><span style="">&#41;</span>,<span style="">10</span>*<span style="">&#40;</span><span style="">1</span>-clr.<span style="">r</span><span style="">&#41;</span><span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Feb 22, 2008</em></strong><p>Very nice!<br>Maximum result with minimum amount of code. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">anonymous</span> on <em class="date">Feb 23, 2008</em></strong><p>I may point out that this is already a Core Image filter, called CIDotScreen. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Frank</span> on <em class="date">Feb 24, 2008</em></strong><p>This produces a vector based image not one that is pixel based. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Michael</span> on <em class="date">Feb 26, 2008</em></strong><p>hm, i try it again without the image:<br><br>nice one, frank<br><br>i tried something similar some days ago (also inspired by the examle in the core image library). the intention was to rasterize an image to lasercut the dots into a metalsheet and use this as a facadepanel (hence the whitespace between the dots). but then i got carried away trying different stuff so this image was one result.<br><br>there is one thing i noted, though. the dots in the grid don't line up in the center of the rows, but at their left and upper boundaries (also visible in your image). i found this odd, as in the nauseating.py in the grid-example the dots line up center. i figuered it had to do with the way, you draw the dots in the grid:<br><br>1) if you draw the dots with actual numeric values, they line up left and top (like in your image, where it is best visible when the dots get very small)<br><br>2) the dots line up center, like in the nauseating.py, when you have them one size and scale them up or down before you draw them.<br><br>so the 'anchor'-point for putting things on the canvas is top/left, while the 'anchor'-point for scaling is the center. <br><br>as i said, just something i noted. michael.<br><br>my 'slightly' longer and messier code:<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">800</span>, <span style="">600</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># import the colors and the coreimage library</span>
-colors = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;colors&quot;</span><span style="">&#41;</span>
-coreimage = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;coreimage&quot;</span><span style="">&#41;</span>
-<span style="">math</span> = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;math&quot;</span><span style="">&#41;</span>
-&nbsp;
-canvas = coreimage.<span style="">canvas</span><span style="">&#40;</span><span style="">800</span>, <span style="">600</span><span style="">&#41;</span>
-layer = canvas.<span style="">layer</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;_images/test_1.jpg&quot;</span><span style="">&#41;</span>
-pixel = layer.<span style="">pixels</span><span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">RGB</span>, <span style="">255</span><span style="">&#41;</span>
-w, h = layer.<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># set some basic variables</span>
-<span style="color: grey;"># set the base dot size</span>
-pSize = <span style="">16</span>
-<span style="color: grey;"># set the minimum dot size (threshold)</span>
-tHold = <span style="">3</span>
-<span style="color: grey;"># a dot correction variable to </span>
-<span style="color: grey;"># decrease or increase size</span>
-pCorrect = <span style="">5</span>
-&nbsp;
-<span style="color: #530035;">for</span> x, y <span style="color: #530035;">in</span> <span style="color: #530035;">grid</span><span style="">&#40;</span>w / pSize, h / pSize, pSize, pSize<span style="">&#41;</span>:
-    pColor = pixel.<span style="">get_pixel</span><span style="">&#40;</span>x, y<span style="">&#41;</span>
-    <span style="color: #530035;">fill</span><span style="">&#40;</span>pColor<span style="">&#41;</span> <span style="color: grey;"># for color dots</span>
-<span style="color: grey;">#    fill(0) # for black dots</span>
-&nbsp;
-<span style="color: grey;"># use the brightness or saturation of the color to get the dotsize</span>
-    pVal = pColor.<span style="">brightness</span>
-<span style="color: grey;">#    pVal = 1 - pColor.saturation</span>
-&nbsp;
-<span style="color: grey;"># calculate the actual size and scaling factor of the dots</span>
-    aSize = pSize - <span style="">math</span>.<span style="">ceil</span><span style="">&#40;</span>pSize * pVal<span style="">&#41;</span>
-    sFac = aSize / pSize
-<span style="color: grey;"># now do some work</span>
-    <span style="color: #530035;">push</span><span style="">&#40;</span><span style="">&#41;</span>
-    <span style="color: #530035;">scale</span><span style="">&#40;</span>sFac<span style="">&#41;</span>
-    <span style="color: #530035;">if</span> <span style="">&#40;</span>aSize &gt; tHold<span style="">&#41;</span>: <span style="color: grey;">#sort out smaller dots</span>
-        <span style="color: #530035;">oval</span><span style="">&#40;</span>x, y, pSize + pCorrect, pSize + pCorrect<span style="">&#41;</span>
-    <span style="color: #530035;">pop</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Michael</span> on <em class="date">Feb 26, 2008</em></strong><p>maybe a link works:<br><br><a href="http://www.zk-architekten.de/TEST/Test.jpg">Image</a><br><br>greetings, michael </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 11 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

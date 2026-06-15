@@ -1,125 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Node Box 2: Following code tutorial</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-12-04-23-18-27, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-12-04-23-18-27" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Node Box 2: Following code tutorial</h1>
-<strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 04, 2009</em></strong>
-<p>Dear NodeBox Team,<br><br>I am following this tutorial on creating your own node:<br><a href="http://beta.nodebox.net/wiki/NodeBox_for_Programmers">http://beta.nodebox.net/wiki/NodeBox_for_Programmers</a><br><a href="http://beta.nodebox.net/wiki/Writing_Your_Own_Node">http://beta.nodebox.net/wiki/Writing_Your_Own_Node</a><br><br>I copy & paste the code into Source and reload, but all I got is always this error with X cross mark on the node. I was wondering what I have done wrong. I checked the example file Chrysant and compare it with my file, I don't see any different. I believe I add the Parameters as suggested (for Chrysant).<br><br>The script from you guys are working, but not the one I try to make myself.<br><br>Any hint?<br><br>Sorry for simple question  I am very new on this. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">lievn</span> on <em class="date">Dec 06, 2009</em></strong><p>hi,<br>could you maybe send the error which should appear when "messages" is turned on? <br>possible answers might be :<br>- when copy pasting you should be aware that the indentation is still correct. <br>- you should start from a generator node which has a star in its icon<br>- upgrade to the latest version, i havent seen the big X crossmark for a while, errors are now shown by diagonal red stripes.<br>- if none of this helps, send an error.. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 07, 2009</em></strong><p>The error message is:<br>SyntaxError: ("mismatched input '' expecting EOF", ('', 2, 1, ' from math import sin,cos,pi\n'))<br><br>1. I think indentation is still there.<br>2. Yup, that's the one I am using.<br>3. Latest version... checked. It is shown with diagonal red stripes.<br><br>Thanks Lievn. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 07, 2009</em></strong><p>Wait...<br><br>I looked properly at the code, compare it with the working example, and I think you are right. The code I copy and paste from the website has extra indentation.<br><br>It is now working! All I need to do is to get rid of that spacing indentation.<br><br>Thank you! Now I know I better type it. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 07, 2009</em></strong><p>CORRECTION:<br><br>Further comparison, not the indentation that caused this error.<br><br>I found that the code on the tutorial is actually different:<br><br>### Working Code<br>from nodebox.graphics import Path<br>from math import sin,cos,pi<br><br>def cook(self):<br>    p = Path()<br>    p.fill = None<br>    x0,y0 = 0.0,0.0<br>    scale = 10.0<br>    <br>    for i in xrange(self.number):<br>        u = i * 21.0 * pi / self.number;<br>        p4 = sin(17.0 * u / 3.0);<br>        p8 = sin(2.0 * cos(3.0 * u) - 28.0 * u);<br>        r = self.scale*(1.0 + sin(self.texture*u/5.0)) - 4.0*p4*p4*p4*p4 * p8*p8*p8*p8*p8*p8*p8*p8<br>    <br>        x1 = r*cos(u)<br>        y1 = r*sin(u)<br>        p.addPoint(x1, y1)<br>        x0,y0 = x1,y1<br>    return p.asGeometry()<br><br><br>### FAIL CODE<br><br>from nodebox.graphics import Path<br>from math import sin,cos,pi<br><br> def cook(self):<br>     p = Path()<br>     p.fill = None<br>     x0,y0 = 0.0,0.0<br>     scale = 10.0<br>   <br>     for i in xrange(self.number):<br>         u = i * 14.0 * pi / self.number<br>         p4 = sin(17.0 * u / 3.0) ** 4<br>         p8 = sin(4.0 * cos(3.0 * u) - 28.0 * u) ** 8<br>         r = self.scale*(1.0 + sin(self.texture*u/5.0)) - 14.0*p4 * p8<br>   <br>         x1 = r*cos(u)<br>         y1 = r*sin(u)<br>         p.addPoint(x1, y1)<br>         x0,y0 = x1,y1<br>     return p.asGeometry().<br><br>Now, when I paste the working code, it just works.<br><br>Btw, <br>** 4 and ** 8 looked very peculiar on the FAIL CODE.<br><br>Probably the syntax has issue? I am not familiar with the code, so pardon my cluelessness.<br><br>Thanks. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 07, 2009</em></strong><p>I found out the culprit. You are right, it is the indentation, after all. I did not know that the code is so picky on spacing.<br><br>When I copy-paste the code, the beginning appears like this:<br><br>### see the extra spacing ###<br><br>from nodebox.graphics import Path<br>  from math import sin,cos,pi<br>  def cook(self):<br><br>I get rid of that extra invisible spacing:<br><br>from nodebox.graphics import Path<br>from math import sin,cos,pi<br>def cook(self):<br><br>The code is now working without issue  :)<br><br>Cheers for pointing this out.<br><br>- Jim </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 07, 2009</em></strong><p>None of the code above will work without indentation. Now it is very clear. Cheers. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">lievn</span> on <em class="date">Dec 08, 2009</em></strong><p>hi,<br>i changed the code blocks on the wiki. you should be able to copy paste code from the website to nodebox without having to worry about indentation level. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Dec 08 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

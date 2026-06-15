@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<title>NodeBox | Ants</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Ants" />
+<link rel="canonical" href="https://www.nodebox.net/code/Ants" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Ants</h3>
+<h2>Description</h2>  <p>Now <em>you</em> can have <strong>Your Own Digital Antfarm</strong> (YODA) too! The Ants library provides easy-to-understand tools to implement cooperative foraging behaviour for small animals like ants. <a href="http://en.wikipedia.org/wiki/Ants">Ants</a> in real-life are pretty cool. They work together in a social context, communicating by means of pheromone scent. Ants are capable of finding food, building burial grounds, even herding caterpillars (led to feeding areas in the daytime, and brought inside the ants&#39; nest at night)!</p>  <p>Essentially, an ant in the Ants library has four simple behaviours:</p>  <ul> <li><strong>Wander:</strong> run around aimlessly in search for food</li> <li><strong>Follow:</strong> if a pheromone trail is encountered, follow it to the food</li> <li><strong>Harvest:</strong> if food is nearby, collect it</li> <li><strong>Hoard:</strong> when carrying food, head straight home leaving a trail of scent</li> </ul>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="/code/data/media/ants.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/ants.zip">ants.zip</a> (4KB)<br /> <em>Last updated for NodeBox 1.9.1.<br /></em><em>Author: Tom De Smedt</em><br /></td></tr></tbody></table>  <h2>Documentation</h2><ul><li><a href="Ants.html#library" target="_self">How to get the library up and running</a></li><li><a href="Ants.html#colony" target="_self">Creating a colony<br /></a></li><li><a href="Ants.html#ants" target="_self">The ants in a colony</a></li><li><a href="Ants.html#food" target="_self">Food</a></li><li><a href="Ants.html#pheromones" target="_self">Pheromones</a><br /></li></ul><p>&nbsp;</p><p><a href="javascript:pop(&#39;../data/media/antcolony.mov&#39;,&#39;mecca&#39;,&#39;width=500,height=516&#39;)"><img src="/code/data/media/antcolony1.jpg" alt="" /></a><br /> <a href="javascript:pop(&#39;../data/media/antcolony.mov&#39;,&#39;mecca&#39;,&#39;width=500,height=516&#39;)">Play movie</a></p><p>&nbsp;</p><h2> </h2><hr /><h2><a name="library" title="library"></a>How to get the library up and running</h2><p>Put the <em>ants</em> library folder in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/. </p><pre class="python">ants = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;ants&quot;</span><span style="">&#41;</span></pre></pre></p>&nbsp;    <hr /><h2><a name="colony" title="colony"></a>Creating a colony</h2><p>The <em>colony()</em> command returns a new community consisting of <em>n</em> ants with an operating radius of <em>r</em>, and located at coordinates <em>x</em> and <em>y</em>. <br /></p><pre class="python">colony<span style="">&#40;</span>n, x, y, r<span style="">&#41;</span></pre></pre><p>The returned colony object has a number of properties:</p><ul><li><em>colony.foodsources</em>: a list of food objects in the surrounding area.<br /></li><li><em>colony.food</em>: a number representing the units of food the ants have harvested.</li><li><em>colony.x</em>: the horizontal center of the colony.<br /> </li><li><em>colony.y</em>: the vertical center of the colony.<br /></li><li><em>colony.r</em>: the radius of the colony.</li></ul><p>&nbsp;</p><hr /><h2><a name="ants" title="ants"></a>The ants in a colony </h2><p>A colony object returned from the colony() command is a list of individual ants. You can easily loop through it:</p><pre class="python">colony = ants.<span style="">colony</span><span style="">&#40;</span><span style="">30</span>, <span style="color: #530035;">WIDTH</span>/<span style="">2</span>, <span style="color: #530035;">HEIGHT</span>/<span style="">2</span>, <span style="">200</span><span style="">&#41;</span>
+<span style="color: #530035;">for</span> ant <span style="color: #530035;">in</span> colony:
+    <span style="color: #530035;">print</span> ant.<span style="">x</span>, ant.<span style="">y</span></pre></pre><p>Each ant object has a number of useful properties:</p><ul><li><em>ant.x</em>: the horizontal position of the ant.</li><li><em>ant.y</em>: the vertical position of the ant.</li><li><em>ant.has_food</em>: will be True when the ant is carrying food back to the colony.<br /></li><li><em>ant.trail</em>: a list of pheromone objects the ant uses to mark a path from a food source to the colony.<br /></li><li><em>ant.wandering</em>: the number of rounds an ant has been wandering around. If it exceeds the radius of the colony, the ant will return to the colony. <br /></li></ul><p><br />Each ant object also has a number of methods. The primary method is <em>ant.forage()</em>, which you usually call each frame in an animation to have the ant search for food.</p><pre class="python">ant.<span style="">forage</span><span style="">&#40;</span><span style="color: #530035;">speed</span>=<span style="">2</span><span style="">&#41;</span></pre></pre><p>The other methods contain the ant AI for wandering, trailing and harvesting. Check the source code.</p><pre class="python">ant.<span style="">goal</span><span style="">&#40;</span>obj<span style="">&#41;</span></pre></pre><p>This method sets the object <em>obj</em>, which has x and y properties, as a goal for the ant. The ant starts moving towards it. This low-level ant command allows you to modify the ant&#39;s behaviour by defining custom goals. </p><pre class="python">ant.<span style="">near</span><span style="">&#40;</span>obj, radius=<span style="">10</span><span style="">&#41;</span></pre></pre><p>This command checks if something is nearby. If the object&#39;s x and y properties are within the radius of the ant, returns True. This low-level ant command allows you to modify the ant&#39;s behaviour by defining custom behaviour when reaching a goal. <br /></p><p>&nbsp;</p><hr /><h2><a name="food" title="food"></a>Food</h2><p>The <em>food()</em> command creates a new heap of food for the ants to harvest. When you add it to the <em>foodsources</em> list in the colony, the ants can find it:</p><pre class="python">food<span style="">&#40;</span>x, y, <span style="color: #530035;">size</span><span style="">&#41;</span></pre></pre><pre class="python"><span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">8</span><span style="">&#41;</span>:
+    x = <span style="">50</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>WIDTH<span style="">-100</span><span style="">&#41;</span>
+    y = <span style="">50</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>HEIGHT<span style="">-100</span><span style="">&#41;</span>
+    s = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">20</span>,<span style="">40</span><span style="">&#41;</span>
+    colony.<span style="">foodsources</span>.<span style="">append</span><span style="">&#40;</span>ants.<span style="">food</span><span style="">&#40;</span>x,y,s<span style="">&#41;</span><span style="">&#41;</span></pre></pre></p>&nbsp;   <hr /><h2><a name="pheromones" title="pheromones"></a>Pheromones</h2><p>The ant.trail list contains pheromones the ants use to mark a path between a source of food and their home. A pheromone object has an <em>x</em> and <em>y</em> position, a <em>strength</em> and an <em>evaporate()</em> method that diminishes its strength. The stronger the smell of a pheromone the more an ant will be attracted to it.</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Oct 31 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

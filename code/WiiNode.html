@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | WiiNode</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, WiiNode" />
+<link rel="canonical" href="https://www.nodebox.net/code/WiiNode" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>WiiNode</h3>
+<h2>Description</h2>  <p><i>WiiNode</i> is a library for connecting your WiiMote to NodeBox. No actual Wii is needed, just the remote.</p>  <img src="/code/data/media/wiinode-in-action.jpg" height="367" width="550" />  <h2>Download</h2> <table border="0"><tbody><tr><td><a href="/code/data/media/wiinode.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/wiinode.zip" target="_self">wiinode.zip</a> (24KB) <br /> <i>Last updated for NodeBox 1.9.4<br />Licensed under the GPL<br />Author: Frederik De Bleser</i></td></tr></tbody></table>   <h2>Documentation</h2>  <ul> <li><a href="WiiNode.html#prerequisites">Prerequisites</a></li> <li><a href="WiiNode.html#library">How to get the library up and running</a></li> <li><a href="WiiNode.html#mainloop">Setting up the main loop</a></li> <li><a href="WiiNode.html#wiimote">The WiiMote class</a></li> <li><a href="WiiNode.html#fooling">Show me someone fooling around with this</a></li> </ul> <br />  <hr />  <a title="prerequisites" name="prerequisites"></a> <h2>Prerequisites</h2> <p><a href="http://www.osculator.net/wiki/" target="_blank">OSCulator</a> makes the connection with the WiiMote possible. The necessary configuration settings are in the <code>wiidraw.zip</code> file under <code>settings.oscd</code>.</p>  <p>The program needs to be running in the background, and communicates over <a href="http://en.wikipedia.org/wiki/OpenSound_Control" target="_blank">OSC</a>.</p>  <p>Getting your WiiMote to work with the program, for me, meant pushing the buttons &quot;1&quot; and &quot;2&quot;, or alternatively, the red SYNC button (under the battery cover), a few times. Once you get a battery reading, you should be fine.</p>  <hr />  <a title="library" name="library"></a> <h2>How to get the library up and running</h2>  <p>Put the web library folder in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/.</p> <pre class="python">wiinode = ximport(&quot;wiinode&quot;)<br /></pre> <p><small>Outside of NodeBox you can also just do import wiinode.</small></p>  <hr />  <a title="mainloop" name="mainloop"></a> <h2>Setting up the main loop</h2>  <p>In your animation, initialize the WiiMote object. Then, in each frame, call the update method:</p>  <pre class="python">def setup():<br />    global wm<br />    wm = wiinode.WiiMote()<br /><br />def draw():<br />    global wm<br />    wm.update()<br />    print wm.yaw<br /></pre>  <hr />  <a title="wiimote" name="wiimote"></a> <h2>The WiiMote class</h2>  <p>To get a good overview of all the values, check out <code>wiinode_example3.py</code>, which visualizes all available WiiMote attributes.</p>  <p><span class="grey_box"> Rotation</span></p>  <p>The WiiMote returns roll, pitch and yaw. See the <a href="http://en.wikipedia.org/wiki/Flight_dynamics"> Wikipedia article on flight dynamics</a> for more information.</p>  <p>See the <code>wiinode_example1.py</code> for a game that uses the roll value.</p>  <pre class="python">wm.pitch # The absolute pitch value<br />wm.roll # The absolute roll value<br />wm.yaw # The absolute yaw value<br /></pre>  <p><span class="grey_box">Acceleration</span></p>  <p>The WiiMote returns acceleration in both x, y and z positions. This is <b>not</b> the remote&#39;s absolute position in space. You need an infrared sender for that.</p>  <pre class="python">wm.x # The horizontal (left-right) acceleration<br />wm.y # The forward acceleration<br />wm.z # The vertical (up-down) acceleration<br /></pre>  <p><span class="grey_box">Buttons</span></p>  <p>The WiiMote&#39;s A and B buttons can be monitored as well.</p>  <pre class="python">wm.a # True if the A button is pressed<br />wm.b # True if the B button is pressed<br /></pre>  <hr />  <a title="fooling" name="fooling"></a> <h2>Show me someone fooling around with this</h2>  <object height="350" width="425"><param name="movie" value="http://www.youtube.com/v/u7IldQO5ytQ"></param><embed src="http://www.youtube.com/v/u7IldQO5ytQ" width="425" height="350"></embed></object>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 08 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

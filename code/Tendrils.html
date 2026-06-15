@@ -1,0 +1,196 @@
+<html>
+
+<head>
+<title>NodeBox | Tendrils</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Tendrils" />
+<link rel="canonical" href="https://www.nodebox.net/code/Tendrils" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Tendrils</h3>
+<p><span class="big_text">I had some code lying around which I thought I'd share with you. It is an adaption of a Processing algorithm by <a href="http://www.artcom.de/process/" target="_self">ART+COM</a>, visualizing an elegant growing plant.</span></p><p>The source code has been organized in two simple classes so it might help you when learning from the <a href="/code/Classes" target="_self">tutorial on classes</a>. The first class, <i>Tendril</i>, defines a single branch in the plant. As it grows it calculates the position of new segments by steering its current heading a bit to the left or right, hence the spiraling shape. The second class, <i>Plant</i>, defines a group of tendrils. It has some simple methods to grow and draw all the tendrils together.</p><p> </p><p><img src="/code/data/media/tendrils1.jpg" alt="tendrils1" /></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">600</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> pi, sin, cos, radians
+&nbsp;
+<span style="color: #530035;">class</span> Tendril:
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, x, y, width=<span style="">15</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; A new sinewy tendril at location x and y.
+        Its segment width will gradually become smaller as it grows.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="">self</span>.<span style="">x</span> = x
+        <span style="">self</span>.<span style="">y</span> = y
+        <span style="">self</span>.<span style="">width</span> = width
+        <span style="">self</span>.<span style="">angle</span> = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">2</span>*pi<span style="">&#41;</span> - pi <span style="color: grey;"># random angle in radians.</span>
+        <span style="">self</span>.<span style="">segments</span> = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="">self</span>.<span style="">v</span> = <span style="">0</span>
+&nbsp;
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>grow</span><span style="">&#40;</span><span style="">self</span>, distance=<span style="">3.0</span>, curl=<span style="">1.0</span>, step=<span style="">0.02</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Tendril segment growth using fluid, spiral sine functions,
+        taken from the ART+COM Tendrils class for Processing.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="color: grey;"># Think of a tendril having a steering compass.</span>
+        <span style="color: grey;"># For each new segment, the compass shifts a bit left or right.</span>
+        <span style="">self</span>.<span style="">x</span> += cos<span style="">&#40;</span><span style="">self</span>.<span style="">angle</span><span style="">&#41;</span> * distance
+        <span style="">self</span>.<span style="">y</span> += sin<span style="">&#40;</span><span style="">self</span>.<span style="">angle</span><span style="">&#41;</span> * distance
+        <span style="">self</span>.<span style="">v</span> += <span style="color: #530035;">random</span><span style="">&#40;</span>-step, step<span style="">&#41;</span>
+        <span style="">self</span>.<span style="">v</span> *= <span style="">0.9</span> + curl*<span style="">0.1</span>
+        <span style="">self</span>.<span style="">angle</span> += <span style="">self</span>.<span style="">v</span>
+        <span style="">self</span>.<span style="">segments</span>.<span style="">append</span><span style="">&#40;</span>
+            <span style="">&#40;</span><span style="">self</span>.<span style="">x</span>, <span style="">self</span>.<span style="">y</span>, <span style="">self</span>.<span style="">angle</span><span style="">&#41;</span>
+        <span style="">&#41;</span>
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">self</span>, path=<span style="color: #530035;">None</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Draws all the segments in the tendril,
+        as separate ovals or as a single path if one is supplied.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        n = <span style="">len</span><span style="">&#40;</span><span style="">self</span>.<span style="">segments</span><span style="">&#41;</span>
+        <span style="color: #530035;">for</span> i, <span style="">&#40;</span>x, y, angle<span style="">&#41;</span> <span style="color: #530035;">in</span> <span style="">enumerate</span><span style="">&#40;</span><span style="">self</span>.<span style="">segments</span><span style="">&#41;</span>:
+            r = <span style="">&#40;</span><span style="">1</span>-<span style="">float</span><span style="">&#40;</span>i<span style="">&#41;</span>/n<span style="">&#41;</span> * <span style="">self</span>.<span style="">width</span> <span style="color: grey;"># size gradually decreases.</span>
+            <span style="color: #530035;">if</span> path != <span style="color: #530035;">None</span>:
+                path.<span style="color: #530035;">oval</span><span style="">&#40;</span>x, y, r, r<span style="">&#41;</span>
+            <span style="color: #530035;">else</span>:
+                <span style="color: #530035;">oval</span><span style="">&#40;</span>x, y, r, r<span style="">&#41;</span>
+        
+<span style="color: #530035;">class</span> Plant:
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, x, y, tendrils=<span style="">30</span>, width=<span style="">15</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; A collection of tendrils.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="">self</span>.<span style="">x</span> = x
+        <span style="">self</span>.<span style="">y</span> = y
+        <span style="">self</span>.<span style="">tendrils</span> = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>tendrils<span style="">&#41;</span>: 
+            <span style="">self</span>.<span style="">tendrils</span>.<span style="">append</span><span style="">&#40;</span>
+                Tendril<span style="">&#40;</span><span style="">self</span>.<span style="">x</span>, <span style="">self</span>.<span style="">y</span>, width<span style="">&#41;</span>
+            <span style="">&#41;</span>
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>grow</span><span style="">&#40;</span><span style="">self</span>, distance=<span style="">3.0</span>, curl=<span style="">1.0</span>, step=<span style="">0.02</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Grow a new segment on each of the plant's tendrils.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="color: #530035;">for</span> b <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">tendrils</span>:
+            b.<span style="">grow</span><span style="">&#40;</span>distance, curl, step<span style="">&#41;</span>
+            
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Draw the plant.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="color: #530035;">for</span> tendril <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">tendrils</span>:
+            tendril.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span>
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>path</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Return the plant as a path consisting of ovals.
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        path = <span style="color: #530035;">BezierPath</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">for</span> tendril <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">tendrils</span>:
+            tendril.<span style="">draw</span><span style="">&#40;</span>path<span style="">&#41;</span>
+        <span style="color: #530035;">return</span> path
+&nbsp;
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.12</span>, <span style="">0.12</span>, <span style="">0.06</span><span style="">&#41;</span>
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">0.5</span><span style="">&#41;</span>
+<span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.5</span><span style="">&#41;</span>
+&nbsp;
+plant = Plant<span style="">&#40;</span><span style="color: #530035;">WIDTH</span>/<span style="">2</span>, <span style="color: #530035;">HEIGHT</span>/<span style="">2</span>, tendrils=<span style="">20</span><span style="">&#41;</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">200</span><span style="">&#41;</span>: 
+    plant.<span style="">grow</span><span style="">&#40;</span>curl=<span style="">1.0</span>, step=<span style="">0.02</span><span style="">&#41;</span>
+&nbsp;
+plant.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre></p>   <hr size="2" width="100%" /><h2>Using the plant as a layer in Core Image </h2><p>With a simple adaption we can use the <i>plant.path()</i> method as input for <a href="/code/Core_Image" target="_self">Core Image</a>. This way we can transform the plant shape as a layer of pixel data. Simply add the lines of code below the image to the bottom of the script, and play around with the <i>curl</i> parameter a bit.</p><p> </p><p><img src="/code/data/media/tendrils2.jpg" alt="tendrils2" /></p><pre class="python">coreimage = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;coreimage&quot;</span><span style="">&#41;</span>
+canvas = coreimage.<span style="">canvas</span><span style="">&#40;</span><span style="color: #530035;">WIDTH</span>, <span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
+layer = canvas.<span style="">append</span><span style="">&#40;</span>
+    plant.<span style="">path</span><span style="">&#40;</span><span style="">&#41;</span>, 
+    <span style="color: #530035;">fill</span>=<span style="color: #530035;">color</span><span style="">&#40;</span><span style="">1</span>,<span style="">0</span><span style="">&#41;</span>, 
+    <span style="color: #530035;">stroke</span>=<span style="color: #530035;">color</span><span style="">&#40;</span><span style="">1</span>,<span style="">0.8</span><span style="">&#41;</span>, 
+    <span style="color: #530035;">strokewidth</span>=<span style="">0.2</span>
+<span style="">&#41;</span>
+layer.<span style="">filter</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;zoomblur&quot;</span>, amount=<span style="">10</span><span style="">&#41;</span>
+canvas.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre></p>    <p>Created by Tom De Smedt<br />Based on the "Tendrils" algorithm by ART+COM <br /></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Mar 15 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

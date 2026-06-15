@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | OSC</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, OSC" />
+<link rel="canonical" href="https://www.nodebox.net/code/OSC" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>OSC</h3>
+<p>OSC (<i>OpenSoundControl</i>, <a href="http://opensoundcontrol.org/" target="_blank">http://opensoundcontrol.org/</a>) is a communication protocol which allows you to share (typically music performance) data in real-time over a network. OSC is similar to MIDI and allows musical instruments, controllers and multimedia devices but also software to communicate via a standard home or studio network (TCP/IP, ethernet) or via the internet. </p><p>Some NodeBox libraries already use OSC (<a href="/code/WiiNode" target="_blank">wiiNode</a>, <a href="/code/TUIO" target="_blank">Reactivivision</a>) but we thought it might be useful as a library in itself.</p><h2>Download</h2><table border="0" height="74" width="550"><tbody><tr><td><a href="/code/data/media/OSC.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/OSC.zip" target="_self">OSC.zip </a>(1210KB ) <br /> <i>Last updated for NodeBox 1.9.4<br />Licensed under the GPL<br />Authors: Daniel Holth, Clinton McChesney, <a href="http://www.ixi-software.net/" target="_blank">ixi-software</a></i> <br /><i>Examples</i>/<i>EMG</i></td></tr></tbody></table><h2> Documentation</h2><ul><li><a href="OSC.html#howto" target="_self">How to get the library up and running</a></li><li><a href="OSC.html#sending" target="_self">Sending data</a></li><li><a href="OSC.html#recieve" target="_self">Recieving data</a></li><li><a href="OSC.html#alot" target="_self">A lot of possibilities</a></li></ul><h2><a title="howto" name="howto"></a>How to get the library running </h2><p>Put the &quot;osc&quot; library folder in the download in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/. </p><pre class="python">osc = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;osc&quot;</span><span style="">&#41;</span></pre></pre><p><span class="small_text">Have a look at test.py to see a simple<i> &#39;pure-data talks to nodebox and back&#39;  </i>example. </span><br /></p><h2><a title="sending" name="sending"></a>Sending data </h2><p>Before sending or receiving data OSC should be initialized. The process initializes the callback manager and the out-socket. </p><pre class="python">osc.<span style="">init</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre><p>Sending data over osc has different possibilities. You can send a single message or a bundle that stores several messages.<br /></p><p>A single message: </p><pre class="python">message = osc.<span style="">createBinaryMsg</span><span style="">&#40;</span>osc_address, data_list<span style="">&#41;</span></pre></pre><pre class="python">osc.<span style="">sendOSC</span><span style="">&#40;</span>message, ip_address, port<span style="">&#41;</span></pre></pre><p>or in one line:</p><pre class="python">osc.<span style="">sendMsg</span><span style="">&#40;</span>osc_address, data_list, ip_address, port<span style="">&#41;</span></pre></pre><p>As for bundles, the above can be used because the data sent is a <a href="/code/Lists" target="_self">list</a> that can contain more than one message. There are options to create and send a bundle in a different way. </p><p>Methods for making a bundle, adding items to it and sending it:</p><pre class="python">bundle = osc.<span style="">createBundle</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre><pre class="python">osc.<span style="">appendToBundle</span><span style="">&#40;</span>bundle, osc_address, data_list<span style="">&#41;</span></pre></pre><pre class="python">osc.<span style="">sendBundle</span><span style="">&#40;</span>bundle, ip_address, port<span style="">&#41;</span></pre></pre><h2><a title="recieve" name="recieve"></a>Receiving data </h2><p>To receive data over OSC an in-socket should be set up.<br /></p><pre class="python">in_socket = osc.<span style="">createListener</span><span style="">&#40;</span>ip_address, port<span style="">&#41;</span></pre></pre><p>The in-socket can be used to get incoming OSC  to send it to the callback manager.</p><pre class="python">osc.<span style="">getOSC</span><span style="">&#40;</span>in_socket<span style="">&#41;</span></pre></pre><p>A final command can bind OSC addresses with commands in the sketch. <br /></p><pre class="python">osc.<span style="">bind</span><span style="">&#40;</span>nodebox_command, osc_address<span style="">&#41;</span></pre></pre><h2> <a title="alot" name="alot"></a>A lot of possibilities</h2><p>OSC has been implemented in a variety of software. The library contains a few examples in <a href="http://puredata.info/" target="_blank">Pure Data</a> and <a href="http://www.processing.org/" target="_blank">Processing</a> but many other applications like Max, Quartz Composer, Bidule have OSC-implementations.  For a full list go to <a href="http://opensoundcontrol.org/implementations" target="_blank">this page</a>.  </p><ul><li><i>test.py + test.pd</i> illustrates the two way communication between NodeBox and Pure Data.<br /></li><li><i>fft.py + fft.pd </i>visualizes the sound spectrum. (talk to it)</li><li><i>scratcher.py + scratcher.pd</i> are ... what could it be?  (sample by DJ Craze)</li><li><i>fftTOmovStepOne.py and Two</i> are sketches to produce crystal clear FFT-animation. <br />The code needed for the Processing script is at the bottom within the source.<br /></li></ul><p><br /> <object height="344" width="425"><param name="movie" value="http://www.youtube.com/v/FMpcVEEmuns"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/FMpcVEEmuns" width="425" height="344"></embed></object></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 08 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

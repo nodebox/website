@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<title>NodeBox | Supershape</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Supershape" />
+<link rel="canonical" href="https://www.nodebox.net/code/Supershape" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Supershape</h3>
+<h2>Description</h2>  <p>The Supershape library implements Johan Gielis&#39; superformula in NodeBox. Gielis suggested that the formula can be used to describe many complex shapes and curves that are found in nature. You can use the tools in this lbrary to create anything from a circle or a square to a flower or an amoeba, or to transform other paths, like text.</p>  <p>Note that the Supershape library is only available for non-commercial purposes.</p>  <p>A special thanks goes to Johan Gielis.</p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="/code/data/media/supershape.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="/code/data/media/supershape.zip" target="_self">supershape.zip</a> (11KB)<br /> <i>Last updated for NodeBox 1.9.4<br /></i><i>Author: Johan Gielis, Frederik De Bleser</i><br /></td></tr></tbody></table>  <h2>Documentation</h2><ul><li><a href="Supershape.html#library" target="_self">How to get the library up and running</a></li><li><a href="Supershape.html#create" target="_self">Creating a supershape path</a></li><li><a href="Supershape.html#transform" target="_self">Transform a path</a></li></ul><p>&nbsp;</p><hr /><h2><a name="library" title="library"></a>How to get the library up and running</h2><p>Put the <i>supershape</i> library folder in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/. </p><pre class="python">supershape = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;supershape&quot;</span><span style="">&#41;</span></pre></pre></p>&nbsp;              <hr /><h2><a name="create" title="create"></a>Creating a supershape path</h2><pre class="python">path<span style="">&#40;</span>x, y, w, h, m, n1, n2, n3, points=<span style="">1000</span>, percentage=<span style="">1.0</span>, <span style="">range</span>=pi*<span style="">2</span><span style="">&#41;</span></pre></pre><p>The <i>path()</i> command returns a supershape as a <a href="/code/Reference_|_BezierPath" target="_self">path</a> drawable with  <a href="/code/Reference_|_drawpath()">drawpath()</a>. The first four parameters (<i>x, y, w, h</i>) define the path&#39;s origin, width and height. The next four (<i>m</i>, <i>n1</i>, <i>n2</i> and <i>n3</i>) define the path&#39;s shape. </p>  <p>Increasing <i>m</i> adds rotational symmetry to the shape: when <i>m</i> is 0 you get a circle, <i>m</i>=2 is an ellipse. <i>m</i>=4 is a square and so on. As the <i>n</i>&#39;s are kept equal but reduced the form becomes increasingly pinched. When <i>m</i>=5 and all the <i>n</i>&#39;s are 1 you get a pentagon, reducing all the <i>n</i>&#39;s to 0.3 you get a five-pointed star. If <i>n1</i> is slightly larger than <i>n2</i> and <i>n3</i> then bloated forms result. See <a href="http://local.wasp.uwa.edu.au/~pbourke/curves/supershape/">http://local.wasp.uwa.edu.au/~pbourke/curves/supershape/</a> for more information.</p><pre class="python"><span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+<span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.5</span><span style="">&#41;</span>
+&nbsp;
+x = y = <span style="">100</span>
+w = h = <span style="">100</span>
+p = supershape.<span style="">path</span><span style="">&#40;</span>x, y, w, h, <span style="">5</span>, <span style="">0.3</span>, <span style="">0.3</span>, <span style="">0.3</span><span style="">&#41;</span>
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>p<span style="">&#41;</span></pre></pre><p><span class="media"><img src="/code/data/media/supershape-path.gif" height="205" width="210" /></span></p><p>Remember that when you want to supply one path multiple times to drawpath(), each with its own translation and rotation, you need to convert it to a list of points before you start feeding it to drawpath:</p><pre class="python">path = <span style="">&#91;</span>pt <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path<span style="">&#93;</span></pre></pre></p>&nbsp;    <hr /><h2><a name="transform" title="transform"></a>Transforming a path </h2><pre class="python"><span style="color: #530035;">transform</span><span style="">&#40;</span>path, m, n1, n2, n3, points=<span style="">1000</span>, <span style="">range</span>=pi*<span style="">2</span><span style="">&#41;</span></pre></pre><p>The transform() command returns a copy of the given <i>path</i> supertransformed by <i>m</i>, <i>n1</i>, <i>n2</i> and <i>n3</i>. You can supertransform anything from rectangles and circles to <a href="/code/Reference_|_textpath()">texpaths</a> and <a href="/code/SVG">SVG</a>.<br /></p><pre class="python"><span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Times&quot;</span>, <span style="">100</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;FUN!&quot;</span>, <span style="">100</span>, <span style="">150</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:
+  contour = supershape.<span style="color: #530035;">transform</span><span style="">&#40;</span>contour, <span style="">50</span>, <span style="">0.25</span>, <span style="">3.5</span>, <span style="">3.5</span><span style="">&#41;</span>
+  <span style="color: #530035;">drawpath</span><span style="">&#40;</span>contour<span style="">&#41;</span></pre></pre><p><span class="media"><img src="/code/data/media/supershape-transform.gif" height="112" width="254" /></span></p><p>&nbsp;</p><hr /><p>Another example with an animated text path:</p><p>&nbsp;</p><p><span class="image_border"><a href="javascript:pop(&#39;../data/media/supershape.mov&#39;,&#39;mecca&#39;,&#39;width=300,height=316&#39;)"><img src="/code/data/media/supershape.gif" /></a></span><br /><a href="javascript:pop(&#39;../data/media/supershape.mov&#39;,&#39;mecca&#39;,&#39;width=300,height=316&#39;)">Play movie</a></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jun 13 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

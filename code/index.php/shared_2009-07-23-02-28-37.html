@@ -1,141 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | normalizing a number</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-07-23-02-28-37, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-07-23-02-28-37" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">normalizing a number</h1>
-<strong>Posted by <span class="comment_by">_brentonW</span> on <em class="date">Jul 23, 2009</em></strong>
-<p>I'm posting this here because I have been searching nodebox for information on generating floating point and integer numbers and have been unsuccessful. I have solved my problem. Hope it helps others. If there are other approaches to this problem please add your info.<br><br>Problem: <br>Want to convert a photoshop hue (degrees) into a usable nodebox normalized 0.0 to 1.0 system for colormode(HSB). <br><br>Solution:<br>Create a function that takes your number to be converted, multiplies it by 1 <b>important</b>, and divides by Photoshop's number system (0 to 359 degrees).<br><br>Example:<br> hue*1.0/359<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">200</span>, <span style="">200</span><span style="">&#41;</span> 
-<span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">HSB</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;">#function converts photoshop degree system (0 to 359 degrees) to normalized range of 0 to 1</span>
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>convertHue</span><span style="">&#40;</span>hue<span style="">&#41;</span>:
-	nHue = hue*<span style="">1.0</span>/<span style="">359</span>
-	<span style="color: #530035;">return</span> nHue
-&nbsp;
-<span style="color: grey;">#hue degree to be converted</span>
-hueDegree = convertHue<span style="">&#40;</span><span style="">43</span><span style="">&#41;</span>
-orange = <span style="color: #530035;">color</span><span style="">&#40;</span>hueDegree, .<span style="">80</span>, <span style="">0.95</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">background</span><span style="">&#40;</span>orange<span style="">&#41;</span></pre></pre>Note: You must multiply the number to be converted by 1 in order for a floating point number to be returned. <br><br>I would love for someone to explain why. This is different from Processing which requires a data type identifier. <br>Hope this is helpful to others. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Jul 23, 2009</em></strong><p>To elaborate on this, you need to multiply by <b>1.0</b>, not just 1.<pre class="python"><span style="color: #530035;">print</span> <span style="">1</span> * <span style="">43</span> / <span style="">359</span> <span style="color: grey;"># yields 0</span>
-<span style="color: #530035;">print</span> <span style="">1.0</span> * <span style="">43</span> / <span style="">359</span> <span style="color: grey;"># yields 0.119777158774</span></pre></pre>Python has no explicit data types, it will just use whatever is appropriate. So if you start with a float (1.0) and multiply it with 43, you still have a float. <br><br>You could also divide 43 by 359.0 - then 43 will be cast to a float because you can't divide an integer by a float.<br><br>You can also do this by using the float() function in Python:<pre class="python"><span style="color: #530035;">print</span> <span style="">float</span><span style="">&#40;</span><span style="">43</span><span style="">&#41;</span> / <span style="">359</span> <span style="color: grey;"># yields 0.119777158774</span></pre></pre>There's also an int() function:<pre class="python"><span style="color: #530035;">print</span> <span style="">int</span><span style="">&#40;</span><span style="">1.0</span><span style="">&#41;</span> <span style="color: grey;"># yields 1</span>
-<span style="color: #530035;">print</span> <span style="">int</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;1&quot;</span><span style="">&#41;</span> <span style="color: grey;"># yields 1</span></pre></pre>To check what kind of data is stored in a variable, you can use Python's isinstance() function:<pre class="python"><span style="color: #530035;">print</span> <span style="">isinstance</span><span style="">&#40;</span><span style="">43</span>, <span style="">int</span><span style="">&#41;</span>   <span style="color: grey;"># yields True</span>
-<span style="color: #530035;">print</span> <span style="">isinstance</span><span style="">&#40;</span><span style="">43</span>, <span style="">float</span><span style="">&#41;</span> <span style="color: grey;"># yields False</span>
-<span style="color: #530035;">print</span> <span style="">isinstance</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;a&quot;</span>, <span style="">str</span><span style="">&#41;</span>  <span style="color: grey;"># yields True</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">_brentonW</span> on <em class="date">Jul 23, 2009</em></strong><p>Tom - thanks for the clarification and additional information. Very helpful. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Jul 23 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

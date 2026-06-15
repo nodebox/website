@@ -39,7 +39,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("CNAME");
-  // Phase 2: the legacy /code/ wiki is copied byte-for-byte for now.
+  // Cloudflare Pages reads _redirects from the build output root.
+  eleventyConfig.addPassthroughCopy("_redirects");
+  // The legacy NodeBox 1 wiki: static pages at code/<Name>.html (migrated from
+  // the old code/index.php/ PHP dump) plus its css/js/g/data assets.
   eleventyConfig.addPassthroughCopy("code");
 
   return {

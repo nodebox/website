@@ -1,125 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | QT interface specifics?</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-03-05-10-51-57, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-03-05-10-51-57" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">QT interface specifics?</h1>
-<strong>Posted by <span class="comment_by">Jurgis Pralgauskis</span> on <em class="date">Mar 05, 2009</em></strong>
-<p>hello I am trying <a href="http://dev.nodebox.net/wiki/Qt">http://dev.nodebox.net/wiki/Qt</a><br>on ubuntu 8.10<br><br>most examples work, but some don't <br><br>for example:<br>----<br>    supershape = ximport("supershape")<br>  File "/home/tmp/nodebox-qt/nodebox/graphics/__init__.py", line 58, in ximport<br>    lib = __import__(libName)<br>ImportError: No module named supershape<br>--<br>I suspect I need library here<br>sys.path.append('pathto/nodebox/libs')<br>in nodebox-qt/nodebox/graphics/__init__.py<br>and it works...<br><br>if I try  sudo python setup.py install<br>running install<br>running build<br>running build_ext<br>building 'cSuperformula' extension<br>creating build<br>creating build/temp.linux-i686-2.5<br>gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.5 -c superformula.c -o build/temp.linux-i686-2.5/superformula.o -DMACOSX -DAPPLE_RUNTIME -no-cpp-precomp -Wno-long-double -g -Wall -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -W -Wshadow -Wpointer-arith -Wmissing-declarations -Wnested-externs -Wno-long-long -Wno-import -arch i386 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk<br>gcc: i386: No such file or directory<br>gcc: ppc: No such file or directory<br>gcc: unrecognized option '-no-cpp-precomp'<br>cc1: error: unrecognized command line option "-arch"<br>cc1: error: unrecognized command line option "-arch"<br>cc1: error: unrecognized command line option "-Wno-long-double"<br>error: command 'gcc' failed with exit status 1<br>----<br><br>Possibly other things:<br><br>also in Feedback.py<br>----<br>"/home/tmp/nodebox/examples/Advanced/Feedback.py", line 23, in <br>    image(None, random(-50,49), random(-50,49), image=canvas._nsImage)<br>AttributeError: 'Canvas' object has no attribute '_nsImage'<br>----<br><br>also can't export PDF </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Stefan</span> on <em class="date">Mar 05, 2009</em></strong><p>First you might want to update your nodebox install since i added a few fixes that address some of the problems you're having. Just run svn update in the folder you downloaded nodebox to. <br><br>Second it's best you put the extra libraries you want in the nodebox folder located in your home directory. The first time you ran the program it created this folder for you. If supershape is located there, nodebox should be able to locate said library without you needing to modify the python path.<br><br>Then about compiling the superformula source. The setup.py includes quite a few mac-specific optimization flags. If you're on linux, you can leave those out (ie remove  the CFLAGS and BASE_LDFLAGS stuff) and replace <br><br>cSuperformula = Extension("cSuperformula", sources = ["superformula.c"], extra_compile_args=CFLAGS, extra_link_args=BASE_LDFLAGS)<br><br>with<br><br>cSuperformula = Extension("cSuperformula", sources = ["superformula.c"])<br><br>After this you can safely build it with <b>python setup.py install</b>.<br><br>I also added a _qImage attribute to the Canvas class, so you can replace image=canvas._nsImage in feedback.py with <b>image=canvas._qImage</b>.<br><br>I also fixed PDF export, but if you're using Qt 4.3 (which I suspect you are, since Ubuntu 8.10 comes with that version) you can't set it to an arbitrary size. So it will export to pdf right now but if you want the control the output size you need at least Qt 4.4. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Mar 05 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

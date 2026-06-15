@@ -1,149 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | 64 bit and multi-threading</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-03-31-20-50-06, suggestion" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-03-31-20-50-06" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">64 bit and multi-threading</h1>
-<strong>Posted by <span class="comment_by">dimitri</span> on <em class="date">Mar 31, 2008</em></strong>
-<p>Ok, I've started to make things in Nodebox that are rather big: running into the millions of lines and as you can guess, you just have to switch the monitor off and go make dinner while the computer does its thing.
-<br>Now I've noticed that nodebox only makes use of one cpu core at a time, I have a mac pro quad with 8gig ram and it doesn't really speed things up. 
-<br>If nodebox was to make use of all four (or 8, in some people's cases) cores then that would speed things up nicely.
-<br>Also, I'm assuming that its all 32 bit... It would be really nice to see a 64bit, multi-core update one day! </b></i></a></ul></li></pre></p><br /></div>
- <hr /><div class='comment'><strong>Posted by <span class="comment_by">Frederik De Bleser</span> on <em class="date">Mar 31, 2008</em></strong><p>Hi,
-<br>
-<br>This is a problem inherent with Python, called the Global Interpreter Lock. You might want to read this mailing list post that explains it better than I can:
-<br>
-<br><a href="http://mail.python.org/pipermail/python-list/2007-August/453662.html">http://mail.python.org/pipermail/python-list/2007-August/453662.html</a>
-<br>
-<br>Having said that, we are currently exploring ways to get rid of these limitations. Obviously, this is not an easy problem, and the solution will not be finished soon. But the future is distributed, and we would be foolish to ignore that.
-<br>
-<br>Kind regards, <br />Frederik</b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Dimitri</span> on <em class="date">Apr 01, 2008</em></strong><p>Thanks Frederik, that explains a few things. I'm sure that there's a work-around though, there always is. 
-<br>I'll look into this in more depth.
-<br>Thanks again. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">jelle feringa</span> on <em class="date">Apr 04, 2008</em></strong><p>Dimitri, perhaps it could be interesting to have a stab at some of the recent parallel modules for python. I've had good luck with Parallel Python, but Processing (ironic?) seems to be quite a bit more advanced, and is the most likely candidate for addition to the standard modules. I think the trick it does is forking the original python process, which is far more advanced than what Parallel Python does. If you have millions of lines to draw, implement a generator, and have this generator consumed by your processor pool.
-<br>Since I just installed my 2*quad core machine, I'm _very_ curious to hear whether you're making progress on this.
-<br>
-<br>overview page:
-<br><a href="http://wiki.python.org/moin/ParallelProcessing">http://wiki.python.org/moin/ParallelProcessing</a>
-<br>Processing:
-<br><a href="http://pypi.python.org/pypi/processing">http://pypi.python.org/pypi/processing</a>
-<br>( its on macports, otherwise try: easy_install processing )
-<br>
-<br>best of luck,
-<br>
-<br>-jelle </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Dimitri</span> on <em class="date">Apr 13, 2008</em></strong><p>Those links make for an interesting read Jelle, it looks like pooling is what we're looking at here.<br>For some reason I was under the impression that the OS dealt with that side of things but that just isn't true.<br>It's a catch 22 situation here, stick by a programming language that non-programmers (like myself) can understand or have a go at something VERY complex as a work-around...<br>I'll do some digging around and nag some geek friends to see if this can actually happen, relatively easily.<br><br>I know its a long shot but imagine if it used the GPU as well..... We can always dream.<br><br>I'll report back with any news. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">jelle</span> on <em class="date">Apr 13, 2008</em></strong><p>Hi Dimitri,<br><br>Well if you could tell us what your program approx. looks like, then its easier to see whether Pool is a relevant way of speeding up things. Since your using millions of lines, you could easily re-write your program, such that you would have a generator that would be consumed by all the processes in the Pool:<br><br>lines = (line for l in GenerateLines(1e6))<br>p = Pool(8)<br>p.get()<br><br>Something along those lines.<br>Actually, it would make an interesting experiment...<br><br>Best,<br><br>-jelle </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 13 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

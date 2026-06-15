@@ -1,0 +1,153 @@
+<html>
+
+<head>
+<title>NodeBox | Perception comparisons</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Perception comparisons" />
+<link rel="canonical" href="https://www.nodebox.net/code/Perception_comparisons" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Perception comparisons</h3>
+<p class="big_text">To create a machine that is able to combine existing concepts into new, creative ideas, this machine needs knowledge of what the real world is like. How things look, feel, and how they relate to each other. </p><p>Providing this knowledge is a daunting, longer-than-life task. In this article we discuss a number of techniques, using a mash-up of different NodeBox libraries, to automatically discover new rules for the <a href="http://nodebox.net/perception" target="_self">Perception module</a> (a NodeBox add-on that contains knowledge of how things look and feel) and comparative relations between concepts (<i>what&#39;s the new cool thing?</i> <i>what&#39;s the biggest thing in human culture?</i>) </p><p><img src="/code/data/media/perception_comparisons0.jpg" alt="perception_comparisons0" /><br /><span class="small_text">Lots of people tend to think that <i>God</i>, and <i>science</i>, are very, very big. But not as big as <i>Harry Potter</i>.</span>&nbsp; </p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Text patterns <br /></h2><p>A powerful feature in the NodeBox <a href="/code/Linguistics" target="_self">Linguistics</a> library is the <a href="Linguistics.html#shallow_parsing" target="_self">en.sentence.find()</a> command. It analyzes a text and retrieves the portions that match a certain pattern. For example, the pattern &quot;I like NN&quot; will retrieve any string of words in the text that starts with &quot;I like&quot; followed by any noun: <i>I like brownies</i>, <i>I like chickens</i>, etc. Patterns can also contain optional wildcards: &quot;I like (JJ) NN&quot; will return <i>I like brownies</i> as well as <i>I like tasty brownies</i>. This way we can quickly find out what kind of things the &quot;I&quot; in the text likes. Or, &quot;* like NN&quot; will yield <i>I like brownies</i> as well as <i>smells like brownies</i>.</p><p>The NN and JJ are called part-of-speech tags - representing a noun and an adjective respectively. Under the hood, the Linguistics library will mark each word in the text with its part-of-speech (noun, pronoun, adjective, verb, ...), taking into consideration its place in the sentence.</p><pre class="python"><span style="color: #530035;">import</span> en
+<span style="color: #530035;">print</span> en.<span style="">sentence</span>.<span style="">tag</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;I like eating tasty brownies&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; I/PRP like/IN eating/VBG tasty/JJ brownies/NNS</pre></pre><p>To find out what a tag means, or which tags you can use in your patterns, have a look at the list <a href="/code/Linguistics_|_part-of-speech_tags" target="_self">here</a>.<br /></p><p><a href="http://en.wikipedia.org/wiki/Part-of-speech_tagging" target="_self">Part-of-speech tagging</a> has been used in natural language processing for over forty years to improve and perfect large corpuses of what words in sentences means, enabling a machine to &quot;read&quot; the text. The Linguistics library uses a Brill corpus of tagged words and a tagger written by Jason Wiener.</p><p>Once the text has been tagged, we scan it for words that match the pattern, or words whose POS-tag matches the pattern:</p><pre class="python"><span style="color: #530035;">print</span> en.<span style="">sentence</span>.<span style="">find</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;I like tasty brownies&quot;</span>, <span style="color: #ff0080;">&quot;I like (JJ) NN&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#91;</span><span style="">&#40;</span><span style="color: #ff0080;">'I'</span>, <span style="color: #ff0080;">'PRP'</span><span style="">&#41;</span>, <span style="">&#40;</span><span style="color: #ff0080;">'like'</span>, <span style="color: #ff0080;">'IN'</span><span style="">&#41;</span>, <span style="">&#40;</span><span style="color: #ff0080;">'tasty'</span>, <span style="color: #ff0080;">'JJ'</span><span style="">&#41;</span>, <span style="">&#40;</span><span style="color: #ff0080;">'brownies'</span>, <span style="color: #ff0080;">'NNS'</span><span style="">&#41;</span><span style="">&#93;</span><span style="">&#93;</span></pre></pre><p>The result is a list of matches. Each item in the list is itself a list of (word, tag)-tuples. As you can see you&#39;ll need to use some list operations to get the content you want from the result.</p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Searching, matching and parsing online texts <br /></h2><p>Now where can we find a large volume of text to analyze? That&#39;s right: the World Wide Web! There&#39;s a wealth of content written by all sorts of people, waiting to be parsed for information.</p><p>The <a href="/code/Perception" target="_self">Perception</a> library has a number of tools that combine the <a href="/code/Web" target="_self">Web</a>, <a href="/code/Linguistics" target="_self">Linguistics</a> and <a href="/code/Graph" target="_self">Graph</a> libraries to retrieve and visualize online information. At the heart is the <a href="Perception.html#comparisons" target="_self">perception.search_match_parse()</a> command. It works in three steps:</p><ul><li><b>Search</b>: use the Web library to retrieve results from a Google or Yahoo! query,</li><li><b>Match</b>: in the description of each result (the few lines you get to read when Google or Yahoo displays the results found), look for patterns using <i>en.sentence.find()</i>,</li><li><b>Parse</b>: extract the things we need from the pattern matches.</li></ul><p>Here&#39;s a short example. It attempts to find out what people say <i>aliens want</i>... cows, war, Scully, and disclosure (???), among other things!</p><pre class="python">perception = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;perception&quot;</span><span style="">&#41;</span>
+results = perception.<span style="">search_match_parse</span><span style="">&#40;</span>
+    <span style="color: #ff0080;">&quot;aliens want *&quot;</span>,
+    <span style="color: #ff0080;">&quot;aliens want NN&quot;</span>,
+    <span style="color: #530035;">lambda</span> <span style="">chunk</span>: perception.<span style="">clean</span><span style="">&#40;</span><span style="">chunk</span><span style="">&#91;</span><span style="">2</span><span style="">&#93;</span><span style="">&#91;</span><span style="">0</span><span style="">&#93;</span><span style="">&#41;</span>,
+    service=<span style="color: #ff0080;">&quot;google&quot;</span>
+<span style="">&#41;</span>
+<span style="color: #530035;">print</span> perception.<span style="">count</span><span style="">&#40;</span>results<span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#123;</span>u<span style="color: #ff0080;">'disclosure'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'patrol'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'alien-human'</span>: <span style="">2</span>, 
+&gt;&gt;&gt;  u<span style="color: #ff0080;">'roxella'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'driver'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'scully'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'planet'</span>: <span style="">1</span>, 
+&gt;&gt;&gt;  u<span style="color: #ff0080;">'cows'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'war'</span>: <span style="">1</span><span style="">&#125;</span></pre></pre><p>The first parameter supplied to the <i>perception.search_match_parse()</i> command is a Google query. It will yield a number of website links that have <i>aliens want [something]</i> in their content. Note the use of the<b> asterisk wildcard</b>. This is a powerful feature from Google. The asterisk can be any word.</p><p>The second parameter is the pattern used to extract matches from the description of each result. Here we are being a bit more specific: the thing <i>aliens want</i> must be a noun. </p><p>The third parameter requires a closer look. Basically, it is a user-defined function that receives input from <i>en.sentence.find()</i> and cleans it up. The input could be something like:<br /><span class="inline_code">[(u&#39;aliens&#39;, &#39;NNS&#39;), (u&#39;want&#39;, &#39;VBP&#39;), (u&#39;cows&#39;, &#39;NNS&#39;)]</span></p><p>The parse command is responsible for extracting the information we need. In this case, that&#39;s the noun at the end of the chunk. In other words: the third element in the list, which is a (word, tag)-tuple, of which we take the first element: <span class="inline_code">chunk[2][0]</span>. Next, we run it through the <i>perception.clean()</i> command which strips any quotes, brackets, comma&#39;s etc. from the word. The returned output is <i>cows</i>.<br /></p><p>In this example I used a <a href="http://docs.python.org/tut/node6.html#SECTION006750000000000000000" target="_self">lambda function</a> as parse command. A lambda function is like a small, anonymous function. It means exactly the same as:</p><pre class="python"><span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>parse_noun</span><span style="">&#40;</span><span style="">chunk</span><span style="">&#41;</span>:
+    <span style="color: #530035;">return</span> perception.<span style="">clean</span><span style="">&#40;</span><span style="">chunk</span><span style="">&#91;</span><span style="">2</span><span style="">&#93;</span><span style="">&#91;</span><span style="">0</span><span style="">&#93;</span><span style="">&#41;</span>
+results = perception.<span style="">search_match_parse</span><span style="">&#40;</span>
+    <span style="color: #ff0080;">&quot;aliens want *&quot;</span>,
+    <span style="color: #ff0080;">&quot;aliens want NN&quot;</span>,
+    parse_noun,
+...</pre></pre> <p>The <i>perception.search_match_parse()</i> command will then return a list of all the nouns it retrieved. Some nouns will occur more than once, so as a final step we run the output through <i>perception.count()</i>,&nbsp; which will group nouns with the number of times each noun was found. </p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Simile</h2><p>So, now that we can scan the entire web for patterns, we can start harvesting and comparing all kinds of information. We have already bundled some of the searches we need for the <a href="http://nodebox.net/perception/" target="_blank">Perception module</a> into robust commands. One of them is based on <b>simile</b>. A simile is a literary device that uses the words &quot;like&quot; or &quot;as&quot;: <i>as proud as a lion</i>, <i>as big as a house</i>, <i>like a fish on a line</i>. </p><p>In their scientific paper &quot;<i>Learning to Understand Figurative Language: From Similes to Metaphors to Irony</i>&quot; [<a href="http://afflatus.ucd.ie/Papers/LearningFigurative_CogSci07.pdf" target="_blank">1</a>], Tony Veale and Yanfen Hao explain how they employ the Google search engine to look for <i>&quot;as [adjective] as *&quot;</i> patterns, ending up with over 70,000 <b>properties</b> linked to nouns. You can review the results on their <a href="http://afflatus.ucd.ie/" target="_blank">website</a> (The Creative Language System Group, Department of Computer Science, University College Dublin). Check out their <a href="http://afflatus.ucd.ie/sardonicus/tree.jsp" target="_blank">Sardonicus</a> project. </p><p>The <b>is-property-of</b> relation is a central paradigm in the Perception module: <i>red is-property-flower</i>, <i>chaotic is-property-of traffic jam</i>, etc. Since the module is concerned with how things look and feel, this automated simile retrieval method is compelling to us as well. </p><p>The <i>perception.suggest_properties()</i> command returns adjectives for a given noun: </p><pre class="python"><span style="color: #530035;">print</span> perception.<span style="">suggest_properties</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;princess&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#123;</span>u<span style="color: #ff0080;">'beautiful'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'adorned'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'haughty'</span>: <span style="">5</span>, u<span style="color: #ff0080;">'polite'</span>: <span style="">2</span>, 
+&gt;&gt;&gt;  u<span style="color: #ff0080;">'pretty'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'dainty'</span>: <span style="">3</span>, u<span style="color: #ff0080;">'lovely'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'happy'</span>: <span style="">4</span><span style="">&#125;</span></pre></pre><p>The <i>perception.suggest_objects()</i> command returns adjectives for a given noun:&nbsp; </p><pre class="python"><span style="color: #530035;">print</span> perception.<span style="">suggest_objects</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;blue&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#123;</span>u<span style="color: #ff0080;">'sea'</span>: <span style="">3</span>, u<span style="color: #ff0080;">'sky'</span>: <span style="">6</span>, u<span style="color: #ff0080;">'loo'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'cornflower'</span>: <span style="">6</span>, 
+&gt;&gt;&gt;  u<span style="color: #ff0080;">'iceberg'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'ocean'</span>: <span style="">7</span>, u<span style="color: #ff0080;">'smurf'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'robin'</span>: <span style="">6</span>, ...<span style="">&#125;</span></pre></pre><p>These we can then use to update and expand the Perception module with <i>is-property-of</i> rules: <br /></p><ul><li><i>haughty is-property-of princess</i></li><li> <i>blue is-property-of ocean</i></li></ul><p>&nbsp;</p><hr size="2" width="100%" /><h2>Comparatives</h2><p>Another search heuristic is based on comparatives. A <b>comparative</b> is the form of an adjective that denotes the degree by which one thing has a property greater than another thing: <i>a gazelle is faster than a turtle</i>.</p><p>Using the Yahoo! search engine, we can look for relations between concepts such as: &quot;<i>[noun] is more important than [noun]</i>&quot; or &quot;<i>[noun] is the new [noun]</i>&quot;. These are excellent to get an idea of what people appreciate or value based on what they are writing online. Furthermore, once we have a set of these relations we can link them together in a graph, and find out what is <i>the most important</i> or <i>the newest concept</i>. </p><p>The <i>perception.compare_concepts()</i> returns a list of (word1, word2)-tuples:<br /></p><pre class="python">results = perception.<span style="">compare_concepts</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;is more important than&quot;</span>, cached=<span style="color: #530035;">True</span><span style="">&#41;</span>
+<span style="color: #530035;">print</span> results
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">&#40;</span>u<span style="color: #ff0080;">'life'</span>, u<span style="color: #ff0080;">'tradition'</span><span style="">&#41;</span>, 
+&gt;&gt;&gt;  <span style="">&#40;</span>u<span style="color: #ff0080;">'security'</span>, u<span style="color: #ff0080;">'privacy'</span><span style="">&#41;</span>, 
+&gt;&gt;&gt;  <span style="">&#40;</span>u<span style="color: #ff0080;">'experience'</span>, u<span style="color: #ff0080;">'knowledge'</span><span style="">&#41;</span>,
+&gt;&gt;&gt;  <span style="">&#40;</span>u<span style="color: #ff0080;">'chocolate'</span>, u<span style="color: #ff0080;">'blogging'</span><span style="">&#41;</span> ... <span style="">&#93;</span></pre></pre><p>Note the <i>cached=True</i> parameter. When set to <i>False</i>, the command will execute a live query on Yahoo! each time it is run. This would allow us to start looking at how people&#39;s opinions change over time.<br /></p><p>Drawing a graph of the results is easy: <br /></p> <pre class="python">results = perception.<span style="">compare_concepts</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;is more important than&quot;</span>, cached=<span style="color: #530035;">True</span><span style="">&#41;</span>
+g = results.<span style="">graph</span><span style="">&#40;</span><span style="">&#41;</span>
+g = g.<span style="">split</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>
+g.<span style="">solve</span><span style="">&#40;</span><span style="">&#41;</span>
+g.<span style="">styles</span>.<span style="">apply</span><span style="">&#40;</span><span style="">&#41;</span>
+g.<span style="">draw</span><span style="">&#40;</span>weighted=<span style="color: #530035;">True</span>, directed=<span style="color: #530035;">True</span>, traffic=<span style="">3</span><span style="">&#41;</span></pre></pre><p><a href="/code/data/media/perception_comparisons3.jpg" target="_self"><img src="/code/data/media/perception_comparisons2.jpg" alt="perception_comparisons2" /><br /></a><i>is-more-important-than</i> graph | <a href="/code/data/media/perception_comparisons3.jpg" target="_self">view full image </a></p><p>&nbsp;</p><p><span class="pink_box">Subgraphs</span>&nbsp; <br /></p><p>Since not every result might be connected to other results, the graph may contain some unconnected subgraphs.Drawing them all at once takes time and clutters the canvas, so we use the graph&#39;s <i>split()</i> method which returns a list of all the different subgraphs sorted by size. By picking different graphs from the list we can visualize different aspects of the comparison. </p><img src="/code/data/media/perception_comparisons4.jpg" alt="perception_comparisons4" /><i>g.split()[4]</i> and <i>g.split()[6]</i> <p>&nbsp;</p><p><span class="pink_box">Node and edge weight</span> <br /></p><p>When the graph is &quot;solved&quot;, weights for the nodes and edges (connections) in it are calculated. The weight of a connection depends on how many times the comparison occurs in the search results. Node weight depends on <a href="Graph.html#proximity" target="_self">eigenvalue</a>: nodes that are pointed at by high-scoring nodes get a better score themselves (between 0.0 and 1.0). The node with the highest weight is therefore the most important.</p><table><tbody><tr><td><img src="/code/data/media/perception_comparisons6.jpg" alt="perception_comparisons6" /> <br /></td><td>Nodes become bigger when they have more connections. Nodes that have four or more connections also become darker. Edges with a heavier weight (i.e. more people have voiced their opinion on this relation) get a bigger shadow. <br /><br /></td></tr><tr><td><img src="/code/data/media/perception_comparisons7.jpg" alt="perception_comparisons7" /> <br /></td><td>Nodes with a large shadow score high on &quot;betweenness centrality&quot;. These are the nodes that potentially connect a lot of other nodes (e.g. they are like waypoints or landmarks).</td></tr><tr><td><img src="/code/data/media/perception_comparisons8.jpg" alt="perception_comparisons8" /> <br /></td><td>Nodes with a weight greater than 0.75 get a double stroke. These can be considered salient concepts in the network. </td></tr></tbody></table><p>In the case of our example graph, <i>life</i> is more important than anything. Other important things (the darker nodes) are <i>money</i>, <i>security</i>, <i>health</i>, <i>fitness</i>, <i>love</i>, <i>experience</i> and <i>attitude</i>. That&#39;s not a bad analysis for a piece of NodeBox code. </p><p>&nbsp;</p><p><span class="pink_box"><b>Ranking</b></span> </p><p>To get a ranking of node and edge weight, we can use the result&#39;s <i>rank()</i> method - optionally supplying one of the subgraphs as a parameter to process only those nodes.The method will return a list of (concept, [concept2, concept3, ...])-tuples, with the most important concept first. <br /></p><pre class="python">results = perception.<span style="">compare_concepts</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;is bigger than&quot;</span><span style="">&#41;</span>
+g = results.<span style="">graph</span><span style="">&#40;</span><span style="">&#41;</span>.<span style="">split</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>
+g.<span style="">solve</span><span style="">&#40;</span><span style="">&#41;</span>
+g.<span style="">styles</span>.<span style="">apply</span><span style="">&#40;</span><span style="">&#41;</span>
+g.<span style="">draw</span><span style="">&#40;</span>weighted=<span style="color: #530035;">True</span>, directed=<span style="color: #530035;">True</span>, traffic=<span style="">3</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> concept1, comparisons <span style="color: #530035;">in</span> results.<span style="">rank</span><span style="">&#40;</span>g<span style="">&#41;</span>:
+    <span style="color: #530035;">for</span> concept2 <span style="color: #530035;">in</span> comparisons:
+        <span style="color: #530035;">print</span> concept1, results.<span style="">relation</span>, concept2
+&gt;&gt;&gt; potter is-bigger-than god
+&gt;&gt;&gt; potter is-bigger-than <span style="color: #530035;">star</span>
+&gt;&gt;&gt; love is-bigger-than life</pre></pre><p><img src="/code/data/media/perception_comparisons5.jpg" alt="perception_comparisons5" /> <br /></p><p>Here we find that <i>science</i> and <i>mess</i> are bigger than <i>god</i>. God is bigger than <i>life</i> however (and so are <i>love</i> and <i>Bigfoot</i>). The biggest of them all is <i>potter</i>: bigger than God and the stars alike! I can only assume this must be <i>Harry Potter</i>. </p><p>When we calculate the rank of the entire resultset (so without the graph parameter) we find that <i>love</i> is bigger than everything else. Some other interesting tidbits some of you put online:</p><ul><li><i>god is bigger than superman</i></li><li><i>nobody is bigger than mcdonald</i></li><li><i>facebook is bigger than myspace</i></li><li><i>weapons-gate is bigger than breast-gate</i></li><li><i>everybody is bigger than I</i><br /></li></ul><p>Ironically, by listing some examples here, Perception might pick up the page next time and make the mentioned concepts even bigger. This seems like an ideal moment to note that NodeBox is bigger than love and more important than life, don&#39;t you think?</p><p>Let&#39;s examine another example. Here&#39;s a subgraph for things we compared with &quot;is better than&quot;: <br /></p><p><img src="/code/data/media/perception_comparisons9.jpg" alt="perception_comparisons9" /> <br /></p><p>&nbsp;</p><hr size="2" width="100%" /><p>Finally, we can look for what kind of comparisons are possible between two given concepts:</p><p><pre class="python"><span style="color: #530035;">print</span> perception.<span style="">suggest_comparisons</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;mac&quot;</span>, <span style="color: #ff0080;">&quot;pc&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#123;</span>u<span style="color: #ff0080;">'smaller'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'slower'</span>: <span style="">3</span>, u<span style="color: #ff0080;">'faster'</span>: <span style="">3</span>, u<span style="color: #ff0080;">'actually cheaper'</span>: <span style="">2</span>, 
+     u<span style="color: #ff0080;">'cooler'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'less'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'cheaper'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'better'</span>: <span style="">2</span>, 
+     u<span style="color: #ff0080;">'more expensive'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'safer'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'intelligent'</span>: <span style="">1</span>, 
+     u<span style="color: #ff0080;">'easier'</span>: <span style="">4</span>, u<span style="color: #ff0080;">'worse'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'greater'</span>: <span style="">4</span><span style="">&#125;</span></pre></pre><pre class="python"><span style="color: #530035;">print</span> perception.<span style="">suggest_comparisons</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;pc&quot;</span>, <span style="color: #ff0080;">&quot;mac&quot;</span><span style="">&#41;</span>
+&gt;&gt;&gt; <span style="">&#123;</span>u<span style="color: #ff0080;">'no different'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'worse'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'cooler'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'stronger'</span>: <span style="">2</span>, 
+     u<span style="color: #ff0080;">'totally different'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'cheaper'</span>: <span style="">3</span>, u<span style="color: #ff0080;">'better'</span>: <span style="">10</span>, 
+     u<span style="color: #ff0080;">'more entertaining'</span>: <span style="">2</span>, u<span style="color: #ff0080;">'less expensive'</span>: <span style="">1</span>, u<span style="color: #ff0080;">'bigger'</span>: <span style="">2</span>, 
+     u<span style="color: #ff0080;">'faster'</span>: <span style="">2</span><span style="">&#125;</span></pre></pre></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Created By Tom De Smedt, Frederik De Bleser <br /></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Sep 03 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

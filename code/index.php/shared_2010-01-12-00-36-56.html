@@ -1,141 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | [drawpath] some point missing?</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2010-01-12-00-36-56, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2010-01-12-00-36-56" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">[drawpath] some point missing?</h1>
-<strong>Posted by <span class="comment_by">alberto</span> on <em class="date">Jan 12, 2010</em></strong>
-<p>sorry i don't know if this is the right point to post code question<br><br>[code]<br>print "dud"<br>    pts = []<br>    for pt in path:<br>        oval(pt.x-2, pt.y-2, 4, 4)<br>        pts.append(pt)<br>    drawpath(pts)<br>        <br>    print "dudee"<br>    pts = []<br>    for pt in path.points(12):<br>        oval(pt.x-2, pt.y-2, 4, 4)<br>        pts.append(pt)<br>    drawpath(pts)<br>[/code]<br><br>this:<br><br>dud<br>dudee<br>Traceback (most recent call last):<br>  File "nodebox/gui/mac/__init__.pyo", line 358, in _execScript<br>  File "/Users/alberto/Documents/NodeBox/bezier_test.py", line 91, in <br>  File "nodebox/graphics/__init__.pyo", line 309, in drawpath<br>  File "nodebox/graphics/__init__.pyo", line 124, in BezierPath<br>  File "nodebox/graphics/__init__.pyo", line 121, in _makeInstance<br>  File "nodebox/graphics/cocoa.pyo", line 217, in __init__<br>  File "nodebox/graphics/cocoa.pyo", line 306, in extend<br>  File "nodebox/graphics/cocoa.pyo", line 317, in append<br>  File "nodebox/graphics/cocoa.pyo", line 246, in curveto<br>error: NSGenericException - No current point for curve </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 12, 2010</em></strong><p>I don't understand what you are trying to do with this code:<pre class="python">pts = <span style="">&#91;</span><span style="">&#93;</span> 
-<span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path.<span style="">points</span><span style="">&#40;</span><span style="">12</span><span style="">&#41;</span>: 
-    <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span><span style="">-2</span>, pt.<span style="">y</span><span style="">-2</span>, <span style="">4</span>, <span style="">4</span><span style="">&#41;</span> 
-    pts.<span style="">append</span><span style="">&#40;</span>pt<span style="">&#41;</span> 
-<span style="color: #530035;">drawpath</span><span style="">&#40;</span>pts<span style="">&#41;</span></pre></pre>If you have the path already, why don't you just draw that:<pre class="python"><span style="color: #530035;">drawpath</span><span style="">&#40;</span>path<span style="">&#41;</span></pre></pre>instead of putting the points into a list and drawing those?<br><br>Anyways, the error you're getting is because path.points() doesn't give you a MOVETO-type PathElement, which you need at the beginning of a path to indicate where it starts from.<br><br>Try:<pre class="python">pts = <span style="">&#91;</span><span style="">&#93;</span>
-<span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path:
-    <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span><span style="">-2</span>, pt.<span style="">y</span><span style="">-2</span>, <span style="">4</span>, <span style="">4</span><span style="">&#41;</span> 
-    pts.<span style="">append</span><span style="">&#40;</span>pt<span style="">&#41;</span>
-<span style="color: #530035;">print</span> pts
-&nbsp;
-pts = <span style="">&#91;</span><span style="">&#93;</span> 
-<span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path.<span style="">points</span><span style="">&#40;</span><span style="">12</span><span style="">&#41;</span>: 
-    <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span><span style="">-2</span>, pt.<span style="">y</span><span style="">-2</span>, <span style="">4</span>, <span style="">4</span><span style="">&#41;</span> 
-    pts.<span style="">append</span><span style="">&#40;</span>pt<span style="">&#41;</span>
-<span style="color: #530035;">print</span> pts</pre></pre>and you will see what the lists look like after the loop. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">alberto</span> on <em class="date">Jan 13, 2010</em></strong><p>a </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">alberto</span> on <em class="date">Jan 13, 2010</em></strong><p>hi<br>thanks for fast replay and sorry for my bad english<br><br>my mailnly problem is that i have a path defined with 3 curveTo, so with 3 pathelement point. and i want to ahe an equal path with 12 pathelemnts that produce the same curve.<br>is it possible?<br><br>i'm using one more pathelements list (pts) because i'm getting different variation of the original one randomizing (well not properly random) the x and y of each pathelement object. with only 3 points i'm getting kind the same (well, one for each randomizing procedure) pattern. i think that with more definition points i can achive more various pattern.. is it right?<br><br>i tried to cody the first pathelemtn (the MOVE_TO one) for the first ot others like this:<pre class="python">pts1.<span style="">insert</span><span style="">&#40;</span><span style="">0</span>, pts<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span> <span style="">&#41;</span></pre></pre>now no error but the resuting path is a bit distorted (more points more distorted).. how can i do?<br><br>mayebe segmentlengths() is the answer? i didn't find documentation of that.. where is a complete reference of path class? like javadoc for standard java api (also processing.org has this lack of documentation) and how can i get a python shell to do all my test without each time write and apple+r?<br><br>last question: bezier nodebox api implements spline and not simple quadratic bezier isn'it? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 14, 2010</em></strong><p>Okay, I understand what you're trying to do. I don't think there's a simple answer. Well, the only possible simple answer that I see is to use <a href="http://nodebox.net/code/index.php/Reference_|_findpath()">findpath()</a> on your list of points, but that will still require some manipulation of the PathElements.<br><br>NodeBox's paths are just wrappers for Apple's Cocoa NSBezierPath class. I think they use cubic interpolation, but I'm not really clear on the difference and I couldn't find the answer in a quick search. Here are nodebox reference documents that may interest you: <a href="http://nodebox.net/code/index.php/Reference_|_BezierPath">BezierPath class</a> <a href="http://nodebox.net/code/index.php/Reference_|_PathElement">PathElement class</a>. Here are some relevant Apple docs: <a href="http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/CocoaDrawingGuide/Paths/Paths.html#//apple_ref/doc/uid/TP40003290-CH206-BBCHFJJG">CocoaDrawing Guide, section on Paths</a> <a href="http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Reference/ApplicationKit/Classes/NSBezierPath_Class/Reference/Reference.html">NSBezierPath Class reference</a>.<br><br>Now, as far as getting more points on a path you already have, this is problematic. I believe that when you try to get more points out of a path using the path.points() method, you're really just getting points -- the PathElements that result don't have control points that result in an accurate reconstruction of the path. This is why the path seems distorted. I believe that it does this because figuring out those control points would be way too much work. I could be off base, though, so I recommend that if you really want to figure it out, take a look at the code: <a href="http://dev.nodebox.net/browser/nodebox/trunk/src/nodebox/graphics/bezier.py">bezier.py</a><br><br>As far as running nodebox from the command line, I don't believe it's possible, because there's no drawing context for it to use.<br><br>Hope that's more help than trouble! Good luck! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 14, 2010</em></strong><p>Actually, I just tried this:<pre class="python">pts = <span style="">&#91;</span>pt <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path.<span style="">points</span><span style="">&#40;</span><span style="">12</span><span style="">&#41;</span><span style="">&#93;</span>
-path_2 = <span style="color: #530035;">findpath</span><span style="">&#40;</span>pts<span style="">&#41;</span>
-<span style="color: #530035;">drawpath</span><span style="">&#40;</span>path_2<span style="">&#41;</span></pre></pre>and it gives a pretty good approximation of the original path; maybe that will do the trick for you! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 22, 2010</em></strong><p>Huh. I just found this page about running NB <a href="http://nodebox.net/code/index.php/Console">from the command line</a>. Did not realize that it was possible! </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Jan 22 2010 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

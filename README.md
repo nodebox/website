@@ -41,10 +41,16 @@ configure the project with:
 
 Cloudflare Pages rebuilds and publishes on every push to `master`. Extensionless
 URLs (e.g. `/node/documentation/tutorial/getting-started`) are served from the
-matching `.html` file automatically.
+matching `.html` file automatically, and `/foo.html` is 301-redirected to `/foo`.
 
-The legacy NodeBox 1 wiki under `/code/` is copied verbatim for now; cleaning up
-its `index.php/...html` URLs is a planned follow-up (phase 2).
+The legacy NodeBox 1 wiki lives under `/code/<Name>` as static pages, regenerated
+from the original `code/index.php/` PHP dump by `migrate_code.py` (run once; kept
+for reference). Old `/code/index.php/<Name>` URLs are 301-redirected to
+`/code/<Name>` by `_redirects`. The dead community forum (the `Share` page and
+every `shared_*` snippet) was dropped; its old URLs redirect to `/code/Home`.
+A few inline images that the original site only
+referenced by absolute URL were never captured in the dump and are gone upstream
+too, so those thumbnails 404 (recoverable only from the Wayback Machine).
 
 
 Reference documentation

@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<title>NodeBox | Strings</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Strings" />
+<link rel="canonical" href="https://www.nodebox.net/code/Strings" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Strings</h3>
+<p><a href="/code/Variables">Variables</a> often store pieces of text, called <em>strings</em>, that will be drawn to the screen.</p>  <p>When a piece of text, a string, is assigned to a variable, it needs to be <strong>wrapped in quotes</strong>; it needs to start and end with a quote. Otherwise NodeBox might think the piece of text is the name of a variable, or something else.</p>  <p>Consider the following example:</p>  <pre class="python">hello = <span style="">20</span>
+<span style="">str</span> = hello
+<span style="color: #530035;">print</span> <span style="">str</span>
+&gt;&gt;&gt; <span style="">20</span>
+&nbsp;
+<span style="">str</span> = <span style="color: #ff0080;">&quot;hello&quot;</span>
+<span style="color: #530035;">print</span> <span style="">str</span>
+&gt;&gt;&gt; hello</pre></pre>  <h2>Strings are lists of characters</h2>  <p>A string is like a <a href="/code/Lists">list</a> of individual characters. This way, you could access each character in the string like any other list. In the example below, I make handy use of this feature by selecting random characters from the <em>chars</em> string with the <a href="/code/Reference_|_choice()">choice()</a> command and drawing them to the screen <a href="http://www.joshuadavis.com">Joshua Davis</a>-style.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/strings-characters.jpg" alt="" width="667" height="510" /></span> </p>  <p>&nbsp;</p>  <h2>Manipulating strings</h2>  <p>Strings have a number of very useful methods:</p>  <ul> <li><em>string</em>.upper(): returns the string in uppercase.</li> <li><em>string</em>.lower(): returns the string in lowercase.</li> <li><em>string</em>.capitalize(): returns the string with the first character capitalized.</li> <li><em>string</em>.find(<em>text</em>, start=0): returns the index position of <em>text</em> in the string.</li> <li><em>string</em>.replace(<em>old</em>, <em>new</em>): replaces all <em>old</em> text in the string with <em>new</em></li> <li><em>string</em>.split(): returns the string as a list of words.</li> <li><em>string</em>.join(<em>list</em>): concatenates a list of words.</li> </ul>  <p>Strings can be converted to uppercase and lowercase with the <em>upper()</em> and <em>lower()</em> methods, or have the first character capitalized with <em>capitalize</em>. Remember, these are methods, so instead of saying <em>str = upper(str)</em> you need to say <em>str = str.upper()</em>.</p>  <pre class="python"><span style="">str</span> = <span style="color: #ff0080;">&quot;Kumquats, Kumquats! I must have my Kumquats! - Oscar Wilde&quot;</span>
+<span style="">str</span> = <span style="">str</span>.<span style="">upper</span><span style="">&#40;</span><span style="">&#41;</span> 
+<span style="color: #530035;">print</span> <span style="">str</span> 
+&gt;&gt;&gt; KUMQUATS, KUMQUATS! I MUST HAVE MY KUMQUATS! - OSCAR WILDE</pre></pre>  <p>The <em>replace()</em> method is especially useful when you want to filter mistakes from the string, or when you want to alter portions of the content:</p>  <pre class="python"><span style="">str</span> = <span style="color: #ff0080;">&quot;Something's rotten in the state of Denmark.&quot;</span>
+<span style="">str</span> = <span style="">str</span>.<span style="">replace</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;in&quot;</span>, <span style="color: #ff0080;">&quot;in, like, &quot;</span><span style="">&#41;</span>
+<span style="">str</span> = <span style="">str</span>.<span style="">replace</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;.&quot;</span>, <span style="color: #ff0080;">&quot; dude.&quot;</span><span style="">&#41;</span>
+<span style="">str</span> = <span style="">str</span>.<span style="">replace</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;rotten&quot;</span>, <span style="color: #ff0080;">&quot;way uncool&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">print</span> <span style="">str</span>
+&gt;&gt;&gt; Something<span style="color: #ff0080;">'s way uncool in, like, the state of Denmark dude.</span></pre></pre>  <h2>Quotes in quotes</h2>  <p>Text data often contain quotes themselves, especially if the text contains dialogue.  When NodeBox examines the string and encounters such a quote, it would logically assume that the string is terminated here.</p>  <p>The following example won&#39;t work, NodeBox thinks <em>(On his death bed):</em> needs to be assigned to <em>str</em>, followed by garbage statements it doesn&#39;t understand:</p>  <pre class="python"><span style="">str</span> = <span style="color: #ff0080;">&quot;(On his death bed): &quot;</span>Those curtains are hideous.<span style="color: #ff0080;">&quot; - Oscar Wilde&quot;</span></pre></pre>  <p>Instead, the string needs to be wrapped in triple quotes:</p>  <pre class="python"><span style="">str</span> = <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot;(On his death bed): &quot;</span>Those curtains are hideous.<span style="color: #ff0080;">&quot; - Oscar Wilde&quot;</span><span style="color: #ff0080;">&quot;&quot;</span> 
+<span style="color: #530035;">print</span> <span style="">str</span> 
+&gt;&gt;&gt; <span style="">&#40;</span>On his death bed<span style="">&#41;</span>: <span style="color: #ff0080;">&quot;Those curtains are hideous.&quot;</span> - Oscar Wilde</pre></pre>  <h2>File input</h2>  <p>When you&#39;re going to use long paragraphs of text, it&#39;s better to store the text in a separate text file and assign that to a variable, this keeps your script clean, and you can edit the text separately from the script.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/strings-textedit.jpg" alt="" width="653" height="334" /></span> </p>  <p><span class="media"><img src="/code/data/media/strings-file.jpg" alt="" width="659" height="504" /></span> </p>  <p>&nbsp;</p>  <p>Simply put the text in TextEdit, <strong>make it plain text</strong>, and import it into your script with the <a href="/code/Reference_|_open()">open()</a> command.</p><h2>Unicode characters</h2><p><a href="http://en.wikipedia.org/wiki/Unicode" target="_self">Unicode</a> is a character system that allows computers to use symbols from all of the writing systems in the world. If you&#39;re going to use for example <em>suomi</em> or <em>Hebrew</em> in the output of your script, you&#39;ll have to know about Unicode.</p><p>The first thing to make sure is that the <strong>typeface</strong> you are going to use includes Unicode characters, so the text can be drawn in the font. Usually, large font families like Helvetica include Unicode for almost any Unicode character. </p><p>Next, you&#39;ll have to tell NodeBox that a piece of text includes special characters. This is as simple as adding a &quot;<strong>u&quot;</strong> to the front of the string quotes.</p><pre class="python"><span style="">str</span> = u<span style="color: #ff0080;">&quot;?אתה מדבר אנגלית&quot;</span>
+<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">50</span>, <span style="">200</span><span style="">&#41;</span></pre></pre><p>&nbsp;</p><p><img src="/code/data/media/strings-unicode1.jpg" alt="strings-unicode1" /> </p><p>&nbsp;</p><p>When you are going to import text from a text file there are two things to look out for. First, the text file needs to <strong>saved as Unicode</strong>. In TextEdit, apply the plain text format and when you save it, select &quot;Unicode (UTF-8)&quot; from the Plain Text Encoding list.</p><p>&nbsp;</p><p><img src="/code/data/media/strings-unicode2.jpg" alt="strings-unicode2" /></p><p>&nbsp;</p><p>Then when you import the contents of the file into NodeBox, you&#39;ll have to <strong>decode</strong> the text:</p><pre class="python"><span style="">str</span> = <span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;hebrew.txt&quot;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="">str</span> = <span style="">str</span>.<span style="">decode</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;utf-8&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">align</span><span style="">&#40;</span><span style="color: #530035;">RIGHT</span><span style="">&#41;</span>
+<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">100</span>, <span style="">200</span><span style="">&#41;</span></pre></pre><p>&nbsp;</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Apr 05 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

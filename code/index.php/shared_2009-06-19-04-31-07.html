@@ -1,126 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | ximport inside imported modules</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-06-19-04-31-07, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-06-19-04-31-07" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">ximport inside imported modules</h1>
-<strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jun 19, 2009</em></strong>
-<p>I'm having a great deal of difficulty with importing a module. It surprises me that I haven't run into this before, but here it is:<br><br>I have a module in ~/Library/Application Support/NodeBox, which I am importing into my script using ximport(). This module itself needs to use other modules in the same folder, including the colors library. At least one of these second set of modules needs access to the current context, _ctx, and therefore needs to be imported with ximport(). However, when I put<pre class="python">colors = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;colors&quot;</span><span style="">&#41;</span>
-helpermodule = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;helpermodule&quot;</span><span style="">&#41;</span></pre></pre>at the top of mymodule, I get a NameError that 'ximport' is not defined. Importing ximport itself from nodebox.graphics obviously doesn't work, because it's a method of Context, not a top-level function. So apparently you can't use ximport() inside  a module until after you have ximport()'d the module?<br><br>In order to work around the NameError, I copied and pasted some of the code from helpermodule, so that the functions I need from it are now at top level in mymodule. Needless to say, this is a clumsy and annoying workaround.<br><br>The key function in mymodule calls stroke(), and after removing the ximport() calls, I get another<pre class="python"><span style="">NameError</span>: <span style="color: #530035;">global</span> name <span style="color: #ff0080;">'stroke'</span> <span style="color: #530035;">is</span> <span style="color: #530035;">not</span> defined</pre></pre>. The same continues for fill, random, and rect, all of which are called <i>within</i> the function inside mymodule, that is, not until:<pre class="python">mymodule.<span style="">myfunc</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>is executed in my top level script. Shouldn't mymodule, having been ximport()'d, have access to those functions by that time? I thought that was the point of ximport().<br><br>I have worked around this problem by qualifying these calls as<pre class="python">_ctx.<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>and so forth. <br><br>I've combed the forum here, documentation, etc., and I can't figure this out. Is it in fact impossible to use ximport() inside a module? This really limits module usage, because any auxiliary modules cannot have drawing routines; they won't have access to _ctx. Also, are stroke(), fill(), etc. only available unqualified when in a top-level script? <br><br>Any pointers would be greatly appreciated. Hope I'm not just missing something simple and stupid. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Stefan</span> on <em class="date">Jun 19, 2009</em></strong><p>ximport actually adds _ctx to the namespace of the module it imports, but it only can do so after the module has been imported. In your, by then, imported module you can access ximport by calling _ctx.ximport. But you can only do that from within a function or so, not at the top level because _ctx isn't known by the module (yet). Is this making any sense? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jun 22, 2009</em></strong><p>Yep, that makes perfect sense. It actually occurred to me the next day -- putting calls to ximport inside a setup function in the first imported module, then having to call that setup() in the script. And no way to access what are usually global functions without qualification in modules. It's kind of a bummer: Python's pretty flexible about making modules usable either as libraries or scripts, but this means you have to pick one or the other, or just get in the habit of writing _ctx.fill() all the time.<br><br>Anyways, thanks for the reply, Stefan! </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Jun 21 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

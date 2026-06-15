@@ -1,0 +1,319 @@
+<html>
+
+<head>
+<title>NodeBox | Genetic algorithm</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Genetic algorithm" />
+<link rel="canonical" href="https://www.nodebox.net/code/Genetic_algorithm" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Genetic algorithm</h3>
+<p class="big_text">A genetic algorithm is a <a href="http://en.wikipedia.org/wiki/Stochastic" target="_self">stochastic</a> search method based on natural selection and reproduction of a population of individuals. </p><p>Each generation, the fittest candidates in the population are selected, paired, and recombined into a new generation. With each new generation the system converges towards an optimal fitness. </p><p>Optimal fitness can be global or local:</p><ul><li>The global optimum is the optimal solution among all possible solutions; the GA&#39;s goal.</li><li>The local optimum occurs when the GA converges too fast and gets trapped.<br /></li></ul><p>Local optima occur when the population is no longer diverse enough. Therefore, we need to preserve some weaker candidates whose role can become more prominent later on. A detailed paper on optima and hierarchical fair competition (Jianjun Hu et al.) is <a href="ftp://ftp.cs.bham.ac.uk/pub/authors/W.B.Langdon/biblio/gecco2002/GP195.pdf" target="_blank">here</a>.</p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Grid symmetry example <br /></h2><p>Let&#39;s have a look at an example. During the<a href="http://workshops.nodebox.net/2009" target="_blank"> 2009 NodeBox workhop</a> in Finland (Lahti University of Applied Sciences, Institute of Design) Jonatan Hilden and I composed a simple genetic algorithm for NodeBox that we wanted to share with you.</p><p>To make it work, you have to code three things yourself: </p><ul><li><b>Candidate:</b> the members in a population that are going to improve through evolution</li><li><b>Recombination function: </b>what candidate comes out of the crossing of two parent candidates?</li><li><b>Fitness function:</b>&nbsp; calculates the &quot;score&quot; of a candidate.&nbsp;</li></ul><p>We&#39;ve included a <i>grid candidate</i> with black and white squares that will strive for symmetry. <br />In the image below you can see how generations of grids evolve over time:</p><p>&nbsp;</p><p><img src="/code/data/media/genetic_algorithm.jpg" alt="genetic_algorithm" /> <br /></p><p>&nbsp;</p><p>If you look at the source code of the grid candidate closely you&#39;ll see that it is just a list of <i>True</i> or <i>False</i> switches (<i>True</i> means black square in the grid, <i>False</i> means white square in the grid). The candidate furthermore has some helper methods to find out what squares surround the current one. These are used in the fitness function to discover symmetrical patterns. </p><p>Grids that have more symmetry (whose black squares have a horizontal and/or vertical reflection) score better, and will therefore be able to reproduce parts of their DNA (the list of <i>True</i>/<i>False</i> values) more often.</p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Source code</h2><p>Naturally, a candidate can be many other things beside a grid of black and white squares (a creature, source code, ...) A fairly easy first experiment would be to adapt the grid&#39;s DNA list to work with many colors instead of just black and white.</p><pre class="python"><span style="color: grey;"># A genetic algorithm is a stochastic search method based on </span>
+<span style="color: grey;"># natural selection and reproduction of a population of individuals.</span>
+<span style="color: grey;"># Each generation, the fittest candidates in the population are selected, </span>
+<span style="color: grey;"># paired, and recombined into a new generation.</span>
+<span style="color: grey;"># With each new generation the system converges towards an optimal fitness.</span>
+<span style="color: grey;"># Optimal fitness can be global or local.</span>
+<span style="color: grey;"># - The global optimum is the optimal solution among all possible solutions;</span>
+<span style="color: grey;">#   the goal of the the GA.</span>
+<span style="color: grey;"># - The local optimum occurs when the GA converges too fast and is trapped.</span>
+<span style="color: grey;">#   This occurs when the population is no longer diverse enough.</span>
+<span style="color: grey;">#   Therefore, we need to preserve some weaker candidates whose role </span>
+<span style="color: grey;">#   can become more prominent later on.</span>
+<span style="color: grey;"># - Stochastic: the process of selecting the fittest candidates in </span>
+<span style="color: grey;">#   the population involves an amount of randomness, so weaker candidates </span>
+<span style="color: grey;">#   are sometimes preserved.</span>
+<span style="color: grey;"># - Convergence: the approach toward a definite value or equilibrium state.</span>
+&nbsp;
+<span style="color: grey;"># We can use some extra computing power:</span>
+<span style="color: #530035;">try</span>: 
+    <span style="color: #530035;">import</span> psyco
+    psyco.<span style="">full</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">except</span>:
+    <span style="color: #530035;">pass</span>
+    
+<span style="color: grey;">### GENETIC ALGORITHM FUNCTIONS ##########################################</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>candidate</span><span style="">&#40;</span><span style="">&#41;</span>:
+    <span style="color: grey;"># Needs to be implemented.</span>
+    <span style="color: #530035;">return</span> <span style="color: #530035;">None</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>recombine</span><span style="">&#40;</span>a, b, crossover=<span style="">0.5</span><span style="">&#41;</span>:
+    <span style="color: grey;"># Needs to be implemented.</span>
+    <span style="color: #530035;">return</span> <span style="color: #530035;">None</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>fitness</span><span style="">&#40;</span>candidate<span style="">&#41;</span>:
+    <span style="color: grey;"># Needs to be implemented.</span>
+    <span style="color: #530035;">return</span> <span style="">0</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>population</span><span style="">&#40;</span><span style="color: #530035;">size</span>=<span style="">500</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns an initial list of random candidates (e.g. generation 0).
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">return</span> <span style="">&#91;</span>candidate<span style="">&#40;</span><span style="">&#41;</span> <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="color: #530035;">size</span><span style="">&#41;</span><span style="">&#93;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>sort_by_fitness</span><span style="">&#40;</span>candidates<span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns a sorted list of (fitness, candidate)-tuples; best-first.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">return</span> <span style="">sorted</span><span style="">&#40;</span><span style="">&#91;</span><span style="">&#40;</span>fitness<span style="">&#40;</span>x<span style="">&#41;</span>, x<span style="">&#41;</span> <span style="color: #530035;">for</span> x <span style="color: #530035;">in</span> candidates<span style="">&#93;</span>, reverse=<span style="color: #530035;">True</span><span style="">&#41;</span>
+    
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="">select</span><span style="">&#40;</span>population, top=<span style="">0.7</span>, determinism=<span style="">0.8</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns a selection of fit candidates from the population.
+    - top: roughly the fittest 70% candidates are allowed to reproduce.
+    - determinism: there is a 20% chance that good candidates are ignored,
+                   this keeps the population diverse.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    population = sort_by_fitness<span style="">&#40;</span>population<span style="">&#41;</span>
+    population = <span style="">&#91;</span>candidate <span style="color: #530035;">for</span> <span style="">&#40;</span>fitness, candidate<span style="">&#41;</span> <span style="color: #530035;">in</span> population<span style="">&#93;</span>
+    parents = <span style="">list</span><span style="">&#40;</span>population<span style="">&#41;</span>
+    i = <span style="">len</span><span style="">&#40;</span>parents<span style="">&#41;</span>
+    <span style="color: #530035;">while</span> <span style="">len</span><span style="">&#40;</span>parents<span style="">&#41;</span> &gt; <span style="">len</span><span style="">&#40;</span>population<span style="">&#41;</span>*top:
+        i = <span style="">&#40;</span>i<span style="">-1</span><span style="">&#41;</span> % <span style="">len</span><span style="">&#40;</span>parents<span style="">&#41;</span>
+        <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &lt; determinism:
+            parents.<span style="color: #530035;">pop</span><span style="">&#40;</span>i<span style="">&#41;</span>
+    <span style="color: #530035;">return</span> parents
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>reproduce</span><span style="">&#40;</span>population, top=<span style="">0.7</span>, determinism=<span style="">0.8</span>, crossover=<span style="color: #530035;">lambda</span>: <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns a new population of candidates.
+    Selects parent that are fit to reproduce.
+    Recombines random pairs of parents to new child candidates.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    parents = <span style="">select</span><span style="">&#40;</span>population, top, determinism<span style="">&#41;</span>
+    children = <span style="">&#91;</span><span style="">&#93;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">len</span><span style="">&#40;</span>population<span style="">&#41;</span><span style="">&#41;</span>:
+        i = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">len</span><span style="">&#40;</span>parents<span style="">&#41;</span><span style="">&#41;</span>
+        j = <span style="color: #530035;">choice</span><span style="">&#40;</span> <span style="">range</span><span style="">&#40;</span><span style="">0</span>,i<span style="">&#41;</span> + <span style="">range</span><span style="">&#40;</span>i<span style="">+1</span>, <span style="">len</span><span style="">&#40;</span>parents<span style="">&#41;</span><span style="">&#41;</span> <span style="">&#41;</span>
+        k = crossover
+        <span style="color: #530035;">try</span>: k = k<span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">except</span>:
+            <span style="color: #530035;">pass</span>
+        children.<span style="">append</span><span style="">&#40;</span>recombine<span style="">&#40;</span>parents<span style="">&#91;</span>i<span style="">&#93;</span>, parents<span style="">&#91;</span>j<span style="">&#93;</span>, crossover=k<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">return</span> children
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>converged</span><span style="">&#40;</span>population<span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns True when the population has reached its optimum.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">1</span>, <span style="">len</span><span style="">&#40;</span>population<span style="">&#41;</span><span style="">&#41;</span>:
+        <span style="color: #530035;">if</span> population<span style="">&#91;</span>i<span style="">-1</span><span style="">&#93;</span> != population<span style="">&#91;</span>i<span style="">&#93;</span>:
+            <span style="color: #530035;">return</span> <span style="color: #530035;">False</span>
+    <span style="color: #530035;">return</span> <span style="color: #530035;">True</span>
+&nbsp;
+<span style="color: grey;">### GRID CANDIDATE #######################################################</span>
+<span style="color: grey;"># Any kind of candidate can be used in the GA.</span>
+<span style="color: grey;"># Here's an example of random black &amp; white grids that score better </span>
+<span style="color: grey;"># as they become more symmetrical.</span>
+<span style="color: grey;"># We just create one candidate (or agent) with a fitness property and </span>
+<span style="color: grey;"># the capability to recombine; the GA functions will create a population </span>
+<span style="color: grey;"># and keep improving it until it converges.</span>
+&nbsp;
+<span style="color: grey;"># Internally, the grid is just a list of colors (in this case: True (black) </span>
+<span style="color: grey;"># or False (white)). This makes it an ideal candidate to work with:</span>
+<span style="color: grey;"># lists are easy to examine and cut-and-splice in the recombine function.</span>
+<span style="color: grey;"># You can imagine how the values in the list could encompass a wider range </span>
+<span style="color: grey;"># of colors(for example: 0=black, 1=white, 2=red, ...) </span>
+&nbsp;
+<span style="color: #530035;">class</span> GridCandidate<span style="">&#40;</span><span style="">list</span><span style="">&#41;</span>:
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, rows, cols, values=<span style="">&#91;</span><span style="">&#93;</span><span style="">&#41;</span>:
+        <span style="">self</span>.<span style="">rows</span> = rows
+        <span style="">self</span>.<span style="">cols</span> = cols
+        <span style="color: grey;"># Cells in the grid are randomly black (True) or white (False).</span>
+        <span style="color: #530035;">if</span> <span style="">len</span><span style="">&#40;</span>values<span style="">&#41;</span> == <span style="">0</span>:
+            values = <span style="">&#91;</span><span style="color: #530035;">choice</span><span style="">&#40;</span><span style="">&#40;</span><span style="color: #530035;">True</span>, <span style="color: #530035;">False</span><span style="">&#41;</span><span style="">&#41;</span> <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>rows*cols<span style="">&#41;</span><span style="">&#93;</span>
+        <span style="">list</span>.<span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, values<span style="">&#41;</span>
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">self</span>, x, y, <span style="color: #530035;">scale</span>=<span style="">10.0</span><span style="">&#41;</span>:
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">self</span>.<span style="">cols</span><span style="">&#41;</span>:
+            <span style="color: #530035;">for</span> j <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">self</span>.<span style="">rows</span><span style="">&#41;</span>:
+                is_black = <span style="">self</span><span style="">&#91;</span>i+j*cols<span style="">&#93;</span>
+                _ctx.<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">int</span><span style="">&#40;</span><span style="color: #530035;">not</span> is_black<span style="">&#41;</span><span style="">&#41;</span>
+                _ctx.<span style="color: #530035;">oval</span><span style="">&#40;</span>x+i*<span style="color: #530035;">scale</span>, y+j*<span style="color: #530035;">scale</span>, <span style="color: #530035;">scale</span>, <span style="color: #530035;">scale</span><span style="">&#41;</span>
+                
+                <span style="color: grey;"># Triangles:</span>
+                <span style="color: grey;">#R = 1.11803398875 # equilateral width/height ratio</span>
+                <span style="color: grey;">#_ctx.push()</span>
+                <span style="color: grey;">#_ctx.translate(x+i*scale/2, y+j*scale/R)</span>
+                <span style="color: grey;">#if i % 2 == int(j &amp; 2 == 0): # up for odd col in even row</span>
+                <span style="color: grey;">#    _ctx.beginpath(0, 0)</span>
+                <span style="color: grey;">#    _ctx.lineto(scale/2, scale/R)</span>
+                <span style="color: grey;">#    _ctx.lineto(scale, 0)</span>
+                <span style="color: grey;">#else:</span>
+                <span style="color: grey;">#    _ctx.beginpath(0, scale/R)</span>
+                <span style="color: grey;">#    _ctx.lineto(scale/2, 0)</span>
+                <span style="color: grey;">#    _ctx.lineto(scale, scale/R)</span>
+                <span style="color: grey;">#_ctx.endpath()                    </span>
+                <span style="color: grey;">#_ctx.pop()</span>
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>contains</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span>:
+        <span style="color: #530035;">return</span> i &gt; <span style="">0</span> <span style="color: #530035;">and</span> i &lt; <span style="">len</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>row</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span>: <span style="color: #530035;">return</span> i / <span style="">self</span>.<span style="">cols</span> <span style="color: grey;"># the row index i is in</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>col</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span>: <span style="color: #530035;">return</span> i % <span style="">self</span>.<span style="">cols</span> <span style="color: grey;"># the column index i is in </span>
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>reflect</span><span style="">&#40;</span><span style="">self</span>, i, axis=<span style="color: #ff0080;">&quot;horizontal&quot;</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns the index in the grid that is symmetrical to this one.
+        For example:
+        0 1 2 3 4
+        5 6 7 8 9
+        reflect(1, &quot;</span>horizontal<span style="color: #ff0080;">&quot;) =&gt; 3
+        reflect(4, &quot;</span>vertical<span style="color: #ff0080;">&quot;) =&gt; 9
+        &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+        <span style="color: #530035;">if</span> axis == <span style="color: #ff0080;">&quot;horizontal&quot;</span>:
+            <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">row</span><span style="">&#40;</span>i<span style="">&#41;</span>*<span style="">self</span>.<span style="">cols</span> + <span style="">self</span>.<span style="">cols</span> - <span style="">self</span>.<span style="">col</span><span style="">&#40;</span>i<span style="">&#41;</span> - <span style="">1</span>
+        <span style="color: #530035;">if</span> axis == <span style="color: #ff0080;">&quot;vertical&quot;</span>:
+            <span style="color: #530035;">return</span> <span style="">&#40;</span><span style="">self</span>.<span style="">rows</span>-<span style="">self</span>.<span style="">row</span><span style="">&#40;</span>i<span style="">&#41;</span><span style="">-1</span><span style="">&#41;</span>*<span style="">self</span>.<span style="">cols</span> + <span style="">self</span>.<span style="">col</span><span style="">&#40;</span>i<span style="">&#41;</span>
+&nbsp;
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>recombine</span><span style="">&#40;</span><span style="">self</span>, other, crossover=<span style="">0.5</span><span style="">&#41;</span>:
+        i = <span style="">int</span><span style="">&#40;</span><span style="">len</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span> * crossover<span style="">&#41;</span>
+        <span style="color: #530035;">return</span> GridCandidate<span style="">&#40;</span><span style="">self</span>.<span style="">rows</span>, <span style="">self</span>.<span style="">cols</span>, values=<span style="">self</span><span style="">&#91;</span>:i<span style="">&#93;</span>+other<span style="">&#91;</span>i:<span style="">&#93;</span><span style="">&#41;</span>
+&nbsp;
+    @<span style="">property</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>fitness</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
+        <span style="color: grey;"># Fitness is calculated in terms of symmetry.</span>
+        <span style="color: grey;"># Grids with the same color at symmetrical positions score better.</span>
+        score = <span style="">0</span>
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">len</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span><span style="">&#41;</span>:
+            j = <span style="">self</span>.<span style="">reflect</span><span style="">&#40;</span>i, <span style="color: #ff0080;">&quot;horizontal&quot;</span><span style="">&#41;</span>
+            <span style="color: #530035;">if</span> <span style="">self</span>.<span style="">contains</span><span style="">&#40;</span>j<span style="">&#41;</span> <span style="color: #530035;">and</span> <span style="">self</span><span style="">&#91;</span>j<span style="">&#93;</span> == <span style="">self</span><span style="">&#91;</span>i<span style="">&#93;</span>:
+                score += <span style="">1</span>
+            j = <span style="">self</span>.<span style="">reflect</span><span style="">&#40;</span>i, <span style="color: #ff0080;">&quot;vertical&quot;</span><span style="">&#41;</span>
+            <span style="color: #530035;">if</span> <span style="">self</span>.<span style="">contains</span><span style="">&#40;</span>j<span style="">&#41;</span> <span style="color: #530035;">and</span> <span style="">self</span><span style="">&#91;</span>j<span style="">&#93;</span> == <span style="">self</span><span style="">&#91;</span>i<span style="">&#93;</span>:
+                score += <span style="">1</span>
+        <span style="color: #530035;">return</span> score
+    
+    <span style="color: grey;"># Here are some functions you may want to use to determine fitness:</span>
+    
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>above</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> i-<span style="">self</span>.<span style="">cols</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>below</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> i+<span style="">self</span>.<span style="">cols</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>left</span><span style="">&#40;</span> <span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> i<span style="">+1</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>right</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> i<span style="">-1</span>
+    
+    north, south, east, west = above, below, left, right
+&nbsp;
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>northeast</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">north</span><span style="">&#40;</span><span style="">self</span>.<span style="">east</span><span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>northwest</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">north</span><span style="">&#40;</span><span style="">self</span>.<span style="">west</span><span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>southeast</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">south</span><span style="">&#40;</span><span style="">self</span>.<span style="">east</span><span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>southwest</span><span style="">&#40;</span><span style="">self</span>, i<span style="">&#41;</span> : <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">south</span><span style="">&#40;</span><span style="">self</span>.<span style="">west</span><span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>
+&nbsp;
+&nbsp;
+<span style="color: grey;"># Grid size.</span>
+rows = <span style="">5</span>
+cols = <span style="">5</span>
+&nbsp;
+candidate = <span style="color: #530035;">lambda</span>: GridCandidate<span style="">&#40;</span>rows, cols<span style="">&#41;</span>
+recombine = <span style="color: #530035;">lambda</span> a, b, crossover: a.<span style="">recombine</span><span style="">&#40;</span>b, crossover<span style="">&#41;</span>
+fitness = <span style="color: #530035;">lambda</span> candidate: candidate.<span style="">fitness</span>
+&nbsp;
+<span style="color: grey;"># The initial random population:</span>
+p = population<span style="">&#40;</span><span style="color: #530035;">size</span>=<span style="">500</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">800</span>, <span style="">2000</span><span style="">&#41;</span>
+<span style="color: grey;"># Process n generations:</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">40</span><span style="">&#41;</span>:
+    p = reproduce<span style="">&#40;</span>p, top=<span style="">0.6</span>, determinism=<span style="">0.65</span><span style="">&#41;</span>
+    
+    <span style="color: grey;">#translate(0, 35)</span>
+    <span style="color: grey;">#push()</span>
+    <span style="color: grey;">#for candidate in p[:15]:</span>
+    <span style="color: grey;">#    translate(35, 0)</span>
+    <span style="color: grey;">#    candidate.draw(0, 0, scale=5)</span>
+    <span style="color: grey;">#pop()</span>
+    
+    <span style="color: #530035;">if</span> converged<span style="">&#40;</span>p<span style="">&#41;</span>:
+        <span style="color: #530035;">print</span> <span style="color: #ff0080;">&quot;converged at generation &quot;</span>, <span style="">str</span><span style="">&#40;</span>i<span style="">&#41;</span>
+        <span style="color: #530035;">break</span>
+&nbsp;
+<span style="color: grey;"># A list of scores for each member in the final population:</span>
+<span style="color: grey;">#print [score for score, x in sort_by_fitness(p)]</span>
+&nbsp;
+<span style="color: grey;"># The best solution in the final population:</span>
+p<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>.<span style="">draw</span><span style="">&#40;</span><span style="">20</span>, <span style="">20</span>, <span style="color: #530035;">scale</span>=<span style="">30</span><span style="">&#41;</span></pre></pre></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Created by Jonatan Hilden and Tom De Smedt<br /><span class="small_text">Jonatan will be doing his thesis at the Experimental Media Group and is working on a library for recombinable vector artwork. </span></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Feb 02 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

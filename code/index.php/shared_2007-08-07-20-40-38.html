@@ -1,126 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Photobot</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2007-08-07-20-40-38, pixels" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2007-08-07-20-40-38" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Photobot</h1>
-<strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Aug 07, 2007</em></strong>
-<br /><br /><img src="../data/shared/2007-08-07-20-40-38_circleLeaves.jpg" /><br /><br />
-<p>Hi i'm looking for some help. Basically i've attached an image that illustrates the type of effect i'm trying to achieve (please see attached - although this contains more than one type of leaf). <br><br>If I could arrange duplicates of an image inside a path, it would have lots of scope and look great inside a type path.<br>I was wondering if anyone out there has tried combining the Photobot library with the BitBop script.<br><br>I'm afraid bringing these two things together surpasses my programming knowledge at this moment in time.<br><br>Any advice would be greatfully received.<br><br><br>Viki </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Aug 08, 2007</em></strong><p>Still struggling to get the last part of this script to work:<br><br><br><br><br>size(500, 500) <br><br>coreimage = ximport("coreimage")<br>canvas = coreimage.canvas(200, 200)<br>l = canvas.layer("lily.tif")<br>canvas.draw(0,0)<br><br><br>ovsx = 80<br>ovsy = 80<br>ox = 0<br>oy = 1<br>dotsize = 5<br>dx = WIDTH / float(ovsx) +2<br>dy = HEIGHT / float(ovsy) +2<br><br># main SVG path<br>svg = ximport("svg")<br>data = open("myshape.svg").read()<br>paths = svg.parse(data)<br>myshape = paths[0]<br><br># Smaller SVG paths to the populate the main shape<br>def randomsvg():<br>    f = files("paths/*.svg")<br>    data = open(choice(f)).read()<br>    paths = svg.parse(data)<br>    return paths[0]<br><br>for x, y in grid(ovsx, ovsy): <br>    sz = random(dotsize)<br>    px = x*dx-sz <br>    py = y*dy-sz <br>    if myshape.contains(px, py):  <br>        smallshapes = randomsvg()<br>        translate((px+random(-ox, ox), py+random(-oy, oy))<br>        fill(random(), 0, -5, random())<br>        drawpath(smallshapes) </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 13, 2007</em></strong><p>If you just want to display an image in NodeBox (not manipulate it), the <a href="http://nodebox.net/code/index.php/Reference_|_image()">image</a> command is probably what you are looking for. You can use it to display JPG, GIF, PNG, ... Then instead of using drawpath (for vectors) at the bottom of the script you would do:<pre class="python"><span style="color: #530035;">image</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;leaf.png&quot;</span>, <span style="">0</span>, <span style="">0</span><span style="">&#41;</span></pre></pre>Did that help? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Aug 13, 2007</em></strong><p>thanks </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Viki</span> on <em class="date">Sep 06, 2007</em></strong><p>Thanks a million for the help. This works great for what I had in mind. I also edited your script to use a tif image instead of the cog image:<br><br><br>size(500, 500) <br> <br>svg = ximport("svg")<br><br>data = open("path.svg").read()<br>flower = svg.parse(data)<br>flower = flower[0]<br><br>coreimage = ximport("coreimage")<br> <br>scale(2.5) # flower size<br>translate(10, 10) # flower position<br> <br> <br>spacing = 8 # more or less cogs onscreen<br>for x, y in grid(WIDTH/spacing , HEIGHT/spacing, spacing, spacing): <br>    if flower.contains(x, y):<br>        fill(2, random()/4, random(), 1) # each cog's color<br>        push()<br>        translate(x, y)<br>        scale(random(-0.16)) # makes cogs bigger or smaller<br>        image("lily.tif", 0, 0)<br>        pop()<br><br><br>thanks again! </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 11 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

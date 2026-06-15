@@ -1,204 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | How to perfectly fit text in a box</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-07-26-04-40-47, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-07-26-04-40-47" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">How to perfectly fit text in a box</h1>
-<strong>Posted by <span class="comment_by">Giorgio O.</span> on <em class="date">Jul 26, 2008</em></strong>
-<p>hello everybody,<br><br>I'd love some help in trying to find a way to perfectly fit some text in a rectangular box, in order to get as little margin as possible.<br>'Perfectly' here means to get the real vertical size of the text box.<br><br>If I have a string, I can get the estimate of the coordinates of the  text bounds in a couple of ways, but neither is really satisfying.<br>I've tried so far:<br>a) using textheight & textwidth <br>b) using the textpath.bounds<br>they do return different values.<br><br>my test code:<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">600</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Courier&quot;</span><span style="">&#41;</span>
-<span style="color: #530035;">fontsize</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>
-&nbsp;
-myX = <span style="">100</span>
-myY = <span style="">-100</span>
-myTest = <span style="">80</span> <span style="color: grey;"># box width</span>
-myString = <span style="color: #ff0080;">&quot;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&quot;</span>
-<span style="color: grey;">#myString = &quot;adipisci velit...&quot;</span>
-&nbsp;
-tp = <span style="color: #530035;">textpath</span><span style="">&#40;</span>myString, x=myX, y=myY, width= myTest<span style="">&#41;</span>
-<span style="">&#40;</span>tp_x, tp_y<span style="">&#41;</span>, <span style="">&#40;</span>tp_w, tp_h<span style="">&#41;</span> = tp.<span style="">bounds</span>
-<span style="color: grey;">#print tp_x, tp_y, tp_w, tp_h</span>
-&nbsp;
-<span style="color: grey;"># gray rect from textpath.bounds coordinates</span>
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span>, <span style="">0.4</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>tp_x, -tp_y, tp_w, tp_h<span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># red rect from textmetrics coordinates</span>
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span>, <span style="">0</span>, <span style="">0</span>, <span style="">0.4</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>tp_x, -tp_y, <span style="color: #530035;">textwidth</span><span style="">&#40;</span>myString, width=myTest<span style="">&#41;</span>, <span style="color: #530035;">textheight</span><span style="">&#40;</span>myString, width=myTest<span style="">&#41;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
-<span style="color: grey;">#align(RIGHT)</span>
-<span style="color: #530035;">text</span><span style="">&#40;</span>myString, x=tp_x, y=-tp_y, width=tp_w, height=tp_h<span style="">&#41;</span></pre></pre>as you can see from the output, there's a problem at the end of the text box: one or more lines (depending on font size) are 'lost' drawing the text box.<br><br>ciao<br>G </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Giorgio O.</span> on <em class="date">Jul 26, 2008</em></strong><p>here's a slightly better version of the fit-text-in-a-rect code.<br>still, as you wil see, sometimes the last line of the text flows out of the box.<br>any ideas?<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">600</span><span style="">&#41;</span>
-<span style="color: #530035;">grid</span> = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;grid&quot;</span><span style="">&#41;</span> <span style="color: grey;"># so that we can use the new text.fit_fontsize method</span>
-<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Helvetica&quot;</span><span style="">&#41;</span>
-&nbsp;
-myX = <span style="">50</span>
-myY = <span style="">-50</span>
-&nbsp;
-<span style="color: #530035;">var</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;myW&quot;</span>, <span style="color: #530035;">NUMBER</span>, <span style="">135</span>, <span style="">10</span>, <span style="">600</span><span style="">&#41;</span> <span style="color: grey;"># desired box width</span>
-<span style="color: #530035;">var</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;myH&quot;</span>, <span style="color: #530035;">NUMBER</span>, <span style="">83</span>, <span style="">10</span>, <span style="">600</span><span style="">&#41;</span><span style="color: grey;"># desired box height</span>
-&nbsp;
-&nbsp;
-myString = <span style="color: #ff0080;">&quot;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit last line etc etc...&quot;</span>
-fSize = <span style="color: #530035;">grid</span>.<span style="color: #530035;">text</span>.<span style="">fit_fontsize</span><span style="">&#40;</span>myString, myW, myH<span style="">&#41;</span>
-<span style="color: #530035;">fontsize</span><span style="">&#40;</span>fSize<span style="">&#41;</span>
-&nbsp;
-&nbsp;
-tp = <span style="color: #530035;">textpath</span><span style="">&#40;</span>myString, x=myX, y=myY, width=myW, height=myH<span style="">&#41;</span>
-<span style="">&#40;</span>tpX, tpY<span style="">&#41;</span>, <span style="">&#40;</span>tpW, tpH<span style="">&#41;</span> = tp.<span style="">bounds</span>
-<span style="color: grey;">#print tpX, tpY, tpW, tpH</span>
-&nbsp;
-deltaY = tpY - myY
-&nbsp;
-&nbsp;
-<span style="color: grey;"># gray rect from textpath.bounds coordinates</span>
-<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
-<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span>, <span style="">0.4</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>tpX, -tpY, tpW, tpH<span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># red rect from textmetrics coordinates</span>
-<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">0</span>, <span style="">0</span>, <span style="">0.4</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>myX, -myY-deltaY, <span style="color: #530035;">textwidth</span><span style="">&#40;</span>myString, width=myW<span style="">&#41;</span>, <span style="color: #530035;">textheight</span><span style="">&#40;</span>myString, width=myW<span style="">&#41;</span>-deltaY<span style="">&#41;</span>
-&nbsp;
-&nbsp;
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
-<span style="color: grey;">#align(RIGHT)</span>
-<span style="color: #530035;">text</span><span style="">&#40;</span>myString, x=tpX, y=-tpY-deltaY, width=tpW, height=tpH<span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 01, 2008</em></strong><p>Hi Giorgio,<br><br>Some tough questions :-)<br><br>First of all, as you mention there is a difference between textmetrics() and path.bounds. The bounds is the box that fits exactly around the given path, whereas texmetrics is the hidden paragraph box - which is more complex do to spacing etc.<br><br>Second, the grid.text.fit_fontsize() matches text size to the width of a given box. What you want is vertical fitting as well, which is more difficult. But we can start from fit_fontsize() which is quite a solid algorithm. The most elegant solution I've found so far is to then do additional lineheight() tweaking:<pre class="python"><span style="color: #530035;">grid</span> = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;grid&quot;</span><span style="">&#41;</span>
-&nbsp;
-txt = <span style="color: #ff0080;">&quot;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&quot;</span>
-x = <span style="">40</span>
-y = <span style="">70</span>
-<span style="color: #530035;">var</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;w&quot;</span>, <span style="color: #530035;">NUMBER</span>, <span style="">200</span>, <span style="">50</span>, <span style="">400</span><span style="">&#41;</span>
-<span style="color: #530035;">var</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;h&quot;</span>, <span style="color: #530035;">NUMBER</span>, <span style="">200</span>, <span style="">50</span>, <span style="">400</span><span style="">&#41;</span>
-&nbsp;
-f = <span style="color: #530035;">grid</span>.<span style="color: #530035;">text</span>.<span style="">fit_fontsize</span><span style="">&#40;</span>txt, w<span style="">+10</span>, h<span style="">&#41;</span>
-<span style="color: #530035;">fontsize</span><span style="">&#40;</span>f<span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># Increase line spacing until the last line touches the bottom of the box.</span>
-<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>:
-    <span style="color: #530035;">if</span> <span style="color: #530035;">textheight</span><span style="">&#40;</span>txt, w<span style="">+10</span><span style="">&#41;</span> &lt; h:
-        <span style="color: #530035;">lineheight</span><span style="">&#40;</span><span style="color: #530035;">lineheight</span><span style="">&#40;</span><span style="">&#41;</span><span style="">+0.01</span><span style="">&#41;</span>
-    <span style="color: #530035;">else</span>:
-        <span style="color: #530035;">break</span>
-<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
-<span style="color: #530035;">text</span><span style="">&#40;</span>txt, x, y, width=w<span style="">+10</span><span style="">&#41;</span>
-<span style="color: #530035;">rect</span><span style="">&#40;</span>x, y-<span style="color: #530035;">fontsize</span><span style="">&#40;</span><span style="">&#41;</span>, w, h, <span style="color: #530035;">fill</span>=<span style="color: #530035;">None</span>, <span style="color: #530035;">stroke</span>=<span style="">0</span><span style="">&#41;</span></pre></pre>Last, notice that sometimes I use <i>width+10</i> instead of just <i>width</i> to get the dimensions exactly right. This is workaround for a bug in NodeBox that needs fixing. We've only recently discovered it when writing the Grid library. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Giorgio O.</span> on <em class="date">Aug 04, 2008</em></strong><p>Hello Tom,<br><br>thanks for the answers! I'll posto soon the result of the experiment I'm working on. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 04, 2008</em></strong><p>Hey Giorgio,<br><br>I've added a text.fit_lineheight() to the latest release of the grid library, based on the code above. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Aug 04 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>
