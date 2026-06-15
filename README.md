@@ -14,7 +14,7 @@ We use the following awesome technologies to create the website:
 
 Installing
 ----------
-Install [Node.js][] (version 20 or newer; see `.nvmrc`), then:
+Install [Node.js][] (version 22 or newer; see `.nvmrc`), then:
 
     npm install
 
@@ -37,7 +37,7 @@ configure the project with:
 
 * **Build command:** `npm run build`
 * **Build output directory:** `_site`
-* **Node version:** pinned by `.nvmrc` (20)
+* **Node version:** pinned by `.nvmrc` (22)
 
 Cloudflare Pages rebuilds and publishes on every push to `master`. Extensionless
 URLs (e.g. `/node/documentation/tutorial/getting-started`) are served from the
