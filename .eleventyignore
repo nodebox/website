@@ -2,7 +2,8 @@
 node_modules
 README.md
 documentation/README.md
-# Legacy NodeBox 1 wiki — copied verbatim via passthrough (Phase 2 will clean URLs).
+# NodeBox 1 wiki — migrated to static code/<Name>.html pages, copied via passthrough.
 code
+migrate_code.py
 # Underscore-prefixed reference drafts: Jekyll skips files starting with "_"; Eleventy doesn't.
 node/**/_*.md

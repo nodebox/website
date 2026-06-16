@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<title>NodeBox | Pixie</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Pixie" />
+<link rel="canonical" href="https://www.nodebox.net/code/Pixie" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Pixie</h3>
+<h2>Description</h2>  <p>One of the oldest libraries for NodeBox. Pixie is a handwriting that looks different each time, contains mistakes, has wobbly baselines and variable color pressure. The handwriting is based on Tom De Smedt&#39;s handwriting.</p>  <p>The library contains the <a href="http://www.answers.com/opentype">OpenType</a> Pixie font family that must be installed on your system in order for the code to work.</p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/pixie.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/pixie.zip">pixie.zip</a> (120KB)<br /> <i>Last updated for NodeBox 1.9.3.<br /></i><i>Author: Tom De Smedt</i><br /></td></tr></tbody></table>  <h2>Documentation</h2><ul><li><a href="Pixie.html#library" target="_self">How to get the library up and running</a></li></ul><ul><li><a href="Pixie.html#headings" target="_self">Headings</a></li></ul><ul><li><a href="Pixie.html#text" target="_self">Paragraph text</a></li><li><a href="Pixie.html#sprite" target="_self">Doodles</a></li><li><a href="Pixie.html#tree" target="_self">Diagrams</a></li></ul><p>&nbsp;</p><p><img src="/code/data/media/pixie.gif" class="border" /></p><p><i>A combination of Pixie, WordNet and Wikipedia.<br />Generate an infinite number of sketchy notes, schemes, jokes and rantings,<br /> on any given subject.  </i><br /></p><p>&nbsp;</p><hr size="2" width="100%" /><h2><a title="library" name="library"></a>How to get the library up and running</h2><p>Put the <i>pixie</i> library folder in the same folder as your script so NodeBox can find the library. You can also put it in <i>~/Library/Application Support/NodeBox/.</i></p><pre class="python">pixie = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;pixie&quot;</span><span style="">&#41;</span></pre></pre></p>&nbsp;  <hr size="2" width="100%" /><h2><a title="headings" name="headings"></a>Headings</h2><p>The <i>heading()</i> command lets you draw text in a fat font:</p><pre class="python">heading<span style="">&#40;</span><span style="">str</span>, x, y, width, pt=<span style="">30</span>, slant=<span style="">0.0</span><span style="">&#41;</span></pre></pre><p>Draws the<i> </i>string <i>str</i> at position <i>x</i>, <i>y</i> with the given line <i>width</i> and font size <i>pt</i>. The command returns an (x, y) tuple with the position of the heading&#39;s bottom right corner. For example:</p><pre class="python">txt  = <span style="color: #ff0080;">&quot;Fat trendy Pixie headers!&quot;</span>
+pixie.<span style="">heading</span><span style="">&#40;</span>txt, <span style="">100</span>, <span style="">100</span>, <span style="">200</span>, pt=<span style="">15</span><span style="">&#41;</span></pre></pre><p><img src="/code/data/media/pixie-heading.gif" alt="pixie-heading" /></p><p>&nbsp;</p><hr size="2" width="100%" /><h2><a title="text" name="text"></a>Paragraph text<br /></h2><p>The <i>text()</i> command lets you draw blocks of sketchy handwriting:  </p><pre class="python"><span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, x, y, width, pt=<span style="">15</span>, slant=<span style="">0.5</span>, <span style="color: #530035;">line</span>=<span style="color: #530035;">False</span>, serif=<span style="color: #530035;">False</span><span style="">&#41;</span></pre></pre><p>Draws the string <i>str</i> at position <i>x</i>, <i>y</i> with the given line <i>width</i> and font size <i>pt</i>. With the optional <i>line</i> parameter set to <i>True</i> the paragraph will be underlined. When you set <i>serif</i> to <i>True</i> some characters in the text will look kinda serif-ish. The command returns an (x,y) tuple with the position of the text&#39;s bottom right corner. For example:<br /></p><pre class="python"><span style="">str</span> += <span style="color: #ff0080;">&quot;Pixie was originally a part of the Aunt Hillary code package,&quot;</span>
+<span style="">str</span> += <span style="color: #ff0080;">&quot;a handwriting that looks different each time, contains mistakes,&quot;</span>
+<span style="">str</span> += <span style="color: #ff0080;">&quot;has wobbly baselines and variable color pressure.&quot;</span>
+pixie.<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">20</span>, <span style="">20</span>, <span style="">200</span>, pt=<span style="">15</span><span style="">&#41;</span></pre></pre><p><span class="media"><img src="/code/data/media/pixie-paragraph.gif" height="115" width="307" /></span></p><p>&nbsp;</p><p><span class="grey_box">Text height</span><br /></p><p>With the <i>textheight() </i>command you can guess the height of a text paragraph:</p><pre class="python"><span style="color: #530035;">textheight</span><span style="">&#40;</span><span style="">str</span>, width, pt=<span style="">20</span><span style="">&#41;</span></pre></pre><p>Returns the height of a <i>text()</i> paragraph with given <i>str</i>, <i>width</i> and point size <i>pt</i>. Because baselines in a Pixie paragraph wobble randomly, this command gives an idea of the actual height, with an average deviation of 20%.</p><p>&nbsp;</p>  <p><span class="grey_box">Messing it up</span> </p><p>The library has a few commands to make text look more organic. You can change the text color and lineheight, highlight keywords and add random errors and scribbles:<br /></p><pre class="python"><span style="color: #530035;">color</span><span style="">&#40;</span>c=<span style="">0.8</span>, m=<span style="">0.4</span>, y=<span style="">0.0</span>, k=<span style="">0.4</span><span style="">&#41;</span></pre></pre><pre class="python"><span style="color: #530035;">lineheight</span><span style="">&#40;</span>x=<span style="">1.2</span><span style="">&#41;</span></pre></pre><pre class="python">keywords<span style="">&#40;</span><span style="">list</span>=<span style="">&#40;</span><span style="">&#41;</span>, all=<span style="color: #530035;">False</span><span style="">&#41;</span></pre></pre><pre class="python">distraction<span style="">&#40;</span>d=<span style="">0.05</span><span style="">&#41;</span></pre></pre><p>The <i>color() </i>command sets the color (in CMYK) of all handwritten text. </p><p>The <i>lineheight()</i> command sets the spacing between lines of text in <i>heading()</i> or <i>text()</i>.</p><p>The <i>keywords()</i> command sets a list of words to highlight. The <i>text() </i>command uses this list to determine which words should be drawn with a border around them. When <i>all</i> is True, it draws any occurence of a keyword in a border (by default just the first one).</p><p>The <i>distraction()</i> command determines the number of errors and strikethroughs in. Distraction ranges between 0.0 and 1.0 - the higher the value the more words will be scribbled through. Making mistakes is a recursive process: corrections of mistakes might become mistakes themselves, and so on. Setting a high distraction on a long paragraph may take a while to draw. </p><p>&nbsp;</p><table><tbody><tr><td><p><span class="media"><img src="/code/data/media/pixie-spacing.gif" height="127" width="283" /></span> </p> </td><td><p> Increased line spacing: <br /></p><pre class="python">pixie.<span style="color: #530035;">lineheight</span><span style="">&#40;</span><span style="">1.4</span><span style="">&#41;</span>
+pixie.<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">100</span>, <span style="">100</span>, <span style="">200</span><span style="">&#41;</span></pre></pre></td></tr><tr><td> <p><span class="media"><img src="/code/data/media/pixie-keywords.gif" height="108" width="288" /></span> </p></td><td><p>Keyword highlighting: <br /></p><pre class="python">k = <span style="">&#91;</span><span style="color: #ff0080;">&quot;pixie&quot;</span>, <span style="color: #ff0080;">&quot;aunt hillary&quot;</span><span style="">&#93;</span>
+pixie.<span style="">keywords</span><span style="">&#40;</span>k<span style="">&#41;</span>
+pixie.<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">100</span>, <span style="">100</span>, <span style="">200</span><span style="">&#41;</span></pre></pre></td></tr><tr><td> <p><span class="media"><img src="/code/data/media/pixie-distraction.gif" height="140" width="332" /></span> </p></td><td><p>Adding mistakes: <br /></p><pre class="python">k = <span style="">&#91;</span><span style="color: #ff0080;">&quot;pixie&quot;</span>, <span style="color: #ff0080;">&quot;aunt hillary&quot;</span><span style="">&#93;</span>
+pixie.<span style="">keywords</span><span style="">&#40;</span>k<span style="">&#41;</span>
+pixie.<span style="">distraction</span><span style="">&#40;</span><span style="">0.8</span><span style="">&#41;</span>
+pixie.<span style="color: #530035;">text</span><span style="">&#40;</span><span style="">str</span>, <span style="">100</span>, <span style="">100</span>, <span style="">200</span><span style="">&#41;</span></pre></pre></td></tr></tbody></table><p>&nbsp;</p><p><span class="media"></span> </p><hr size="2" width="100%" /><h2><a title="sprite" name="sprite"></a>Doodles</h2><p>Here&#39;s a fun command to add some doodles to your text! <br />The <i>sprite()</i> command draws a little critter with random legs, face and body:</p><pre class="python">sprite<span style="">&#40;</span>x, y, pt=<span style="">20</span><span style="">&#41;</span></pre></pre><pre class="python"><span style="color: #530035;">for</span> x, y <span style="color: #530035;">in</span> <span style="color: #530035;">grid</span><span style="">&#40;</span><span style="">3</span>, <span style="">3</span>, <span style="">60</span>, <span style="">60</span><span style="">&#41;</span>:
+    pixie.<span style="">sprite</span><span style="">&#40;</span><span style="">100</span>+x, <span style="">100</span>+y<span style="">&#41;</span></pre></pre><p><span class="media"><img src="/code/data/media/pixie-sprite.gif" height="223" width="266" /></span>&nbsp;</p><p>&nbsp;</p><hr size="2" width="100%" /><h2><a title="tree" name="tree"></a>Diagrams </h2><p>The Pixie library has powerful graphing algorithms. Wow! Now you&#39;re ready to get professional.<br />With the <i>tree()</i> command you can draw a network of related nodes:</p><pre class="python">tree<span style="">&#40;</span>root, nodes, x, y, width, height, 
+     pt=<span style="">15</span>, <span style="">max</span>=<span style="">10</span>, grow=<span style="color: #530035;">False</span>, border=<span style="color: #530035;">False</span><span style="">&#41;</span></pre></pre><p>The command draws a tree scheme exploding from a central root. The <i>nodes</i> list is expected to contain tuples of relations, for example: <br /><span class="inline_code">[ (&quot;node1&quot;, [&quot;leaf1a&quot;, &quot;leaf1b&quot;]), (&quot;node2&quot;, [&quot;leaf2a&quot;]) ]</span> </p><p>Nodes in the drawn network become smaller and smaller if the <i>grow</i> parameter is <i>True</i>. Two other commands in the library, <i>line()</i> and <i>node()</i>, are called to draw the individual nodes.</p><pre class="python">root = <span style="color: #ff0080;">&quot;PixieBundle&quot;</span>
+n1 = <span style="">&#40;</span><span style="color: #ff0080;">&quot;WordNet&quot;</span>, <span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>
+n2 = <span style="">&#40;</span><span style="color: #ff0080;">&quot;Wikipedia&quot;</span>, <span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>
+n3 = <span style="">&#40;</span><span style="color: #ff0080;">&quot;Pixie&quot;</span>, <span style="">&#40;</span><span style="color: #ff0080;">&quot;paragraph&quot;</span>,<span style="color: #ff0080;">&quot;color&quot;</span>,<span style="color: #ff0080;">&quot;spacing&quot;</span>,<span style="color: #ff0080;">&quot;keywords&quot;</span><span style="">&#41;</span><span style="">&#41;</span>
+nodes = <span style="">&#40;</span>n1,n2,n3<span style="">&#41;</span>
+pixie.<span style="">tree</span><span style="">&#40;</span>root, nodes, <span style="">200</span>, <span style="">200</span>, <span style="">400</span>, <span style="">400</span>, pt=<span style="">15</span><span style="">&#41;</span></pre></pre><p><span class="media"><img src="/code/data/media/pixie-tree.gif" height="203" width="322" /></span></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Feb 15 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

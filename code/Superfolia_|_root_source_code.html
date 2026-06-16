@@ -1,0 +1,211 @@
+<html>
+
+<head>
+<title>NodeBox | Superfolia | root source code</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Superfolia | root source code" />
+<link rel="canonical" href="https://www.nodebox.net/code/Superfolia_|_root_source_code" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Superfolia | root source code</h3>
+<p><img src="/code/data/media/superfolia8.jpg" alt="superfolia8" /> <br /></p><pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sqrt
+<span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, cos, radians
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>radial_gradient</span><span style="">&#40;</span>colors, x, y, radius, steps=<span style="">300</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Radial gradient using the given list of colors.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+&nbsp;
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>_step</span><span style="">&#40;</span>colors, i, n<span style="">&#41;</span>:
+        l = <span style="">len</span><span style="">&#40;</span>colors<span style="">&#41;</span><span style="">-1</span>
+        a = <span style="">int</span><span style="">&#40;</span><span style="">1.0</span>*i/n*l<span style="">&#41;</span>
+        a = <span style="">min</span><span style="">&#40;</span>a<span style="">+0</span>, l<span style="">&#41;</span>
+        b = <span style="">min</span><span style="">&#40;</span>a<span style="">+1</span>, l<span style="">&#41;</span>
+        base = <span style="">1.0</span> * n/l * a
+        d = <span style="">&#40;</span>i-base<span style="">&#41;</span> / <span style="">&#40;</span>n/l<span style="">&#41;</span>
+        r = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">r*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">r*d</span>
+        g = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">g*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">g*d</span>
+        b = colors<span style="">&#91;</span>a<span style="">&#93;</span>.<span style="">b*</span><span style="">&#40;</span><span style="">1</span>-d<span style="">&#41;</span> + colors<span style="">&#91;</span>b<span style="">&#93;</span>.<span style="">b*d</span>
+        <span style="color: #530035;">return</span> <span style="color: #530035;">color</span><span style="">&#40;</span>r, g, b<span style="">&#41;</span>
+&nbsp;
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>steps<span style="">&#41;</span>:
+        <span style="color: #530035;">fill</span><span style="">&#40;</span>_step<span style="">&#40;</span>colors, i, steps<span style="">&#41;</span><span style="">&#41;</span>
+        <span style="color: #530035;">oval</span><span style="">&#40;</span>x+i, y+i, radius-i*<span style="">2</span>, radius-i*<span style="">2</span><span style="">&#41;</span>  
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>root</span><span style="">&#40;</span>x, y, angle=<span style="">0</span>, depth=<span style="">5</span>, alpha=<span style="">1.0</span>, decay=<span style="">0.005</span><span style="">&#41;</span>:
+    
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Recursive root branches to smaller roots.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    
+    w = depth*<span style="">6</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>depth*<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10</span>,<span style="">20</span><span style="">&#41;</span><span style="">&#41;</span>:
+&nbsp;
+        v = <span style="">float</span><span style="">&#40;</span>depth<span style="">&#41;</span>/<span style="">5</span>
+        alpha -= i*decay
+        alpha = <span style="">max</span><span style="">&#40;</span><span style="">0</span>, alpha<span style="">&#41;</span>
+        
+        <span style="color: #530035;">if</span> alpha &gt; <span style="">0</span>:
+            
+            <span style="color: grey;"># Next direction to grow in.,</span>
+            <span style="color: grey;"># e.g. between -60 and 60 degrees of current heading.</span>
+            angle += <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">-60</span>, <span style="">60</span><span style="">&#41;</span>
+            dx = x + cos<span style="">&#40;</span>radians<span style="">&#40;</span>angle<span style="">&#41;</span><span style="">&#41;</span> * w
+            dy = y + sin<span style="">&#40;</span>radians<span style="">&#40;</span>angle<span style="">&#41;</span><span style="">&#41;</span> * w
+            
+            <span style="color: grey;"># Oval dropshadow.</span>
+            <span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>
+            <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="">0</span>, alpha*<span style="">0.25</span><span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>x-w/<span style="">6</span>+depth, y-w/<span style="">6</span>+depth, w/<span style="">3</span>, w/<span style="">3</span><span style="">&#41;</span>
+&nbsp;
+            <span style="color: grey;"># Line segment to next position.</span>
+            <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0.8</span>-v*<span style="">0.25</span>, <span style="">0.8</span>, <span style="">0.8</span>-v, alpha<span style="">&#41;</span>
+            <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">&#40;</span>depth<span style="">+1</span><span style="">&#41;</span>*<span style="">0.5</span><span style="">&#41;</span>            
+            <span style="color: #530035;">line</span><span style="">&#40;</span>x, y, dx, dy<span style="">&#41;</span>
+            
+            <span style="color: grey;"># Colored oval.</span>
+            <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">&#40;</span>depth<span style="">+1</span><span style="">&#41;</span>*<span style="">0.25</span><span style="">&#41;</span>
+            <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.8</span>-v*<span style="">0.25</span>, <span style="">0.8</span>, <span style="">0.8</span>-v, alpha*<span style="">0.5</span><span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>x-w/<span style="">6</span>, y-w/<span style="">6</span>, w/<span style="">3</span>, w/<span style="">3</span><span style="">&#41;</span>
+            
+            <span style="color: grey;"># Create a branching root.</span>
+            <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &gt; <span style="">0.8</span> <span style="color: #530035;">and</span> depth &gt; <span style="">0</span>:
+                root<span style="">&#40;</span>x, y, angle, depth<span style="">-1</span>, alpha<span style="">&#41;</span>
+            
+            x = dx
+            y = dy
+    
+    <span style="color: grey;"># Continue growing at less alpha and depth.</span>
+    <span style="color: #530035;">if</span> depth &gt; <span style="">0</span>:
+        root<span style="">&#40;</span>x, y, angle, depth<span style="">-1</span>, alpha<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">600</span><span style="">&#41;</span>
+radial_gradient<span style="">&#40;</span>
+    <span style="">&#91;</span><span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.05</span>, <span style="">0.06</span>, <span style="">0.0</span><span style="">&#41;</span>, <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.125</span>, <span style="">0.150</span>, <span style="">0.0</span><span style="">&#41;</span><span style="">&#93;</span>,
+    <span style="">-150</span>, <span style="">-150</span>,
+    radius=<span style="">900</span>
+<span style="">&#41;</span> 
+root<span style="">&#40;</span><span style="">300</span>, <span style="">300</span>, angle=<span style="">-90</span>, depth=<span style="">6</span><span style="">&#41;</span></pre></pre></p>&nbsp; <hr /><p>The code below generates the flowers.<br />You&#39;ll need the <a href="/code/Supershape" target="_self">Supershape</a> library to run it. </p><pre class="python">supershape = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;supershape&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>flower</span><span style="">&#40;</span>x, y, r<span style="">&#41;</span>:
+&nbsp;
+    em = <span style="">10</span>
+    n1 = <span style="">1.35</span>
+    n2 = <span style="">-0.8</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">-0.2</span><span style="">&#41;</span>
+    n3 = <span style="">0.4</span>
+    points = <span style="">400</span>
+    
+    w = h = r
+    p = supershape.<span style="">path</span><span style="">&#40;</span>x<span style="">+20</span>, y<span style="">+20</span>, w, h, em, n1, n2, n3, points<span style="">&#41;</span>
+    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span>,<span style="">0</span>,<span style="">0</span>, <span style="">0.5</span><span style="">&#41;</span>
+    <span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>
+    <span style="color: #530035;">drawpath</span><span style="">&#40;</span>p<span style="">&#41;</span>
+    
+    n = <span style="">20</span>
+    w = h = r + n
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>n<span style="">&#41;</span>:
+        p = supershape.<span style="">path</span><span style="">&#40;</span>x, y, w, h, em, n1, n2, n3, points<span style="">&#41;</span>
+        w -= <span style="">4</span>
+        h -= <span style="">4</span>
+        d = <span style="">float</span><span style="">&#40;</span>i<span style="">&#41;</span>/n
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span>, d, d<span style="">+0.25</span>, <span style="">0.1</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>,<span style="">0</span>,<span style="">0.2</span><span style="">&#41;</span>
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.25</span><span style="">&#41;</span>
+        <span style="color: #530035;">drawpath</span><span style="">&#40;</span>p<span style="">&#41;</span>
+        
+<span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+<span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+x, y = <span style="">259</span>, <span style="">434</span>
+&nbsp;
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">20</span><span style="">&#41;</span>:
+    <span style="color: #530035;">rotate</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">360</span><span style="">&#41;</span><span style="">&#41;</span>
+    flower<span style="">&#40;</span><span style="">200</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">200</span><span style="">&#41;</span>, <span style="">200</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">200</span><span style="">&#41;</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10</span>,<span style="">100</span>-i*<span style="">4</span><span style="">&#41;</span><span style="">&#41;</span></pre></pre>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Nov 20 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

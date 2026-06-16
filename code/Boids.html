@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<title>NodeBox | Boids</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Boids" />
+<link rel="canonical" href="https://www.nodebox.net/code/Boids" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Boids</h3>
+<h2>Description</h2>  <p>The Boids library provides features to implement coordinated animal motion such as bird flocks and fish schools. The code is based on <a href="http://www.red3d.com/cwr/boids/">Craig W. Reynolds flocking model</a> and <a href="http://www.vergenet.net/~conrad/boids/pseudocode.html">Conrad Parker's pseudocode</a>.</p>  <p>Essentially, a boid, a single element in the flock, has three simple steering behaviours:</p>  <ul> <li><b>Separation:</b> steer to avoid crowding local flockmates</li> <li><b>Alignment:</b> steer towards the average heading of local flockmates</li> <li><b>Cohesion:</b> steer to move towards the average position of local flockmates</li> </ul>  <p>The beauty of it is that the flock doesn't have a predefined flight path, or any math describing its motion; a flock is totally and naturally self-organising.</p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/boids.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/boids.zip" target="_self">boids.zip</a> (5KB)<br /> <i>Last updated for NodeBox 1.9.2<br /></i><i>Licensed under GPL<br /></i><i>Author: Tom De Smedt</i><br /></td></tr></tbody></table>  <h2>Documentation</h2><ul><li><a href="SVG.html#library" target="_self">How to get the library up and running</a></li><li><a href="Boids.html#flock" target="_self">Creating a flock<br /></a></li><li><a href="Boids.html#boid" target="_self">The boids in a flock </a></li></ul><p> </p><p><a href="javascript:pop('../data/media/boids.mov','mecca','width=300,height=316')"><img src="/code/data/media/boids.gif" class="border" /></a><br /> <a href="javascript:pop('../data/media/boids.mov','mecca','width=300,height=316')">Play movie</a> </p><p> </p><hr /><h2><a name="library" title="library"></a>How to get the library up and running</h2><p>Put the <i>boids</i> library folder in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/. </p><pre class="python">boids = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;boids&quot;</span><span style="">&#41;</span></pre></pre></p>         <hr /><h2><a name="flock" title="flock"></a>Creating a flock </h2><p>The <i>flock()</i> command returns a new flock consisting of <i>n</i> boids, that are caged in area starting at coordinates <i>x</i> and <i>y</i> and having a width <i>w</i> and height <i>h</i>. </p><pre class="python">flock<span style="">&#40;</span>n, x, y, w, h<span style="">&#41;</span></pre></pre><p>The returned flock object has a number of properties:</p><ul><li><i>flock.scattered</i>:will be <i>True</i> when the flock is scattered in confusion.<br /></li><li><i>flock.has_goal</i>: will be <i>True</i> if the flock is thronging around a certain point of interest.<br /></li><li><i>flock.flee</i>: will be <i>True</i> if the flock has a goal, but is actually running away from it.</li></ul><p><br />The returned flock object also has a number of methods. The primary method is <i>flock.update()</i>, which you usually call at each frame in an animation: </p><pre class="python">flock.<span style="">update</span><span style="">&#40;</span>shuffled=<span style="color: #530035;">True</span>, 
+             separation=<span style="">10</span>, alignment=<span style="">5</span>, cohension=<span style="">100</span>, 
+             goal=<span style="">20</span>, limit=<span style="">30</span><span style="">&#41;</span></pre></pre><p>Each time <i>flock.update()</i> is called, the boids move another step in their flight pattern. There are six optional parameters. By default the flock is <i>shuffled</i> to ensure fluid movement of all individual boids. You can play around with the other parameters to get different flocking behavior. </p><pre class="python">flock.<span style="">scatter</span><span style="">&#40;</span>chance=<span style="">0.005</span>, frames=<span style="">50</span><span style="">&#41;</span></pre></pre><pre class="python">flock.<span style="">perch</span><span style="">&#40;</span>ground=<span style="color: #530035;">None</span>, chance=<span style="">1.0</span>, frames=<span style="color: #530035;">lambda</span>:<span style="">25</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">50</span><span style="">&#41;</span><span style="">&#41;</span></pre></pre><pre class="python">flock.<span style="">goal</span><span style="">&#40;</span>x, y, z, flee=<span style="color: #530035;">False</span><span style="">&#41;</span></pre></pre><pre class="python">flock.<span style="">nogoal</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre><pre class="python">flock.<span style="">copy</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre><p>The <i>flock.scatter()</i> method undoes the boids's cohesion and alignment. The flock has a <i>chance</i> between 0.0 and 1.0 each of scattering during each update. Once scattered, the confusion lasts the given number of <i>frames</i>.</p>  <p>The <i>flock.perch()</i> method controls the boids's resting behavior. Boids whose y-position becomes larger than <i>ground</i> have a <i>chance</i> between 0.0 and 1.0 of resting. Usually, <i>chance</i> is 1.0: when you hit the ground you can't continue flying, a chance less than 1.0 would indicate water. A boid will rest for the given number of <i>frames</i>.</p><p>The <i>flock.goal()</i> method defines a point the flock finds interesting and has a tendency to move towards, and crowd around. The <i>flock.nogoal()</i> method removes the current goal.</p><p> </p><hr /><h2><a name="boid" title="boid"></a>The boids in a flock </h2><p>A flock object returned from the <i>flock()</i> command is a list of individual boids. You can easily loop through it:</p><pre class="python">flock = boids.<span style="">flock</span><span style="">&#40;</span><span style="">10</span>, <span style="">0</span>, <span style="">0</span>, <span style="color: #530035;">WIDTH</span>, <span style="color: #530035;">HEIGHT</span><span style="">&#41;</span> 
+<span style="color: #530035;">for</span> boid <span style="color: #530035;">in</span> flock:
+    <span style="color: #530035;">print</span> boid.<span style="">x</span>, boid.<span style="">y</span></pre></pre><p>Each boid object has a number of useful properties:</p><ul><li><i>boid.x</i>: the horizontal position of the boid.<br /></li><li><i>boid.y</i>: the vertical position of the boid.<br /></li><li><i>boid.z</i>: the depth of the boid.<br /></li><li><i>boid.angle</i>: the boid's current heading.<br /></li><li><i>boid.is_perching</i>: will be <i>True</i> when the boid is resting on the ground. </li></ul>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Mar 02 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

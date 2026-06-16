@@ -1,6 +1,9 @@
 # Build directories
 _site/
 
+# Playwright MCP screenshots / snapshots
+.playwright-mcp/
+
 # Node
 node_modules/
 
@@ -16,3 +19,6 @@ Thumbs.db
 
 # Compiled files
 *.pyc
+
+# S3 upload staging (heavy /code/ example downloads — not committed)
+_s3-upload/

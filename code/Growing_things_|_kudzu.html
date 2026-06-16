@@ -1,0 +1,230 @@
+<html>
+
+<head>
+<title>NodeBox | Growing things | kudzu</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Growing things | kudzu" />
+<link rel="canonical" href="https://www.nodebox.net/code/Growing_things_|_kudzu" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Growing things | kudzu</h3>
+<p><br /><img src="/code/data/media/growing_things_kudzu2.jpg" alt="growing_things_kudzu2" /></p>
+<pre class="python"><span style="color: grey;">############################################################################</span>
+ 
+<span style="color: grey;"># Copyright (c) 2007 Tom De Smedt.</span>
+ 
+__author__    = <span style="color: #ff0080;">&quot;Tom De Smedt&quot;</span>
+__version__   = <span style="color: #ff0080;">&quot;1.9.1&quot;</span>
+__copyright__ = <span style="color: #ff0080;">&quot;Copyright (c) 2007 Tom De Smedt&quot;</span>
+__license__   = <span style="color: #ff0080;">&quot;GPL&quot;</span>
+&nbsp;
+<span style="color: grey;">#############################################################################</span>
+&nbsp;
+colors = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;colors&quot;</span><span style="">&#41;</span>
+supershape = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;supershape&quot;</span><span style="">&#41;</span>
+cornu = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;cornu&quot;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># The geo library bundles the commands discussed in:</span>
+<span style="color: grey;"># http://nodebox.net/code/index.php/Math</span>
+<span style="color: #530035;">from</span> nodebox <span style="color: #530035;">import</span> geo
+&nbsp;
+<span style="color: grey;">#############################################################################</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>petal</span><span style="">&#40;</span>clr, x=<span style="">0</span>, y=<span style="">0</span>, width=<span style="">30</span>, angle=<span style="">90</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; A supershape teardrop rotated under given angle a.
+    Its rotation point is at the bottom center of the shape.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">push</span><span style="">&#40;</span><span style="">&#41;</span>
+    <span style="color: #530035;">translate</span><span style="">&#40;</span>x-width/<span style="">2</span>, y<span style="">&#41;</span>
+    <span style="color: #530035;">rotate</span><span style="">&#40;</span>angle<span style="">&#41;</span>
+    <span style="color: #530035;">translate</span><span style="">&#40;</span>width*<span style="">0.5</span>, <span style="">0</span><span style="">&#41;</span>
+    thickness = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.2</span>, <span style="">0.3</span><span style="">&#41;</span>
+    path = supershape.<span style="">path</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, width, width, <span style="">2</span>, thickness, <span style="">-0</span>, <span style="">1</span><span style="">&#41;</span>
+    <span style="color: grey;"># Use the colors library to fill it with a gradient of clr.</span>
+    clr1 = clr.<span style="">lighten</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.4</span><span style="">&#41;</span><span style="">&#41;</span>
+    clr2 = clr1.<span style="">darken</span><span style="">&#40;</span><span style="">0.8</span><span style="">&#41;</span>
+    colors.<span style="">gradientfill</span><span style="">&#40;</span>
+        path, 
+        clr2, 
+        clr1, 
+        <span style="">type</span>=<span style="color: #ff0080;">&quot;linear&quot;</span>, 
+        angle=<span style="">90</span>
+    <span style="">&#41;</span>
+    <span style="color: #530035;">pop</span><span style="">&#40;</span><span style="">&#41;</span>
+    
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>flower</span><span style="">&#40;</span>clr, x=<span style="">0</span>, y=<span style="">0</span>, width=<span style="">30</span>, angle=<span style="">90</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Collection of four petals.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">4</span><span style="">&#41;</span>:
+        petal<span style="">&#40;</span>clr, x, y, width, angle<span style="">-45</span>+i*<span style="">30</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;">#############################################################################</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>offscreen</span><span style="">&#40;</span>x, y, m=<span style="">300</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Returns True if (x, y) falls outside the visible canvas.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">if</span> x &lt; -m <span style="color: #530035;">or</span> x &gt; <span style="color: #530035;">WIDTH</span>+m <span style="color: #530035;">or</span> y &lt; -m <span style="color: #530035;">or</span> y &gt; <span style="color: #530035;">HEIGHT</span>+m:
+        <span style="color: #530035;">return</span> <span style="color: #530035;">True</span>
+    <span style="color: #530035;">else</span>:
+        <span style="color: #530035;">return</span> <span style="color: #530035;">False</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>vine</span><span style="">&#40;</span>clr<span style="">&#41;</span>:
+&nbsp;
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Draws flowers along an elegant Cornu curve.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+&nbsp;
+    <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+    <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">1</span>, <span style="">1</span>, <span style="">0.5</span><span style="">&#41;</span>
+    <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.4</span><span style="">&#41;</span>
+    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+    
+    <span style="color: grey;"># A smooth Cornu path starting bottom center,</span>
+    <span style="color: grey;"># and ending up somewhere in the center of the canvas.</span>
+    path = cornu.<span style="">path</span><span style="">&#40;</span><span style="">&#91;</span>
+        <span style="">&#40;</span><span style="">0.5</span>, <span style="">1.1</span><span style="">&#41;</span>, 
+        <span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.7</span><span style="">&#41;</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.7</span><span style="">&#41;</span><span style="">&#41;</span>,
+        <span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.7</span><span style="">&#41;</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.7</span><span style="">&#41;</span><span style="">&#41;</span>,
+        <span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.4</span>, <span style="">0.6</span><span style="">&#41;</span>, <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.4</span>, <span style="">0.6</span><span style="">&#41;</span><span style="">&#41;</span>
+    <span style="">&#93;</span><span style="">&#41;</span>
+    <span style="color: grey;"># If you have an older version of the Cornu library,</span>
+    <span style="color: grey;"># you'll need the following two lines to convert</span>
+    <span style="color: grey;"># the flat path to Bézier-Curves:</span>
+    <span style="color: grey;">#path = [(pt.x, pt.y) for pt in path.points(20)]</span>
+    <span style="color: grey;">#path = findpath(path)</span>
+    <span style="color: #530035;">drawpath</span><span style="">&#40;</span>path<span style="">&#41;</span>
+    
+    <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">&#41;</span>*<span style="">0.5</span><span style="">&#41;</span>
+    <span style="color: grey;"># Calculate a number of points on the path depending on its length.</span>
+    n = path.<span style="">length</span> / <span style="">25</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">int</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:
+        t = <span style="">1</span> - <span style="">float</span><span style="">&#40;</span>i<span style="">&#41;</span> / n
+        pt = path.<span style="">point</span><span style="">&#40;</span>t<span style="">&#41;</span>
+&nbsp;
+        <span style="color: grey;"># Cornu curves can become very big so we need to check</span>
+        <span style="color: grey;"># if a point is visible before drawing flowers on it.</span>
+        <span style="color: grey;"># Otherwise this script will take forever to render.</span>
+        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> offscreen<span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>:
+            <span style="color: grey;"># At each point we place a flower.</span>
+            <span style="color: grey;"># The further down the path, </span>
+            <span style="color: grey;"># the more desaturated and transparent flowers get.</span>
+            c = clr.<span style="">desaturate</span><span style="">&#40;</span>t * <span style="">0.5</span><span style="">&#41;</span>
+            c.<span style="">alpha</span> += <span style="">&#40;</span><span style="">1</span>-t<span style="">&#41;</span>*<span style="">0.1</span>
+            <span style="color: grey;"># The further down the path, the smaller flowers get.</span>
+            w = <span style="">&#40;</span><span style="">1</span>-t<span style="">&#41;</span> * <span style="">80</span>
+            <span style="color: grey;"># Shadows gradually diverge from the stem,</span>
+            <span style="color: grey;"># adding to the sense of depth.</span>
+            colors.<span style="">shadow</span><span style="">&#40;</span>alpha=<span style="">1.5</span>*<span style="">&#40;</span><span style="">1</span>-t<span style="">&#41;</span>, dx=<span style="">80</span>-w<span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>pt.<span style="">x</span>-w/<span style="">4</span>, pt.<span style="">y</span>-w/<span style="">4</span>, w/<span style="">2</span>, w/<span style="">2</span><span style="">&#41;</span>
+            <span style="color: grey;"># Draw a flower, rotating along the curve of the path.</span>
+            a = <span style="">360</span> - geo.<span style="">angle</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span>, pt.<span style="">ctrl2</span>.<span style="">x</span>, pt.<span style="">ctrl2</span>.<span style="">y</span><span style="">&#41;</span>
+            flower<span style="">&#40;</span>c, pt.<span style="">x</span>, pt.<span style="">y</span>, w, a<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>kudzu</span><span style="">&#40;</span>clr, vines=<span style="">10</span><span style="">&#41;</span>:
+    <span style="color: #ff0080;">&quot;&quot;</span><span style="color: #ff0080;">&quot; Many vines make up a plant.
+    &quot;</span><span style="color: #ff0080;">&quot;&quot;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>vines<span style="">&#41;</span>:
+        vine<span style="">&#40;</span>clr<span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;">#############################################################################</span>
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">800</span>, <span style="">800</span><span style="">&#41;</span>
+clr = colors.<span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.5</span>, <span style="">1.0</span>, <span style="">0.2</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: grey;"># Gradient background.</span>
+colors.<span style="">gradientfill</span><span style="">&#40;</span>
+    <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="color: #530035;">WIDTH</span>, <span style="color: #530035;">HEIGHT</span>, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>,
+    clr.<span style="">darken</span><span style="">&#40;</span><span style="">0.6</span><span style="">&#41;</span>.<span style="">desaturate</span><span style="">&#40;</span><span style="">0.0</span><span style="">&#41;</span>,
+    <span style="color: #530035;">color</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>,
+    spread=<span style="">0.75</span><span style="">&#41;</span>
+&nbsp;
+kudzu<span style="">&#40;</span>clr, <span style="">10</span><span style="">&#41;</span></pre></pre>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Apr 10 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

@@ -1,156 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Library location</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2010-01-06-22-16-50, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2010-01-06-22-16-50" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Library location</h1>
-<strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 06, 2010</em></strong>
-<p>Hi guys,
-<br>
-<br>I noticed that the path recommended here...
-<br><a href="http://beta.nodebox.net/wiki/NodeBox_for_Programmers">http://beta.nodebox.net/wiki/NodeBox_for_Programmers</a>
-<br>
-<br>  "Save the node as ndbx file in user/Library/NodeBox/Scripts       in a folder with a corresponding name."
-<br>
-<br>.... was no longer working since the latest NB2 version.
-<br>
-<br>On the previous version of NB2, I saved the nodes in here, and it works:
-<br>\user\Local Settings\Application Data\NodeBox\Scripts
-<br>
-<br>Is the path correct?
-<br>
-<br>Thanks. </b></i></a></ul></li></pre></p><br /></div>
- <hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 08, 2010</em></strong><p>Jimmy, are you working on Windows? NB1 was a Mac-only project, so most of the documentation is probably biased towards Mac. "user/Library/NodeBox/Scripts" is a Mac OS X path. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 09, 2010</em></strong><p>Hi Josh,
-<br>
-<br>Yes I am working on Windows, NB2.
-<br>
-<br>I remembered following the tutorial exactly and then I copied the script into:
-<br>C:\Documents and Settings\User\Local Settings\Application Data\NodeBox\Scripts
-<br>
-<br>It was working and the build-it-yourself node appears on NB2 UI.
-<br>
-<br>But, the recent version seems to look at other location for this. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">fdb</span> on <em class="date">Jan 17, 2010</em></strong><p>The one you mentioned (C:\Documents and Settings\User\Local Settings\Application Data\NodeBox\Scripts ) should be the correct directory. If the directory's there, it should take it. 
-<br>
-<br>We're currently doing a workshop and we're posting pre-release version there. Could you try it with the latest one from there?
-<br>
-<br><a href="http://workshops.nodebox.net/2010/nodebox-2-builds">http://workshops.nodebox.net/2010/nodebox-2-builds/</a>
-<br>
-<br>All the best,
-<br>
-<br>Frederik </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 18, 2010</em></strong><p>Hi Frederik,<br><br>I tried this build you recommended, but unfortunately it still did not work. Very strange, I am sure it works with previous, previous build. The folder is there.<br><br>I wonder if anyone else experiencing the same issue? My suspicion is my username which is:<br>C:\Documents and Settings\Jimmy Gunawan\Application Data\NodeBox\Scripts<br><br>It has space, but I don't think this matters though, because it just works before.<br><br>Cheers guys, good luck with the workshop. Wish I were there. Merci beaucoup~ </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 18, 2010</em></strong><p>And just to add, I have also tried:<br>1. Uninstall and reinstall NodeBox, but still the node is not there.<br>2. Installing NodeBox under different username, but that directory path is not there.<br><br>So far I have only tried under the same PC though. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 18, 2010</em></strong><p>I tried uninstall and reinstall Nodebox again, using my admin account,  and my correction, the Scripts folder is in fact created automatically.<br><br>So, I pasted the files, such as  Chrysant.ndbx, but nope, same, non of this custom made node is there.<br><br>Really odd. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 18, 2010</em></strong><p>I switched to my girlfriend's laptop and installed this latest build of NodeBox. On her computer, user is exactly user and NodeBox created that folder path. I put the custom node files in there.<br><br>And... still does not work. There might be something missing, it can't be just me :| </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Jan 24, 2010</em></strong><p>Alright, for now I gave up and will use the new "copy and paste" function to get some useful nodes into the project I am doing. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">TSarkki</span> on <em class="date">Nov 03, 2010</em></strong><p>Any updates for this? I'm working with 2.0.966 on Windows and can't figure out where to place libraries. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Nov 03 2010 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

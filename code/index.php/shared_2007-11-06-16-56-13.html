@@ -1,122 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | NodeBox 1.9.2 release</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2007-11-06-16-56-13, news" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2007-11-06-16-56-13" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">NodeBox 1.9.2 release</h1> <strong>Posted by <span class="comment_by">fdb</span> on <em class="date">Nov 06, 2007</em></strong> <p>Hi everyone, <br /> <br />We have a release of NodeBox 1.9.2 ready for testing. Since this is a big change, we wanted to give our loyal forum crowd a first stab at it.  <br /> <br />So what&#39;s new? <br /> <br /><strong>Python 2.5.1</strong>: This release includes a full distribution of Python 2.5.1, to make it compatible with both Leopard and Tiger. This version should also include libraries from your PYTHONPATH, so if you have anything there, give it a whirl.  <br /> <br /><strong>New export dialog</strong>: The export dialog was causing problems with Python 2.5, so we replaced it with a custom one. <br /> <br />And here&#39;s the link: <br /> <br /><a href="http://nodebox.net/download/NodeBox-1.9.2.dmg " target="_self">http://nodebox.net/download/NodeBox-1.9.2.dmg </a><br /> <br />Kind regards, <br /> <br />Frederik </p><br /></div>  <hr /><div class='comment'><strong>Posted by <span class="comment_by">Edwin</span> on <em class="date">Nov 06, 2007</em></strong><p>On my 12" PowerBook G4 all examples work on 10.5.<br>I'll test some more.<br><br>Thanks! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Edwin</span> on <em class="date">Nov 08, 2007</em></strong><p>On my Intel MacBook all works fine as well. <br>Got the following message running a sqlite demo;<br>/Users/me.../Library/Application Support/NodeBox/database/pysqlite2/dbapi2.py:27: RuntimeWarning: Python C API version mismatch for module pysqlite2._sqlite: This Python has API version 1013, module pysqlite2._sqlite has version 1012.<br>I guess that means just that the libraries need an update as well. <br>The demo worked fine.<br><br>Thanks! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">fdb</span> on <em class="date">Nov 08, 2007</em></strong><p>Thanks for testing Edwin. We'll post the release on the site.<br><br>Kind regards,<br><br>Frederik </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Paul McCann</span> on <em class="date">Nov 09, 2007</em></strong><p>I'm having a bit of a horror run with 1.9.2 under Mac OS X 10.4.10 (PPC). Previous versions have all worked beautifully, but this one locks up hard (spinning disk, and 80-90% CPU usage) as soon as I try to do anything: typing the word "size" in the script portion of the window is enough to cause the colour wheel, and then it's all over. <br><br>Anything I can do to help track down the problem? Logs seemed to be untouched during this process, unfortunately. (Oh yeah, I did try reinstalling it a few times without any change in behaviour.)<br><br>Thanks,<br>Paul </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">fdb</span> on <em class="date">Nov 12, 2007</em></strong><p>Weird, I have tried running NodeBox 1.9.2 under the same configuration myself, without problems. I'll try again. I tested against a PowerBook G4, what's your machine?<br><br>Kind regards,<br><br>Frederik </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Sarah</span> on <em class="date">Nov 16, 2007</em></strong><p>I got the same error as Edwin running MySQLdb and the newest release: /Users/shatton/Library/Application Support/NodeBox/pyimaging/PIL/Image.py:52: RuntimeWarning: Python C API version mismatch for module _imaging: This Python has API version 1013, module _imaging has version 1012.  So that would be the imaging library that is out of date?  I really want to use the latest release, so what should I do? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Anon</span> on <em class="date">Dec 16, 2007</em></strong><p>I'm running 10.4.10 on a G4 Powerbook and I'm getting bad joojoo when I use core image filters and/or exporting large images (1200x1200). The whole machine locks up and I have to hard reset. Could just be that my machine is underpowered. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Dec 21, 2007</em></strong><p>You need not worry about the runtime warnings. The libraries will continue to run but they just need to be updated to the latest NodeBox version.<br><br>Anon, could you mail me the script that locks up your computer so I can test it? Could be a number of reasons from memory to graphics card. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Apr 11 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

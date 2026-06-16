@@ -1,148 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Random Choice</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-12-13-14-55-06, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-12-13-14-55-06" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Random Choice</h1>
-<strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 13, 2009</em></strong>
-<p>I am thinking to play around with text and string input, I wonder at the current version of NodeBox2, it is possible to do? I tried to input using Copy Stamp, but I believe something is missing.<br><br>Thinking to try to create this  "Joshua Davis" style:<br><a href="http://nodebox.net/code/index.php/Strings">http://nodebox.net/code/index.php/Strings</a><br><br>I try to code the text node  like this below:<br>    words = ["NodeBox", "Ekky-ekky!", "z'Boing!"]<br>    c = choice(words) <br>    t = Text(words, self.x, self.y, self.width, self.height)<br>   ...<br><br>Did not seem to understand choice(). Not sure why this does not work.<br><br>Another thing, I am wondering if there is a way to randomize object/shapes filter out the output? Say, for example, I have SVG shapes A, B, C, and I would like to mix and match, randomize and filter them, so I get either A, B, or C. I think this needs a special node. <br><br>Looking forward for next update ;) Cheers guys. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Lucas</span> on <em class="date">Dec 14, 2009</em></strong><p>Hi Jimmy,<br><br>use:<pre class="python"><span style="color: #530035;">from</span> <span style="color: #530035;">random</span> <span style="color: #530035;">import</span> <span style="color: #530035;">choice</span></pre></pre>That shall do it. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 15, 2009</em></strong><p>Hi Lucas,<br><br>I added that line of code and it works great! <br><br>At the moment, the random gives random choice everytime I press refresh. I think there is another thing I need to know, a code/function like "seed", to keep choice in random a more predictable result. At first, I thought "Wiggle" node is similar to this (sort of), but it works on Vector and not String.<br><br>Thanks again.  I will experiment with <b>choice()</b> for now and read further the documentation. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">lievn</span> on <em class="date">Dec 15, 2009</em></strong><p>you can also import seed<br>f.i. if you take a textpath node and add a seed parameter to it (metadata) you can change the code that it calculate the modulo between the seed and the length of the textstring:<pre class="python"><span style="color: #530035;">from</span> <span style="color: #530035;">random</span> <span style="color: #530035;">import</span> seed,<span style="color: #530035;">choice</span>
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>cook</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-    t = <span style="">len</span><span style="">&#40;</span><span style="">self</span>.<span style="color: #530035;">text</span><span style="">&#41;</span> <span style="color: grey;"># length of text</span>
-    n = <span style="">self</span>.<span style="">seed</span>%t <span style="color: grey;"># modulo </span>
-    tp = <span style="">self</span>.<span style="color: #530035;">text</span><span style="">&#91;</span>n<span style="">&#93;</span> <span style="color: grey;"># use that number to select a letter</span>
-    t = Text<span style="">&#40;</span>tp, <span style="">self</span>.<span style="">x</span>, <span style="">self</span>.<span style="">y</span>, <span style="">self</span>.<span style="">width</span>, <span style="">self</span>.<span style="">height</span><span style="">&#41;</span>
-    <span style="color: grey;"># rest of the textpath node code as it is</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 16, 2009</em></strong><p>Hi lievn,<br><br>Thanks for additional info on <b>seed</b>. I will try to add this code.<br><br>I seriously need to take time to learn programming a bit.<br><br>And from this part, I wonder how to use it with copy stamp and CNUM?<br><br>Randomize string of text seems so be still complicated. Or maybe it is possible, it is just my understanding of NodeBox is not there yet. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 16, 2009</em></strong><p>Jimmy,  you can look at the <a href="http://python.org/doc/2.5.2/lib/module-random.html">documentation</a> for python's random module.<br><br>If you don't know much programming, I suppose it may not make a lot of sense.<br><br>Quick explanations: random() is a function that works a certain mathematical formula to give you a different number each time. Every time you call it, it starts from the last value it gave you. The first time you call it, it starts from the value you pass to seed(). (Python will call seed for you if you don't, using the current computer clock time.) If you put this in a script:<pre class="python"><span style="color: #530035;">from</span> <span style="color: #530035;">random</span> <span style="color: #530035;">import</span> seed, <span style="color: #530035;">random</span>
-&nbsp;
-seed<span style="">&#40;</span><span style="">10</span><span style="">&#41;</span> <span style="color: grey;"># or any other number you want</span>
-&nbsp;
-<span style="color: #530035;">print</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>the same number will be printed every time. This is how you can use seed to "control" the result of random.<br><br>Also, there is a shuffle() function in the random module. You can pass a list to this function, and get a random reordering. Then you can take the items from your list one by one (with no repeating), but get a random order:<pre class="python"><span style="color: #530035;">from</span> <span style="color: #530035;">random</span> <span style="color: #530035;">import</span> shuffle
-&nbsp;
-s = <span style="color: #ff0080;">&quot;You bet!&quot;</span>
-s = <span style="">list</span><span style="">&#40;</span>s<span style="">&#41;</span>    <span style="color: grey;"># convert to list; can't shuffle a string</span>
-&nbsp;
-words = <span style="">&#91;</span><span style="color: #ff0080;">&quot;NodeBox&quot;</span>, <span style="color: #ff0080;">&quot;Ekky-ekky!&quot;</span>, <span style="color: #ff0080;">&quot;z'Boing!&quot;</span><span style="">&#93;</span> 
-&nbsp;
-shuffle<span style="">&#40;</span>s<span style="">&#41;</span>
-shuffle<span style="">&#40;</span>words<span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">3</span><span style="">&#41;</span>:
-    <span style="color: #530035;">print</span> s.<span style="color: #530035;">pop</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
-    <span style="color: #530035;">print</span> words.<span style="color: #530035;">pop</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span></pre></pre>Hope that is helpful and not too confusing! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 18, 2009</em></strong><p>Cheers Josh, that shuffle thing is very useful!<br><br>I will try get my head to understand this code. It will take a bit of time.<br><br>And yes, that's so true, I need to learn Python as well. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 18, 2009</em></strong><p>I tried combining lievn and as well Josh's coding.<br><br>SEED is actually very useful, I could randomize the stamping using that attribute. Especially for Text.<br><br>This is cool, I think I got it this time. Thanks all, I'll continue the experiment. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Dec 18 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<title>NodeBox | Graphing</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Graphing" />
+<link rel="canonical" href="https://www.nodebox.net/code/Graphing" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Graphing</h3>
+<p>Another network graphing library. This one is a lot more mature than <a href="/code/Notwork">Notwork</a> or the <a href="/code/ConceptNet_Graphs">ConceptNet Graphs</a> in that it uses the <a href="http://www.boost.org/libs/graph/doc/">Boost Graph Library</a> for Python. BGL uses standarised mathematical algorithms for traversing graphs.</p>
+
+<p><br /></p>
+
+<p><span class="media"><img src="/code/data/media/graph1.jpg" width="590" height="690" alt="" /></span>
+</p>
+
+<p><br /></p>
+
+<p><span class="media"><img src="/code/data/media/graph2.jpg" width="590" height="690" alt="" /></span>
+</p>
+
+<p><br /></p>
+
+<hr />
+
+<p>The <a href="/code/Graph">Graph</a> library for NodeBox has the following functionality:</p>
+
+<ul>
+<li><p><strong>Generic interface:</strong> the library can be used with any given set of data you supply. Simply add new nodes and connect them, the library figures out the rest by itself.</p></li>
+<li><p><strong>Visualisation of a network:</strong> uses a spring-force layout for networks together with some individual nudging for nodes. This means that the graph will always look orderly, and overlapping (and illegibility) of individual nodes is omitted.</p></li>
+<li><p><strong>Pathfinding:</strong> uses the Dijkstra-algorithm to compute the shortest path between two nodes. This means the library can be used to find out what is the strongest, shortest connection between two pieces of information in the network. For tougher pathfinding, the library uses <a href="/code/(http://en.wikipedia.org/wiki/Ant_colony_optimization">Ant Colony optimisation</a>. This last feature is still being worked on.</p></li>
+<li><p><strong>Clustering:</strong> the library indicates clusters of densely packed nodes, or nodes that get heavy traffic in paths between other nodes. This means the computer is able to find out which pieces of data in the network are related, or which are important links between pieces of information.</p></li>
+<li><p><strong>Templating:</strong> the visual style can be customized, from background colors and images to node colors and type.</p></li>
+</ul>
+
+<p>Why this is useful? You could schematise Wikipedia and find the shortest path between two articles (i.e. find out how they relate conceptually) for example.</p>
+
+<p><br /></p>
+
+<p>Created by Tom De Smedt</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 19 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

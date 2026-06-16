@@ -1,0 +1,339 @@
+<html>
+
+<head>
+<title>NodeBox | Aquatics | source code</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Aquatics | source code" />
+<link rel="canonical" href="https://www.nodebox.net/code/Aquatics_|_source_code" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Aquatics | source code</h3>
+<p>Source code requires the <a href="/code/Supershape" target="_self">Supershape</a> library.<br />Batteries are not included. Ask a parent first. </p><p><img src="/code/data/media/aquatics2.jpg" alt="aquatics2" /> <br /></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">800</span>,<span style="">600</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">try</span>:
+    supershape = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;supershape&quot;</span><span style="">&#41;</span>
+<span style="color: #530035;">except</span>:
+    supershape = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;__init__&quot;</span><span style="">&#41;</span>
+    <span style="">reload</span><span style="">&#40;</span>supershape<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">class</span> head:
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>,x,y,w,h,c,pp<span style="">&#41;</span>:
+        <span style="">self</span>.<span style="">x</span> = x
+        <span style="">self</span>.<span style="">y</span> = y
+        <span style="">self</span>.<span style="">w</span> = w
+        <span style="">self</span>.<span style="">h</span> = h
+        <span style="">self</span>.<span style="">c</span> = c
+        <span style="">self</span>.<span style="">r</span> = <span style="">self</span>.<span style="">c</span>.<span style="">r</span>
+        <span style="">self</span>.<span style="">g</span> = <span style="">self</span>.<span style="">c</span>.<span style="">g</span>
+        <span style="">self</span>.<span style="">b</span> = <span style="">self</span>.<span style="">c</span>.<span style="">b</span>
+        <span style="">self</span>.<span style="">eyelist</span> = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="">self</span>.<span style="">backpad</span> = <span style="color: #530035;">oval</span><span style="">&#40;</span><span style="">10</span>,<span style="">10</span>,<span style="">0</span>,<span style="">0</span><span style="">&#41;</span>
+        <span style="">self</span>.<span style="">backpadintern</span> = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="">self</span>.<span style="">backpadextern</span> = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="">self</span>.<span style="">pp</span> = pp
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>geefpad</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
+        <span style="color: #530035;">return</span> <span style="">self</span>.<span style="">p</span>
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>pupil</span><span style="">&#40;</span><span style="">self</span>,x,y,g<span style="">&#41;</span>:
+        <span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, cos
+        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>&gt;.<span style="">85</span>:
+            <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' normal '</span><span style="color: #ff0080;">''</span>
+            s = g/<span style="">4</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>g/<span style="">3</span><span style="">&#41;</span>
+            <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r*</span><span style="">2.0</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>,<span style="">self</span>.<span style="">c</span>.<span style="">a</span>/<span style="">2.0</span><span style="">&#41;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>,.<span style="">6</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">2.0</span><span style="">&#41;</span>
+            ran = <span style="color: #530035;">random</span><span style="">&#40;</span>s/<span style="">2</span>,-s/<span style="">2</span><span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>x-s+ran,y-s+ran,s*<span style="">2</span>,s*<span style="">2</span><span style="">&#41;</span>
+            <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">5.0</span><span style="">&#41;</span>;stroke<span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>x-s/<span style="">4</span>+ran,y-s/<span style="">4</span>+ran,s/<span style="">2</span>,s/<span style="">2</span><span style="">&#41;</span>
+        <span style="color: #530035;">else</span>:
+            <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' spiral '</span><span style="color: #ff0080;">''</span>
+            l = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>;fill<span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>,<span style="">1.0</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span>.<span style="">5</span><span style="">&#41;</span>
+            <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>:
+                v = x+i/<span style="">5.0</span>*sin<span style="">&#40;</span>i*l<span style="">&#41;</span>
+                w = y+i/<span style="">5.0</span>*cos<span style="">&#40;</span>i*l<span style="">&#41;</span>
+                <span style="color: #530035;">oval</span><span style="">&#40;</span>v,w,<span style="">2</span>,<span style="">2</span><span style="">&#41;</span>
+        
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>shield</span><span style="">&#40;</span><span style="">self</span>,x,y,g<span style="">&#41;</span>:
+        seg = <span style="color: #530035;">oval</span><span style="">&#40;</span>x-g,y-g,g*<span style="">2</span>,g*<span style="">2</span>,draw = <span style="color: #530035;">False</span><span style="">&#41;</span>
+        pad = <span style="color: #530035;">rect</span><span style="">&#40;</span>x-g,y-<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10.0</span>,<span style="">-4.0</span><span style="">&#41;</span>,g*<span style="">2</span>,g*<span style="">2</span>,draw = <span style="color: #530035;">False</span><span style="">&#41;</span>
+        pc = pad
+        pad = pad.<span style="">union</span><span style="">&#40;</span>seg<span style="">&#41;</span>
+        pad = pad.<span style="">difference</span><span style="">&#40;</span>pc,<span style="color: #530035;">False</span><span style="">&#41;</span>
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>,<span style="">1.0</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">1.0</span><span style="">&#41;</span>
+        <span style="color: #530035;">drawpath</span><span style="">&#40;</span>pad<span style="">&#41;</span>
+        <span style="color: #530035;">return</span><span style="">&#40;</span>pad<span style="">&#41;</span>
+&nbsp;
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>eyes</span><span style="">&#40;</span><span style="">self</span>,xx,yy,g<span style="">&#41;</span>:
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>;stroke<span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">2.0</span><span style="">&#41;</span>
+        <span style="color: #530035;">oval</span><span style="">&#40;</span>xx-g,yy-g,g*<span style="">2</span>,g*<span style="">2</span><span style="">&#41;</span>
+        <span style="">self</span>.<span style="">pupil</span><span style="">&#40;</span>xx,yy,g<span style="">&#41;</span>
+        <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>&gt;.<span style="">5</span>:
+            cover = <span style="">self</span>.<span style="">shield</span><span style="">&#40;</span>xx,yy,g<span style="">&#41;</span>
+            f = <span style="">&#91;</span>xx,yy<span style="">&#93;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>/<span style="">2</span>,<span style="">1.0</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">3.0</span><span style="">&#41;</span>
+            <span style="color: #530035;">for</span> eyelash <span style="color: #530035;">in</span> cover:
+                <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &gt; .<span style="">5</span>:
+                    x = eyelash.<span style="">x</span>-f<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>
+                    y = eyelash.<span style="">y</span>-f<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>
+                    lx = <span style="color: #530035;">random</span><span style="">&#40;</span>x<span style="">&#41;</span>
+                    ly = <span style="color: #530035;">random</span><span style="">&#40;</span>y<span style="">&#41;</span>
+                    <span style="color: #530035;">line</span><span style="">&#40;</span>eyelash.<span style="">x</span>, eyelash.<span style="">y</span>, eyelash.<span style="">x</span>+lx, eyelash.<span style="">y</span>+ly<span style="">&#41;</span>
+       
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>linedash</span><span style="">&#40;</span><span style="">self</span>,path,segment,gap<span style="">&#41;</span>:
+        path._nsBezierPath.<span style="">setLineDash_count_phase_</span><span style="">&#40;</span><span style="">&#91;</span>segment,gap<span style="">&#93;</span>,<span style="">2</span>,<span style="">0</span><span style="">&#41;</span>
+        <span style="color: #530035;">return</span> path        
+            
+    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' create  supershapes : 1 for the actual '</span>beast<span style="color: #ff0080;">' and 1 as a mouth 
+        the final shape is the difference between them'</span><span style="color: #ff0080;">''</span>
+        m = <span style="">int</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">1</span>,<span style="">30</span><span style="">&#41;</span><span style="">&#41;</span>
+        <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>&gt;.<span style="">5</span>:
+            n1 = -.<span style="">8</span>-<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">5.0</span><span style="">&#41;</span>
+        <span style="color: #530035;">else</span>:
+            n1 = .<span style="">8</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">5.0</span><span style="">&#41;</span>
+        n2 = .<span style="">5</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">5.0</span><span style="">&#41;</span>
+        n3 = .<span style="">5</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>.<span style="">5</span>,<span style="">-1.5</span><span style="">&#41;</span>
+        
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">'uncomment to use textpaths __ see below '</span><span style="color: #ff0080;">''</span>
+        <span style="color: grey;">#self.p = textpath(self.pp,self.x-random(50,100),self.y+100,800,0)</span>
+&nbsp;
+        <span style="">self</span>.<span style="">p</span> = supershape.<span style="">path</span><span style="">&#40;</span><span style="">self</span>.<span style="">x</span>, <span style="">self</span>.<span style="">y</span>, <span style="">self</span>.<span style="">w</span>, <span style="">self</span>.<span style="">h</span>, m, n1, n2, n3<span style="">&#41;</span>
+        arms = <span style="">4</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">20</span><span style="">&#41;</span>
+        l = supershape.<span style="">path</span><span style="">&#40;</span><span style="">self</span>.<span style="">x</span>,<span style="">self</span>.<span style="">y</span>+<span style="">self</span>.<span style="">h</span>/<span style="">1.5</span>,<span style="">self</span>.<span style="">w*</span>.<span style="">35</span>,<span style="">self</span>.<span style="">h*</span>.<span style="">65</span>,
+                            arms,<span style="">0.98</span>,<span style="">3.0</span>,<span style="">0.81</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>-.<span style="">8</span>,.<span style="">8</span><span style="">&#41;</span><span style="">&#41;</span>
+        <span style="">self</span>.<span style="">p</span> = <span style="">self</span>.<span style="">p</span>.<span style="">difference</span><span style="">&#40;</span>l<span style="">&#41;</span>
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' create some locations to place the eyes on '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">2</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span><span style="">&#41;</span>:
+            xx = <span style="">self</span>.<span style="">x</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>-<span style="">self</span>.<span style="">w</span>,<span style="">self</span>.<span style="">w</span><span style="">&#41;</span>
+            yy = <span style="">self</span>.<span style="">y</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>-<span style="">self</span>.<span style="">h</span><span style="">&#41;</span>
+            g = <span style="">5</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">self</span>.<span style="">w</span>/<span style="">5.0</span><span style="">&#41;</span>
+            <span style="color: #530035;">if</span> header.<span style="">p</span>.<span style="">contains</span><span style="">&#40;</span>xx,yy<span style="">&#41;</span>:
+                tup = xx,yy,g
+                <span style="">self</span>.<span style="">eyelist</span>.<span style="">append</span><span style="">&#40;</span>tup<span style="">&#41;</span>
+        mouth = <span style="">&#91;</span><span style="">&#93;</span>
+        <span style="color: #530035;">for</span> p <span style="color: #530035;">in</span> l:
+            <span style="color: #530035;">if</span> <span style="">self</span>.<span style="">p</span>.<span style="">contains</span><span style="">&#40;</span>p.<span style="">x</span>,p.<span style="">y</span><span style="">&#41;</span>:
+                loc = p.<span style="">x</span>,p.<span style="">y</span>
+                mouth.<span style="">append</span><span style="">&#40;</span>loc<span style="">&#41;</span>
+                <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &lt; .<span style="">01</span> <span style="color: #530035;">and</span> p.<span style="">y</span> &lt; <span style="">&#40;</span><span style="">self</span>.<span style="">h*</span><span style="">4.8</span><span style="">&#41;</span>:
+                    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">5</span><span style="">&#41;</span>
+                    k = <span style="">&#40;</span><span style="">-45</span>,<span style="">0</span>,<span style="">45</span><span style="">&#41;</span>
+                    <span style="color: #ff0080;">''</span><span style="color: #ff0080;">'teeth __ not to pleased about them '</span><span style="color: #ff0080;">''</span>
+                    <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>/<span style="">2</span>,<span style="">1.0</span><span style="">&#41;</span>
+                    si = <span style="">10</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">self</span>.<span style="">w*</span>.<span style="">1</span><span style="">&#41;</span>
+                    <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> p.<span style="">x</span> &lt; <span style="">self</span>.<span style="">x</span>:
+                        <span style="color: #530035;">skew</span><span style="">&#40;</span><span style="color: #530035;">choice</span><span style="">&#40;</span>k<span style="">&#41;</span><span style="">&#41;</span>
+                        <span style="color: #530035;">rect</span><span style="">&#40;</span>p.<span style="">x</span>+si/<span style="">2</span>,p.<span style="">y</span>,-si,-si<span style="">&#41;</span>
+                        <span style="color: #530035;">reset</span><span style="">&#40;</span><span style="">&#41;</span>
+                    <span style="color: #530035;">else</span>:
+                        <span style="color: #530035;">skew</span><span style="">&#40;</span><span style="color: #530035;">choice</span><span style="">&#40;</span>k<span style="">&#41;</span><span style="">&#41;</span>
+                        <span style="color: #530035;">rect</span><span style="">&#40;</span>p.<span style="">x</span>-si/<span style="">2</span>,p.<span style="">y</span>,si,si<span style="">&#41;</span>
+                        <span style="color: #530035;">reset</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span><span style="">&#41;</span>;stroke<span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>/<span style="">2</span><span style="">&#41;</span> 
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">self</span>.<span style="">w</span>/<span style="">20</span><span style="">&#41;</span>;<span style="color: grey;">#nostroke()</span>
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' draw the shape __ all the rest comes on top of this '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">drawpath</span><span style="">&#40;</span><span style="">self</span>.<span style="">p</span><span style="">&#41;</span>
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' lips '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">for</span> o <span style="color: #530035;">in</span> mouth:
+            s = <span style="">1.5</span>
+            <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">&#40;</span><span style="">self</span>.<span style="">r</span>+<span style="">self</span>.<span style="">g</span><span style="">&#41;</span>*.<span style="">8</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">g</span>+<span style="">self</span>.<span style="">b</span><span style="">&#41;</span>*.<span style="">8</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">b</span>+<span style="">self</span>.<span style="">r</span><span style="">&#41;</span>*.<span style="">8</span>,.<span style="">5</span><span style="">&#41;</span>
+            <span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>
+            <span style="color: #530035;">oval</span><span style="">&#40;</span>o<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>-s,o<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>-s,s*<span style="">2</span>,s*<span style="">2</span><span style="">&#41;</span>
+        <span style="">self</span>.<span style="">geefpad</span><span style="">&#40;</span><span style="">&#41;</span>
+        
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' create an inner and outer path base on the position of the eyes '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">for</span> item <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">eyelist</span>:
+            x,y,g = item<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>,item<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>,item<span style="">&#91;</span><span style="">2</span><span style="">&#93;</span>
+            seg = <span style="color: #530035;">oval</span><span style="">&#40;</span>x-g*<span style="">3</span>,y-g*<span style="">3</span>,g*<span style="">6</span>,g*<span style="">6</span>,draw = <span style="color: #530035;">False</span><span style="">&#41;</span>
+            <span style="">self</span>.<span style="">backpad</span> = <span style="">self</span>.<span style="">backpad</span>.<span style="">union</span><span style="">&#40;</span>seg<span style="">&#41;</span>
+            <span style="">self</span>.<span style="">backpadintern</span> = <span style="">self</span>.<span style="">backpad</span>.<span style="">intersect</span><span style="">&#40;</span><span style="">self</span>.<span style="">p</span><span style="">&#41;</span>
+            <span style="">self</span>.<span style="">backpadextern</span> = <span style="">self</span>.<span style="">backpad</span>.<span style="">difference</span><span style="">&#40;</span><span style="">self</span>.<span style="">p</span><span style="">&#41;</span>
+            
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' draw hair on the outer path '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">for</span> p <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">backpadextern</span>:
+            <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>;nofill<span style="">&#40;</span><span style="">&#41;</span>
+            x = p.<span style="">x</span>-<span style="">self</span>.<span style="">x</span>
+            y = p.<span style="">y</span>-<span style="">self</span>.<span style="">y</span>
+            lx = <span style="color: #530035;">random</span><span style="">&#40;</span>x<span style="">&#41;</span>
+            ly = <span style="color: #530035;">random</span><span style="">&#40;</span>y<span style="">&#41;</span>
+            m = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">1.0</span><span style="">&#41;</span>
+            <span style="color: #530035;">beginpath</span><span style="">&#40;</span>p.<span style="">x</span>,p.<span style="">y</span><span style="">&#41;</span>
+            <span style="color: #530035;">curveto</span><span style="">&#40;</span>p.<span style="">x</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>m<span style="">&#41;</span>,p.<span style="">y</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>m<span style="">&#41;</span>,p.<span style="">x</span>-<span style="color: #530035;">random</span><span style="">&#40;</span>m<span style="">&#41;</span>,p.<span style="">y</span>-<span style="color: #530035;">random</span><span style="">&#40;</span>m<span style="">&#41;</span>,
+                    p.<span style="">x</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>lx<span style="">&#41;</span>,p.<span style="">y</span>+<span style="color: #530035;">random</span><span style="">&#40;</span>ly<span style="">&#41;</span><span style="">&#41;</span>
+            <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+            
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' draw the outer path in tranparant color and a stroke half the stroke of the shape itself '</span><span style="color: #ff0080;">''</span>
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>,.<span style="">4</span><span style="">&#41;</span>;
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>/<span style="">2</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">self</span>.<span style="">w</span>/<span style="">40</span><span style="">&#41;</span>
+        <span style="color: #530035;">drawpath</span><span style="">&#40;</span><span style="">self</span>.<span style="">backpadextern</span><span style="">&#41;</span>
+&nbsp;
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' some different jackets for the beast -- possibilities are unlimited here '</span><span style="color: #ff0080;">''</span>
+        l = <span style="">5</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">self</span>.<span style="">w</span>/<span style="">6</span><span style="">&#41;</span>
+        rw = <span style="">self</span>.<span style="">w*</span><span style="">4</span>/l;rh = <span style="">self</span>.<span style="">h*</span><span style="">4</span>/l;dx = l;dy = l
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">1.0</span><span style="">&#41;</span>
+        aantal = <span style="">&#91;</span><span style="">1</span>,<span style="">2</span>,<span style="">3</span>,<span style="">4</span>,<span style="">5</span>,<span style="">2</span>,<span style="">3</span>,<span style="">3</span><span style="">&#93;</span>
+        pa = <span style="color: #530035;">choice</span><span style="">&#40;</span>aantal<span style="">&#41;</span>
+        cc = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">1</span>,<span style="">2</span><span style="">&#41;</span>;print pa
+        <span style="color: #530035;">for</span> x,y <span style="color: #530035;">in</span> <span style="color: #530035;">grid</span><span style="">&#40;</span>rw,rh,dx,dy<span style="">&#41;</span>:
+            nx = x+<span style="">self</span>.<span style="">x</span>-<span style="">self</span>.<span style="">w*</span><span style="">2</span>
+            ny = y+<span style="">self</span>.<span style="">y</span>-<span style="">self</span>.<span style="">h*</span><span style="">2</span>
+            nxc = <span style="">&#40;</span>nx-<span style="">self</span>.<span style="">x</span><span style="">&#41;</span>
+            nyc = <span style="">&#40;</span>ny-<span style="">self</span>.<span style="">y</span><span style="">&#41;</span>
+            <span style="color: #530035;">if</span> <span style="">self</span>.<span style="">p</span>.<span style="">contains</span><span style="">&#40;</span>nx-dx,ny<span style="">&#41;</span>:
+                <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">&#40;</span><span style="">self</span>.<span style="">r</span>+<span style="">self</span>.<span style="">g</span><span style="">&#41;</span>/<span style="">2</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">g</span>+<span style="">self</span>.<span style="">b</span><span style="">&#41;</span>/<span style="">2</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">b</span>+<span style="">self</span>.<span style="">r</span><span style="">&#41;</span>/<span style="">2</span>,.<span style="">8</span><span style="">&#41;</span>
+                <span style="color: #530035;">beginpath</span><span style="">&#40;</span>nx-dx,ny<span style="">&#41;</span>
+                <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>&gt;.<span style="">5</span>:
+                    k = <span style="color: #530035;">random</span><span style="">&#40;</span>-<span style="">self</span>.<span style="">w*</span>.<span style="">25</span><span style="">&#41;</span>
+                <span style="color: #530035;">else</span>:
+                    k = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">self</span>.<span style="">w*</span>.<span style="">25</span><span style="">&#41;</span>
+                <span style="color: #530035;">if</span> pa==<span style="">1</span>:
+                    <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' spikes '</span><span style="color: #ff0080;">''</span>
+                    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">True</span><span style="">&#41;</span>
+                    <span style="color: #530035;">curveto</span><span style="">&#40;</span>nx,ny,nx,ny,nx+<span style="color: #530035;">random</span><span style="">&#40;</span>nxc<span style="">&#41;</span>,ny+<span style="color: #530035;">random</span><span style="">&#40;</span>nyc<span style="">&#41;</span><span style="">&#41;</span>
+                <span style="color: #530035;">elif</span> pa==<span style="">2</span>:
+                    <span style="color: #ff0080;">''</span><span style="color: #ff0080;">'bubbles '</span><span style="color: #ff0080;">''</span>
+                    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">True</span><span style="">&#41;</span>
+                    <span style="color: #530035;">curveto</span><span style="">&#40;</span>nx+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">5.0</span><span style="">&#41;</span>,ny,nx-<span style="">&#40;</span>dx/<span style="">2</span><span style="">&#41;</span>,ny+k,nx-dx,ny<span style="">&#41;</span>
+                <span style="color: #530035;">elif</span> pa==<span style="">3</span>:
+                    <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' lines '</span><span style="color: #ff0080;">''</span>
+                    <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>;autoclosepath<span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+                    <span style="color: #530035;">curveto</span><span style="">&#40;</span>nx-dx,ny,nx,ny+k,nx,ny<span style="">&#41;</span>
+                <span style="color: #530035;">else</span>:
+                    <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' flocks '</span><span style="color: #ff0080;">''</span>
+                    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">True</span><span style="">&#41;</span>
+                    <span style="color: #530035;">curveto</span><span style="">&#40;</span>nx-dx+<span style="color: #530035;">random</span><span style="">&#40;</span>-dx*<span style="">2</span>,dx*<span style="">2</span><span style="">&#41;</span>,ny,nx-dx,ny+k,nx-dx,ny<span style="">&#41;</span>
+                <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+        
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' draw inner path with dotted line '</span><span style="color: #ff0080;">''</span>    
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">&#40;</span><span style="">self</span>.<span style="">r</span>+<span style="">self</span>.<span style="">g</span><span style="">&#41;</span>/<span style="">2</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">g</span>+<span style="">self</span>.<span style="">b</span><span style="">&#41;</span>/<span style="">2</span>,<span style="">&#40;</span><span style="">self</span>.<span style="">b</span>+<span style="">self</span>.<span style="">r</span><span style="">&#41;</span>/<span style="">2</span>,.<span style="">8</span><span style="">&#41;</span>
+        <span style="color: grey;">#d = self.linedash(self.backpadintern,10,5)</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">self</span>.<span style="">c</span>.<span style="">r</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">g</span>/<span style="">2</span>,<span style="">self</span>.<span style="">c</span>.<span style="">b</span>/<span style="">2</span><span style="">&#41;</span>;strokewidth<span style="">&#40;</span><span style="">1.5</span><span style="">&#41;</span>
+        <span style="color: #530035;">drawpath</span><span style="">&#40;</span><span style="">self</span>.<span style="">backpadintern</span><span style="">&#41;</span>
+        
+        <span style="color: #ff0080;">''</span><span style="color: #ff0080;">' draw an eye for each location in the eyelist '</span><span style="color: #ff0080;">''</span>
+&nbsp;
+        <span style="color: #530035;">for</span> item <span style="color: #530035;">in</span> <span style="">self</span>.<span style="">eyelist</span>:
+            <span style="">self</span>.<span style="">eyes</span><span style="">&#40;</span>item<span style="">&#91;</span><span style="">0</span><span style="">&#93;</span>, item<span style="">&#91;</span><span style="">1</span><span style="">&#93;</span>,item<span style="">&#91;</span><span style="">2</span><span style="">&#93;</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>:        
+    s = <span style="">70</span>+<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">50</span><span style="">&#41;</span>
+    c = <span style="color: #530035;">color</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>,<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span>,<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">print</span> s
+    header = head<span style="">&#40;</span><span style="">250</span>+i*<span style="">&#40;</span><span style="">300</span><span style="">&#41;</span>,<span style="color: #530035;">HEIGHT</span>/<span style="">2</span><span style="">+10</span>,s,s,c,<span style="">0</span><span style="">&#41;</span>     
+    header.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span>   
+&nbsp;
+&nbsp;
+<span style="color: grey;"># textexample with background </span>
+<span style="color: #ff0080;">''</span><span style="color: #ff0080;">' 
+m = '</span>A<span style="color: #ff0080;">'
+ttt = '</span>AquaTics<span style="color: #ff0080;">'
+font(&quot;Marker Felt&quot;,250)
+#ttt = '</span><span style="color: #ff0080;">'
+background(0.9,0.28,0.62)
+for i in range(10):
+    fill(0.9,0.28*i/10,0.62)
+    rotate(i*4.0)
+    rect(i*WIDTH/10,0,WIDTH/10,HEIGHT)
+for i in range(len(ttt)):     
+    m = ttt[i]   
+    c = color(random(.5,.99),random(0.5,0),random(0.5,0),1.0)
+    s = 70+random(50)
+    print s
+    header = head(80+i*(WIDTH/len(ttt)),HEIGHT/2+random(-5*i),s,s,c,m)     
+    header.draw() 
+'</span><span style="color: #ff0080;">''</span>
+&nbsp;</pre></pre><br /><br /><p>&nbsp;</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Sep 17 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

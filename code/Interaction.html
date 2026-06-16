@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<title>NodeBox | Interaction</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Interaction" />
+<link rel="canonical" href="https://www.nodebox.net/code/Interaction" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Interaction</h3>
+<p>NodeBox is designed to output PDF documents or images, when you want to do all sorts of moving and interactive things you&#39;re probably better off with a tool like <a href="http://processing.org/">Processing</a>.</p>  <p>However, if you do want to experiment with interactivity in NodeBox, there&#39;s some built-in support that might be of help to you. This assumes you already know how to make an <a href="/code/Animation" target="_self">animation</a> in NodeBox.<br /></p>  <h2>Interacting with the mouse<br /></h2><p>In a NodeBox animation, there are three predefined variables that store the current position of the mouse cursor and the state of the mouse button:</p><ul><li>MOUSEX: the horizontal location of the mouse cursor</li><li>MOUSEY: the vertical location of the mouse cursor</li><li> mousedown: is True when the mouse button is pressed, False otherwise</li></ul><p>You would typically use the mousedown variable in an if-statement:</p><pre class="python"><span style="color: #530035;">if</span> mousedown:
+     <span style="color: grey;"># do stuff when the mouse is pressed</span>
+<span style="color: #530035;">else</span>:
+     <span style="color: grey;"># do stuff when the mouse isn't pressed</span></pre></pre><h2>Interacting with the keyboard</h2><p>Three predefined variables store the keys a user is pressing during a NodeBox animation:</p><ul><li>key: the last key pressed</li><li>keycode: the integer keycode of the last key pressed</li><li>keydown: is True when a key is being pressed, False otherwise </li></ul><p>The key and keycode variables are updated as long as any key is being pressed.</p><p>KEY_UP, KEY_DOWN_ KEY_LEFT, KEY_RIGHT, KEY_BACKSPACE contain the keycodes for the arrow keys and the backspace key.<br /> </p><h2>Example </h2><p>A fun example is this little sketch application. Simply run the code and draw some stuff on the canvas! <img src="/code/data/media/interaction-sketch.gif" alt="interaction-sketch" /></p>  <p> <a href="javascript:pop(&#39;../data/media/interaction-sketch.mov&#39;,&#39;interaction&#39;,&#39;width=769,height=560&#39;)" target="_self">Play movie</a></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">400</span> ,<span style="">400</span><span style="">&#41;</span>
+<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>setup</span><span style="">&#40;</span><span style="">&#41;</span>:
+    
+    <span style="color: #530035;">global</span> path, d
+    path = <span style="">&#91;</span><span style="">&#93;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
+    
+    <span style="color: #530035;">global</span> path
+&nbsp;
+    <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+    <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">0</span><span style="">&#41;</span>
+    <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+    
+    <span style="color: #530035;">if</span> mousedown:
+        pt = <span style="color: #530035;">Point</span><span style="">&#40;</span>MOUSEX, MOUSEY<span style="">&#41;</span>
+        path.<span style="">append</span><span style="">&#40;</span>pt<span style="">&#41;</span>
+        
+    <span style="color: #530035;">if</span> <span style="">len</span><span style="">&#40;</span>path<span style="">&#41;</span> &gt; <span style="">0</span>:
+        first = <span style="color: #530035;">True</span>
+        <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> path:
+            <span style="color: #530035;">if</span> first:
+                <span style="color: #530035;">beginpath</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+                first = <span style="color: #530035;">False</span>
+            <span style="color: #530035;">else</span>:
+                <span style="color: #530035;">lineto</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+        <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Oct 01 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

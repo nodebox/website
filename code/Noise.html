@@ -1,0 +1,117 @@
+<html>
+
+<head>
+<title>NodeBox | Noise</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Noise" />
+<link rel="canonical" href="https://www.nodebox.net/code/Noise" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Noise</h3>
+<h2>Description</h2>  <p><i>Perlin noise</i> is a random sequence generator that is more naturally ordered than the standard <a href="/code/Reference_|_random()" target="_self">random()</a>  command. It was invented by Ken Perlin in the 1980s and been used since in graphical applications to produce <a href="http://en.wikipedia.org/wiki/Procedural_texture" target="_self">procedural textures</a>, natural motion, shapes, terrains, clouds, etc.</p><p>&nbsp;</p><table><tbody><tr><td><span class="image_border"><img src="/code/data/media/noise1.jpg" alt="noise1" height="101" width="101" /></span></td><td>Here&#39;s some true random noise in which each square&#39;s color is an arbitrary value between 0.0 and 1.0. Sometimes the output of a true random number generator is too harsh to appear natural. </td></tr><tr><td><span class="image_border"><img src="/code/data/media/noise2.jpg" alt="noise2" height="100" width="100" /></span></td><td> Perlin noise is smoother because each value depends on the values around it, yielding smooth transitions. Furthermore, the random &quot;landscape&quot; stretches indefinitely.  </td></tr></tbody></table><p>&nbsp;</p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/noise.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/noise.zip" target="_self">noise.zip</a> (5KB)<br /> <i>Last updated for NodeBox 1.9.2<br /></i><i>Licensed under GPL</i><br /><i>Author: Malcolm Kesson (C-code), Tom De Smedt (Python adaption)</i><br /></td></tr></tbody></table>  <h2>Documentation</h2><ul><li><a href="Noise.html#library" target="_self">How to get the library up and running</a></li><li><a href="/code/generate" target="_self">Generating noise</a></li><li><a href="Noise.html#shape" target="_self">Shaping the noise pattern</a></li></ul><p>&nbsp;</p><hr /><h2><a name="library" title="library"></a>How to get the library up and running </h2><p>Put the <i>noise</i> library folder in the same folder as your script so NodeBox can find the library. You can also put it in ~/Library/Application Support/NodeBox/.</p><pre class="python">noise = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;noise&quot;</span><span style="">&#41;</span></pre></pre></p>&nbsp;                      <hr size="2" width="100%" /><h2><a title="generate" name="generate"></a>Generating noise </h2><p>The <i>generate()</i> command returns smooth values between 0.0 and 1.0 based on the parameters you supply. You can render noise in one (<i>x</i>), two (<i>x, y</i>) or three dimensions (<i>x, y, z</i>).</p><pre class="python">generate<span style="">&#40;</span>x, y=<span style="">0.0</span>, z=<span style="">0.0</span><span style="">&#41;</span></pre></pre><p>The <i>x, y</i> and <i>z</i> parameters determine the coordinates in the noise landscape. Since the landscape is infinite, the actual value of a coordinate doesn&#39;t matter, only the distance between successive steps. The <b>smaller</b> the difference between steps, the <b>smoother</b> the noise sequence. Steps between 0.005 and 0.1 usually work best.</p><table><tbody><tr><td> <span class="image_border"><img src="/code/data/media/noise3.jpg" alt="noise3" /></span></td><td><pre class="python"><span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>:
+    <span style="color: #530035;">for</span> j <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>:
+        d = noise.<span style="">generate</span><span style="">&#40;</span>i*<span style="">0.05</span>, j*<span style="">0.05</span><span style="">&#41;</span>  
+        <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="">0</span>, d*<span style="">1.2</span><span style="">&#41;</span>
+        <span style="color: #530035;">rect</span><span style="">&#40;</span>i, j, <span style="">1</span>, <span style="">1</span><span style="">&#41;</span></pre></pre></td></tr></tbody></table><p>The <i>generate()</i> command has additional <i>width</i>, <i>height</i>, <i>depth</i> and <i>scale</i> parameters that might make things more comprehensible for you. Instead of multiplying x , y and z with a scale, you can define their range with <i>width</i>, <i>height</i> and <i>depth</i> and then zoom in or out with the <i>scale</i> parameter:</p><table><tbody><tr><td><span class="image_border"><img src="/code/data/media/noise4.jpg" alt="noise4" /></span></td><td><pre class="python">w, h = <span style="">100</span>, <span style="">100</span>
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>w<span style="">&#41;</span>:
+    <span style="color: #530035;">for</span> j <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>h<span style="">&#41;</span>:
+        d = noise.<span style="">generate</span><span style="">&#40;</span>
+            i, j, 
+            width=w, 
+            height=h, 
+            <span style="color: #530035;">scale</span>=<span style="">0.5</span>
+        <span style="">&#41;</span>
+        <span style="color: #530035;">rect</span><span style="">&#40;</span>i, j, <span style="">1</span>, <span style="">1</span>, <span style="color: #530035;">fill</span>=<span style="">&#40;</span><span style="">0</span>,<span style="">0</span>,<span style="">0</span>,d*<span style="">1.2</span><span style="">&#41;</span><span style="">&#41;</span></pre></pre></td></tr></tbody></table><p>&nbsp;</p><p>By default, the Noise library will load a &quot;shape&quot; from which to generate the noise. It will use the same pattern each time you run your script. If you want the library to create a new pattern each time you run the script you can call the <i>seed()</i> command before generating noise: </p><pre class="python">seed<span style="">&#40;</span>i=<span style="color: #530035;">None</span><span style="">&#41;</span></pre></pre></p>&nbsp;      <hr size="2" width="100%" /><h2>Shaping the noise pattern: </h2><p>The shape itself is a list of 512 integers with values between 0-511. With the <i>shape()</i> command you can load a new list to generate noise from. This way you can create more specific patterns of noise to suit your own needs:</p><table><tbody><tr><td><span class="image_border"><img src="/code/data/media/noise5.jpg" alt="noise5" /></span></td><td><pre class="python"><span style="color: grey;"># honey comb</span>
+noise.<span style="">shape</span><span style="">&#40;</span> <span style="">&#91;</span><span style="">0</span>,<span style="">1</span><span style="">&#93;</span>*<span style="">256</span> <span style="">&#41;</span></pre></pre></td></tr><tr><td><span class="image_border"><img src="/code/data/media/noise6.jpg" alt="noise6" /></span></td><td><pre class="python"><span style="color: grey;"># chainmail</span>
+noise.<span style="">shape</span><span style="">&#40;</span> <span style="">&#91;</span><span style="">0</span>,<span style="">1</span>,<span style="">2</span>,<span style="">3</span><span style="">&#93;</span>*<span style="">128</span> <span style="">&#41;</span></pre></pre></td></tr><tr><td><span class="image_border"><img src="/code/data/media/noise7.jpg" alt="noise7" /></span></td><td>  <pre class="python"><span style="color: grey;"># some kind of metal or fabric?</span>
+noise.<span style="">shape</span><span style="">&#40;</span> <span style="">&#91;</span><span style="">0</span>,<span style="">1</span>,<span style="">2</span>,<span style="">3</span>,<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">6</span><span style="">&#41;</span>,<span style="">3</span>,<span style="">2</span>,<span style="">1</span><span style="">&#93;</span>*<span style="">64</span> <span style="">&#41;</span></pre></pre></td></tr></tbody></table><p>&nbsp;</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Aug 10 2011 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

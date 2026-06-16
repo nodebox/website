@@ -1,0 +1,106 @@
+<html>
+
+<head>
+<title>NodeBox | Math trigonometry</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Math trigonometry" />
+<link rel="canonical" href="https://www.nodebox.net/code/Math_trigonometry" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Math trigonometry</h3>
+<p><span class="big_text">A sine calculates the vertical offset between two points based on the angle. A cosine calculates the horizontal distance.</span> </p><p>&nbsp;</p><table border="0"><tbody><tr><td> <img src="/code/data/media/math-trig1.jpg" alt="math-trig1" /></td><td><p>Let&#39;s say we have two points, <em>a</em> and <em>b</em>, connected by a line. </p></td></tr><tr><td> <img src="/code/data/media/math-trig2.jpg" alt="math-trig2" /></td><td><p>Now let&#39;s assume <em>a</em> is at the origin (or center) of a circle. The circle has a radius equal to the length of the line connecting <em>a</em> and <em>b</em>.</p><p>So <em>b</em> is located somewhere on the circle&#39;s circumference. </p></td></tr><tr><td> <img src="/code/data/media/math-trig3.jpg" alt="math-trig3" /></td><td><p>There is a horizontal and vertical distance between <em>a</em> and <em>b</em>.</p><p>We can use <em>sine</em> and <em>cosine</em> to determine those distances. </p></td></tr><tr><td> <img src="/code/data/media/math-trig4.jpg" alt="math-trig4" /></td><td><p>Each line from <em>a</em> to a point on the circle&#39;s circumference (for example, <em>b</em>) has an angle. </p><p>Measured counterclockwise, starting from 0&deg;, a circle has a total circumference of 360&deg;. So a line from <em>a</em> going straight up would have an angle of 90&deg;.</p><p>In the case of the line between <em>a</em> and <em>b</em>, the angle is 60&deg;. </p></td></tr><tr><td> <img src="/code/data/media/math-trig5.jpg" alt="math-trig5" /></td><td><p>The cosine function calculates the <strong>horizontal</strong> distance between <em>a</em> and <em>b</em> based on the angle.</p><p>The sine function calculates the <strong>vertical</strong> distance between <em>a</em> and <em>b</em>. </p><p>In the case of an angle of 60&deg;, the sine yields 0.5. So the horizontal distance between <em>a</em> and <em>b</em> is half the length of the line between <em>a</em> and <em>b</em>. </p></td></tr><tr><td> <img src="/code/data/media/math-trig6.jpg" alt="math-trig6" /></td><td><p>With sine and cosine we can calculate the distance between <em>a</em> and <em>b</em>.</p><p>This is useful if we have position coordinates for <em>a</em> and  we need to calculate the position of a point <em>b</em> that is orbiting around it.</p><p>For 60&deg;, the sine yields 0.5, meaning half the length of the distance between <em>a</em> and <em>b</em>. So the horizontal distance between <em>a</em> and <em>b</em> is 70 * 0.5 = 35.</p><p>So <em>b</em>&#39;s x equals <em>a</em>&#39;s x plus 35.<br /></p></td></tr><tr><td> <img src="/code/data/media/math-trig7.jpg" alt="math-trig7" /></td><td><p> The command in NodeBox would look like this:</p><pre class="python"><span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>coordinates</span><span style="">&#40;</span>x0, y0, distance, angle<span style="">&#41;</span>:
+    <span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> radians, sin, cos
+    angle = radians<span style="">&#40;</span>angle<span style="">&#41;</span>
+    x1 = x0 + cos<span style="">&#40;</span>angle<span style="">&#41;</span> * distance
+    y1 = y0 + sin<span style="">&#40;</span>angle<span style="">&#41;</span> * distance
+    <span style="color: #530035;">return</span> x1, y1</pre></pre></p>&nbsp;   </td></tr></tbody></table>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jun 05 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

@@ -1,158 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Frame Rate vs. Speed</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-05-27-20-32-36, suggestion" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-05-27-20-32-36" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Frame Rate vs. Speed</h1>
-<strong>Posted by <span class="comment_by">toby_</span> on <em class="date">May 27, 2008</em></strong>
-<p>How is it possible to get constant Motion Speed.<br>Because the factor speed change also the complete<br>speed of the Scene.<br>Its not only slowing down the Framerate.<br><br>I would love to have a fixed timing of my Animations.<br>Like a square moves 1 sec. with 15 and also with 30 frames per sec.<br><br>Also whats about different Systems?<br>I am sure that the Mac Pro will run my MacBook away.<br>I can imagine to do a work around - like a system speed test<br>at beginning and then work with measured factor.<br>But wouldnt be nice to have that fixed in the system?<br><br>Fantastic thing you start!<br>Its my choice to do some Art Animations. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">fdb</span> on <em class="date">May 28, 2008</em></strong><p>Use the time() library to detect the current time, and work with that. Here's an example:<pre class="python"><span style="color: #530035;">from</span> <span style="">time</span> <span style="color: #530035;">import</span> <span style="">time</span>
-&nbsp;
-<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">500</span>, <span style="">100</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># The framerate and the speed of the animation are independent.</span>
-<span style="color: grey;"># Lower the framerate and the animation will finish at the same time, </span>
-<span style="color: grey;"># but it will look choppier.</span>
-<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">60</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># When starting the script, keep the current time</span>
-start_time = <span style="">time</span><span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># The duration of the script, in seconds</span>
-duration = <span style="">5.0</span>
-&nbsp;
-<span style="color: grey;"># The time when the script would end.</span>
-end_time = start_time + duration
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: grey;"># Get the current time</span>
-    current_time = <span style="">time</span><span style="">&#40;</span><span style="">&#41;</span>
-    <span style="color: grey;"># If the current time is smaller than the end time, the</span>
-    <span style="color: grey;"># animation is still running.</span>
-    <span style="color: #530035;">if</span> current_time &lt; end_time:
-        <span style="color: grey;"># The current position is a value between 0.0 </span>
-        <span style="color: grey;"># (at the start of the animation) and 1.0 (at the end)</span>
-        current_pos = <span style="">&#40;</span>current_time - start_time<span style="">&#41;</span> / duration
-        <span style="color: grey;"># Draw a rectangle whose WIDTH is relative to the current</span>
-        <span style="color: grey;"># position in the animation, so if the animation is halfway,</span>
-        <span style="color: grey;"># the width of the rectangle will be half of the canvas' WIDTH.</span>
-        <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">0</span>, <span style="">0</span>, <span style="color: #530035;">WIDTH</span>*current_pos, <span style="color: #530035;">HEIGHT</span><span style="">&#41;</span>
-    <span style="color: #530035;">else</span>:
-        <span style="color: grey;"># If the animation is done, draw the text &quot;Done&quot;</span>
-        <span style="color: #530035;">text</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Done!&quot;</span>, <span style="">50</span>, <span style="">50</span><span style="">&#41;</span></pre></pre>Processor speed, of course, makes a big  difference in animation speed. If you're using timed animations like in the example, you could set the framerate to a sufficiently large number (60) will do, and the computer will do its best to match that speed.<br><br>Kind regards,<br><br>Frederik </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: May 28 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

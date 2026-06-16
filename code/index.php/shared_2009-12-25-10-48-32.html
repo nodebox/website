@@ -1,192 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Newbie Question: Number</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2009-12-25-10-48-32, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2009-12-25-10-48-32" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Newbie Question: Number</h1>
-<strong>Posted by <span class="comment_by">Jimmy Gunawan</span> on <em class="date">Dec 25, 2009</em></strong>
-<p>It's me again. I am trying to get some kind of value order and play around with the stamping.<br><br>So far, I only understand the basic that:<br>CNUM in stamping means 0,1,2,3,4,5,6,7,8....and so on. <br><br>What if I wanted to get value that goes like this:<br>..., -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, ....<br><br>Or perhaps SIN/COS kind of way?<br><br>I actually tried % (modulus), plugged into variable for stamping, for example:<br><br>CNUM%5<br>This gives stamping like: 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3... maybe not exactly correct, but it does show the result.<br><br>CNUM%10 - 5<br>Gives an interesting result like a wave pattern. Maybe this is what I could use to get: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5.<br><br>I wonder if there is a better way to create repeating pattern of value. At the moment I could think of this kind of thing in term of gradient. I don't think there is a node that does this yet. Maybe in the future, there will be gradient node that could plug the value easily into parameter of other node?<br><br>So, in short, my question is: What kind of Math expression could be used for creating random value in variable, in relation to stamping? Is there a reference or library page that could help with this?<br><br>In the way, this would easily relates to FRAME or TIME.<br><br>Thank you. </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 28, 2009</em></strong><p>Jimmy,<br><br>I haven't tried NB2 yet, so I don't know exactly where you would plug this in, however, there's a function called <a href="http://docs.python.org/library/functions.html#range">range</a> that will give you various lists of numbers.<br><br>Some examples:<pre class="python">&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">0</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">7</span>, <span style="">20</span><span style="">&#41;</span>
-<span style="">&#91;</span> <span style="">7</span>, <span style="">8</span>, <span style="">9</span>, <span style="">10</span>, <span style="">11</span>, <span style="">12</span>, <span style="">13</span>, <span style="">14</span>, <span style="">15</span>, <span style="">16</span>, <span style="">17</span>, <span style="">18</span>, <span style="">19</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">-10</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">-10</span>, <span style="">-9</span>, <span style="">-8</span>, <span style="">-7</span>, <span style="">-6</span>, <span style="">-5</span>, <span style="">-4</span>, <span style="">-3</span>, <span style="">-2</span>, <span style="">-1</span>, <span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">0</span>, <span style="">10</span>, <span style="">2</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">2</span>, <span style="">4</span>, <span style="">6</span>, <span style="">8</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">-20</span>, <span style="">0</span>, <span style="">4</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">-20</span>, <span style="">-16</span>, <span style="">-12</span>, <span style="">-8</span>, <span style="">-4</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">20</span>, <span style="">200</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">20</span>, <span style="">30</span>, <span style="">40</span>, <span style="">50</span>, <span style="">60</span>, <span style="">70</span>, <span style="">80</span>, <span style="">90</span>, <span style="">100</span>, <span style="">110</span>, <span style="">120</span>, <span style="">130</span>, <span style="">140</span>, <span style="">150</span>, <span style="">160</span>, <span style="">170</span>, <span style="">180</span>, <span style="">190</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">200</span>, <span style="">20</span>, <span style="">-10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">200</span>, <span style="">190</span>, <span style="">180</span>, <span style="">170</span>, <span style="">160</span>, <span style="">150</span>, <span style="">140</span>, <span style="">130</span>, <span style="">120</span>, <span style="">110</span>, <span style="">100</span>, <span style="">90</span>, <span style="">80</span>, <span style="">70</span>, <span style="">60</span>, <span style="">50</span>, <span style="">40</span>, <span style="">30</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">200</span>, <span style="">20</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span>, <span style="">-10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span>, <span style="">-10</span>, <span style="">-1</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">10</span>, <span style="">9</span>, <span style="">8</span>, <span style="">7</span>, <span style="">6</span>, <span style="">5</span>, <span style="">4</span>, <span style="">3</span>, <span style="">2</span>, <span style="">1</span>, <span style="">0</span>, <span style="">-1</span>, <span style="">-2</span>, <span style="">-3</span>, <span style="">-4</span>, <span style="">-5</span>, <span style="">-6</span>, <span style="">-7</span>, <span style="">-8</span>, <span style="">-9</span><span style="">&#93;</span>
-&nbsp;
-&nbsp;
-The basics of this are: <span style="color: #530035;">if</span> you give <span style="">range</span> <span style="">1</span> argument, it counts <span style="color: #530035;">from</span> <span style="">0</span> until that number <span style="">&#40;</span>the argument <span style="color: #530035;">is</span> the upper limit; notice that <span style="">range</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span> gives you the numbers up to <span style="">9</span><span style="">&#41;</span>. <span style="">If</span> you give <span style="">range</span> <span style="">2</span> arguments, it counts up <span style="color: #530035;">from</span> the first until the second <span style="color: #530035;">in</span> the same way. <span style="">If</span> you give it three arguments, the first <span style="color: #530035;">is</span> the starting point, the second the upper limit, <span style="color: #530035;">and</span> the third <span style="color: #530035;">is</span> the <span style="color: #ff0080;">&quot;step&quot;</span>; instead of just counting by <span style="">1</span><span style="color: #ff0080;">'s you can count by 2'</span>s <span style="color: #530035;">or</span> <span style="">3</span><span style="color: #ff0080;">'s or whatever you want. By giving a negative step, you can count down from a first argument to a smaller second argument.
-&nbsp;
-Hope that'</span>s helpful to you!</pre></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 28, 2009</em></strong><p>(Boy, I wish this forum had a preview button!)<br><br>Jimmy,<br><br>I haven't tried NB2 yet, so I don't know exactly where you would plug this in, however, there's a function called <a href="http://docs.python.org/library/functions.html#range">range</a> that will give you various lists of numbers.<br><br>Some examples:<pre class="python">&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">0</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">7</span>, <span style="">20</span><span style="">&#41;</span>
-<span style="">&#91;</span> <span style="">7</span>, <span style="">8</span>, <span style="">9</span>, <span style="">10</span>, <span style="">11</span>, <span style="">12</span>, <span style="">13</span>, <span style="">14</span>, <span style="">15</span>, <span style="">16</span>, <span style="">17</span>, <span style="">18</span>, <span style="">19</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">-10</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">-10</span>, <span style="">-9</span>, <span style="">-8</span>, <span style="">-7</span>, <span style="">-6</span>, <span style="">-5</span>, <span style="">-4</span>, <span style="">-3</span>, <span style="">-2</span>, <span style="">-1</span>, <span style="">0</span>, <span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span>, <span style="">6</span>, <span style="">7</span>, <span style="">8</span>, <span style="">9</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">0</span>, <span style="">10</span>, <span style="">2</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">0</span>, <span style="">2</span>, <span style="">4</span>, <span style="">6</span>, <span style="">8</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">-20</span>, <span style="">0</span>, <span style="">4</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">-20</span>, <span style="">-16</span>, <span style="">-12</span>, <span style="">-8</span>, <span style="">-4</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">20</span>, <span style="">200</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">20</span>, <span style="">30</span>, <span style="">40</span>, <span style="">50</span>, <span style="">60</span>, <span style="">70</span>, <span style="">80</span>, <span style="">90</span>, <span style="">100</span>, <span style="">110</span>, <span style="">120</span>, <span style="">130</span>, <span style="">140</span>, <span style="">150</span>, <span style="">160</span>, <span style="">170</span>, <span style="">180</span>, <span style="">190</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">200</span>, <span style="">20</span>, <span style="">-10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">200</span>, <span style="">190</span>, <span style="">180</span>, <span style="">170</span>, <span style="">160</span>, <span style="">150</span>, <span style="">140</span>, <span style="">130</span>, <span style="">120</span>, <span style="">110</span>, <span style="">100</span>, <span style="">90</span>, <span style="">80</span>, <span style="">70</span>, <span style="">60</span>, <span style="">50</span>, <span style="">40</span>, <span style="">30</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">200</span>, <span style="">20</span>, <span style="">10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span>, <span style="">-10</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">&#93;</span>
-&nbsp;
-&gt;&gt;&gt; <span style="">range</span><span style="">&#40;</span><span style="">10</span>, <span style="">-10</span>, <span style="">-1</span><span style="">&#41;</span>
-<span style="">&#91;</span><span style="">10</span>, <span style="">9</span>, <span style="">8</span>, <span style="">7</span>, <span style="">6</span>, <span style="">5</span>, <span style="">4</span>, <span style="">3</span>, <span style="">2</span>, <span style="">1</span>, <span style="">0</span>, <span style="">-1</span>, <span style="">-2</span>, <span style="">-3</span>, <span style="">-4</span>, <span style="">-5</span>, <span style="">-6</span>, <span style="">-7</span>, <span style="">-8</span>, <span style="">-9</span><span style="">&#93;</span></pre></pre>The basics of this are: if you give range 1 argument, it counts from 0 until that number (the argument is the upper limit; notice that range(10) gives you the numbers up to 9). If you give range 2 arguments, it counts up from the first until the second in the same way. If you give it three arguments, the first is the starting point, the second the upper limit, and the third is the "step"; instead of just counting by 1's you can count by 2's or 3's or whatever you want. By giving a negative step, you can count down from a first argument to a smaller second argument.<br><br>Hope that's helpful to you! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 28, 2009</em></strong><p>Note that the result lists in my post above are cut off, but if you use python in Terminal, you can easily try things for yourself. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Dec 28 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

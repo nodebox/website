@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | Superfolia</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Superfolia" />
+<link rel="canonical" href="https://www.nodebox.net/code/Superfolia" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Superfolia</h3>
+<p><span class="header_image"><img src="/code/data/media/superfolia-header.jpg" alt="superfolia-header" /></span>In the aftermath of <a href="/code/Evolution">Evolution</a> I&#39;ve started building a small ecosystem of evolving plantlife. Here are some first sketches. Many more plants are to follow and the idea is of course to have them evolve and cross-combine. This way, instead of the arena-like environment in which the Evolution creatures fly around, we have an ecosystem of plants for them to eat, hide in, or get eaten by. Plants would have properties similar to the creatures, for example the amount of sunlight they need, if and how they are edible, how they pollinate and which creatures spread their seeds, and so on.</p>  <p>&nbsp;</p>  <hr />  <h2>Roots and recursion</h2>  <p>This first weedlike plant is based on a simple recursive algorithm. Recursion is a popular technique used to describe trees and the like, because of the <i>self-referential</i> nature of a tree. Basically, you would describe a tree by stating that a <i>branch</i> is <i>something from which smaller branches sprout</i>, and that the root of a tree is a <i>big branch</i>.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia1.jpg" height="552" width="552" /></span></p><p><img src="/code/data/media/superfolia1b.jpg" alt="superfolia1b" /> <br /></p>  <p><a href="/code/Superfolia_|_root_source_code" target="_self">View source  code</a><br /></p><p>&nbsp;</p>  <hr />  <h2>Flowers and math</h2>  <p>In the next example we add some flowers to the roots. These are based on Johan Gielis&#39; <a href="http://en.wikipedia.org/wiki/Superformula">Superformula</a>. With this formula you can describe any shape found in nature in no more than four variables.</p>  <p>This saves a lot of calculating work and is highly interesting because you can cross-combine the parameters of two flowers to generate new flowers, or attach properties to a variable (e.g. spikiness, elegance, ...)</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia2.jpg" height="575" width="552" /></span> </p>  <p>&nbsp;</p>  <hr />  <h2>Flower factory</h2>  <p>During her design masters Ludivine Lechat graduated with a project called <a href="http://nodebox.net/ludivine/index.php/Latifolia" target="_self">Latifolia.</a> A system of flowers and colors. </p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia-latifolia1.jpg" height="552" width="552" /></span> </p>  <p>&nbsp;</p>    <p>Recently I&#39;ve started experimenting with this fantastic artwork, chopping it up like we did in Evolution, discering petals, leaves, flower buds, spores, individual elements which we can combine randomly into new plant forms. I&#39;m looking for a way to combine Ludivine&#39;s art with Johan Gielis&#39; formula.</p><p>This <a href="http://www.artcom.de/process/">ART+COM</a> project is inspiring as well. <br /></p>      <p>&nbsp;</p>  <hr />  <h2>SVG and path filters</h2>  <p>NodeBox now has an <a href="/code/SVG">SVG library</a> to import SVG vector data. All of the vector data is transformed to standard NodeBox paths, so it is possible to manipulate each point in the path separately. Here, each path is modified with a furry pathfilter. Part of the code for this algorithm is over at the SVG library page. The original vector art is done by Ludivine Lechat.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia5.jpg" height="750" width="552" /></span> </p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia6.jpg" height="526" width="552" /></span> </p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/superfolia7.jpg" height="700" width="552" /></span> </p>  <p><a href="/code/Superfolia_|_source_code" target="_self">View source code&nbsp;</a></p><p>&nbsp;</p>  <hr />    <p>Created by Tom De Smedt</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Mar 15 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

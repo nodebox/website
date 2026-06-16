@@ -1,213 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | Threading NodeBox execution?</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-08-02-15-53-07, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-08-02-15-53-07" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">Threading NodeBox execution?</h1> <b>Posted by <span class="comment_by">Cedric</span> on <i class="date">Aug 02, 2008</i></b> <p>Hi.  <br /> <br />I am trying to make a <a href="Graph.html">Graph</a>. But each node is making a HTTP query to a database to retrieve some of its information. When I run my code, NodeBox freezes, until completion. I tried to thread my code, but I am rather a newbie in this topic, using the threading module. Here is a summary of what I am doing:</p><pre class="python"><span style="color: #530035;">import</span> <span style="">threading</span>
-<span style="color: #530035;">class</span> MyNode<span style="">&#40;</span><span style="">threading</span>.<span style="">Thread</span><span style="">&#41;</span>:
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, reference<span style="">&#41;</span>:
-        <span style="">threading</span>.<span style="">Thread</span>.<span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-        <span style="">self</span>.<span style="">reference</span> = reference
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>query</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-       <span style="">self</span>.<span style="">label</span>, <span style="">self</span>.<span style="">category</span> = <span style="color: grey;">#[make the HTTP request by using another module's code using self.reference is input]</span>
-    <span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>run</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-        <span style="color: grey;"># self.run() is the method actually called when calling MyNode.start()</span>
-        <span style="">self</span>.<span style="">query</span><span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;">#--- </span>
-g = graph.<span style="">create</span><span style="">&#40;</span><span style="">&#41;</span> 
-<span style="color: #530035;">for</span> item <span style="color: #530035;">in</span> my_list_of_references:     
-    mn = MyNode<span style="">&#40;</span>item<span style="">&#41;</span>   
-    mn.<span style="">start</span><span style="">&#40;</span><span style="">&#41;</span> <span style="color: grey;"># starts thread.</span>
-    mn.<span style="">join</span><span style="">&#40;</span><span style="">&#41;</span> <span style="color: grey;"># wait for thread completion</span>
-    g.<span style="">add_node</span><span style="">&#40;</span>ROOT, mn.<span style="">reference</span>, category=mn.<span style="">category</span>, label=mn.<span style="">label</span><span style="">&#41;</span>
-    
-<span style="color: grey;">#[more code here... but the point is already made]</span></pre></pre>Any idea/help would be greatly appreciated. <br />Thanks. <p>&nbsp;</p><br /></div> &nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 04, 2008</em></strong><p>Hi Cedric,<br><br>There are several points to touch here.<br><br>First you may want to have a look at the <a href="Animation.html">animation</a> tutorial. This introduces the draw() command. Code you put in the draw() command is called several times each second - this allows you to create animations, or do different things at specific times and events (e.g. user clicks mouse, web content is done downloading).<br><br>If you don't use an animation, NodeBox will first execute all of the code (i.e. "freeze") and then draw it, as you mentioned.<br><br>Next, you may want to use the <a href="Web.html">Web</a> library. It offers support for asynchronous downloads (in the background) so you don't have to bother about threading yourself.<br><br>Here's a short example. It continues to download the current URL until it is ready, at which point it adds the URL to the graph and starts downloading the next one.<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">500</span>, <span style="">500</span><span style="">&#41;</span>
-&nbsp;
-web = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;web&quot;</span><span style="">&#41;</span>
-urls = web.<span style="">yahoo</span>.<span style="">search</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;nodebox&quot;</span><span style="">&#41;</span>
-i = <span style="">0</span> <span style="color: grey;"># the current URL to retrieve</span>
-download = web.<span style="">url</span>.<span style="">retrieve</span><span style="">&#40;</span>urls<span style="">&#91;</span>i<span style="">&#93;</span>, asynchronous=<span style="color: #530035;">True</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: grey;"># Clear cache for live downloads each tim the script runs.</span>
-<span style="color: grey;">#web.clear_cache()</span>
-&nbsp;
-graph = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;graph&quot;</span><span style="">&#41;</span>
-g = graph.<span style="">create</span><span style="">&#40;</span><span style="">&#41;</span>
-g.<span style="">add_node</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;root&quot;</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
-    
-    <span style="color: #530035;">global</span> download, i
-    <span style="color: grey;"># Once we are done downloading a URL,</span>
-    <span style="color: grey;"># add it to the graph and start downloading the next.</span>
-    <span style="color: grey;"># The retrieved content is stored in download.data.</span>
-    <span style="color: #530035;">if</span> download != <span style="color: #530035;">None</span> <span style="color: #530035;">and</span> download.<span style="">done</span>:
-        html = download.<span style="">data</span> <span style="color: grey;"># parse the stuff you need from &quot;html&quot; string.</span>
-        g.<span style="">add_edge</span><span style="">&#40;</span>urls<span style="">&#91;</span>i<span style="">&#93;</span>, <span style="color: #ff0080;">&quot;root&quot;</span><span style="">&#41;</span>
-        g.<span style="">layout</span>.<span style="">refresh</span><span style="">&#40;</span><span style="">&#41;</span>
-        <span style="color: #530035;">if</span> i &lt; <span style="">len</span><span style="">&#40;</span>urls<span style="">&#41;</span><span style="">-1</span>:
-            i += <span style="">1</span>
-            download = web.<span style="">url</span>.<span style="">retrieve</span><span style="">&#40;</span>urls<span style="">&#91;</span>i<span style="">&#93;</span>, asynchronous=<span style="color: #530035;">True</span><span style="">&#41;</span>
-        <span style="color: #530035;">else</span>:
-            <span style="color: grey;"># There is nothing left to download.</span>
-            download = <span style="color: #530035;">None</span>    
-          
-    g.<span style="">draw</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 05, 2008</em></strong><p>Dear Tom. Thanks very much for your help. The web module looks really interesting. I just tweaked my code in order to follow your suggestions. But I stumbled upon the following problems:<br><br>The webpages I would like to retrieve are written in XML. This is simpler for me to use this instead of parsing a non-standard HTML webpage (which could nonetheless be done of course, by writing a new abstraction class). No dedicated XML methods seem to be provided in this otherwise-excellent module.<br><br>However, I discovered that I simply cannot use the web module behind a proxy. Therefore, I cannot even test if the web module could be tweaked for XML... <br><br>I found elsewhere how to Thread my webpage queries for the moment. But I will keep following the story if you reply.<br><br>Cedric </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 05, 2008</em></strong><p>You can retrieve all sorts of stuff with web.url.retrieve(). It will simply yield the file contents as a string. If there's XML inside, you can use Python's <a href="http://www.python.org/doc/current/lib/module-xml.dom.minidom.html">xml.dom.minidom</a> module to parse the string, for example.<br><br>Proxies should not be able to influence the Web library. Are you receiving an error message? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 06, 2008</em></strong><p>I tried web.url.retrieve() but enver managed to get something. So I tried with just a piece of code, and used web.is_url(), which answered False (all other is_xxx() methods were also answering False). I looked inside the module itself, and the little is_url() definition states that it simply checks if it can connects. So I concluded that it was simply failing to connect. The proxy of my university is a recurrent issue, so I thought that was the source of the problem.<br><br>Maybe I have overlooked a bit the problem, since I had already a WebPage class using urllib2 that was able to connect. <br><br>I was also wondering if web.url.retrieve() was able to retrieve non-static page. I guess so of course, but just wondering. The URLl I am trying to retrieve looks like:<br><br><a href="http://www.server.org/abs/bibcode&format=short_xml">http://www.server.org/abs/bibcode&format=short_xml</a><br><br>I'll give another try today. Thanks for your help! I'll definitely continue to explore NodeBox capabilities, and it is already helping me in my research.<br><br>Cedric<br><br>Cedric </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 06, 2008</em></strong><p>Back to work, and therefore behing a restrictive proxy, I made some tests. Here is a simple piece of code, with an example of URL I am trying to retrieve:<pre class="python">web = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">'web'</span><span style="">&#41;</span>
-html = web.<span style="">url</span>.<span style="">retrieve</span><span style="">&#40;</span><span style="color: #ff0080;">'http://adsabs.harvard.edu/abs/1976PASP...88..917C&amp;data_type=SHORT_XML'</span><span style="">&#41;</span>
-<span style="color: #530035;">print</span> html, html.<span style="">data</span></pre></pre>When run the first time, I get the following message:<br><br>/Users/cedric/Library/Application Support/NodeBox/web/url.py:414: Warning:  in web.url.URLAccumulator for <a href="http://adsabs.harvard.edu/abs/1976PASP">http://adsabs.harvard.edu/abs/1976PASP</a>...88..917C&data_type=SHORT_XML<br> <br><br>For subsequent execution, I get only:<br> <br><br>So it returns an object, but its data attribute is empty. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 06, 2008</em></strong><p>Hm... The comment textbox in this website is very sensitive to any presence of lesser and greater signs used in HTML tags. The object I got is this, removing the problematic signs:<br><br>web.url.URLAccumulator instance at 0x1749a288 </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 09, 2008</em></strong><p>Well, I was able to get data from the URL in your example, so no problem there... Can you try the following:<pre class="python"><span style="color: #530035;">from</span> <span style="">urllib2</span> <span style="color: #530035;">import</span> urlopen
-<span style="color: #530035;">print</span> urlopen<span style="">&#40;</span><span style="color: #ff0080;">&quot;http://adsabs.harvard.edu/abs/1976PASP...88..917C&amp;data_type=SHORT_XML&quot;</span><span style="">&#41;</span>.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>and tell me if that yields an error? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 09, 2008</em></strong><p>With no proxy, it works, of course. Behind the proxy, it freezes until timeout is raised:<pre class="python">Traceback <span style="">&#40;</span>most recent call last<span style="">&#41;</span>:
-  File <span style="color: #ff0080;">&quot;nodebox/gui/mac/__init__.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">358</span>, <span style="color: #530035;">in</span> _execScript
-  File <span style="color: #ff0080;">&quot;&quot;</span>, <span style="color: #530035;">line</span> <span style="">2</span>, <span style="color: #530035;">in</span> 
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">121</span>, <span style="color: #530035;">in</span> urlopen
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">374</span>, <span style="color: #530035;">in</span> <span style="color: #530035;">open</span>
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">392</span>, <span style="color: #530035;">in</span> _open
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">353</span>, <span style="color: #530035;">in</span> _call_chain
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">1100</span>, <span style="color: #530035;">in</span> http_open
-  File <span style="color: #ff0080;">&quot;urllib2.pyo&quot;</span>, <span style="color: #530035;">line</span> <span style="">1075</span>, <span style="color: #530035;">in</span> do_open
-URLError: urlopen error <span style="">&#40;</span><span style="">60</span>, <span style="color: #ff0080;">'Operation timed out'</span><span style="">&#41;</span></pre></pre>I send you an (old) piece of code I am using to connect through a proxy. It may help.<pre class="python"><span style="color: #530035;">import</span> <span style="">urllib</span>
-<span style="color: #530035;">from</span> <span style="">xml</span>.<span style="">dom</span> <span style="color: #530035;">import</span> minidom
-&nbsp;
-<span style="color: #530035;">class</span> ADSPage<span style="">&#40;</span><span style="">urllib</span>.<span style="">FancyURLopener</span><span style="">&#41;</span>:
-	<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'></span><span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, url=<span style="color: #530035;">None</span>, proxy=<span style="color: #530035;">False</span><span style="">&#41;</span>:
-		<span style="">self</span>.<span style="">url</span> = url
-		<span style="">self</span>.<span style="">proxy</span> = proxy
-		<span style="">self</span>.__config<span style="">&#40;</span><span style="">&#41;</span>
-&nbsp;
-	<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>__config</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-		<span style="color: #530035;">if</span> <span style="">self</span>.<span style="">proxy</span>:
-			proxy_map = readConnectionConfig<span style="">&#40;</span><span style="">&#41;</span>
-			<span style="">urllib</span>.<span style="">FancyURLopener</span>.<span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span>, proxy_map<span style="">&#41;</span>
-		<span style="color: #530035;">else</span>:
-			<span style="">urllib</span>.<span style="">FancyURLopener</span>.<span style="color: red">__init__</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>
-			
-		<span style="">self</span>.<span style="">addheader</span><span style="">&#40;</span><span style="color: #ff0080;">'User-Agent'</span>, <span style="color: #ff0080;">'Mozilla/5.0'</span><span style="">&#41;</span>
-	
-	<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>get</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-		<span style="">self</span>._query<span style="">&#40;</span><span style="">&#41;</span>
-		<span style="">self</span>.<span style="">xml_dom</span> = minidom.<span style="">parseString</span><span style="">&#40;</span><span style="">self</span>.<span style="">content</span><span style="">&#41;</span>
-&nbsp;
-	<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>_query</span><span style="">&#40;</span><span style="">self</span><span style="">&#41;</span>:
-		f = <span style="">self</span>.<span style="color: #530035;">open</span><span style="">&#40;</span><span style="color: #ff0080;">'http://%s'</span> % <span style="">&#40;</span><span style="">self</span>.<span style="">url</span><span style="">&#41;</span><span style="">&#41;</span>		
-		<span style="">self</span>.<span style="">content</span> = f.<span style="">read</span><span style="">&#40;</span><span style="">&#41;</span>
-		f.<span style="">close</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre>Then you can write a standard parsing method that will reads self.xml_dom. I have an external function readConnectionConfig that reads a config file, and provide the necessary proxy map:<pre class="python"><span style="">&#123;</span><span style="color: #ff0080;">'http'</span>: <span style="color: #ff0080;">'http://www.myproxyserver.fr:3128'</span><span style="">&#125;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Aug 11, 2008</em></strong><p>Hi Cedric,<br><br>I've added a set_proxy() command to the latest release of the web library. Could you test if that works for you?<pre class="python">web = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">'web'</span><span style="">&#41;</span>
-web.<span style="">set_proxy</span><span style="">&#40;</span><span style="color: #ff0080;">'http://www.myproxyserver.fr:3128'</span>, <span style="">type</span>=<span style="color: #ff0080;">'http'</span><span style="">&#41;</span>
-html = web.<span style="">url</span>.<span style="">retrieve</span><span style="">&#40;</span><span style="color: #ff0080;">'http://adsabs.harvard.edu/abs/1976PASP...88..917C&amp;data_type=SHORT_XML'</span><span style="">&#41;</span>
-<span style="color: #530035;">print</span> html, html.<span style="">data</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Aug 27, 2008</em></strong><p>Dear Tom.<br><br>Sorry for the late reply, I come back from vacations. Yes it works for me, behind my university proxy, with this simple command (adjusting proxy address of course). Great job. Thanks. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Aug 27 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

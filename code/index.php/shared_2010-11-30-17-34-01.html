@@ -1,125 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | ant - foodsize</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2010-11-30-17-34-01, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2010-11-30-17-34-01" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">ant - foodsize</h1>
-<strong>Posted by <span class="comment_by">karel</span> on <em class="date">Nov 30, 2010</em></strong>
-<p>In stead of a green dot, i putted an image as food.<br>How can I make the size of it more big?<br><br>This is my script:<br><br>try:<br>    ants = ximport("ants")<br>except:<br>    ants = ximport("__init__")<br>    reload(ants)<br><br><br>size(500,500)<br>speed(200)<br><br>def setup():    <br>    <br>    # Starts a colony with 30 ants in it.<br>    global colony<br>    t = random(30) #random aantal ants<br>    colony = ants.colony(t, WIDTH/2, HEIGHT/2, 100)<br>    <br>    # Add some food in the vicinity of the colony.<br>    for i in range(8):<br>        x = 50 + random(WIDTH-100)<br>        y = 50 + random(HEIGHT-100)<br>        s = random(5,5)<br>        colony.foodsources.append(ants.food(x,y,s))<br>    <br>def draw():<br>    <br>    global colony<br>    if not colony.foodsources:<br>        setup()<br>    <br>    fill(10.2)<br>    rect(0, 0, WIDTH, HEIGHT)<br>    <br>    # Draw the hoarded food in the colony.<br>    fill(0.3)<br>    s = colony.food<br>    oval(colony.x-s/2, colony.y-s/2, s, s)<br>    <br>    # Draw each foodsource as twigimage.<br>    # Watch it shrink as the ants eat away its size parameter!<br>    fill(0.1)<br>    for f in colony.foodsources:<br>        image("twig2",f.x-f.size/2, f.y-f.size/2, f.size, f.size)<br>    <br>    for ant in colony:<br>        <br>        stroke(0.8,0.8,0.8,0.5)<br>        strokewidth(0.8)<br>        nofill()<br>        autoclosepath(False)<br>        <br>        # Draw the pheromone trail for each ant.<br>        # Ants leave a trail of scent from the foodsource,<br>        # enabling other ants to find the food as well!<br>        if len(ant.trail) > 0:<br>            beginpath(ant.trail[0].x, ant.trail[0].y)<br>            for p in ant.trail: lineto(p.x, p.y)<br>            endpath()<br>        <br>        # Change ant color when carrying food.<br>        nostroke()<br>        fill(0.5)<br>        if ant.has_food: fill(0.1)<br>        <br>        # The main ant behaviour:<br>        # 1) follow an encountered trail,<br>        # 2) harvest nearby food source,<br>        # 3) bring food back to colony,<br>        # 4) wander aimlessly<br>        ant.forage()<br>        oval(ant.x, ant.y, 1, 1) </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Nov 30 2010 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

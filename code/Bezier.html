@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | Bezier</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Bezier" />
+<link rel="canonical" href="https://www.nodebox.net/code/Bezier" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Bezier</h3>
+<h2>Description</h2>  <p>The Bezier library (nicknamed <em>PathMatics</em>) provides powerful mathematical functionality for Bezier paths, from simple things like evaluating the length of a path to complicated things like inserting points on a path or constructing a smooth path from a list of on-curve points. Bezier math is not the easiest thing to grasp, but all the commands in this library are simple and straightforward, and they work magic on a <a href="/code/Reference_|_textpath()">textpath()</a>.</p>  <p>Note that the Bezier library is always in development, so you might experience occasional errors while working with it. Please report any errors (tom-at-organisms-dot-be).</p>  <p>A special thanks goes to professor F. De Smedt at the Free University of Brussels for his integration and interpolation algorithms.</p><p><span class="pink_text">If you have NodeBox 1.8.4 or up, the library is integrated by default. See the <a href="/code/Path_Mathematics" target="_self">tutorial</a>. </span><br /></p>  <h2>Download</h2>  <table border="0"><tbody><tr><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/bezier.zip" target="_self"><img src="/code/data/media/download.gif" alt="download" /></a></td><td><a href="https://nodebox.s3.amazonaws.com/code/data/media/bezier.zip">bezier.zip</a> (5KB)<br /> <em>Last updated for NodeBox 1.8.2<br /></em><em>Author: Tom De Smedt</em><br /></td></tr></tbody></table>  <h2>Commands in the Bezier library</h2>  <ul> <li><a href="/code/bezier.contours()">contours()</a></li> <li><a href="/code/bezier.length()">length()</a></li> <li><a href="/code/bezier.point()">point()</a></li> <li><a href="/code/bezier.split()">split()</a></li> <li><a href="/code/bezier.findpath()">findpath()</a></li> </ul>  <h2>Example</h2>  <p>A basic example of path math: the point() command tells us where to put circles on the textpath, playing around with curves and their control handles constructs the whirly background.</p>  <p>&nbsp;</p>  <p><img class="border" src="/code/data/media/paths.gif" alt="" /></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Oct 15 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

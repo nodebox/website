@@ -1,0 +1,17 @@
+# Cloudflare Pages redirects.
+# Phase 2: the legacy NodeBox 1 wiki moved from /code/index.php/<Name> to the
+# clean /code/<Name>. First match wins, so the specific rules precede the splat.
+
+/code               /code/Home    301
+/code/              /code/Home    301
+/code/index.php     /code/Home    301
+/code/index.php/    /code/Home    301
+
+# The old community forum (Share landing + every shared_* snippet) was removed:
+# dead links, long obsolete. Send any surviving inbound URL to the wiki home.
+/code/index.php/Share      /code/Home  301
+/code/index.php/shared_*   /code/Home  301
+/code/Share                /code/Home  301
+/code/shared_*             /code/Home  301
+
+/code/index.php/*   /code/:splat  301

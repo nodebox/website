@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>NodeBox | Evolution - fitness</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Evolution - fitness" />
+<link rel="canonical" href="https://www.nodebox.net/code/Evolution_-_fitness" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Evolution - fitness</h3>
+<p>Which creatures survive and which don&#39;t?  In a genetic algorithm, a part of the existing population that is generally fitter than the rest is selected to breed a new generation. A <strong>fitness function</strong> determines the optimality of a creature based on certain goals and objectives - for example, is it faster than other creatures?</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/evolution-fitness0.jpg" alt="" width="661" height="322" /></span> </p>  <p>&nbsp;</p>  <hr />  <h2>Supershapes</h2>  <p>Here are some creatures developed with supershapes. Supershapes are based on the <a href="http://en.wikipedia.org/wiki/Superformula">superformula</a> and are ideal to test for fitness and recombination because they exist entirely out of data.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/evolution-fitness1.jpg" alt="" width="550" height="365" /></span>  <a href="javascript:pop(&#39;../data/media/evolution-fitness1.mov&#39;,&#39;fitness1&#39;,&#39;width=400,height=416&#39;)">Play movie</a></p>  <p>&nbsp;</p>  <p>In the example below you can see how complex creatures develop a sort of wriggling motion of their own, while their less complex brothers and sisters just keep floating around.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/evolution-fitness2.jpg" alt="" width="550" height="364" /></span>  <a href="javascript:pop(&#39;../data/media/evolution-fitness2.mov&#39;,&#39;fitness2&#39;,&#39;width=600,height=416&#39;)">Play movie</a></p>  <p>&nbsp;</p>  <p>Recombination of two supershapes.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/evolution-fitness3.jpg" alt="" width="550" height="362" /></span> </p>  <p>&nbsp;</p>  <hr />  <h2>Balanced evolution</h2>  <p>A typical problem with genetic algorithms is that they  converge towards local optima rather than the global optimum of the problem. In terms of our creatures, this means you would eventually end up with a generation of all-powerful and super-ferocious predators because they eat everyone else and thus appear to be the fittest. But eventually there would be nothing left to eat and they would die of starvation - survival requires other abilities besides being able to eat everyone.</p>  <p>The example below shows how we can balance out optimal solutions: elements are chosen for their speed. But the  speedier they are the more energy they use - elements that move too fast die out before they reach the finish. Elements that have a good balance between speed and energy have a higher chance of winning, and a higher chance of converging towards a global optimum.</p>  <p>&nbsp;</p>  <p><span class="media"><img src="/code/data/media/evolution-fitness4.jpg" alt="" width="550" height="365" /></span>  <a href="javascript:pop(&#39;../data/media/evolution-fitness4.mov&#39;,&#39;fitness4&#39;,&#39;width=500,height=316&#39;)">Play movie</a></p>  <p><br /> <br /> <a href="/code/Evolution">Back to main page</a></p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Jan 19 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

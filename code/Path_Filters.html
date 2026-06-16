@@ -1,0 +1,315 @@
+<html>
+
+<head>
+<title>NodeBox | Path Filters</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Path Filters" />
+<link rel="canonical" href="https://www.nodebox.net/code/Path_Filters" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Path Filters</h3>
+<p>In analogy to filter effects that manipulate pixels in an image, NodeBox provides the <a href="/code/Paths" target="_self">path mathematics</a> to create <b>filter effects that manipulate vector curves</b>. Below is some example code. </p><p>&nbsp;</p><hr size="2" width="100%" /><h2>Hairs </h2><p>A path filter that grows hair on each point in a contour. We measure the length of each contour and then calculate a number of points on it, based on the length (so longer segments will get more hairs and shorter segments will get less). On each point we draw some wiggly curves. </p><p><img src="/code/data/media/pathfilter1.jpg" alt="pathfilter1" /></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">300</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.23</span>, <span style="">0.21</span>, <span style="">0.15</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Georgia-Bold&quot;</span>, <span style="">175</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;hairs&quot;</span>, <span style="">40</span>, <span style="">200</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:    
+    prev = <span style="color: #530035;">None</span>
+    n = contour.<span style="">length</span>
+    <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> contour.<span style="">points</span><span style="">&#40;</span><span style="">int</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:     
+   
+        <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">0.75</span><span style="">&#41;</span>
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.25</span>, <span style="">0.5</span><span style="">&#41;</span><span style="">&#41;</span>
+&nbsp;
+        <span style="color: #530035;">if</span> prev != <span style="color: #530035;">None</span>:
+            <span style="color: #530035;">autoclosepath</span><span style="">&#40;</span><span style="color: #530035;">False</span><span style="">&#41;</span>
+            <span style="color: #530035;">beginpath</span><span style="">&#40;</span>prev.<span style="">x</span>, prev.<span style="">y</span><span style="">&#41;</span>            
+            <span style="color: #530035;">curveto</span><span style="">&#40;</span>
+                pt.<span style="">ctrl1</span>.<span style="">x</span> - <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>, 
+                pt.<span style="">ctrl1</span>.<span style="">y</span>,
+                pt.<span style="">ctrl2</span>.<span style="">x</span>, 
+                pt.<span style="">ctrl2</span>.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>,
+                pt.<span style="">x</span>, 
+                pt.<span style="">y</span>
+            <span style="">&#41;</span>
+            <span style="color: #530035;">curveto</span><span style="">&#40;</span>
+                pt.<span style="">ctrl1</span>.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>, 
+                pt.<span style="">ctrl1</span>.<span style="">y</span>,
+                pt.<span style="">ctrl2</span>.<span style="">x</span>, 
+                pt.<span style="">ctrl2</span>.<span style="">y</span> - <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">10</span><span style="">&#41;</span>,
+                pt.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">-20</span>, <span style="">20</span><span style="">&#41;</span>,
+                pt.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">-10</span>, <span style="">10</span><span style="">&#41;</span>
+            <span style="">&#41;</span>  
+            <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span>
+&nbsp;
+        prev = pt</pre></pre></p>&nbsp;      <p>&nbsp;</p><hr size="2" width="100%" /><h2>Spider </h2><p> A path filter that weaves a web between the points in each contour. Depending on the length of a contour, a number of points are calculated along the contour. Then points are connected randomly with straight lines (as long as the distance between them is smaller than some given number, fontsize() / 5 in this case). </p><p><img src="/code/data/media/pathfilter2.jpg" alt="pathfilter2" /></p><pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sqrt
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">300</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.23</span>, <span style="">0.21</span>, <span style="">0.15</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Helvetica-Bold&quot;</span>, <span style="">125</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;SPIDER&quot;</span>, <span style="">20</span>, <span style="">200</span><span style="">&#41;</span>
+&nbsp;
+m = <span style="">2.0</span>
+<span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:
+&nbsp;
+    n = contour.<span style="">length</span> + <span style="">50</span>
+    points = <span style="">list</span><span style="">&#40;</span>contour.<span style="">points</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>
+    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">int</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:
+        
+        pt1 = <span style="color: #530035;">choice</span><span style="">&#40;</span>points<span style="">&#41;</span>
+&nbsp;
+        d = <span style="">float</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;inf&quot;</span><span style="">&#41;</span>        
+        <span style="color: #530035;">while</span> d &gt; <span style="color: #530035;">fontsize</span><span style="">&#40;</span><span style="">&#41;</span>/<span style="">5</span>:
+            pt2  = <span style="color: #530035;">choice</span><span style="">&#40;</span>points<span style="">&#41;</span>
+            d = sqrt<span style="">&#40;</span><span style="">&#40;</span>pt2.<span style="">x</span>-pt1.<span style="">x</span><span style="">&#41;</span>**<span style="">2</span> + <span style="">&#40;</span>pt2.<span style="">y</span>-pt1.<span style="">y</span><span style="">&#41;</span>**<span style="">2</span><span style="">&#41;</span>
+&nbsp;
+        <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">1</span>, <span style="">1</span>, <span style="">0.9</span><span style="">&#41;</span>
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.35</span><span style="">&#41;</span>            
+        <span style="color: #530035;">line</span><span style="">&#40;</span>
+            pt1.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, m<span style="">&#41;</span>, 
+            pt1.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, m<span style="">&#41;</span>,
+            pt2.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, m<span style="">&#41;</span>, 
+            pt2.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, m<span style="">&#41;</span>
+        <span style="">&#41;</span></pre></pre></p>&nbsp;      <p>&nbsp;</p><hr size="2" width="100%" /><h2>Draft </h2><p>A path filter that sketches a piece of text by drawing different layers of (gradually optimizing) paths on top of each other. For each contour a number of points are calculated. Two points are roughly connected by a straight line. The connection gets more accurate as more layers are drawn. </p><p><img src="/code/data/media/pathfilter3.jpg" alt="pathfilter3" /></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">300</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.23</span>, <span style="">0.21</span>, <span style="">0.15</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Georgia-Bold&quot;</span>, <span style="">175</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;draft&quot;</span>, <span style="">40</span>, <span style="">200</span><span style="">&#41;</span>
+&nbsp;
+m = <span style="">15</span>
+&nbsp;
+<span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span>m<span style="">&#41;</span>:
+    m -= <span style="">1</span>
+&nbsp;
+    <span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:    
+        prev = <span style="color: #530035;">None</span>
+        n = contour.<span style="">length</span>    
+        <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> contour.<span style="">points</span><span style="">&#40;</span>n/<span style="">80</span>*i<span style="">&#41;</span>: 
+           
+            <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+            <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span>, <span style="">0.75</span><span style="">&#41;</span>
+            <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.25</span><span style="">&#41;</span>
+&nbsp;
+            <span style="color: #530035;">if</span> prev != <span style="color: #530035;">None</span>:
+                <span style="color: #530035;">line</span><span style="">&#40;</span>
+                    pt.<span style="">x</span>, 
+                    pt.<span style="">y</span>, 
+                    prev.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, <span style="">0</span><span style="">&#41;</span>, 
+                    prev.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, <span style="">0</span><span style="">&#41;</span>
+                <span style="">&#41;</span>
+                <span style="color: #530035;">line</span><span style="">&#40;</span>
+                    pt.<span style="">x</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, <span style="">0</span><span style="">&#41;</span>, 
+                    pt.<span style="">y</span> + <span style="color: #530035;">random</span><span style="">&#40;</span>-m, <span style="">0</span><span style="">&#41;</span>, 
+                    prev.<span style="">x</span>, 
+                    prev.<span style="">y</span>
+                <span style="">&#41;</span>
+&nbsp;
+            prev = pt</pre></pre></p>&nbsp;   <p>&nbsp;</p><hr size="2" width="100%" /><h2>Spiked</h2><p>A path filter that draws perpendicular spikes along each contour. A spike is calculated from the angle between to consecutive points. Subtracting 90 degrees from this angle gives us the perpendicular angle jutting outwards from the curve. We then find the point halfway between the starting and ending point and push it upwards. If we connect a curve from the starting point to this point, and a curve from this point to the ending point, we get a spike connecting the two. </p><p><img src="/code/data/media/pathfilter4.jpg" alt="pathfilter4" /><br /></p><pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> degrees, atan2
+<span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sqrt, <span style="">pow</span>
+<span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> radians, sin, cos
+&nbsp;
+<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">300</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.23</span>, <span style="">0.21</span>, <span style="">0.15</span><span style="">&#41;</span> 
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Helvetica-Bold&quot;</span>, <span style="">125</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;SPIKED&quot;</span>, <span style="">40</span>, <span style="">200</span><span style="">&#41;</span>
+&nbsp;
+m = <span style="">5</span>   <span style="color: grey;"># spike length</span>
+c = <span style="">0.8</span> <span style="color: grey;"># spike curvature</span>
+&nbsp;
+<span style="color: grey;"># From the NodeBox math tutorial:</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>angle</span><span style="">&#40;</span>x0, y0, x1, y1<span style="">&#41;</span>:
+    <span style="color: #530035;">return</span> degrees<span style="">&#40;</span> atan2<span style="">&#40;</span>y1-y0, x1-x0<span style="">&#41;</span> <span style="">&#41;</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>distance</span><span style="">&#40;</span>x0, y0, x1, y1<span style="">&#41;</span>:
+    <span style="color: #530035;">return</span> sqrt<span style="">&#40;</span><span style="">pow</span><span style="">&#40;</span>x1-x0, <span style="">2</span><span style="">&#41;</span> + <span style="">pow</span><span style="">&#40;</span>y1-y0, <span style="">2</span><span style="">&#41;</span><span style="">&#41;</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>coordinates</span><span style="">&#40;</span>x0, y0, distance, angle<span style="">&#41;</span>:
+    x1 = x0 + cos<span style="">&#40;</span>radians<span style="">&#40;</span>angle<span style="">&#41;</span><span style="">&#41;</span> * distance
+    y1 = y0 + sin<span style="">&#40;</span>radians<span style="">&#40;</span>angle<span style="">&#41;</span><span style="">&#41;</span> * distance
+    <span style="color: #530035;">return</span> x1, y1
+&nbsp;
+<span style="color: grey;"># The &quot;spike&quot; function between two points.</span>
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>perpendicular_curve</span><span style="">&#40;</span>pt0, pt1, curvature=<span style="">0.8</span><span style="">&#41;</span>:
+&nbsp;
+    d = distance<span style="">&#40;</span>pt0.<span style="">x</span>, pt0.<span style="">y</span>, pt1.<span style="">x</span>, pt1.<span style="">y</span><span style="">&#41;</span>
+    a = angle<span style="">&#40;</span>pt0.<span style="">x</span>, pt0.<span style="">y</span>, pt1.<span style="">x</span>, pt1.<span style="">y</span><span style="">&#41;</span>
+&nbsp;
+    mid = <span style="color: #530035;">Point</span><span style="">&#40;</span>
+        pt0.<span style="">x</span> + <span style="">&#40;</span>pt1.<span style="">x</span>-pt0.<span style="">x</span><span style="">&#41;</span> * <span style="">0.5</span>,
+        pt0.<span style="">y</span> + <span style="">&#40;</span>pt1.<span style="">y</span>-pt0.<span style="">y</span><span style="">&#41;</span> * <span style="">0.5</span>
+    <span style="">&#41;</span>    
+    dx, dy = coordinates<span style="">&#40;</span>mid.<span style="">x</span>, mid.<span style="">y</span>, m, a<span style="">-90</span><span style="">&#41;</span>    
+&nbsp;
+    vx = pt0.<span style="">x</span> + <span style="">&#40;</span>mid.<span style="">x</span>-pt0.<span style="">x</span><span style="">&#41;</span> * curvature
+    vy = pt0.<span style="">y</span> + <span style="">&#40;</span>mid.<span style="">y</span>-pt0.<span style="">y</span><span style="">&#41;</span> * curvature
+    <span style="color: #530035;">curveto</span><span style="">&#40;</span>vx, vy, dx, dy, dx, dy<span style="">&#41;</span>    
+&nbsp;
+    vx = pt1.<span style="">x</span> + <span style="">&#40;</span>mid.<span style="">x</span>-pt1.<span style="">x</span><span style="">&#41;</span> * curvature
+    vy = pt1.<span style="">y</span> + <span style="">&#40;</span>mid.<span style="">y</span>-pt1.<span style="">y</span><span style="">&#41;</span> * curvature
+    <span style="color: #530035;">curveto</span><span style="">&#40;</span>dx, dy, vx, vy, pt1.<span style="">x</span>, pt1.<span style="">y</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:
+    prev = <span style="color: #530035;">None</span>
+    n = contour.<span style="">length</span> / <span style="">8</span>
+    <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> contour.<span style="">points</span><span style="">&#40;</span>n<span style="">&#41;</span>:        
+&nbsp;
+        <span style="color: #530035;">nofill</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">stroke</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>
+        <span style="color: #530035;">strokewidth</span><span style="">&#40;</span><span style="">0.75</span><span style="">&#41;</span>        
+&nbsp;
+        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> prev:
+            <span style="color: #530035;">beginpath</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+        <span style="color: #530035;">elif</span> pt.<span style="">cmd</span> == <span style="color: #530035;">MOVETO</span>:
+            <span style="color: #530035;">moveto</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+        <span style="color: #530035;">else</span>:
+            perpendicular_curve<span style="">&#40;</span>prev, pt, c<span style="">&#41;</span>
+&nbsp;
+        prev = pt 
+    <span style="color: #530035;">endpath</span><span style="">&#40;</span><span style="">&#41;</span></pre></pre></p>&nbsp; <p>&nbsp;</p><hr size="2" width="100%" /><h2>Trashed</h2><p>A path filter that trashes the path by inserting random line segments between two points. </p><p><img src="/code/data/media/pathfilter5.jpg" alt="pathfilter5" /> <br /></p><pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">550</span>, <span style="">300</span><span style="">&#41;</span>
+<span style="color: #530035;">background</span><span style="">&#40;</span><span style="">0.23</span>, <span style="">0.21</span>, <span style="">0.15</span><span style="">&#41;</span> 
+&nbsp;
+<span style="color: #530035;">font</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;Georgia-Bold&quot;</span>, <span style="">175</span><span style="">&#41;</span>
+path = <span style="color: #530035;">textpath</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;trash&quot;</span>, <span style="">40</span>, <span style="">200</span><span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>trash</span><span style="">&#40;</span>path, pt0, pt1, m=<span style="">0.2</span>, n=<span style="">20</span>, d=<span style="">3.0</span><span style="">&#41;</span>:
+&nbsp;
+    <span style="color: grey;"># Add trash between two points.</span>
+    <span style="color: grey;"># m: controls how much of the path is trashed.</span>
+    <span style="color: grey;"># n: the number of lines to insert.</span>
+    <span style="color: grey;"># d: the maximum length of inserted lines.</span>
+    <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &lt; m:
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:
+            pt0.<span style="">x</span> += <span style="color: #530035;">random</span><span style="">&#40;</span>-d, d<span style="">&#41;</span>
+            pt0.<span style="">y</span> += <span style="color: #530035;">random</span><span style="">&#40;</span>-d, d<span style="">&#41;</span>
+            path.<span style="color: #530035;">lineto</span><span style="">&#40;</span>pt0.<span style="">x</span>, pt0.<span style="">y</span><span style="">&#41;</span>
+&nbsp;
+    path.<span style="color: #530035;">lineto</span><span style="">&#40;</span>pt1.<span style="">x</span>, pt1.<span style="">y</span><span style="">&#41;</span>
+&nbsp;
+    <span style="color: grey;"># Create a blot/speckle near the current point.</span>
+    <span style="color: grey;"># We have to add this to the path at the end.</span>
+    <span style="color: #530035;">if</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">&#41;</span> &lt; m*<span style="">0.3</span>:
+        x = pt1.<span style="">x</span> - <span style="color: #530035;">random</span><span style="">&#40;</span>-d*<span style="">4</span>, d*<span style="">4</span><span style="">&#41;</span>
+        y = pt1.<span style="">y</span> - <span style="color: #530035;">random</span><span style="">&#40;</span>-d*<span style="">2</span>, d*<span style="">2</span><span style="">&#41;</span>
+        blot = <span style="color: #530035;">BezierPath</span><span style="">&#40;</span><span style="">&#41;</span>
+        blot.<span style="color: #530035;">moveto</span><span style="">&#40;</span>x, y<span style="">&#41;</span>
+        <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span>n<span style="">&#41;</span><span style="">&#41;</span>:
+            x += <span style="color: #530035;">random</span><span style="">&#40;</span>-d, d<span style="">&#41;</span>
+            y += <span style="color: #530035;">random</span><span style="">&#40;</span>-d, d<span style="">&#41;</span>
+            blot.<span style="color: #530035;">lineto</span><span style="">&#40;</span>x, y<span style="">&#41;</span>
+        blot.<span style="color: #530035;">closepath</span><span style="">&#40;</span><span style="">&#41;</span>
+        <span style="color: #530035;">return</span> blot
+&nbsp;
+p = <span style="color: #530035;">BezierPath</span><span style="">&#40;</span><span style="">&#41;</span>
+extensions = <span style="">&#91;</span><span style="">&#93;</span>
+<span style="color: #530035;">for</span> contour <span style="color: #530035;">in</span> path.<span style="">contours</span>:
+    prev = <span style="color: #530035;">None</span>
+    n = contour.<span style="">length</span> / <span style="">8</span>
+    <span style="color: #530035;">for</span> pt <span style="color: #530035;">in</span> contour.<span style="">points</span><span style="">&#40;</span>n<span style="">&#41;</span>:         
+        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> prev:
+            p.<span style="color: #530035;">moveto</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+        <span style="color: #530035;">elif</span> pt.<span style="">cmd</span> == <span style="color: #530035;">MOVETO</span>:
+            p.<span style="color: #530035;">moveto</span><span style="">&#40;</span>pt.<span style="">x</span>, pt.<span style="">y</span><span style="">&#41;</span>
+        <span style="color: #530035;">else</span>:
+            blot = trash<span style="">&#40;</span>p, prev, pt<span style="">&#41;</span>
+            <span style="color: #530035;">if</span> blot: extensions.<span style="">append</span><span style="">&#40;</span>blot<span style="">&#41;</span>
+        prev = pt 
+&nbsp;
+<span style="color: #530035;">for</span> blot <span style="color: #530035;">in</span> extensions:
+    p.<span style="">extend</span><span style="">&#40;</span>blot<span style="">&#41;</span>
+&nbsp;
+<span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">1</span><span style="">&#41;</span>
+<span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>   
+<span style="color: #530035;">drawpath</span><span style="">&#40;</span>p<span style="">&#41;</span></pre></pre></p>&nbsp;
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: Feb 26 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

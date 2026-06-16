@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<title>NodeBox | Libraries</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="NodeBox, Libraries" />
+<link rel="canonical" href="https://www.nodebox.net/code/Libraries" />
+<link type="text/css" rel="stylesheet" media="screen" href="/media/css/nbar.css">
+
+<script type="text/javascript" src="/code/js/pop.js"></script>
+<script type="text/javascript" src="/code/js/confirm.js"></script>
+<link href="/code/css/default.css" rel="stylesheet" type="text/css" />
+<link href="/code/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<body id="body">
+<div class="nbar">
+  <ol>
+    <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
+      <ol class="nbar-dropdown">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
+        <li><a href="/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
+        <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
+      </ol>
+    </li>
+    <li><a class="gallery" href="/gallery/">Gallery</a></li>
+    <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
+    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="blog" href="/blog/">Blog</a></li>
+  </ol>
+</div>
+
+
+<div id="all">
+<div id="header_and_navigation">
+
+<div id="header">
+<a href="/code/Home"><img id="header_image" src="/code/g/header-small.jpg" width="800" /></a></div>
+
+<div id="title">
+<a href="/code/Home"><h1>NodeBox</h1>
+<strong><em>Create visual output with Python programming code</em></strong>
+</a></div>
+
+<div id="contextual">
+<div id="languages">
+
+</div>
+
+<div id="search">
+<form id="sf" method="get">
+<input type="text" id="q" name="q" value="" />
+<a href="javascript:document.getElementById('sf').submit();">GO</a>
+</form>
+</div>
+
+</div>
+
+<div id="navigation">
+<div id="navigation_public">
+<a href="/code/Home">Home</a>
+<a href="/code/Download">Download</a>
+<a href="/code/Reference">Reference</a>
+<a href="/code/Tutorial">Tutorial</a>
+<a href="/code/Library">Library</a>
+<a href="/code/Gallery">Gallery</a>
+<a href="/code/About">About</a>
+</div>
+</div>
+
+</div>
+
+<div id="content">
+
+<div id="nodebox-link">
+<a href="/code/Home"><img src="/code/g/transparent.gif" /></a>
+</div>
+
+<div class="inside">
+<h3>Libraries</h3>
+<p>NodeBox can be extended with a wealth of functionality (for example, Google queries, or image manipulation) by importing the right external libraries. All of these tools are kept apart from NodeBox for the simple reason that it would make NodeBox to unwieldy and complex if they would all be included.</p>  <h2>Libraries from the NodeBox site</h2>  <p>The NodeBox site has a lot of interesting libraries developed in and for NodeBox, for example <a href="/code/WordNet">WordNet</a> functionality, or <a href="/code/Core_Image" target="_self">Core Image</a>, which offers PhotoShop-like commands. A list of all libraries is <a href="/code/Library">here</a>.</p>  <p>To use one of these libraries, you first need to download it to your computer. Then, you need to put the files somewhere where your NodeBox script can find them: <strong>in the same folder as your NodeBox script</strong> or <strong>in the Application Support folder</strong> <em>(~/Library/Application Support/NodeBox/).</em></p>  <p>Then, import the library into your script with the <strong>ximport()</strong> command.</p>  <p>Notice how the <em>wordnet.py</em> library and the <em>pywordnet</em> folder (both came from the WordNet download) are in the same folder as the <em>dictionary.py</em> script (which we just created):</p>  <p><br /> <span class="media"><img src="/code/data/media/libraries1.jpg" alt="" width="574" height="391" /></span>  <span class="media"><img src="/code/data/media/libraries2.jpg" alt="" width="574" height="520" /></span> </p>  <h2>Python libraries</h2>  <p>The scripts you write in NodeBox is in fact <a href="http://www.python.org/">Python</a> code. Since Python is installed on your Mac by default, you can access and import all of Python&#39;s libraries in your NodeBox projects.</p>  <p>Take a look at the list of Python libraries <a href="http://docs.python.org/modindex.html">here</a>.</p>  <p>You can import a library command into your script with the following statement:<br /></p>  <pre class="python">variable = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;library&quot;</span><span style="">&#41;</span></pre></pre>  <p>For example, if you look at the <em>random</em> library on the above list of Python libraries, you see the <em>random</em> library has a <em>shuffle()</em> command to randomly reorder a <a href="/code/Lists">list</a>. To use this command in a NodeBox project:</p>  <pre class="python"><span style="">list</span> = <span style="">&#91;</span><span style="">1</span>, <span style="">2</span>, <span style="">3</span>, <span style="">4</span>, <span style="">5</span><span style="">&#93;</span>
+rnd = <span style="color: #530035;">ximport</span><span style="">&#40;</span><span style="color: #ff0080;">&quot;random&quot;</span><span style="">&#41;</span>
+rnd.<span style="">shuffle</span><span style="">&#40;</span><span style="">list</span><span style="">&#41;</span> 
+<span style="color: #530035;">print</span> <span style="">list</span>  
+&gt;&gt;&gt; <span style="">&#91;</span><span style="">3</span>, <span style="">4</span>, <span style="">1</span>, <span style="">5</span>, <span style="">2</span><span style="">&#93;</span></pre></pre>  <p>You don&#39;t need to install any files or anything, NodeBox knows where the Python libraries are.</p>  <h2>For techies: why the ximport() command?</h2>  <p>We prefer <em>ximport()</em> over the <em>import</em> statement, because it takes away a step of having to explain why all commands have brackets, but not <em>import</em>. Furthermore, <em>ximport()</em> passes the drawing context to a referenced library so that library can draw stuff to the screen.</p>  <p>But for standard Python libraries, you can still use <em>import</em> and <em>from a import b</em> if you like.</p>
+</div>
+
+</div>
+
+<div id="footer">
+Last modified: May 10 2007 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
+</div>
+<img src="/code/g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
+
+</div>
+
+<script>
+try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
+</script>
+</body>
+
+</html>

@@ -1,192 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | problem with transformation </title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-12-19-17-24-07, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-12-19-17-24-07" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">problem with transformation </h1>
-<strong>Posted by <span class="comment_by">vedran</span> on <em class="date">Dec 19, 2008</em></strong>
-<p>i'm having a problem with rotation(), when i try to apply it to some object that i draw it draws one more object... please try this code:<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">640</span>,<span style="">780</span><span style="">&#41;</span>
-<span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">HSB</span><span style="">&#41;</span>
-<span style="color: #530035;">background</span><span style="">&#40;</span><span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.9</span>, <span style="">0</span>, <span style="">0.92</span><span style="">&#41;</span><span style="">&#41;</span>
-<span style="color: grey;">#-------------------------------------------------------------------------------- funkcije</span>
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>makeQuadUnionLayer</span><span style="">&#40;</span>h,s,b, yShift<span style="">&#41;</span>:
-    _compound = <span style="color: #530035;">None</span>
-    
-    cFill = <span style="color: #530035;">color</span><span style="">&#40;</span>h,s,b<span style="">&#41;</span>
-    <span style="color: #530035;">fill</span><span style="">&#40;</span>cFill<span style="">&#41;</span>
-    <span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>
-    
-    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">0</span>,<span style="">4</span><span style="">&#41;</span>:
-        r = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">40</span>,<span style="">180</span><span style="">&#41;</span>
-        xPos = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">400</span><span style="">&#41;</span><span style="">+50</span>
-        yPos = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>+ yShift
-        
-        rct = <span style="color: #530035;">rect</span><span style="">&#40;</span>xPos, yPos, r, r<span style="">&#41;</span>
-        rct.<span style="color: #530035;">rotate</span><span style="">&#40;</span><span style="color: #530035;">random</span><span style="">&#40;</span><span style="">180</span><span style="">&#41;</span><span style="">-90</span><span style="">&#41;</span>
-        <span style="color: grey;">#rotate(random(180)-90)</span>
-&nbsp;
-        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> _compound:
-            _compound = rct
-        _compound = _compound.<span style="">union</span><span style="">&#40;</span>rct<span style="">&#41;</span>
-        <span style="color: #530035;">drawpath</span><span style="">&#40;</span>_compound<span style="">&#41;</span>
-        <span style="color: grey;">#drawpath(path)</span>
-    <span style="color: grey;">#reset()</span>
-<span style="color: grey;">#-------------------------------------------------------------------------------- crtanje</span>
-makeQuadUnionLayer<span style="">&#40;</span><span style="">0.6</span>,<span style="">0.8</span>,<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.1</span>,<span style="">0.9</span><span style="">&#41;</span>,<span style="">250</span><span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">vedran</span> on <em class="date">Dec 19, 2008</em></strong><p>how can i rotate only this rect that i made, without creating new one? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">impiaaa</span> on <em class="date">Dec 19, 2008</em></strong><p>Add <pre class="python">draw=<span style="color: #530035;">False</span></pre></pre>to the <pre class="python"><span style="color: #530035;">rect</span></pre></pre>call. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 20, 2008</em></strong><p>impiaaa is right. One of your problems is that the initial call to rect() is drawing the path.<br><br>Unfortunately, it's not as simple as that.  The short answer is that <br>rct.rotate() does not do quite what you might expect. <br><br>It attaches a transform to the path object, but the new coordinates don't get calculated until draw time. This, in addition to the fact that the NB code is wrapping up Cocoa code that is doing the work, means that the call to union() doesn't use the rotated points. What you need to do is described in the NB <a href="http://nodebox.net/code/index.php/Compound_paths">compound paths</a> tutorial.<br><br>Unfortunately, it's also not as simple as that. NB uses NSAffineTransform to do the actual transformation, and the Cocoa side has no idea about NB's transform mode (CENTER/CORNER). NSAffineTransform does all its transforms in relation to the canvas's origin, at the top left. If you just make a Transform object and use its rotate() method, each square will be moved away from its own centerpoint. So you have to do a little shuffling by hand. (I finally figured this out by looking at NB's BezierPath._get_transform() method.)<br><br>This code does what I think you want: draws just the union of the squares rotated about their centers. (I don't know why you are taking the union of filled, un-outlined shapes, since it doesn't look any different, but that's your business.) Note that I moved the drawpath() call out of the loop. Otherwise you are drawing the union repeatedly, as you add pieces to it. You will see this if turn fill off and stroke on: there will be internal thinner lines. Also note the else:, which seems like good style to me.<pre class="python"><span style="color: #530035;">size</span><span style="">&#40;</span><span style="">640</span>,<span style="">780</span><span style="">&#41;</span>
-<span style="color: #530035;">colormode</span><span style="">&#40;</span><span style="color: #530035;">HSB</span><span style="">&#41;</span>
-<span style="color: #530035;">background</span><span style="">&#40;</span><span style="color: #530035;">color</span><span style="">&#40;</span><span style="">0.9</span>, <span style="">0</span>, <span style="">0.92</span><span style="">&#41;</span><span style="">&#41;</span>
-<span style="color: grey;">#---------------------------------------------------------------------</span>
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>makeQuadUnionLayer</span><span style="">&#40;</span>h,s,b, yShift<span style="">&#41;</span>:
-    _compound = <span style="color: #530035;">None</span>
-    
-    cFill = <span style="color: #530035;">color</span><span style="">&#40;</span>h,s,b<span style="">&#41;</span>
-    <span style="color: #530035;">fill</span><span style="">&#40;</span>cFill<span style="">&#41;</span>
-    <span style="color: #530035;">nostroke</span><span style="">&#40;</span><span style="">&#41;</span>
-    
-    <span style="color: #530035;">for</span> i <span style="color: #530035;">in</span> <span style="">range</span><span style="">&#40;</span><span style="">4</span><span style="">&#41;</span>:
-        r = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">40</span>,<span style="">180</span><span style="">&#41;</span>
-        xPos = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">400</span><span style="">&#41;</span><span style="">+50</span>
-        yPos = <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">100</span><span style="">&#41;</span>+ yShift
-        
-        rct = <span style="color: #530035;">rect</span><span style="">&#40;</span>xPos, yPos, r, r, draw=<span style="color: #530035;">False</span><span style="">&#41;</span>
-        
-        t, t1, t2 = Transform<span style="">&#40;</span><span style="">&#41;</span>, Transform<span style="">&#40;</span><span style="">&#41;</span>, Transform<span style="">&#40;</span><span style="">&#41;</span>
-        deltaX = xPos + r/<span style="">2</span>
-        deltaY = yPos + r/<span style="">2</span>
-        
-        t1.<span style="color: #530035;">translate</span><span style="">&#40;</span>-deltaX, -deltaY<span style="">&#41;</span>
-        t2.<span style="color: #530035;">translate</span><span style="">&#40;</span>deltaX, deltaY<span style="">&#41;</span>
-        
-        t.<span style="color: #530035;">rotate</span><span style="">&#40;</span> <span style="color: #530035;">random</span><span style="">&#40;</span><span style="">180</span><span style="">&#41;</span> - <span style="">90</span> <span style="">&#41;</span>
-        
-        t.<span style="">prepend</span><span style="">&#40;</span>t1<span style="">&#41;</span>
-        t.<span style="">append</span><span style="">&#40;</span>t2<span style="">&#41;</span>
-        
-        rct = t.<span style="">transformBezierPath</span><span style="">&#40;</span>rct<span style="">&#41;</span>
-&nbsp;
-        <span style="color: #530035;">if</span> <span style="color: #530035;">not</span> _compound:
-            _compound = rct
-        <span style="color: #530035;">else</span>:
-            _compound = _compound.<span style="">union</span><span style="">&#40;</span>rct<span style="">&#41;</span>
-    
-    <span style="color: #530035;">drawpath</span><span style="">&#40;</span>_compound<span style="">&#41;</span>
-<span style="color: grey;">#----------------------------------------------------------------------</span>
-makeQuadUnionLayer<span style="">&#40;</span><span style="">0.6</span>,<span style="">0.8</span>,<span style="color: #530035;">random</span><span style="">&#40;</span><span style="">0.1</span>,<span style="">0.9</span><span style="">&#41;</span>,<span style="">250</span><span style="">&#41;</span></pre></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Dec 20, 2008</em></strong><p>vedran, hope you can work with that. If you want a more thorough explanation, let me know. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">vedran</span> on <em class="date">Jan 18, 2009</em></strong><p>hi Josh, thank you for this detailed explanation. I'm back to try nodebox so I'll try this code today. it helps a lot! </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">vedran</span> on <em class="date">Jan 19, 2009</em></strong><p>Hi again!<br>ok, this is workig, but i'll need deeper explanation. i simply dont understand how transform object apply to rect. i've try some modifications but i cant get anything as i would like. can you explain your code Transform definitions step by step? that would be great.<br><br>btw. i cant find prepend and append methods description on site. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Josh Caswell</span> on <em class="date">Jan 23, 2009</em></strong><p>The <a href="http://nodebox.net/code/index.php/Reference_|_Transform">Transform</a> object is described in the NodeBox reference, but strangely, the only way to get to that page seems to be through the Paths <a href="http://nodebox.net/code/index.php/Compound_paths">tutorial</a> that I mentioned. You'll see the prepend() and append() methods there. I don't think they're described anywhere, though being that a month has passed, I can't remember for sure. You may have to grovel through the source to see exactly how the mechanics work.<br><br>The gist of it is that a Transform object holds a calculation that you can perform on a path you pass to it. So, you instantiate, e.g.,<pre class="python">my_trans = Transform<span style="">&#40;</span><span style="">&#41;</span>
-my_trans.<span style="color: #530035;">translate</span><span style="">&#40;</span>x=<span style="">50</span>, y=<span style="">50</span><span style="">&#41;</span></pre></pre>and you now have an object which will apply that translation on just those paths that you give it.<br><br>The translate() or rotate() methods you call on a path (i.e., rct.rotate()) don't do the actual calculations of the transformed points until NodeBox finally draws them to the screen. If you make a Transform object, you still apply it only to specified paths, but it will do the calculation right away and return the new path. So if my_rect has corners [(0,0), (10,0), (10,10), (0,10)], and you use my_trans from above:<pre class="python">my_rect = my_trans.<span style="">transformBezierPath</span><span style="">&#40;</span>my_rect<span style="">&#41;</span></pre></pre>my_rect is reassigned to [(50,50), (60,50), (60,60), (50,60)], and anything further you do with it will use those new coordinates, including taking a union with another path.<br><br>The prepend() and append() methods just allow you to simplify your life a little bit. If you have several transformations you want to apply on a single path, and they have to be applied one at a time, in a specific order, you create a Transform for each, then stick them together in the order you want, just as if you were making a list. Then you only need to call transformBezierPath() once, using the combined Transform, and each of the transformations will be calculated in turn.<br><br>The specific transformations that I gave you work like this: you have a square somewhere on your canvas, with center at (x, y) and top left corner (x-r, y-r). Any transformations you apply (particularly a rotation) are going to originate at that corner, not the center. However, if you slide the rectangle by (-r, -r), so that the center is now where the corner was, the transformation origin doesn't move. You can now do your rotation, and then you can slide the square back by (r, r), putting the center where it originally was, and making the square appear to have been rotated around its center. That seems a little crazy, I'm sure, but I believe that it has to do with the interaction, like I mentioned before, between Cocoa drawing and NodeBox bookkeeping.<br><br>If you haven't already, I suggest turning off the random generation of parameters when figuring out what's going on. That way you don't have to guess where everything should be. Draw one square in the center of the canvas, at coordinates that you have chosen, and try applying some transformations that you choose to it. The other thing that might be useful, which definitely helped me puzzle this out, is drawing a dot at the center of the square: oval(x, y, 2, 2) Then you'll see where the square was before you transformed it, and how it may have moved as a result. Or even make a copy of the square and draw it before and after transformation. In both these cases, turning fill off and stroke on will help you see everything. I think you'll be able to sort it out fairly easily. Good luck! </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Jan 23 2009 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

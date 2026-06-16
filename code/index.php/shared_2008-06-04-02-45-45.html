@@ -1,203 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | shuttered video export</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-06-04-02-45-45, export" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-06-04-02-45-45" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">shuttered video export</h1>
-<strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Jun 04, 2008</em></strong>
-<p>i just have made a simple example which shows a square<br>scaled by a sinus curve.<br><br>when i export this with 30 fps and like 240 frames duration<br>i got a absolute shuttering movie.<br><br>the frame rate is set by speed(30) - so i dont understand<br>whats wrong.<br><br>i have also export the movie from tif to a more play able compression like intermedia or jpg or h264 - but thats not the<br>problem. the frames are already shuttered.<br><br><br><br>from math import sin, radians<br> <br>size(600, 400)<br> <br>speed(30)<br> <br>def setup():<br>    global i, s, k<br>    <br>    s = 0   # sinus counter goes from 0 to 1 by a sinus curve<br>    i = 0   # degrees goes from -90 to 90 degrees<br>    k = 4   # direktion and steps goes -1 to 1<br><br><br> <br>def draw():<br>    global i, s, k<br>    <br>    fill(0.3, 0.4, 0.2)<br><br>    s = sin(radians(i))     # radians converts degree to the sinus compatible input<br>                            # s runs from 0 to 1 by sinus<br>    <br>    if  ((i > 90) and (k > 0)) : # when the i goes higher then 90degree and k still is<br>       k =  -4                   # positive then change the direction of counting by negative k<br><br>    if (i &lt;= -90 and k < 0) :    # when i goes lower then -90 degree and k still is negative<br>       k = 4                     # then change the direction of counting by positive k<br><br>    i = i + k       # i is a counter by direction and step size of k <br>               <br>    rect(60, 60, 260+240 * s, 200 ) </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Jun 04, 2008</em></strong><p><pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, radians
-&nbsp;
-<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">400</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>setup</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    
-    s = <span style="">0</span>   <span style="color: grey;"># sinus counter goes from 0 to 1 by a sinus curve</span>
-    i = <span style="">0</span>   <span style="color: grey;"># degrees goes from -90 to 90 degrees</span>
-    k = <span style="">4</span>   <span style="color: grey;"># direktion and steps goes -1 to 1</span>
-&nbsp;
-&nbsp;
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    
-    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.4</span>, <span style="">0.2</span><span style="">&#41;</span>
-&nbsp;
-    s = sin<span style="">&#40;</span>radians<span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>     <span style="color: grey;"># radians converts degree to the sinus compatible input</span>
-                            <span style="color: grey;"># s runs from 0 to 1 by sinus</span>
-    
-    <span style="color: #530035;">if</span>  <span style="">&#40;</span><span style="">&#40;</span>i &gt; <span style="">90</span><span style="">&#41;</span> <span style="color: #530035;">and</span> <span style="">&#40;</span>k &gt; <span style="">0</span><span style="">&#41;</span><span style="">&#41;</span> : <span style="color: grey;"># when the i goes higher then 90degree and k still is</span>
-       k =  <span style="">-4</span>                   <span style="color: grey;"># positive then change the direction of counting by negative k</span>
-&nbsp;
-    <span style="color: #530035;">if</span> <span style="">&#40;</span>i &lt;= <span style="">-90</span> <span style="color: #530035;">and</span> k &lt; <span style="">0</span><span style="">&#41;</span> :    <span style="color: grey;"># when i goes lower then -90 degree and k still is negative</span>
-       k = <span style="">4</span>                     <span style="color: grey;"># then change the direction of counting by positive k</span>
-&nbsp;
-    i = i + k       <span style="color: grey;"># i is a counter by direction and step size of k </span>
-               
-    <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">60</span>, <span style="">60</span>, <span style="">260</span><span style="">+240</span> * s, <span style="">200</span> <span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Jun 04, 2008</em></strong><p>sorry this a cleaner version of my comments::<pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, radians
-&nbsp;
-<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">400</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>setup</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    
-    s = <span style="">0</span>   <span style="color: grey;"># sinus counter goes from -1 to 1 by a sinus curve</span>
-    i = <span style="">0</span>   <span style="color: grey;"># degrees goes from -90 to 90 degrees</span>
-    k = <span style="">4</span>   <span style="color: grey;"># direction and step size</span>
-&nbsp;
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    
-    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.4</span>, <span style="">0.2</span><span style="">&#41;</span>
-&nbsp;
-    s = sin<span style="">&#40;</span>radians<span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>     <span style="color: grey;"># radians converts degree to the sinus compatible input</span>
-                            <span style="color: grey;"># s runs from -1 to 1 by sinus</span>
-    
-    <span style="color: #530035;">if</span>  <span style="">&#40;</span><span style="">&#40;</span>i &gt; <span style="">90</span><span style="">&#41;</span> <span style="color: #530035;">and</span> <span style="">&#40;</span>k &gt; <span style="">0</span><span style="">&#41;</span><span style="">&#41;</span> : <span style="color: grey;"># when the i goes higher then 90degree and k still is</span>
-       k =  <span style="">-4</span>                   <span style="color: grey;"># positive then change the direction of counting by negative k</span>
-&nbsp;
-    <span style="color: #530035;">if</span> <span style="">&#40;</span>i &lt;= <span style="">-90</span> <span style="color: #530035;">and</span> k &lt; <span style="">0</span><span style="">&#41;</span> :    <span style="color: grey;"># when i goes lower then -90 degree and k still is negative</span>
-       k = <span style="">4</span>                     <span style="color: grey;"># then change the direction of counting by positive k</span>
-&nbsp;
-    i = i + k       <span style="color: grey;"># i is a counter by direction and step size of k </span>
-               
-    <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">60</span>, <span style="">60</span>, <span style="">260</span><span style="">+240</span> * s, <span style="">200</span> <span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">anonymous</span> on <em class="date">Jun 04, 2008</em></strong><p>By shuttering do you mean jumpy and uneven?<br><br>On my machine the animation from this code is jumpy with k set at 4 like it is. One thing to remember is that a sin wave is not linear so s is not going to move at the same rate throughout the animation. For instance when i is around 180 degrees s will be changing by about .07 between frames but when i is closer to 270 s will change by 0.004. So it will be jumpier in certain parts of the cycle than others. <br><br>Also, since the sin function is periodic you can save yourself some code--those if statements are doing something the sin function already does by itself. This might be a little easier to work with and lets you change k in the setup routine without it getting reset in the draw :<pre class="python"><span style="color: #530035;">from</span> <span style="">math</span> <span style="color: #530035;">import</span> sin, radians
-&nbsp;
-<span style="color: #530035;">size</span><span style="">&#40;</span><span style="">600</span>, <span style="">400</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">speed</span><span style="">&#40;</span><span style="">30</span><span style="">&#41;</span>
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>setup</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    i = <span style="">0</span>   <span style="color: grey;"># degrees</span>
-    k = <span style="">4</span>   <span style="color: grey;"># step size</span>
-&nbsp;
-<span style="color: #530035;">def</span> <span style='color:rgb(255,0,50)'>draw</span><span style="">&#40;</span><span style="">&#41;</span>:
-    <span style="color: #530035;">global</span> i, s, k
-    <span style="color: #530035;">fill</span><span style="">&#40;</span><span style="">0.3</span>, <span style="">0.4</span>, <span style="">0.2</span><span style="">&#41;</span>
-    
-    s = sin<span style="">&#40;</span>radians<span style="">&#40;</span>i<span style="">&#41;</span><span style="">&#41;</span>     <span style="color: grey;"># radians converts degree to the sinus compatible input</span>
-    i += k   
-    <span style="color: #530035;">rect</span><span style="">&#40;</span><span style="">60</span>, <span style="">60</span>, <span style="">260</span><span style="">+240</span> * s, <span style="">200</span> <span style="">&#41;</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">toby_</span> on <em class="date">Jun 04, 2008</em></strong><p>i think i found my mistake - it is not the code.<br>i start the export while my animation was still running.<br><br>it seems that NodeBox is still execute the realtime animation while it export the movie.<br><br>if i stop the animation before everything is fine with 60fps<br><br>maybe it would be better to avoid this by default stopping realtime animations before export.<br><br>thanks a lot anonymous, you also showed me a nicer syntax!<br>by the way - what ist the limit of a counter which is running endless in a direction?<br><br>cheers,<br><br>toby </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">anonymous</span> on <em class="date">Jun 04, 2008</em></strong><p>I'm pretty sure python will use long integers when it needs to. This should mean the the counter is only limited by memory which should be more than enough for almost anything. For instance nodebox doesn't balk at all at this enormous number:<pre class="python"><span style="color: #530035;">print</span> <span style="">2</span>**<span style="">1000</span></pre></pre></b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Jun 04 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

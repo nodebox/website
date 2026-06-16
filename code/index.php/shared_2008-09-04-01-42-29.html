@@ -1,127 +1,0 @@
-<html>
-
-<head>
-<title>NodeBox | reload? bug?</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="imagetoolbar" content="no" />
-<meta http-equiv="linode" content="true"/>
-<meta name="description" content="" />
-<meta name="keywords" content="NodeBox, shared 2008-09-04-01-42-29, question" />
-<link rel="alternate" type="application/rss+xml" title="NodeBox News Feed" href="https://nodebox.net/code/data/rss.xml" />
-<link rel="canonical" href="https://nodebox.net/code/index.php/shared_2008-09-04-01-42-29" />
-<link type="text/css" rel="stylesheet" media="screen" href="../../media/css/nbar.css">
-
-<script type="text/javascript" src="../js/pop.js"></script>
-<script type="text/javascript" src="../js/confirm.js"></script>
-<link href="../css/default.css" rel="stylesheet" type="text/css" />
-<link href="../css/print.css" rel="stylesheet" type="text/css" media="print" />
-<!--[if gte IE 5.5]>
-<script type="text/javascript" src="/code/js/pngfix.js"></script>
-<![endif]-->
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1668598-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</head>
-
-<body id="body" >
-<div class="nbar">
-  <ol>
-    <li><a class="node" href="https://www.nodebox.net/code/">NodeBox 1<span class="nbar-arrow"></span></a>
-      <ol class="nbar-dropdown">
-        <li><a href="https://www.nodebox.net/">Homepage</a></li>
-        <li><a href="https://www.nodebox.net/node/">NodeBox 3<small>Node-based app for generative design and data visualization</small></a></li>
-        <li><a href="https://www.nodebox.net/opengl/">NodeBox OpenGL<small>Hardware-accelerated cross-platform graphics library</small></a></li>
-        <li><a href="https://www.nodebox.net/code/">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
-      </ol>
-    </li>
-    <li><a class="gallery" href="https://www.nodebox.net/gallery/">Gallery</a></li>
-    <li><a class="documentation" href="Tutorial.html">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
-    <li><a class="blog" href="https://www.nodebox.net/blog/">Blog</a></li>
-  </ol>
-</div>
-
-
-<div id="all">
-<div id="header_and_navigation">
-
-<div id="header">
-<a href="Home.html"><img id="header_image" src="../g/header-small.jpg" width="800" /></a></div>
-
-<div id="title">
-<a href="Home.html"><h1>NodeBox</h1>
-<strong><em>Create visual output with Python programming code</em></strong>
-</a></div>
-
-<div id="contextual">
-<div id="languages">
- 
-</div>
-
-<div id="search">
-<form id = "sf" method="get">
-<input type="text" id="q" name="q" value="" />
-<a href="javascript:document.getElementById('sf').submit();">GO</a>
-</form>
-</div>
-
-</div>
-
-<div id="navigation">
-<div id="navigation_public">
-<a id="" href="Home.html">Home</a> 
-<a id="" href="Download.html">Download</a> 
-<a id="" href="Reference.html">Reference</a> 
-<a id="" href="Tutorial.html">Tutorial</a> 
-<a id="" href="Library.html">Library</a> 
-<a id="" href="Gallery.html">Gallery</a> 
-<a id="" href="Share.html">Share</a> 
-<a id="" href="About.html">About</a> 
-</div>
-</div>
- 
-</div>
-
-<div id="content">
-
-<div id="nodebox-link">
-<a href="Home.html"><img src="../g/transparent.gif" /></a>
-</div>
-
-<div class="inside">
-<? if (do_name() != 'Home') : ?>
- <? endif ?>
-<br /><div class="comment"><h1 id="shared-title">reload? bug?</h1>
-<strong>Posted by <span class="comment_by">Michael</span> on <em class="date">Sep 04, 2008</em></strong>
-<p>hello - I have been using NodeBox for 2 days now for visualizing some linear algebra. Overall, I love it! However, I am having a big hassle with reloading a module that I am editing. Let's say my module is "a.py".  In my main.py that is loaded into NodeBox I have an "import a" statement. If I need to change a.py, the only way I can get the new version of a is by totally exiting NodeBox. I tried "reload(a)" and got an error. <br><br>I am also having trouble importing modules that are on my python path, and which I find if I am running python in a terminal window. NodeBox gives me an error.<br><br>Can you help? </b></i></a></ul></li></pre></p><br /></div>
-&nbsp;<hr /><div class='comment'><strong>Posted by <span class="comment_by">impiaaa</span> on <em class="date">Sep 04, 2008</em></strong><p>NodeBox is weird that way. First, I'd suggest trying the ximport command instead of a normal python import. Also, the python reload function only works <b>after</b> the module has been imported in a script.<br>For your second question, NodeBox has it's own import path inside the program bundle, so any python modules that you might want to import, you have to move into NB's App Support folder, located in either ~/Library/Application Support/NodeBox, or /Library/Application Support/NodeBox. I know it's a hassle, i have to put up with it too. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Cedric</span> on <em class="date">Sep 04, 2008</em></strong><p>I agree with the hassle. I am starting to use NodeBox quite often for my work, and my scripts get bigger and bigger. Hence I write libraries that are imported in the main script written in NodeBox. This quit and reopen dance is a bit annoying! Same or the PYTHONPATH. Would be cool to have NodeBox understand the current value, but when I try to insert it with sys.path.insert(0, PATH), it doesn't work. </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Tom De Smedt</span> on <em class="date">Sep 04, 2008</em></strong><p>Hi all,<br><br>First, the only difference between import() and NodeBox's own ximport() is that ximport() makes the canvas / drawing context (_ctx) available in the imported module. This is essential if you're writing modules that have drawing functions (e.g. functions containing stuff like _ctx.beginpath(10, 10)).<br><br>reload() should work fine as long as 1) you first import the module, 2) it is located in the same folder as your main script or centrally in Library/Application Support/NodeBox.<pre class="python"><span style="color: #530035;">import</span> module
-<span style="">reload</span><span style="">&#40;</span>module<span style="">&#41;</span></pre></pre>Like you say, sys.path.insert() or PYTHONPATH are not doing anything.  Funny, I remember this used to work. We'll have a look at it.<br><br>Note that for linear algebra stuff, we've bundled numpy with NodeBox  (simply do "import numpy"). </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">Michael</span> on <em class="date">Sep 08, 2008</em></strong><p>Thanks for the quick responses. ( just found them by accident).<br>I did try the reload() after the import <br><br>if I do:<br>import foo<br>reload(foo)  - reload does work. However class bar defined in foo.py is now undefined<br><br>what I had was:<br>from foo import *<br>in this context reload does NOT work, but bar is defined<br><br>OK - for fellow sufferers: here is what _does_ work:<br><br>import foo<br>reload(foo)<br>from foo import*<br><br>WRT the import statement - I cannot stress enough how wonderful it would be if NodeBox respected the PYTHONPATH. Yes, I can put my modules in the NodeBox directory as suggested, but that would really be a hassle as I work concurrently on the modules and my applications.<br><br>WRT to numpy, does this mean that I am not necessarily using the latest, which I just installed? </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">fdb</span> on <em class="date">Sep 10, 2008</em></strong><p>As a temporary fix, add the standard python paths to your sys path:<pre class="python"><span style="color: #530035;">import</span> <span style="">sys</span>
-<span style="">sys</span>.<span style="">path</span>.<span style="">append</span><span style="">&#40;</span><span style="color: #ff0080;">'/Library/Python/2.5/site-packages'</span><span style="">&#41;</span></pre></pre>That should do the trick on Leopard. For Tiger, change 2.5 to 2.3. <br><br>Kind regards,<br><br>Frederik </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">michael</span> on <em class="date">Sep 13, 2008</em></strong><p>Thanks - that 'sorta' works. I am going to write a little routine to only add path once, since 'append' keeps adding every time I run my scripts. <br><br>I also notice that NodeBox seems to replace/override sys.path. Couldn't it simply append to it? Apologies for a dumb question from a relative neophyte.<br><br>best - Michael </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">michael</span> on <em class="date">Sep 13, 2008</em></strong><p>Here is a hack that works. I created a file 'NBrequires.py' that I include first in my nNodeBox scripts. You will need to change path(s) and requires. In this case I only needed simplejson.<br><br>best - Michael<br><br>#NBrequires.py<br>## following are a workaround to import other packages, since NodeBox does not include PYTHONPATH<br><br>import sys<br>def loadOnce(path):<br>    if path in sys.path:<br>        pass <br>    else:<br>        sys.path.append(path)<br>            <br>loadOnce('/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages') <br><br># if you have eggs in path (from easy_install) you can add following:<br><br>from pkg_resources import require<br>require("simplejson")                      <br>from simplejson import* </b></i></a></ul></li></pre></p><br /></div><hr /><div class='comment'><strong>Posted by <span class="comment_by">michael</span> on <em class="date">Sep 13, 2008</em></strong><p>My last post on this I promise :)<br><br>I have found that you must import NBrequires in every module that you import that requires whatever. This surprised me.<br><br>In my case, my main.py needs simplejson and it imports foo.py that also need simplejson. foo.py needs my hack even though I ran the hack in main.py before the 'import foo' statement. </b></i></a></ul></li></pre></p><br /></div><? include("util/comment.php"); ?>
-</div>
-  
-</div>
-
-<div id="footer">
-Last modified: Sep 13 2008 | &copy; 2004-2012 <a href="http://www.emrg.be/" class="noexternal">Experimental Media Research Group</a>
-</div>
-<img src="../g/footer.jpg" style="border:0" class="footer" width="800" height="334" />
-
-</div>
-
-<script>
-try{e=document.getElementsByTagName("span");for(i=0;i<e.length;i++){if(e[i].className=="header_image"){src=e[i].getElementsByTagName("img")[0].src;document.getElementById("header_image").src=src;break;}}}catch(e){}
-</script>
-</body>
-
-</html>

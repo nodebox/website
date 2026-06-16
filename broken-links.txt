@@ -1,0 +1,104 @@
+Broken links found by recover_assets.py crawling the built _site/ (phase-2-migrate-code).
+All images and downloads are resolved; these are page/link targets only.
+Entry format:  <site path>   (↳ pages that link to it)
+
+TOTAL: 45  —  real & actionable: CODE_REDLINK + MALFORMED + NODE + GALLERY
+
+## CODE_REDLINK (6) — NodeBox 1 wiki link to a page that never existed in the dump (red-link in the original)
+  code/(http:/en.wikipedia.org/wiki/Ant_colony_optimization
+  code/Canvas.fill()
+      ↳ code/photobot.canvas().html
+  code/PathElement
+      ↳ code/Growing_things.html
+  code/PhotoBot_to-do_list
+      ↳ code/PhotoBot.html
+  code/colors.Colors.guide()
+      ↳ code/Colors_(Prism).html
+  code/generate
+      ↳ code/Noise.html
+
+## MALFORMED (1) — a broken/odd URL in the source page content (e.g. stray scheme, .php)
+  perception/widget.php.html
+      ↳ code/Perception.html
+
+## NODE (7) — PRE-EXISTING broken link in the NodeBox 3 docs — predates this migration (phase 1)
+  node/documentation/concepts/metadata.html
+      ↳ node/documentation/concepts/gui.html
+  node/reference/color/None
+      ↳ node/reference/color/color.html, node/reference/color/gray_color.html, node/reference/color/hsb_color.html …
+  node/reference/corevector/None
+      ↳ node/reference/corevector/stack.html
+  node/reference/data/None
+      ↳ node/reference/data/filter_data.html
+  node/reference/string/None
+      ↳ node/reference/string/as_binary_list.html, node/reference/string/as_binary_string.html, node/reference/string/as_number_list.html …
+  node/refernce/corevector/delete.html
+      ↳ node/release-notes.html
+  node/tutorial/getting-started.html
+      ↳ documentation/getting-started/index.html
+
+## GALLERY (2) — PRE-EXISTING broken gallery page link — predates this migration (phase 1)
+  gallery/2012/02/masterclass-antwerp
+  gallery/2012/11/workshop-the-hague
+
+## REDIRECTED (4) — link to a removed community-forum snippet; _redirects already sends it to /code/Home (not user-visibly broken)
+  code/shared_2007-10-27-14-54-26
+      ↳ code/Creature.html
+  code/shared_2008-02-29-18-05-38
+      ↳ code/Growing_things.html
+  code/shared_2008-08-07-12-55-33
+      ↳ code/Nanophysical.html
+  code/shared_2009-02-20-20-27-49
+      ↳ code/Spamghetto.html
+
+## ARTIFACT (25) — NOT a real broken link: caption/alt text ran into the URL in the source HTML; the real image exists
+  media/gallery/LievenChoke.jpgLieven
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/choke2014-1.jpgThe location
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/emiel.jpgEmiel
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/freee.jpgFrederik
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/inge.jpgInge
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/kathedraal.jpgAntwerp Cathedral
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/michel.jpgMichel
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/michelle.jpgMichelle
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/misjel.jpgMisjel
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/piet.pngPiet De Lombaerde
+      ↳ gallery/2014/02/09/selfiebot-choke2014.html
+  media/gallery/workshop_helsinki_2014_Christopher.png© 2014 Christopher Andersen - Swedish and Sami
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Cristina.png© 2014 Cristina Melcior Vendrell - 100 Types
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Eero_ClairedeLune.png© 2014 Eero Pitkanen - Midi Viz
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Eero_inmates.jpg© 2014 Eero Pitkanen - Orange is the new Orange
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Eero_parts.png© 2014 Eero Pitkanen - Human Parts
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Eero_population.jpg© 2014 Eero Pitkanen - Crowd Making
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Eero_type.png© 2014 Eero Pitkanen - Grid Font
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Katju.png© 2014 Katju Aro - North Sea Fish
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Lea.png© 2014 Lea Suijckerbuijk - Creatures
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Lea_group.png© 2014 Lea Suijckerbuijk - More
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Lisa.png© 2014 Lisa Lee - Killed over What
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Luyi.png© 2014 Ma Luyi - Rotating Art
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Sulza.png© 2014 Alena Sulza - Water logo derivatives
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Tuomas.png© 2014 Tuomas Kärkkäinen - 6 years Afghan war
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
+  media/gallery/workshop_helsinki_2014_Tuomas_detail.png© 2014 Tuomas Kärkkäinen - Incident Detail
+      ↳ gallery/2014/01/26/worskhop-helsinki.html
