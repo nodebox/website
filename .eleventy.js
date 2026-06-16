@@ -41,7 +41,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("bimi.svg");
   eleventyConfig.addPassthroughCopy("robots.txt");
-  eleventyConfig.addPassthroughCopy("CNAME");
   // Cloudflare Pages reads _redirects from the build output root.
   eleventyConfig.addPassthroughCopy("_redirects");
   // The legacy NodeBox 1 wiki: static pages at code/<Name>.html (migrated from
