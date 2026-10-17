@@ -37,6 +37,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("media");
   eleventyConfig.addPassthroughCopy("node/**/*.{png,jpg,jpeg,gif,ndbx,csv,pxm,py}");
   eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("favicon.svg");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("bimi.svg");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("CNAME");
   // Cloudflare Pages reads _redirects from the build output root.
