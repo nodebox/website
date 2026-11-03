@@ -7,3 +7,5 @@ code
 migrate_code.py
 # Underscore-prefixed reference drafts: Jekyll skips files starting with "_"; Eleventy doesn't.
 node/**/_*.md
+AGENTS.md
+CLAUDE.md
