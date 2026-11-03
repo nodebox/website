@@ -57,7 +57,7 @@ PAGE_TEMPLATE = """\
     </li>
     <li><a class="gallery" href="/gallery/">Gallery</a></li>
     <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
-    <li><a class="forum" href="http://support.nodebox.net/discussions">Forum</a></li>
+    <li><a class="forum" href="https://forum.nodebox.net/">Forum</a></li>
     <li><a class="blog" href="/blog/">Blog</a></li>
   </ol>
 </div>

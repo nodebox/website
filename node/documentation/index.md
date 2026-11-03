@@ -49,6 +49,6 @@ Reference
 
 Support
 -------
-* Questions or Comments? Visit the [NodeBox forums](http://support.nodebox.net/discussions).
+* Questions or Comments? Visit the [NodeBox forums](https://forum.nodebox.net/).
 * Found a bug? Add it to our [GitHub issues page](https://github.com/nodebox/nodebox/issues?state=open).
 * Something else? E-mail questions at <support@nodebox.net>.
