@@ -1,11 +1,11 @@
 .nbar {
   font: 13px/15px arial,sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 49px;
   text-align: left;
 }
 
 .nbar > ol {
-  height: 29px;
+  height: 48px;
   z-index: 999;
   position: fixed;
   top: 0;
@@ -22,13 +22,14 @@
 .nbar li {
   list-style: none;
   display: inline-block;
+  vertical-align: top;
   margin: 0;
   padding: 0;
 }
 
 .nbar li a {
   display: inline-block;
-  padding: 8px 15px 7px 0;
+  padding: 17px 15px 16px 0;
   background: none;
   text-decoration: none;
 }
@@ -40,7 +41,7 @@
 .nbar li:hover .nbar-dropdown {
   display: block;
   position: absolute;
-  top: 30px;
+  top: 48px;
   left: 0;
   width: 200px;
   background: #eee;
@@ -80,7 +81,7 @@
 .nbar .nbar-dropdown {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 48px;
   left: 0;
   width: 200px;
   background: #eee;
@@ -140,6 +141,26 @@
 
 
 
+/* Dropdowns open under their own item. */
+.nbar > ol > li {
+  position: relative;
+}
+
+/* The NodeBox logo at the start of the bar. */
+.nbar .nbar-logo a {
+  padding: 9px 16px 9px 0;
+}
+
+.nbar .nbar-logo img {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.nbar .nbar-logo a:hover img {
+  opacity: 0.8;
+}
+
 /* Phones: let the bar wrap inside its dark background, with larger tap targets. */
 @media only screen and (max-width: 767px) {
   .nbar {
@@ -159,8 +180,17 @@
     font-size: 14px;
   }
 
+  .nbar .nbar-logo a {
+    padding: 8px 6px 8px 10px;
+  }
+
+  .nbar .nbar-logo img {
+    width: 28px;
+    height: 28px;
+  }
+
   .nbar li:hover .nbar-dropdown {
-    top: 40px;
+    top: 44px;
     left: 6px;
     width: 260px;
   }

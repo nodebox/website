@@ -47,6 +47,7 @@ PAGE_TEMPLATE = """\
 <body id="body">
 <div class="nbar">
   <ol>
+    <li class="nbar-logo"><a href="/"><img src="/media/img/nodebox-logo.svg" alt="NodeBox" width="30" height="30"></a></li>
     <li><a class="node" href="/code/Home">NodeBox 1<span class="nbar-arrow"></span></a>
       <ol class="nbar-dropdown">
         <li><a href="/">Homepage</a></li>

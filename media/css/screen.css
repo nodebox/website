@@ -149,7 +149,7 @@ header nav a {
   background: white;
   padding-bottom: 10px;
   margin-bottom: 10px;
-  margin-top: 45px;
+  margin-top: 64px;
 }
 
 #content h1 {
@@ -649,6 +649,7 @@ footer .copyright a {
     border-radius: 0;
     box-shadow: none;
     background: transparent;
+    margin-top: 16px;
   }
 
   nav a {
