@@ -139,3 +139,29 @@
 
 
 
+
+/* Phones: let the bar wrap inside its dark background, with larger tap targets. */
+@media only screen and (max-width: 767px) {
+  .nbar {
+    margin-bottom: 0;
+  }
+
+  .nbar > ol {
+    position: static;
+    width: auto;
+    height: auto;
+    display: block;
+    padding: 0 0 0 6px;
+  }
+
+  .nbar li a {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+  .nbar li:hover .nbar-dropdown {
+    top: 40px;
+    left: 6px;
+    width: 260px;
+  }
+}

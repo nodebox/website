@@ -672,6 +672,33 @@ footer .copyright a {
     margin-top: 20px;
   }
 
+  body {
+    font-size: 16px;
+  }
+
+  .container .column,
+  .container .columns {
+    float: none;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  #content img,
+  #content video,
+  #content iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #content table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #content pre {
+    overflow-x: auto;
+  }
+
 
 }
 
