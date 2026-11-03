@@ -20,13 +20,13 @@ So the data in NodeBox 3 would be lists. We still had to decide what a node does
 
 ## Grasshopper
 
-The first place I saw a good answer was [Grasshopper](https://www.grasshopper3d.com/), David Rutten's visual programming plug-in for the Rhino 3D modeller. Grasshopper is used by architects, and its components accept lists on every input. When the lists have different lengths, Grasshopper matches them. By default it uses the longest list and repeats the last item of the shorter lists. There are also components to match the shortest list instead, or to combine every item with every other item.
+The first place I saw a good answer was [Grasshopper](https://www.grasshopper3d.com/), David Rutten's visual programming plug-in for the Rhino 3D modeller. Grasshopper is used by architects, and its components accept lists on every input. When the lists have different lengths, Grasshopper lets you choose how to match them: follow the longest list and wrap the shorter ones, stop when the shortest list runs out, or combine every item with every other item.
 
 What I liked about it is that you never write a loop. You connect a list to a port and the component runs as often as it needs to. That was what we were missing in NodeBox 2.
 
 ## How NodeBox does it
 
-NodeBox 3 runs a node as many times as there are elements in the **longest list**. Where we differ from Grasshopper is what happens when a shorter list runs out: NodeBox starts again at the beginning of that list. Here are five text paths and three colors:
+NodeBox 3 runs a node as many times as there are elements in the **longest list**. When a shorter list runs out, NodeBox starts again at its beginning. Here are five text paths and three colors:
 
 ![Five letters, three colors](/node/documentation/concepts/concepts-list-matching-inputs.png)
 
@@ -34,14 +34,18 @@ The colorize node runs five times. Red and green are used again for D and E:
 
 ![List wrapping](/node/documentation/concepts/concepts-list-matching-result.png)
 
-We chose wrapping because of how designers use short lists. A list of three colors works as a palette, and a list of a few sizes becomes a rhythm. Ten ellipses with ten sizes, then with nine sizes:
+Ten ellipses with ten sizes, then with nine sizes:
 
 ![10 ellipses, 10 size values](/node/documentation/concepts/concepts-list-matching-ellipse-10.png)
 
 ![10 ellipses, 9 size values](/node/documentation/concepts/concepts-list-matching-ellipse-9.png)
 
+The test versions of NodeBox 3 matched on the shortest list instead, the way `map` works in Clojure. To repeat a value you connected an infinite list, a lazy sequence that never runs out. That broke down while people were editing. A network is often half connected, and when only infinite lists were connected to a node, NodeBox tried to process them forever. We added a limit to the number of objects in the viewer, but that was a workaround, so we switched to the longest list.
+
+Longest list matching has its own trap. Say you cycle through 20 preset colors for a list of monthly sales. With fewer than 20 months, the colors become the longest list, and some sales are drawn more than once. That happened in our workshops, and the mistake is hard to spot in the output. In NodeBox Live we let you mark one list as the master list: the output never has more items than that list, and it never wraps.
+
 Some nodes need the whole list at once: count, sort, shuffle and the other list nodes. Their ports take the list as a single value, so they run once and keep the list intact.
 
 The rotated grid from the NodeBox 2 post shows the difference. In NodeBox 2 it took a place node, copy stamping and the expression `stamp("CNUM", 45)`. In NodeBox 3 you connect a grid to a rectangle and a list of angles to the rotation, and list matching does the rest.
 
-List matching was the main idea of the first NodeBox 3 alpha, which we named "NodeBox List Edition" when we released it in February 2012. It has been part of every NodeBox release since. The documentation explains it in more detail under [How NodeBox Works](/node/documentation/concepts/concepts#list-matching).
+List matching was the main idea of the first NodeBox 3 alpha, which we named "NodeBox List Edition" when we released it in February 2012. It has been part of every NodeBox release since. The documentation explains it in more detail under [How NodeBox Works](/node/documentation/concepts/concepts#list-matching). Chapter 4 of my PhD thesis, [The Impact of Generative Design](https://enigmeta.com/thesis/) (2016), describes how list matching changed from NodeBox 2 to NodeBox Live.
