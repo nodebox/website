@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: base
 section: blog
 ---
-<div class="ten columns alpha">
-  <p class="meta">{{ page.date | date_to_string }}</p>
-  {{ content }}
-</div>
+<article class="journal-article">
+  <div class="article-heading"><a class="article-back" href="/blog/">← Blog</a><p class="meta">{{ page.date | date_to_string }}</p><h1>{{ title }}</h1></div>
+  <div class="article-body">{{ content }}</div>
+  <div class="article-end"><a href="/blog/">← All blog posts</a><a href="https://forum.nodebox.net/">Discuss on the forum ↗</a></div>
+</article>

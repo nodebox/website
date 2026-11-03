@@ -9,3 +9,12 @@ migrate_code.py
 node/**/_*.md
 AGENTS.md
 CLAUDE.md
+
+# Artwork provenance is source documentation, not a web page.
+media/design/README.md
+
+# Design rules are source documentation.
+DESIGN.md
+
+# Local agent handoffs are not web pages.
+HANDOFF.md

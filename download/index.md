@@ -2,13 +2,14 @@
 layout: base
 title: Download NodeBox
 section: download
+templateEngineOverride: liquid
 ---
 
 <div class="sixteen columns">
   <h1>Download NodeBox</h1>
 
 
-  <table id="download-table" class="sixteen columns">
+  <div class="table-scroll" tabindex="0" role="region" aria-label="NodeBox downloads by platform"><table id="download-table">
     <tr class="platforms">
       <th class="version"></th>
       <th class="mac">Mac OS X</th>
@@ -19,7 +20,7 @@ section: download
       <td class="version"><a href="/node/">NodeBox 3</a><br><small>Version 3.1.0 — <a href="/node/release-notes.html">Release Notes</a></small></td>
       <td class="mac"><a href="https://github.com/nodebox/nodebox/releases/download/v3.1.0/NodeBox-3.1.0.dmg" class="button">Download</a><br><small>Apple Silicon only<br>Intel Mac: <a href="https://github.com/nodebox/nodebox/releases/download/v3.0.52/NodeBox-3.0.52.dmg">v3.0.52</a></small></td>
       <td class="windows"><a href="https://github.com/nodebox/nodebox/releases/download/v3.1.0/NodeBox-3.1.0.msi" class="button">Download</a><br>&nbsp;</td>
-      <td class="linux"><a href="javascript:showLinuxDownloadInstructions()" class="button">Instructions</a><br>&nbsp;</td>
+      <td class="linux"><button type="button" onclick="showLinuxDownloadInstructions()" class="button">Instructions</button><br>&nbsp;</td>
     </tr>
     <tr>
       <td class="version"><a href="/opengl/">NodeBox OpenGL</a><br><small>Version 1.7</small></td>
@@ -31,11 +32,11 @@ section: download
       <td><em>N/A</em></td>
       <td><em>N/A</em></td>
     </tr>
-  </table>
+  </table></div>
 
-  <div id="nodebox-3-linux-instructions" style="display:none;" class="popup">
-    <a class="close-button" href="javascript:hideLinuxDownloadInstructions();">x</a>
-    <h3>Downloading NodeBox 3 for Linux</h3>
+  <dialog id="nodebox-3-linux-instructions" class="popup" aria-labelledby="linux-instructions-title">
+    <button type="button" class="close-button" onclick="hideLinuxDownloadInstructions()" aria-label="Close Linux instructions">×</button>
+    <h3 id="linux-instructions-title">Downloading NodeBox 3 for Linux</h3>
     <p>We don't have a package ready, but executing the following commands in the terminal will get you going:</p>
     <pre>
        sudo apt-get install git-core openjdk-7-jdk ant
@@ -43,30 +44,13 @@ section: download
        cd nodebox
        ant run
     </pre>
-  </div>
+  </dialog>
 
-  <h3>NodeBox 3 Documentation</h3>
-
-  <ul id="bootcamp">
-    <li class="three columns">
-      <a href="/node/documentation/tutorial/getting-started">
-        <img src="/media/node/documentation/index-getting-started.png">
-        <span>Getting Started</span>
-      </a>
-    </li>
-    <li class="three columns">
-      <a href="/node/documentation/tutorial/exploring">
-        <img src="/media/node/documentation/index-exploring.png">
-        <span>Exploring</span>
-      </a>
-    </li>
-    <li class="three columns">
-      <a href="/node/documentation/tutorial/animation">
-        <img src="/media/node/documentation/index-animation.png">
-        <span>Basic Animation</span>
-      </a>
-    </li>
-  </ul>
+  <section class="download-learning" aria-labelledby="download-learning-title">
+    <h2 id="download-learning-title">Documentation</h2>
+    {% assign learning_heading = "h3" %}
+    {% include "learning-links.html" %}
+  </section>
 
 </div>
 
@@ -76,14 +60,14 @@ section: download
   if (navigator.appVersion.indexOf('Mac') != -1) os = 'mac';
   if (navigator.appVersion.indexOf('Linux') != -1 || navigator.userAgent.indexOf('Linux') != -1 || navigator.userAgent.indexOf('Unix') != -1) os = 'linux';
 
-  $('.' + os).addClass('highlight');
+  document.querySelectorAll('.' + os).forEach(function (cell) { cell.classList.add('highlight'); });
 
   function showLinuxDownloadInstructions() {
-    $('#nodebox-3-linux-instructions').show();
+    document.getElementById('nodebox-3-linux-instructions').showModal();
   }
 
   function hideLinuxDownloadInstructions() {
-    $('#nodebox-3-linux-instructions').hide();
+    document.getElementById('nodebox-3-linux-instructions').close();
   }
 
 

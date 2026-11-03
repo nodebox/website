@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Getting started",
+    "url": "/node/documentation/tutorial/getting-started.html",
+    "icon": "/media/node/documentation/index-getting-started.png",
+    "description": "Create your first nodes, connect them, and change their parameters."
+  },
+  {
+    "title": "Exploring nodes",
+    "url": "/node/documentation/tutorial/exploring.html",
+    "icon": "/media/node/documentation/index-exploring.png",
+    "description": "Build a spirograph and a pattern using shapes, copies and transformations."
+  },
+  {
+    "title": "Basic animation",
+    "url": "/node/documentation/tutorial/animation.html",
+    "icon": "/media/node/documentation/index-animation.png",
+    "description": "Use the frame number to animate a network and create a moiré effect."
+  }
+]

@@ -1,0 +1,9 @@
+<div class="resource-grid learning-links">
+  {% for item in learning %}
+  <article class="resource-card">
+    <img class="entry-icon" src="{{ item.icon }}" alt="" width="80" height="80">
+    <{{ learning_heading | default: "h2" }} class="entry-title"><a href="{{ item.url }}">{{ item.title }}</a></{{ learning_heading | default: "h2" }}>
+    <p>{{ item.description }}</p>
+  </article>
+  {% endfor %}
+</div>

@@ -1,6 +1,5 @@
-<div class="post four columns alpha omega">
-  <a href="{{ post.url }}">
-      <img src="/media/gallery/{{ post.data.thumb }}" alt="{{ post.data.title }}">
-      <p>{{ post.data.title }}</p>
-  </a>
-</div>
+<article class="post four columns alpha omega">
+  <a href="{{ post.url }}" class="post-image" aria-label="{{ post.data.title | escape }}"><img src="/media/gallery/{{ post.data.thumb }}" alt="" loading="lazy" width="420" height="210"><span aria-hidden="true">↗</span></a>
+  <div class="post-date">{{ post.date | date_to_string }}</div>
+  <h3 class="entry-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+</article>
