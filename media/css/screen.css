@@ -721,3 +721,9 @@ aside {
     margin: -4px 0 7px 0;
 }-->
 
+
+/* Videos never wider than their column. */
+#content video {
+  max-width: 100%;
+  height: auto;
+}
