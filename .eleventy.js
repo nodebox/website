@@ -12,7 +12,7 @@ module.exports = function (eleventyConfig) {
 
   // --- Layout aliases: lets content keep Jekyll's bare `layout: default` etc.,
   // without rewriting front matter across 180+ files. ---
-  for (const name of ["base", "default", "page", "post", "blog", "gallery", "documentation", "reference", "redirect"]) {
+  for (const name of ["base", "default", "page", "post", "blog", "documentation", "reference", "redirect"]) {
     eleventyConfig.addLayoutAlias(name, `layouts/${name}.html`);
   }
 
@@ -24,13 +24,12 @@ module.exports = function (eleventyConfig) {
     return `${day} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
   });
 
-  // --- Collections replacing Jekyll's `site.categories.gallery` / `.blog`. ---
+  // --- The blog collection, replacing Jekyll's `site.categories.blog`. ---
   const postsByCategory = (collectionApi, category) =>
     collectionApi
       .getFilteredByGlob("_posts/*.md")
       .filter((post) => post.data.categories === category)
       .reverse();
-  eleventyConfig.addCollection("gallery", (api) => postsByCategory(api, "gallery"));
   eleventyConfig.addCollection("blog", (api) => postsByCategory(api, "blog"));
 
   // --- Static assets copied verbatim, preserving paths. ---

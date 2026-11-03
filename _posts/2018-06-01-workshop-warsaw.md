@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: NodeBox 3 Warsaw Workshop
 thumb: workshop-2018-warsaw-thumb.jpg
 images:

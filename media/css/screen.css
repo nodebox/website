@@ -325,6 +325,23 @@ footer .copyright a {
   margin-right: 10px;
 }
 
+/* Post tiles line up in rows; thumbnails share one 2:1 shape. */
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.posts .post {
+  float: none;
+  margin-right: 0;
+}
+
+.posts .post img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+
 #blog .meta {
   color: #999;
   font-size: 12px;
@@ -682,6 +699,11 @@ footer .copyright a {
     float: none;
     display: block;
     margin-bottom: 20px;
+  }
+
+  .posts .post {
+    width: 100%;
+    margin-right: 0;
   }
 
   #content img,

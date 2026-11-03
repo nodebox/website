@@ -9,7 +9,7 @@ images:
   - gallery/midimport-table.png
   - gallery/midimport-network.png
 ---
-For a recent [data visualisation workshop in The Hague](/gallery/2012/11/workshop-the-hague/), we needed a way to import MIDI files into NodeBox 3.
+For a recent [data visualisation workshop in The Hague](/blog/2012/11/09/workshop-the-hague), we needed a way to import MIDI files into NodeBox 3.
 
 MIDI has some "interesting" properties: each note is stored as two separate "on" and "off" events that need to be matched up to find the duration. Getting this right is non-trivial; that's why this work might be interesting to other people as well.
 

@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: NodeBox 3 Antwerp Masterclass
 thumb: masterclass-2012-antwerp-thumb.png
 images:

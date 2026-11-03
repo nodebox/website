@@ -56,7 +56,6 @@ PAGE_TEMPLATE = """\
         <li><a href="/code/Home">NodeBox 1<small>Generate 2D visuals using Python code (Mac OS X only)</small></a></li>
       </ol>
     </li>
-    <li><a class="gallery" href="/gallery/">Gallery</a></li>
     <li><a class="documentation" href="/code/Tutorial">Documentation</a></li>
     <li><a class="forum" href="https://forum.nodebox.net/">Forum</a></li>
     <li><a class="blog" href="/blog/">Blog</a></li>

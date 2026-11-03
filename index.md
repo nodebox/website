@@ -49,17 +49,13 @@ section: home
 </div>
 
 <div class="gallery row">
-  <div class="eight columns">
-  <h2>Gallery</h2>
-  {% for post in collections.gallery limit: 2 %}
+  <div class="sixteen columns">
+  <h2><a href="/blog/">Blog</a></h2>
+<div class="posts">
+  {% for post in collections.blog limit: 4 %}
     {% include "post.html" %}
   {% endfor %}
-  </div>
-  <div class="eight columns">
-  <h2>Blog</h2>
-  {% for post in collections.blog limit: 2 %}
-    {% include "post.html" %}
-  {% endfor %}
+</div>
   </div>
 </div>
 

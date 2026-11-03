@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: SelfieBot at Choke2014
 thumb: piet.png
 images:

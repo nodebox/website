@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: NodeBox 3 The Hague Workshop
 thumb: workshop-2012-the-hague-thumb.png
 images:
@@ -56,7 +56,7 @@ Summary
 -------
 NodeBox drives on feedback of students. We use their experiences and frustrations to improve the software and make it more accessible and useful. Through questionnaires, screen recordings and depth interviews we discover if people unfamiliar with generative tools can be effective and productive. 
 
-In February of this year we did the very first [NodeBox 3 masterclass in Antwerp](/gallery/2012/02/masterclass-antwerp/). This laid bare a number of fundamental issues with more complex assignments that were hard to solve. We figured out a way to solve them and this workshop was a test to see if our solution worked. We were very happy to discover that our system provided a comprehensive, easy-to-use system to build complex networks.
+In February of this year we did the very first [NodeBox 3 masterclass in Antwerp](/blog/2012/02/29/masterclass-antwerp). This laid bare a number of fundamental issues with more complex assignments that were hard to solve. We figured out a way to solve them and this workshop was a test to see if our solution worked. We were very happy to discover that our system provided a comprehensive, easy-to-use system to build complex networks.
 
 Starting in January, we'll be working on integrating hardware interfaces and image processing to the software during the [Conduit research project](http://www.emrg.be/projects/conduit.html). We look forward to testing these new capabilities in future workshops.
 

@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: NodeBox 3 Helsinki Workshop
 thumb: masterclass-2014-helsinki-thumbmate.png
 images:

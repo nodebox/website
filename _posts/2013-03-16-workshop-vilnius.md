@@ -1,6 +1,6 @@
 ---
-categories: gallery
-layout: gallery
+categories: blog
+layout: blog
 title: NodeBox 3 Vilnius Workshop
 thumb: workshop-2013-vilnius-thumb.png
 images:
