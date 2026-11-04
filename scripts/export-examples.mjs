@@ -52,7 +52,13 @@ function pathData(ops) {
 }
 const hex = (r, g, b) => '#' + [r, g, b].map(v => Math.round(Math.min(1, Math.max(0, v)) * 255).toString(16).padStart(2, '0')).join('');
 
+// NodeBox 3.1 refuses documents that are not format 21 or whose uuid is not a
+// real UUID. The networks are downloads, so keep them in that shape.
 async function open(file) {
+  const head = (await readFile(file, 'utf8')).match(/<ndbx [^>]*>/)[0];
+  if (!head.includes('formatVersion="21"') || !/uuid="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/.test(head)) {
+    throw new Error(`${file} must have formatVersion="21" and a UUID, or NodeBox 3.1 cannot open it.`);
+  }
   const s = new Session();
   for (const f of fonts) s.addFont(new Uint8Array(await readFile(f)));
   s.setFile('daylight.csv', new Uint8Array(await readFile(join(out, 'daylight.csv'))));

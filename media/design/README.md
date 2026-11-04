@@ -12,6 +12,12 @@ The homepage examples are networks made in NodeBox 4. Each lives in
 
 `daylight.csv` comes from `scripts/make-daylight.mjs`.
 
+The networks open in NodeBox 3.1.0 as well. NodeBox 3 reads only format version
+21 and needs a real UUID, while NodeBox 4 writes version 22, so edit these files
+by hand or change the two values back after saving from NodeBox 4. The export
+script checks both. Drawn text uses the font AtkinsonHyperlegibleNext, which
+NodeBox 3 replaces with another font unless it is installed.
+
 Regenerate the drawings with a built NodeBox 4 checkout:
 
 ```sh

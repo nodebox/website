@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ndbx formatVersion="22" type="file" uuid="nodebox-site-flow-field">
+<ndbx formatVersion="21" type="file" uuid="804f12ac-9580-5088-85df-e56fb9479233">
     <property name="canvasHeight" value="700"/>
     <property name="canvasWidth" value="800"/>
     <property name="title" value="Flow field"/>
