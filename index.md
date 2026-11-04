@@ -36,7 +36,7 @@ templateEngineOverride: liquid
       <div class="hero-actions"><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link" href="/node/">About NodeBox 3 ↗</a></div>
     </article>
     <article class="edition">
-      <img src="/media/design/software/nodebox-live.jpg" alt="NodeBox Live in a browser, with a network that reads a CSV file and the chart it draws." width="1200" height="883" loading="lazy">
+      <img src="/media/homepage/nodebox-live.jpg" alt="NodeBox Live in a browser, with a network that reads a CSV file and the chart it draws." width="1200" height="883" loading="lazy">
       <h3 class="entry-title">NodeBox Live</h3>
       <p>The web application. Work with CSV and JSON data or a web API, write your own nodes in JavaScript, and share projects with other people.</p>
       <div class="hero-actions"><a class="action-primary" href="https://nodebox.live/">Open NodeBox Live <span aria-hidden="true">↗</span></a><a class="text-link" href="/blog/2026/11/03/maak-nodebox-in-the-browser">How it began ↗</a></div>

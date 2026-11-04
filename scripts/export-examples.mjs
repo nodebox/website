@@ -1,6 +1,6 @@
 // Usage: node scripts/export-examples.mjs /path/to/nodebox4
 // Evaluates the homepage examples with a built NodeBox 4 engine and writes what
-// the browser needs to draw each one at any slider value: media/design/examples/
+// the browser needs to draw each one at any slider value: media/homepage/examples/
 // <id>.json (the data) and <id>.svg (the still shown before scripts run). The
 // networks <id>.ndbx are the sources and the downloads. Ordinary Eleventy builds
 // use the saved files and need no NodeBox. Needs uvx, for the font instances.
@@ -13,7 +13,7 @@ import { gzipSync } from 'node:zlib';
 
 if (!process.argv[2]) throw new Error('Provide the path to a built NodeBox checkout.');
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
-const out = join(root, 'media/design/examples');
+const out = join(root, 'media/homepage/examples');
 const pkg = resolve(process.argv[2], 'app/src/engine/pkg');
 const { initSync, Session } = await import(pathToFileURL(join(pkg, 'nodebox_wasm.js')));
 initSync({ module: await readFile(join(pkg, 'nodebox_wasm_bg.wasm')) });

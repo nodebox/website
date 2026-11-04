@@ -1,5 +1,5 @@
 // Usage: node scripts/make-daylight.mjs
-// Writes media/design/examples/daylight.csv: the hours between sunrise and sunset
+// Writes media/homepage/examples/daylight.csv: the hours between sunrise and sunset
 // on each day of the year, for every second degree of northern latitude. It uses
 // the solar declination from the day number, with no refraction, so the values
 // are close to published tables but not a substitute for them.
@@ -15,4 +15,4 @@ for (let day = 1; day <= 365; day++) {
     return (2 / 15 * Math.acos(x) / rad).toFixed(2);
   }).join(','));
 }
-await writeFile(new URL('../media/design/examples/daylight.csv', import.meta.url), lines.join('\n') + '\n');
+await writeFile(new URL('../media/homepage/examples/daylight.csv', import.meta.url), lines.join('\n') + '\n');

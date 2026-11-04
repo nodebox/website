@@ -85,7 +85,7 @@ when the example is off screen, or when the tab is hidden.
 - `_includes/example-panel.html`, `_data/examples.json` and
   `media/js/examples.js`: the homepage examples. Each is a NodeBox network,
   evaluated ahead of time and drawn by the page at any slider value; see
-  `media/design/README.md`. `_data/works.json` lists work made by others.
+  `media/homepage/README.md`. `_data/works.json` lists work made by others.
 - The node icons beside the examples are shown at half strength. Icons that
   are black on the light theme are inverted on the dark theme; coloured icons
   are left alone.

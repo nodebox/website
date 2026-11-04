@@ -52,3 +52,6 @@
 /gallery            /blog/  301
 /gallery/           /blog/  301
 /gallery/*          /blog/:splat  301
+
+# The homepage example networks moved from media/design/examples to media/homepage/examples.
+/media/design/examples/*   /media/homepage/examples/:splat   301

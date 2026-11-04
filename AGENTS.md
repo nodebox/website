@@ -7,4 +7,4 @@
 - Markdown is markdown-it with indented code blocks disabled: use fenced code blocks.
 - `code/` is the static NodeBox 1 wiki archive with its own fixed-width layout; heavy `code/data` files live on S3 (bucket `nodebox`).
 - Old URLs stay alive through `_redirects`: `/gallery/*` (the former gallery) and the pre-2016 month-only permalinks `/<category>/YYYY/MM/<slug>/` point to `/blog/YYYY/MM/DD/<slug>`. Add a rule there when a URL moves.
-- Homepage examples are NodeBox 4 networks in `media/design/examples/`. Regenerate their drawings with `node scripts/export-examples.mjs /path/to/nodebox4`; builds use the saved files. In dark mode check each example in a screenshot: colours come from CSS, and light-dark() does not reach `<use>` copies.
+- Homepage examples are NodeBox 4 networks in `media/homepage/examples/`. Regenerate their drawings with `node scripts/export-examples.mjs /path/to/nodebox4`; builds use the saved files. In dark mode check each example in a screenshot: colours come from CSS, and light-dark() does not reach `<use>` copies.

@@ -1,14 +1,14 @@
 [
   { "title": "50 Years of Film Speech", "by": "Jonas Lekevicius, Juste Ziliute and Augustinas Paukste", "made": "NodeBox 3",
-    "image": "/media/design/works/film-speech.jpg", "width": 1200, "height": 751,
+    "image": "/media/homepage/works/film-speech.jpg", "width": 1200, "height": 751,
     "alt": "Rows of sound waveforms in different colours, one for each of the most spoken words in films, from \"oh\" and \"ok\" to \"love\" and \"fight\"." },
   { "title": "Eurovoices", "by": "Dalia Kemeklytė and Viktorija Pampuščenko", "made": "NodeBox 3",
-    "image": "/media/design/works/eurovoices.jpg", "width": 1200, "height": 750,
+    "image": "/media/homepage/works/eurovoices.jpg", "width": 1200, "height": 750,
     "alt": "A grid of small yellow radial charts on a dark blue background, one for each country in the Eurovision Song Contest." },
   { "title": "Goldberg Variations", "by": "Anton Sovetov", "made": "NodeBox Live",
-    "image": "/media/design/works/goldberg-variations.jpg", "width": 1200, "height": 750,
+    "image": "/media/homepage/works/goldberg-variations.jpg", "width": 1200, "height": 750,
     "alt": "The notes of several of Bach's Goldberg Variations as coloured horizontal bars on bands of green and orange." },
   { "title": "Finnish Surnames", "by": "Eemeli Nieminen", "made": "NodeBox Live",
-    "image": "/media/design/works/finnish-surnames.jpg", "width": 1200, "height": 750,
+    "image": "/media/homepage/works/finnish-surnames.jpg", "width": 1200, "height": 750,
     "alt": "A dense cloud of Finnish surnames, the most common ones in large green letters." }
 ]

@@ -4,7 +4,7 @@
 """Lay out the nodes of a NodeBox network the way NodeBox 3 draws one: sources at
 the top, the rendered node at the bottom, wires running down.
 
-Usage: uv run scripts/layout-ndbx.py media/design/examples/*.ndbx
+Usage: uv run scripts/layout-ndbx.py media/homepage/examples/*.ndbx
 
 Only the position attributes change. NodeBox 3 draws a node about three grid
 units wide and one high, so nodes are four units apart across and two down.
