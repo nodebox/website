@@ -63,6 +63,8 @@ async function open(file) {
   for (const f of fonts) s.addFont(new Uint8Array(await readFile(f)));
   s.setFile('daylight.csv', new Uint8Array(await readFile(join(out, 'daylight.csv'))));
   s.open(await readFile(file, 'utf8'));
+  s.example = examples.find(e => file.endsWith(e.id + '.ndbx'));
+  s.disconnect('', s.example.node, 'value1');
   const paths = new Map();
   // The rendered scene as an SVG of filled outlines.
   s.svg = (w, h) => {
@@ -90,7 +92,10 @@ const rows = (s, name, limit = 100000) => JSON.parse(s.output('', name, 1, limit
 const nums = (s, name) => rows(s, name).map(Number);
 const points = (s, name) => rows(s, name).map(t => t.split(',').map(Number));
 const range = ({ min, max, step }) => { const v = []; for (let k = 0, x = min; x <= max + 1e-9; k++, x = +(min + k * step).toFixed(4)) v.push(x); return v; };
-const set = (s, ex, v) => s.setPort('', ex.node, 'value', String(v));
+// The downloads are animated: a frame node drives each slider's parameter. The
+// page sets the parameter itself, so each example says how to cut the frame
+// out and which port holds the slider's value.
+const set = (s, ex, v) => ex.drive(s, v);
 const still = (s, ex) => { set(s, ex, ex.value); return s.svg(800, 700); };
 
 // Short strokes on a grid, each turned by a field. Fixed start points, angles per step.
@@ -137,13 +142,18 @@ function bars(s, ex) {
   return { data: { kind: 'bars', angles: angles.map(r1), frames, fixed }, still: svg };
 }
 
+// Each node is the last one in a chain that starts at the frame: k = frame / 20
+// + 0.35, reach = frame / 2 + 10, latitude = (frame / 0.5) mod 82 and
+// m = frame / 20 + 3.
+const port = (s, node, value) => s.setPort('', node, 'value1', String(value));
 const examples = [
-  { id: 'generative', kind: strokes, strokes: { list: 'grid', angle: 'deg', length: 15 }, node: 'k', min: .4, max: 2.5, step: .05, value: 1 },
-  { id: 'typography', kind: threads, node: 'reach', min: 10, max: 90, value: 50 },
+  { id: 'generative', kind: strokes, strokes: { list: 'grid', angle: 'deg', length: 15 }, node: 'k', drive: (s, v) => port(s, 'k', v - .35), min: .4, max: 2.5, step: .05, value: 1 },
+  { id: 'typography', kind: threads, node: 'reach', drive: (s, v) => port(s, 'reach', v - 10), min: 10, max: 90, value: 50 },
   // daylight.csv has a column for every second degree of latitude.
-  { id: 'data', kind: bars, node: 'latitude', min: 0, max: 80, step: 2, value: 52 },
-  { id: 'plotter', kind: ring, ring: { node: 'pt', copies: 60, turn: 1.5, shrink: .01 }, node: 'm', min: 3, max: 9, step: .05, value: 5 },
+  { id: 'data', kind: bars, node: 'latitude', drive: (s, v) => port(s, 'latitude', v), min: 0, max: 80, step: 2, value: 52 },
+  { id: 'plotter', kind: ring, ring: { node: 'pt', copies: 60, turn: 1.5, shrink: .01 }, node: 'm', drive: (s, v) => port(s, 'm', v - 3), min: 3, max: 9, step: .05, value: 5 },
 ];
+
 for (const ex of examples) {
   const s = await open(join(out, `${ex.id}.ndbx`));
   const { data, still: svg } = ex.kind(s, ex);

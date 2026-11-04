@@ -10,37 +10,41 @@
             <port name="width" type="float" value="740.0"/>
             <port name="height" type="float" value="640.0"/>
         </node>
-        <node name="x" position="4.00,1.00" prototype="data.lookup">
+        <node name="x" position="1.00,3.00" prototype="data.lookup">
             <port name="key" type="string" value="x"/>
         </node>
-        <node name="y" position="7.00,1.00" prototype="data.lookup">
+        <node name="y" position="9.00,3.00" prototype="data.lookup">
             <port name="key" type="string" value="y"/>
         </node>
-        <node name="k" position="10.00,1.00" prototype="math.number">
-            <port name="value" type="float" value="1.0"/>
+        <node name="k_steps" position="5.00,3.00" prototype="math.divide">
+            <port name="value2" type="float" value="20.0"/>
         </node>
-        <node name="fx" position="13.00,1.00" prototype="math.multiply">
+        <node name="k" position="5.00,5.00" prototype="math.add">
+            <port name="value2" type="float" value="0.35"/>
+        </node>
+        <node name="fx" position="1.00,5.00" prototype="math.multiply">
             <port name="value2" type="float" value="0.008"/>
         </node>
-        <node name="fy" position="16.00,1.00" prototype="math.multiply">
+        <node name="fy" position="9.00,5.00" prototype="math.multiply">
             <port name="value2" type="float" value="0.011"/>
         </node>
-        <node name="kx" position="19.00,1.00" prototype="math.multiply"/>
-        <node name="ky" position="22.00,3.00" prototype="math.multiply"/>
-        <node name="sx" position="1.00,3.00" prototype="math.sin"/>
-        <node name="cy" position="4.00,3.00" prototype="math.cos"/>
-        <node name="sum" position="7.00,3.00" prototype="math.add"/>
-        <node name="deg" position="10.00,3.00" prototype="math.multiply">
+        <node name="kx" position="3.00,7.00" prototype="math.multiply"/>
+        <node name="ky" position="7.00,7.00" prototype="math.multiply"/>
+        <node name="sx" position="3.00,9.00" prototype="math.sin"/>
+        <node name="cy" position="7.00,9.00" prototype="math.cos"/>
+        <node name="sum" position="5.00,11.00" prototype="math.add"/>
+        <node name="deg" position="5.00,13.00" prototype="math.multiply">
             <port name="value2" type="float" value="90.0"/>
         </node>
-        <node name="stroke" position="13.00,3.00" prototype="corevector.line_angle">
+        <node name="stroke" position="3.00,15.00" prototype="corevector.line_angle">
             <port name="distance" type="float" value="15.0"/>
         </node>
-        <node name="pen" position="16.00,3.00" prototype="corevector.colorize">
+        <node name="pen" position="3.00,17.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#00000000"/>
             <port name="stroke" type="color" value="#2355edff"/>
             <port name="strokeWidth" type="float" value="1.6"/>
         </node>
+        <node name="frame" position="5.00,1.00" prototype="core.frame"/>
         <conn input="x.list" output="grid"/>
         <conn input="y.list" output="grid"/>
         <conn input="fx.value1" output="x"/>
@@ -57,5 +61,7 @@
         <conn input="stroke.position" output="grid"/>
         <conn input="stroke.angle" output="deg"/>
         <conn input="pen.shape" output="stroke"/>
+        <conn input="k_steps.value1" output="frame"/>
+        <conn input="k.value1" output="k_steps"/>
     </node>
 </ndbx>

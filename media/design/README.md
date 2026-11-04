@@ -12,6 +12,11 @@ The homepage examples are networks made in NodeBox 4. Each lives in
 
 `daylight.csv` comes from `scripts/make-daylight.mjs`.
 
+Each network animates: a `frame` node, divided and offset, drives the parameter
+that the page's slider sets (`k`, `reach`, `latitude` and `m`), so Play in NodeBox
+sweeps it. The page cuts the frame out and sets that parameter itself. Nodes are
+laid out top to bottom by `scripts/layout-ndbx.py`.
+
 The networks open in NodeBox 3.1.0 as well. NodeBox 3 reads only format version
 21 and needs a real UUID, while NodeBox 4 writes version 22, so edit these files
 by hand or change the two values back after saving from NodeBox 4. The export

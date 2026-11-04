@@ -10,31 +10,35 @@
             <port name="font_size" type="float" value="270.0"/>
             <port name="position" type="point" value="0.00,90.00"/>
         </node>
-        <node name="resample" position="1.00,2.00" prototype="corevector.resample">
+        <node name="resample" position="1.00,3.00" prototype="corevector.resample">
             <port name="length" type="float" value="2.5"/>
         </node>
-        <node name="points" position="1.00,3.00" prototype="corevector.point"/>
-        <node name="repeat" position="1.00,4.00" prototype="list.repeat">
+        <node name="points" position="1.00,5.00" prototype="corevector.point"/>
+        <node name="repeat" position="1.00,7.00" prototype="list.repeat">
             <port name="amount" type="int" value="8"/>
         </node>
-        <node name="shuffle" position="3.00,5.00" prototype="list.shuffle">
+        <node name="shuffle" position="1.00,9.00" prototype="list.shuffle">
             <port name="seed" type="int" value="3"/>
         </node>
-        <node name="distance" position="2.00,6.00" prototype="math.distance"/>
-        <node name="reach" position="5.00,6.00" prototype="math.number">
-            <port name="value" type="float" value="50.0"/>
+        <node name="distance" position="1.00,11.00" prototype="math.distance"/>
+        <node name="reach_steps" position="5.00,3.00" prototype="math.divide">
+            <port name="value2" type="float" value="2.0"/>
         </node>
-        <node name="close" position="2.00,7.00" prototype="math.compare">
+        <node name="reach" position="5.00,5.00" prototype="math.add">
+            <port name="value2" type="float" value="10.0"/>
+        </node>
+        <node name="close" position="3.00,13.00" prototype="math.compare">
             <port name="comparator" type="string" value="&lt;"/>
         </node>
-        <node name="from" position="1.00,8.00" prototype="list.cull"/>
-        <node name="to" position="3.00,8.00" prototype="list.cull"/>
-        <node name="line" position="2.00,9.00" prototype="corevector.line"/>
-        <node name="threads" position="2.00,10.00" prototype="corevector.colorize">
+        <node name="from" position="2.00,15.00" prototype="list.cull"/>
+        <node name="to" position="6.00,15.00" prototype="list.cull"/>
+        <node name="line" position="4.00,17.00" prototype="corevector.line"/>
+        <node name="threads" position="4.00,19.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#00000000"/>
             <port name="stroke" type="color" value="#2355edff"/>
             <port name="strokeWidth" type="float" value="0.5"/>
         </node>
+        <node name="frame" position="5.00,1.00" prototype="core.frame"/>
         <conn input="resample.shape" output="word"/>
         <conn input="points.value" output="resample"/>
         <conn input="repeat.list" output="points"/>
@@ -50,5 +54,7 @@
         <conn input="line.point1" output="from"/>
         <conn input="line.point2" output="to"/>
         <conn input="threads.shape" output="line"/>
+        <conn input="reach_steps.value1" output="frame"/>
+        <conn input="reach.value1" output="reach_steps"/>
     </node>
 </ndbx>
