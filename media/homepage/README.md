@@ -1,4 +1,4 @@
-# NodeBox website artwork
+# NodeBox homepage artwork
 
 The homepage examples are networks made in NodeBox 4. Each lives in
 `examples/<id>.ndbx`, which is also the file readers download:
@@ -12,9 +12,11 @@ The homepage examples are networks made in NodeBox 4. Each lives in
 
 `daylight.csv` comes from `scripts/make-daylight.mjs`.
 
-Each network animates: a `frame` node, divided and offset, drives the parameter
-that the page's slider sets (`k`, `reach`, `latitude` and `m`), so Play in NodeBox
-sweeps it. The page cuts the frame out and sets that parameter itself. Nodes are
+Each network animates: a `frame` node, divided and offset, drives a parameter, so
+Play in NodeBox moves it. For the flow field, the threads and the daylight chart
+that is the parameter the page's slider sets (`k`, `reach` and `latitude`). The
+plotter's slider sets the symmetry `m`, which would jitter if it ran with the
+frame, so its frame drives the exponent `ex` instead. The page cuts the frame out and sets that parameter itself. Nodes are
 laid out top to bottom by `scripts/layout-ndbx.py`.
 
 The networks open in NodeBox 3.1.0 as well. NodeBox 3 reads only format version
@@ -45,8 +47,11 @@ for the dark theme.
 
 ## Other files
 
-- `icons/nodes/` holds Lucas Nijs's original node icons, copied without changes
-  from the NodeBox artwork directory. `icons/` holds the three operation icons.
-- `nodebox-mark.svg` is the mark from NodeBox Live's `artwork/logo.svg`.
+- `nodebox-live.jpg` is a screenshot of NodeBox Live from nodebox.live.
 - `works/` holds images of work made by others with NodeBox, from nodebox.live.
   The credits are in `_data/works.json`.
+- `../design/icons/nodes/` holds Lucas Nijs's original node icons, copied without
+  changes from the NodeBox artwork directory. `../design/icons/` holds the three
+  operation icons, and `../design/nodebox-mark.svg` is the mark from NodeBox
+  Live's `artwork/logo.svg`.
+- The older files in this folder belong to the previous homepage.

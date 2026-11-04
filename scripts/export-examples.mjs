@@ -64,7 +64,7 @@ async function open(file) {
   s.setFile('daylight.csv', new Uint8Array(await readFile(join(out, 'daylight.csv'))));
   s.open(await readFile(file, 'utf8'));
   s.example = examples.find(e => file.endsWith(e.id + '.ndbx'));
-  s.disconnect('', s.example.node, 'value1');
+  s.example.prepare(s);
   const paths = new Map();
   // The rendered scene as an SVG of filled outlines.
   s.svg = (w, h) => {
@@ -144,14 +144,17 @@ function bars(s, ex) {
 
 // Each node is the last one in a chain that starts at the frame: k = frame / 20
 // + 0.35, reach = frame / 2 + 10, latitude = (frame / 0.5) mod 82 and
-// m = frame / 20 + 3.
+// the plotter's exponent ex = 2.355 * sin(frame / 300 + 2.8012) - 0.785, which
+// goes from 0 down to -3.14, up to 1.57 and back. The number of points m is a
+// plain number.
 const port = (s, node, value) => s.setPort('', node, 'value1', String(value));
+const cut = (s, node, value) => { s.disconnect('', node, 'value1'); port(s, node, value); };
 const examples = [
-  { id: 'generative', kind: strokes, strokes: { list: 'grid', angle: 'deg', length: 15 }, node: 'k', drive: (s, v) => port(s, 'k', v - .35), min: .4, max: 2.5, step: .05, value: 1 },
-  { id: 'typography', kind: threads, node: 'reach', drive: (s, v) => port(s, 'reach', v - 10), min: 10, max: 90, value: 50 },
+  { id: 'generative', kind: strokes, strokes: { list: 'grid', angle: 'deg', length: 15 }, node: 'k', prepare: s => cut(s, 'k', 1), drive: (s, v) => port(s, 'k', v - .35), min: .4, max: 2.5, step: .05, value: 1 },
+  { id: 'typography', kind: threads, node: 'reach', prepare: s => cut(s, 'reach', 40), drive: (s, v) => port(s, 'reach', v - 10), min: 10, max: 90, value: 50 },
   // daylight.csv has a column for every second degree of latitude.
-  { id: 'data', kind: bars, node: 'latitude', drive: (s, v) => port(s, 'latitude', v), min: 0, max: 80, step: 2, value: 52 },
-  { id: 'plotter', kind: ring, ring: { node: 'pt', copies: 60, turn: 1.5, shrink: .01 }, node: 'm', drive: (s, v) => port(s, 'm', v - 3), min: 3, max: 9, step: .05, value: 5 },
+  { id: 'data', kind: bars, node: 'latitude', prepare: s => cut(s, 'latitude', 52), drive: (s, v) => port(s, 'latitude', v), min: 0, max: 80, step: 2, value: 52 },
+  { id: 'plotter', kind: ring, ring: { node: 'pt', copies: 60, turn: 1.5, shrink: .01 }, node: 'ex', prepare: s => cut(s, 'ex', -2.2 + .785), drive: (s, v) => port(s, 'ex', v + .785), min: -3.14, max: 1.56, step: .02, value: -2.2 },
 ];
 
 for (const ex of examples) {

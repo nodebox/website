@@ -17,7 +17,7 @@
             <port name="key" type="string" value="y"/>
         </node>
         <node name="k_steps" position="5.00,3.00" prototype="math.divide">
-            <port name="value2" type="float" value="20.0"/>
+            <port name="value2" type="float" value="500.0"/>
         </node>
         <node name="k" position="5.00,5.00" prototype="math.add">
             <port name="value2" type="float" value="0.35"/>
