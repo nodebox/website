@@ -26,16 +26,6 @@ templateEngineOverride: liquid
       <td class="version"><a href="https://nodebox.live/">NodeBox Live</a><br><small>Runs in your browser</small></td>
       <td colspan="3" class="mac windows linux"><a href="https://nodebox.live/" class="button">Open <span aria-hidden="true">↗</span></a><br><small>Nothing to download. <a href="https://nodebox.live/users/create">Sign up</a> to start a project.</small></td>
     </tr>
-    <tr>
-      <td class="version"><a href="/opengl/">NodeBox OpenGL</a><br><small>Version 1.7</small></td>
-      <td colspan="3" class="mac windows linux"><a href="https://github.com/nodebox/nodebox-opengl/releases/download/v1.7/nodebox-gl-1.7.zip" class="button">Download</a></td>
-    </tr>
-    <tr>
-      <td class="version"><a href="/code/">NodeBox 1</a><br><small>Version 1.9.7</small></td>
-      <td class="mac"><a href="https://github.com/nodebox/nodebox-pyobjc/releases/download/1.9.7/NodeBox-1.9.7.zip" class="button">Download</a></td>
-      <td><em>N/A</em></td>
-      <td><em>N/A</em></td>
-    </tr>
   </table></div>
 
   <dialog id="nodebox-3-linux-instructions" class="popup" aria-labelledby="linux-instructions-title">
@@ -54,6 +44,15 @@ templateEngineOverride: liquid
     <h2 id="download-learning-title">Documentation</h2>
     {% assign learning_heading = "h3" %}
     {% include "learning-links.html" %}
+  </section>
+
+  <section class="legacy" aria-labelledby="legacy-title">
+    <h2 id="legacy-title" class="entry-title">Older software</h2>
+    <p>NodeBox OpenGL and NodeBox 1 are no longer supported. They might not run on current versions of macOS or Windows.</p>
+    <ul>
+      <li><span><a href="/opengl/">NodeBox OpenGL</a> 1.7 for Mac, Windows and Linux</span><a href="https://github.com/nodebox/nodebox-opengl/releases/download/v1.7/nodebox-gl-1.7.zip" aria-label="Download NodeBox OpenGL 1.7">Download</a></li>
+      <li><span><a href="/code/">NodeBox 1</a> 1.9.7 for Mac</span><a href="https://github.com/nodebox/nodebox-pyobjc/releases/download/1.9.7/NodeBox-1.9.7.zip" aria-label="Download NodeBox 1 1.9.7">Download</a></li>
+    </ul>
   </section>
 
 </div>

@@ -389,3 +389,12 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #content .compare tbody th { width: 18%; font-weight: var(--weight-heading); }
 #content .hero-figure img, #content .edition img { filter: var(--shot-filter); }
 @media (max-width: 760px) { .editions { grid-template-columns: 1fr; gap: var(--space-4); } }
+
+/* Software that is no longer supported stays available, in the background. */
+.legacy { margin: var(--space-6) 0 0; padding-top: var(--space-4); border-top: 1px solid var(--line); color: var(--muted); }
+#content .legacy .entry-title { margin: 0 0 var(--space-1); color: var(--muted); font-size: var(--text-body); font-weight: var(--weight-heading); line-height: 1.5; }
+.legacy p { max-width: 60ch; margin: 0 0 var(--space-2); font-size: var(--text-small); line-height: 1.5; }
+.legacy ul { list-style: none; margin: 0; padding: 0; max-width: 60ch; font-size: var(--text-small); line-height: 1.5; }
+.legacy li { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-1) 0; border-top: 1px solid var(--line); }
+.legacy a { color: var(--muted); }
+.legacy a:hover { color: var(--blue); }
