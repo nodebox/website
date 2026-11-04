@@ -2,6 +2,7 @@
 
 - Eleventy 3 site; Node version in `.nvmrc`. Verify: `npm ci && npm run build`, then `npm run dev` and look at `/`, a blog post and a documentation page at phone and desktop width.
 - Branch policy: commit straight to `master`. Deploy: none here; Cloudflare Pages builds and publishes every push to `master`. Check https://www.nodebox.net/ afterwards.
+- Every NodeBox 3 release updates `download/index.md` (version, `.dmg` and `.msi` links) and adds a section at the top of `node/release-notes.md` (a short form of the GitHub Release notes, with a link to it). The release steps are in nodebox/nodebox `docs/RELEASING.md`.
 - Posts: one stream. `_posts/YYYY-MM-DD-<slug>.md` with `categories: blog`, `layout: blog`, `title`, `thumb` (a 420×210 image in `media/gallery/`). URL: `/<category>/YYYY/MM/DD/<slug>`. Post media go in `media/blog/<slug>/`.
 - Front matter dates must be ISO 8601 (`2026-11-03T10:00:00+01:00`); Eleventy rejects Jekyll's `2026-11-03 10:00:00 +0100`.
 - Markdown is markdown-it with indented code blocks disabled: use fenced code blocks.
