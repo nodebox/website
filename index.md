@@ -11,11 +11,12 @@ templateEngineOverride: liquid
       <p>NodeBox is an open-source tool for generative graphics and data visualization. Connect operations, change their parameters, and export the result.</p>
       <div class="hero-actions"><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link" href="/node/documentation/">Documentation <span aria-hidden="true">↗</span></a></div>
     </div>
-    <figure class="hero-playground">
-      <div class="artwork-stage" id="artwork-stage"><img src="/media/design/possibilities.svg" alt="A woven surface made from intersecting curved blue and navy paths." width="800" height="700" fetchpriority="high"></div>
-      <figcaption class="artwork-controls"><label for="bend">Bend</label><input id="bend" type="range" min="0" max="100" value="50" step="1" aria-valuetext="50 percent bend" disabled aria-describedby="bend-note"><output for="bend" id="bend-value">50%</output><span id="bend-note" class="sr-only">Change the curvature of the surface. Use the arrow keys to adjust.</span><a href="/media/design/possibilities.ndbx" download>Download this example</a><span class="sr-only" id="artwork-status" role="status"></span></figcaption>
-    </figure>
+    <figure class="hero-figure"><img src="/media/node/features-nodes.png" alt="The NodeBox 3 editor, with a network of connected nodes and its generated graphics." width="1100" height="800" fetchpriority="high"></figure>
   </div>
+</section>
+<section class="showcase section-shell" aria-label="Examples">
+  <div class="example-index" role="tablist" aria-label="Examples" aria-orientation="vertical">{% for ex in examples %}<button type="button" role="tab" id="tab-{{ ex.id }}" aria-controls="example-{{ ex.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %}><span class="entry-title">{{ ex.category }}</span><span class="example-nodes">{% for n in ex.nodes %}<img src="/media/design/icons/nodes/{{ n }}.svg" alt="" title="{{ n }}" width="32" height="32">{% endfor %}<span class="sr-only">Nodes: {{ ex.nodes | join: ", " }}</span></span></button>{% endfor %}</div>
+  <div class="example-panels">{% for ex in examples %}{% if forloop.first %}{% render "example-panel.html", ex: ex, tabbed: true %}{% else %}{% render "example-panel.html", ex: ex, tabbed: true, hidden: true %}{% endif %}{% endfor %}</div>
 </section>
 <section class="idea-section section-shell" aria-labelledby="idea-title">
   <div class="idea-heading"><h2 id="idea-title">How NodeBox works</h2><p>Each node performs one operation. Connect them into a network to describe how a design is made. The network stays editable, so you can change the process as well as the result.</p></div>
@@ -26,7 +27,18 @@ templateEngineOverride: liquid
   </div>
 </section>
 <section class="software-section section-shell" aria-labelledby="software-title">
-  <div class="software-layout"><div class="software-intro"><h2 id="software-title">NodeBox 3</h2><p>The desktop application for Mac, Windows and Linux. It includes a library of nodes for working with graphics, text and data.</p><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link software-docs" href="/node/">More about NodeBox 3 ↗</a></div><figure class="software-figure"><img src="/media/node/features-nodes.png" alt="The NodeBox 3 editor, with a network of connected nodes and its generated graphics." width="1100" height="800" loading="lazy"><figcaption><a href="/node/documentation/tutorial/getting-started.html">Getting started with NodeBox 3 ↗</a></figcaption></figure></div>
+  <div class="software-layout"><div class="software-intro"><h2 id="software-title">NodeBox 3</h2><p>The desktop application for Mac, Windows and Linux. It includes a library of nodes for working with graphics, text and data.</p><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link software-docs" href="/node/">More about NodeBox 3 ↗</a></div><figure class="software-figure"><img src="/node/documentation/using/math-lissajous.png" alt="The NodeBox 3 editor showing a Lissajous pattern and the network of nodes that draws it." width="1100" height="800" loading="lazy"><figcaption><a href="/node/documentation/tutorial/getting-started.html">Getting started with NodeBox 3 ↗</a></figcaption></figure></div>
+</section>
+<section class="works-section section-shell" aria-labelledby="works-title">
+  <h2 id="works-title">Made with NodeBox</h2>
+  <div class="works-grid">
+  {% for work in works %}
+    <figure class="work">
+      <img src="{{ work.image }}" alt="{{ work.alt }}" width="{{ work.width }}" height="{{ work.height }}" loading="lazy">
+      <figcaption><h3 class="entry-title">{{ work.title }}</h3><p>{{ work.by }}. Made with {{ work.made }}.</p></figcaption>
+    </figure>
+  {% endfor %}
+  </div>
 </section>
 <section class="journal-section section-shell" aria-labelledby="journal-title">
   <div class="journal-heading"><h2 id="journal-title">Blog</h2><a class="text-link" href="/blog/">All posts ↗</a></div>

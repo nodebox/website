@@ -1,29 +1,41 @@
 # NodeBox website artwork
 
-`possibilities.ndbx` is the source of the homepage's woven surface. Two
-subnetworks sample the same sine surface in opposite directions. Each uses
-number ranges, trigonometry, point construction and connected paths. The
-root network runs each subnetwork at 27 positions and combines the results.
-The `bend` node controls the surface's depth.
+The homepage examples are networks made in NodeBox 4. Each lives in
+`examples/<id>.ndbx`, which is also the file readers download:
 
-The node icons are Lucas Nijs's original SVGs, copied without changes from
-the NodeBox artwork directory. The mark comes from NodeBox Live's
-`artwork/logo.svg`.
+| Example | Network | Slider |
+| --- | --- | --- |
+| `generative` | A grid of short strokes, each turned by a sine and cosine field. | `k`, how quickly the field changes |
+| `typography` | Random pairs of points on the outline of a word, joined when they are close. | `reach`, the longest thread |
+| `data` | Hours of daylight through the year, read from `daylight.csv`, drawn as bars on a clock face. | `latitude` |
+| `plotter` | A superformula curve, copied with a small turn and shrink each time. | `m`, the symmetry |
 
-Regenerate the static SVG and interactive geometry with a built NodeBox 4
-checkout:
+`daylight.csv` comes from `scripts/make-daylight.mjs`.
+
+Regenerate the drawings with a built NodeBox 4 checkout:
 
 ```sh
-node scripts/generate-artwork.mjs /path/to/nodebox4
+node scripts/export-examples.mjs /path/to/nodebox4
 ```
 
-The generator uses the compiled engine in `app/src/engine/pkg`. It evaluates
-all 54 paths at two bend values and checks each path's midpoint against an
-actual evaluation. This verifies that interpolation accurately represents
-the network. It also renders the full network to catch evaluation errors.
+The script evaluates each network at every slider step and writes
+`examples/<id>.json`, which the page draws from, and `examples/<id>.svg`, the
+still shown before scripts run. It makes its own font files from the site's
+variable font, so drawn text uses the page's typeface. It needs `uvx`.
 
-The browser interpolates the exported points. It does not load the engine
-or reimplement the surface equations. Normal Eleventy builds use the saved
-assets and do not require NodeBox. With JavaScript disabled or the geometry
-request unavailable, the static SVG and network download remain usable.
-There is no automatic animation. The range control supports keyboard arrows.
+The browser does not load the engine. It interpolates between the evaluated
+steps, so the sliders move continuously. The flow field, the daylight chart and
+the superformula interpolate numbers from the network. The threads keep every
+thread any reach could show, with its length. The page shows those shorter
+than the slider's value, which is what the network's cull does.
+
+Colours in the exported drawings are the light palette. `workshop.css` maps them
+for the dark theme.
+
+## Other files
+
+- `icons/nodes/` holds Lucas Nijs's original node icons, copied without changes
+  from the NodeBox artwork directory. `icons/` holds the three operation icons.
+- `nodebox-mark.svg` is the mark from NodeBox Live's `artwork/logo.svg`.
+- `works/` holds images of work made by others with NodeBox, from nodebox.live.
+  The credits are in `_data/works.json`.

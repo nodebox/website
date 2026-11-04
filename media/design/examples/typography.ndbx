@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="22" type="file" uuid="nodebox-site-typography">
+    <property name="canvasHeight" value="700"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="title" value="Spider type"/>
+    <node name="root" prototype="core.network" renderedChild="threads">
+        <node name="word" position="1.00,1.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="Type"/>
+            <port name="font_name" type="string" value="AtkinsonHyperlegibleNext-Bold"/>
+            <port name="font_size" type="float" value="270.0"/>
+            <port name="position" type="point" value="0.00,90.00"/>
+        </node>
+        <node name="resample" position="1.00,2.00" prototype="corevector.resample">
+            <port name="length" type="float" value="2.5"/>
+        </node>
+        <node name="points" position="1.00,3.00" prototype="corevector.point"/>
+        <node name="repeat" position="1.00,4.00" prototype="list.repeat">
+            <port name="amount" type="int" value="8"/>
+        </node>
+        <node name="shuffle" position="3.00,5.00" prototype="list.shuffle">
+            <port name="seed" type="int" value="3"/>
+        </node>
+        <node name="distance" position="2.00,6.00" prototype="math.distance"/>
+        <node name="reach" position="5.00,6.00" prototype="math.number">
+            <port name="value" type="float" value="50.0"/>
+        </node>
+        <node name="close" position="2.00,7.00" prototype="math.compare">
+            <port name="comparator" type="string" value="&lt;"/>
+        </node>
+        <node name="from" position="1.00,8.00" prototype="list.cull"/>
+        <node name="to" position="3.00,8.00" prototype="list.cull"/>
+        <node name="line" position="2.00,9.00" prototype="corevector.line"/>
+        <node name="threads" position="2.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#2355edff"/>
+            <port name="strokeWidth" type="float" value="0.5"/>
+        </node>
+        <conn input="resample.shape" output="word"/>
+        <conn input="points.value" output="resample"/>
+        <conn input="repeat.list" output="points"/>
+        <conn input="shuffle.list" output="repeat"/>
+        <conn input="distance.point1" output="shuffle"/>
+        <conn input="distance.point2" output="repeat"/>
+        <conn input="close.value1" output="distance"/>
+        <conn input="close.value2" output="reach"/>
+        <conn input="from.list" output="shuffle"/>
+        <conn input="from.booleans" output="close"/>
+        <conn input="to.list" output="repeat"/>
+        <conn input="to.booleans" output="close"/>
+        <conn input="line.point1" output="from"/>
+        <conn input="line.point2" output="to"/>
+        <conn input="threads.shape" output="line"/>
+    </node>
+</ndbx>

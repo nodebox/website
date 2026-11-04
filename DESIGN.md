@@ -69,8 +69,10 @@ Focus indicators must remain visible.
 Describe what the software does. Keep historic posts intact. Avoid sales
 slogans, numbered section labels, decorative microcopy and invented metrics.
 Credit real work. A label should name a control, a destination, a date or
-something the reader needs to understand. Motion serves direct interaction;
-there is no automatic animation. Respect reduced-motion preferences.
+something the reader needs to understand. Motion serves direct interaction. The one
+exception is the homepage examples, which sweep their slider slowly back and forth until
+the reader touches it or presses pause. They stay still when the device asks for reduced motion,
+when the example is off screen, or when the tab is hidden.
 
 ## Shared components
 
@@ -80,6 +82,13 @@ there is no automatic animation. Respect reduced-motion preferences.
   screencasts. Software features and blog entries share their type roles.
 - Shared page, article and documentation layouts: page-title scale and reading
   measure, independent of the kind of content.
+- `_includes/example-panel.html`, `_data/examples.json` and
+  `media/js/examples.js`: the homepage examples. Each is a NodeBox network,
+  evaluated ahead of time and drawn by the page at any slider value; see
+  `media/design/README.md`. `_data/works.json` lists work made by others.
+- The node icons beside the examples are shown at half strength. Icons that
+  are black on the light theme are inverted on the dark theme; coloured icons
+  are left alone.
 - `.action-primary`, `.button`, `.text-link`: consistent controls and links.
 
 Check the homepage, documentation index, one tutorial, one node reference,

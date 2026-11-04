@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="22" type="file" uuid="nodebox-site-daylight">
+    <property name="canvasHeight" value="700"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="title" value="Daylight"/>
+    <node name="root" prototype="core.network" renderedChild="scene">
+        <node name="daylight" position="1.00,1.00" prototype="data.import_csv">
+            <port name="file" type="string" value="daylight.csv"/>
+        </node>
+        <node name="latitude" position="4.00,1.00" prototype="math.number">
+            <port name="value" type="float" value="52.0"/>
+        </node>
+        <node name="lat_text" position="4.00,2.00" prototype="string.format_number">
+            <port name="format" type="string" value="%.0f"/>
+        </node>
+        <node name="column" position="4.00,3.00" prototype="string.concatenate">
+            <port name="string1" type="string" value="lat"/>
+        </node>
+        <node name="hours_all" position="1.00,4.00" prototype="data.lookup"/>
+        <node name="hours" position="1.00,5.00" prototype="list.take_every">
+            <port name="n" type="int" value="2"/>
+        </node>
+        <node name="day" position="7.00,1.00" prototype="math.range">
+            <port name="end" type="float" value="365.0"/>
+            <port name="step" type="float" value="2.0"/>
+        </node>
+        <node name="day_angle" position="7.00,2.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="0.0"/>
+            <port name="source_end" type="float" value="365.0"/>
+            <port name="target_start" type="float" value="-90.0"/>
+            <port name="target_end" type="float" value="270.0"/>
+        </node>
+        <node name="half_day" position="1.00,5.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.5"/>
+        </node>
+        <node name="sunrise" position="1.00,6.00" prototype="math.subtract">
+            <port name="value1" type="float" value="12.0"/>
+        </node>
+        <node name="sunrise_radius" position="1.00,7.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="0.0"/>
+            <port name="source_end" type="float" value="24.0"/>
+            <port name="target_start" type="float" value="80.0"/>
+            <port name="target_end" type="float" value="320.0"/>
+            <port name="method" type="string" value="ignore"/>
+        </node>
+        <node name="day_length" position="3.00,6.00" prototype="math.multiply">
+            <port name="value2" type="float" value="10.0"/>
+        </node>
+        <node name="start" position="5.00,8.00" prototype="math.coordinates"/>
+        <node name="bars" position="5.00,9.00" prototype="corevector.line_angle"/>
+        <node name="bar_color" position="5.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#2355edff"/>
+            <port name="strokeWidth" type="float" value="2.2"/>
+        </node>
+        <node name="hour" position="10.00,1.00" prototype="math.range">
+            <port name="end" type="float" value="25.0"/>
+            <port name="step" type="float" value="6.0"/>
+        </node>
+        <node name="ring_size" position="10.00,2.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="0.0"/>
+            <port name="source_end" type="float" value="24.0"/>
+            <port name="target_start" type="float" value="160.0"/>
+            <port name="target_end" type="float" value="640.0"/>
+        </node>
+        <node name="rings" position="10.00,3.00" prototype="corevector.ellipse"/>
+        <node name="ring_color" position="10.00,4.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#10253b40"/>
+            <port name="strokeWidth" type="float" value="0.8"/>
+        </node>
+        <node name="month_names" position="13.00,1.00" prototype="string.make_strings">
+            <port name="string" type="string" value="Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec"/>
+        </node>
+        <node name="month" position="15.00,1.00" prototype="math.range">
+            <port name="end" type="float" value="12.0"/>
+        </node>
+        <node name="month_angle" position="15.00,2.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="-0.5"/>
+            <port name="source_end" type="float" value="11.5"/>
+            <port name="target_start" type="float" value="-90.0"/>
+            <port name="target_end" type="float" value="270.0"/>
+        </node>
+        <node name="month_position" position="15.00,3.00" prototype="math.coordinates">
+            <port name="distance" type="float" value="340.0"/>
+        </node>
+        <node name="labels" position="13.00,4.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="AtkinsonHyperlegibleNext-Regular"/>
+            <port name="font_size" type="float" value="19.0"/>
+        </node>
+        <node name="label_middle" position="13.00,5.00" prototype="corevector.align">
+            <port name="halign" type="string" value="center"/>
+            <port name="valign" type="string" value="middle"/>
+        </node>
+        <node name="caption" position="7.00,6.00" prototype="string.concatenate">
+            <port name="string2" type="string" value="° N"/>
+        </node>
+        <node name="title" position="7.00,7.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="AtkinsonHyperlegibleNext-Bold"/>
+            <port name="font_size" type="float" value="34.0"/>
+            <port name="position" type="point" value="0.00,12.00"/>
+        </node>
+        <node name="text_color" position="13.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#10253bff"/>
+        </node>
+        <node name="track_start" position="9.00,8.00" prototype="math.coordinates">
+            <port name="distance" type="float" value="80.0"/>
+        </node>
+        <node name="track" position="9.00,9.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="240.0"/>
+        </node>
+        <node name="track_color" position="9.00,10.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#10253b1a"/>
+            <port name="strokeWidth" type="float" value="2.2"/>
+        </node>
+        <node name="hour_names" position="17.00,1.00" prototype="string.make_strings">
+            <port name="string" type="string" value="midnight;noon;midnight"/>
+        </node>
+        <node name="hour_radius" position="17.00,2.00" prototype="math.range">
+            <port name="start" type="float" value="80.0"/>
+            <port name="end" type="float" value="321.0"/>
+            <port name="step" type="float" value="120.0"/>
+        </node>
+        <node name="hour_position" position="17.00,3.00" prototype="math.coordinates">
+            <port name="angle" type="float" value="-90.0"/>
+        </node>
+        <node name="hour_text" position="17.00,4.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="AtkinsonHyperlegibleNext-Regular"/>
+            <port name="font_size" type="float" value="17.0"/>
+        </node>
+        <node name="hour_middle" position="17.00,5.00" prototype="corevector.align"/>
+        <node name="hour_halo" position="17.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f5f5f0ff"/>
+            <port name="stroke" type="color" value="#f5f5f0ff"/>
+            <port name="strokeWidth" type="float" value="7.0"/>
+        </node>
+        <node name="hour_color" position="19.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#586571ff"/>
+        </node>
+        <node name="title_color" position="7.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#10253bff"/>
+        </node>
+        <node name="scene" position="7.00,12.00" prototype="list.combine"/>
+        <conn input="lat_text.value" output="latitude"/>
+        <conn input="column.string2" output="lat_text"/>
+        <conn input="hours_all.list" output="daylight"/>
+        <conn input="hours_all.key" output="column"/>
+        <conn input="hours.list" output="hours_all"/>
+        <conn input="track_start.angle" output="day_angle"/>
+        <conn input="track.position" output="track_start"/>
+        <conn input="track.angle" output="day_angle"/>
+        <conn input="track_color.shape" output="track"/>
+        <conn input="hour_position.distance" output="hour_radius"/>
+        <conn input="hour_text.text" output="hour_names"/>
+        <conn input="hour_text.position" output="hour_position"/>
+        <conn input="hour_middle.shape" output="hour_text"/>
+        <conn input="hour_middle.position" output="hour_position"/>
+        <conn input="hour_halo.shape" output="hour_middle"/>
+        <conn input="hour_color.shape" output="hour_middle"/>
+        <conn input="day_angle.value" output="day"/>
+        <conn input="half_day.value1" output="hours"/>
+        <conn input="sunrise.value2" output="half_day"/>
+        <conn input="sunrise_radius.value" output="sunrise"/>
+        <conn input="day_length.value1" output="hours"/>
+        <conn input="start.angle" output="day_angle"/>
+        <conn input="start.distance" output="sunrise_radius"/>
+        <conn input="bars.position" output="start"/>
+        <conn input="bars.angle" output="day_angle"/>
+        <conn input="bars.distance" output="day_length"/>
+        <conn input="bar_color.shape" output="bars"/>
+        <conn input="ring_size.value" output="hour"/>
+        <conn input="rings.width" output="ring_size"/>
+        <conn input="rings.height" output="ring_size"/>
+        <conn input="ring_color.shape" output="rings"/>
+        <conn input="month_angle.value" output="month"/>
+        <conn input="month_position.angle" output="month_angle"/>
+        <conn input="labels.text" output="month_names"/>
+        <conn input="labels.position" output="month_position"/>
+        <conn input="label_middle.shape" output="labels"/>
+        <conn input="label_middle.position" output="month_position"/>
+        <conn input="caption.string1" output="lat_text"/>
+        <conn input="title.text" output="caption"/>
+        <conn input="text_color.shape" output="label_middle"/>
+        <conn input="scene.list1" output="ring_color"/>
+        <conn input="scene.list2" output="bar_color"/>
+        <conn input="scene.list3" output="text_color"/>
+        <conn input="title_color.shape" output="title"/>
+        <conn input="scene.list4" output="title_color"/>
+        <conn input="scene.list5" output="hour_halo"/>
+        <conn input="scene.list6" output="hour_color"/>
+    </node>
+</ndbx>

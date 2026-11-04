@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="22" type="file" uuid="nodebox-site-flow-field">
+    <property name="canvasHeight" value="700"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="title" value="Flow field"/>
+    <node name="root" prototype="core.network" renderedChild="pen">
+        <node name="grid" position="1.00,1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="44"/>
+            <port name="rows" type="int" value="38"/>
+            <port name="width" type="float" value="740.0"/>
+            <port name="height" type="float" value="640.0"/>
+        </node>
+        <node name="x" position="4.00,1.00" prototype="data.lookup">
+            <port name="key" type="string" value="x"/>
+        </node>
+        <node name="y" position="7.00,1.00" prototype="data.lookup">
+            <port name="key" type="string" value="y"/>
+        </node>
+        <node name="k" position="10.00,1.00" prototype="math.number">
+            <port name="value" type="float" value="1.0"/>
+        </node>
+        <node name="fx" position="13.00,1.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.008"/>
+        </node>
+        <node name="fy" position="16.00,1.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.011"/>
+        </node>
+        <node name="kx" position="19.00,1.00" prototype="math.multiply"/>
+        <node name="ky" position="22.00,3.00" prototype="math.multiply"/>
+        <node name="sx" position="1.00,3.00" prototype="math.sin"/>
+        <node name="cy" position="4.00,3.00" prototype="math.cos"/>
+        <node name="sum" position="7.00,3.00" prototype="math.add"/>
+        <node name="deg" position="10.00,3.00" prototype="math.multiply">
+            <port name="value2" type="float" value="90.0"/>
+        </node>
+        <node name="stroke" position="13.00,3.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="15.0"/>
+        </node>
+        <node name="pen" position="16.00,3.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#2355edff"/>
+            <port name="strokeWidth" type="float" value="1.6"/>
+        </node>
+        <conn input="x.list" output="grid"/>
+        <conn input="y.list" output="grid"/>
+        <conn input="fx.value1" output="x"/>
+        <conn input="fy.value1" output="y"/>
+        <conn input="kx.value1" output="fx"/>
+        <conn input="kx.value2" output="k"/>
+        <conn input="ky.value1" output="fy"/>
+        <conn input="ky.value2" output="k"/>
+        <conn input="sx.value" output="kx"/>
+        <conn input="cy.value" output="ky"/>
+        <conn input="sum.value1" output="sx"/>
+        <conn input="sum.value2" output="cy"/>
+        <conn input="deg.value1" output="sum"/>
+        <conn input="stroke.position" output="grid"/>
+        <conn input="stroke.angle" output="deg"/>
+        <conn input="pen.shape" output="stroke"/>
+    </node>
+</ndbx>

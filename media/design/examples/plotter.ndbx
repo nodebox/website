@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="22" type="file" uuid="nodebox-site-superformula">
+    <property name="canvasHeight" value="700"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="title" value="Superformula"/>
+    <node name="root" prototype="core.network" renderedChild="copies">
+        <node name="th" position="1.00,1.00" prototype="math.sample">
+            <port name="amount" type="int" value="240"/>
+            <port name="start" type="float" value="0.0"/>
+            <port name="end" type="float" value="360.0"/>
+        </node>
+        <node name="thr" position="4.00,1.00" prototype="math.radians"/>
+        <node name="m" position="7.00,1.00" prototype="math.number">
+            <port name="value" type="float" value="5.0"/>
+        </node>
+        <node name="mp" position="10.00,1.00" prototype="math.multiply"/>
+        <node name="q" position="13.00,1.00" prototype="math.multiply">
+            <port name="value2" type="float" value="0.25"/>
+        </node>
+        <node name="cq" position="16.00,1.00" prototype="math.cos"/>
+        <node name="sq" position="19.00,1.00" prototype="math.sin"/>
+        <node name="ac" position="22.00,3.00" prototype="math.abs"/>
+        <node name="as" position="1.00,3.00" prototype="math.abs"/>
+        <node name="pc" position="4.00,3.00" prototype="math.pow"/>
+        <node name="ps" position="7.00,3.00" prototype="math.pow"/>
+        <node name="n23" position="10.00,3.00" prototype="math.number">
+            <port name="value" type="float" value="1.2"/>
+        </node>
+        <node name="sum" position="13.00,3.00" prototype="math.add"/>
+        <node name="ex" position="16.00,3.00" prototype="math.number">
+            <port name="value" type="float" value="-2.2"/>
+        </node>
+        <node name="rr" position="19.00,3.00" prototype="math.pow"/>
+        <node name="rs" position="22.00,5.00" prototype="math.multiply">
+            <port name="value2" type="float" value="330.0"/>
+        </node>
+        <node name="pt" position="1.00,5.00" prototype="math.coordinates"/>
+        <node name="ring" position="4.00,5.00" prototype="corevector.connect">
+            <port name="closed" type="boolean" value="true"/>
+        </node>
+        <node name="copies" position="7.00,5.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="60"/>
+            <port name="rotate" type="float" value="1.5"/>
+            <port name="scale" type="point" value="99.00,99.00"/>
+        </node>
+        <node name="pen" position="10.00,5.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#10253bff"/>
+            <port name="strokeWidth" type="float" value="0.6"/>
+        </node>
+        <conn input="thr.degrees" output="th"/>
+        <conn input="mp.value1" output="thr"/>
+        <conn input="mp.value2" output="m"/>
+        <conn input="q.value1" output="mp"/>
+        <conn input="cq.value" output="q"/>
+        <conn input="sq.value" output="q"/>
+        <conn input="ac.value" output="cq"/>
+        <conn input="as.value" output="sq"/>
+        <conn input="pc.value1" output="ac"/>
+        <conn input="pc.value2" output="n23"/>
+        <conn input="ps.value1" output="as"/>
+        <conn input="ps.value2" output="n23"/>
+        <conn input="sum.value1" output="pc"/>
+        <conn input="sum.value2" output="ps"/>
+        <conn input="rr.value1" output="sum"/>
+        <conn input="rr.value2" output="ex"/>
+        <conn input="rs.value1" output="rr"/>
+        <conn input="pt.angle" output="th"/>
+        <conn input="pt.distance" output="rs"/>
+        <conn input="ring.points" output="pt"/>
+        <conn input="pen.shape" output="ring"/>
+        <conn input="copies.shape" output="pen"/>
+    </node>
+</ndbx>

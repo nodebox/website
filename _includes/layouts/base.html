@@ -9,6 +9,7 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="stylesheet" href="/media/css/skeleton.css">
   <link rel="stylesheet" href="/media/css/normalize.css">
   <link rel="stylesheet" href="/media/css/syntax.css">
@@ -27,6 +28,7 @@
     <a href="https://forum.nodebox.net/">Forum <span aria-hidden="true">↗</span></a>
   </nav>
   <a class="nav-download" href="/download/">Download <span aria-hidden="true">↓</span></a>
+  <button class="theme-toggle" type="button" aria-label="Use dark theme"><svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
 </header>
 <main id="content" class="container" tabindex="-1">
   {{ content }}
@@ -45,6 +47,21 @@
 <script src="/media/js/jquery-1.8.2.min.js"></script>
 <script src="/media/fancybox/jquery.fancybox.pack.js"></script>
 <script>$(function() { $('a.thumb,a.fancybox').fancybox(); });</script>
-{% if section == "home" %}<script type="module" src="/media/js/workshop.js"></script>{% endif %}
+{% if section == "home" %}<script type="module" src="/media/js/examples.js"></script>{% endif %}
+<script>
+(function () {
+  var root = document.documentElement, button = document.querySelector(".theme-toggle");
+  var dark = function () { return root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+  var sync = function () { button.setAttribute("aria-label", dark() ? "Use light theme" : "Use dark theme"); };
+  button.addEventListener("click", function () {
+    var next = dark() ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    sync();
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", sync);
+  sync();
+})();
+</script>
 </body>
 </html>

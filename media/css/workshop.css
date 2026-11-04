@@ -17,12 +17,18 @@
 :root {
   --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
-  --paper: #f5f5f0;
-  --ink: #10253b;
-  --blue: #2355ed;
-  --muted: #586571;
-  --line: #cfd4d5;
-  --wash: #e4e7e4;
+  color-scheme: light dark;
+  --paper: light-dark(#f5f5f0, #041a32);
+  --ink: light-dark(#10253b, #e8eef6);
+  --blue: light-dark(#2355ed, #8fbcef);
+  --action: #2355ed;
+  --action-hover: light-dark(#10253b, #1a3fb0);
+  --muted: light-dark(#586571, #93a3b8);
+  --line: light-dark(#cfd4d5, #1f3a5a);
+  --wash: light-dark(#e4e7e4, #0a2441);
+  --surface: light-dark(#10253b, #020f1f);
+  --selected: light-dark(#10253b, #0f3a6b);
+  --on-surface: light-dark(#f5f5f0, #e8eef6);
   --white: #fff;
   --on-dark-muted: #b8c3ce;
   --on-dark-link: #86a6ff;
@@ -51,11 +57,15 @@
   --icon-size: 80px;
 }
 
+/* The device setting decides; the header button overrides it and is remembered. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
 /* Base typography and interactions. */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: var(--text-body)/var(--leading-body) var(--font); -webkit-font-smoothing: antialiased; }
-::selection { background: var(--blue); color: var(--white); }
+::selection { background: var(--action); color: var(--white); }
 a { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, .table-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
@@ -95,8 +105,8 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #content pre code { font: inherit; }
 #content table { max-width: 100%; border-collapse: collapse; }
 #content td, #content th { border-bottom: 1px solid var(--line); padding: var(--space-2); }
-.action-primary, .hero-button, .button, #download-table .button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-4); min-height: 48px; margin: 0; padding: 12px var(--space-3); background: var(--blue); color: var(--white); border: 0; border-radius: 0; box-shadow: none; text-shadow: none; text-decoration: none; font: 500 var(--text-control)/1.5 var(--font); }
-.action-primary:hover, .hero-button:hover, .button:hover, #download-table .button:hover { background: var(--ink); color: var(--white); text-decoration: none; }
+.action-primary, .hero-button, .button, #download-table .button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-4); min-height: 48px; margin: 0; padding: 12px var(--space-3); background: var(--action); color: var(--white); border: 0; border-radius: 0; box-shadow: none; text-shadow: none; text-decoration: none; font: 500 var(--text-control)/1.5 var(--font); }
+.action-primary:hover, .hero-button:hover, .button:hover, #download-table .button:hover { background: var(--action-hover); color: var(--white); text-decoration: none; }
 .text-link { color: var(--ink); font-size: var(--text-control); text-decoration: underline; border: 0; padding: 0; }
 .text-link:hover { color: var(--blue); }
 
@@ -115,12 +125,11 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 /* Homepage. The display heading and interactive artwork are the two exceptions
    to the ordinary page-title and image sizes. */
 #home #content { padding-top: 0; padding-bottom: 0; }
-.hero-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--space-4); align-items: center; padding: var(--space-4) 0 var(--space-5); }
+.hero-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: var(--space-4); align-items: center; padding: var(--space-4) 0 var(--space-5); }
 #content #hero-title { font-size: var(--text-display); font-weight: 600; line-height: 1; letter-spacing: -.035em; margin: 0 0 var(--space-4); }
 #hero-title em { color: var(--blue); font-style: normal; }
 .hero-intro > p { max-width: 44ch; font-size: var(--text-body); }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
-.hero-playground { margin: 0; min-width: 0; }
 .artwork-stage { width: 100%; aspect-ratio: 8 / 7; }
 #content .artwork-stage img, .artwork-stage svg { display: block; width: 100%; height: 100%; margin: 0; }
 .artwork-controls { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-2) 0 0; color: var(--muted); font-size: var(--text-small); }
@@ -176,7 +185,7 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #documentation .sidebar a:hover { color: var(--blue); text-decoration: underline; }
 #documentation .sidebar li ul { margin-bottom: var(--space-4); }
 #documentation .breadcrumbs { font-size: var(--text-small); margin-bottom: var(--space-4); }
-#content img.node-icon { width: 26px; height: 26px; box-sizing: content-box; background: var(--ink); padding: var(--space-1); margin: 0 0 var(--space-3); }
+#content img.node-icon { width: 26px; height: 26px; box-sizing: content-box; background: var(--surface); padding: var(--space-1); margin: 0 0 var(--space-3); }
 
 /* Articles and other reading pages. */
 .journal-page-heading { margin-bottom: var(--space-5); }
@@ -197,10 +206,10 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 .page-gallery figure { margin: 0 0 var(--space-4); }
 
 /* Product and download pages use the same titles, entries and controls. */
-.product-hero { display: grid; grid-template-columns: 1fr 280px; align-items: center; gap: var(--space-6); background: var(--ink); padding: var(--space-5); margin-bottom: var(--space-6); }
-#content .product-hero h1 { margin: 0 0 var(--space-3); color: var(--paper); }
-.product-hero p { max-width: 48ch; color: var(--paper); }
-.product-hero .text-link { color: var(--paper); }
+.product-hero { display: grid; grid-template-columns: 1fr 280px; align-items: center; gap: var(--space-6); background: var(--surface); padding: var(--space-5); margin-bottom: var(--space-6); }
+#content .product-hero h1 { margin: 0 0 var(--space-3); color: var(--on-surface); }
+.product-hero p { max-width: 48ch; color: var(--on-surface); }
+.product-hero .text-link { color: var(--on-surface); }
 #content .product-hero .product-icon { width: 220px; height: auto; margin: 0 auto; }
 .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: var(--space-6); }
 .feature-grid .resource-image { max-width: 100%; }
@@ -233,8 +242,8 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #download #content > .columns { width: 100%; margin: 0; float: none; }
 
 /* Shared footer. */
-.site-footer { background: var(--ink); color: var(--paper); padding: var(--space-6) var(--gutter) var(--space-3); font-size: var(--text-small); }
-.site-footer a { color: var(--paper); }
+.site-footer { background: var(--surface); color: var(--on-surface); padding: var(--space-6) var(--gutter) var(--space-3); font-size: var(--text-small); }
+.site-footer a { color: var(--on-surface); }
 .footer-top, .footer-bottom { max-width: var(--site-width); margin: auto; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); padding-bottom: var(--space-6); }
 .footer-invitation { font-size: var(--text-page); font-weight: var(--weight-heading); letter-spacing: -.025em; line-height: var(--leading-title); text-decoration: none; }
@@ -272,7 +281,6 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
   .hero-layout { grid-template-columns: 1fr; gap: var(--space-3); padding: var(--space-4) 0; }
   .hero-actions { gap: var(--space-2) var(--space-3); }
   .hero-actions .action-primary { gap: var(--space-3); padding-left: var(--space-2); padding-right: var(--space-2); }
-  .hero-playground { max-width: 580px; width: 100%; justify-self: center; }
   .section-shell { padding: var(--space-5) 0; }
   .idea-heading, .software-layout, .community-section, .newsletter-section, .product-notes { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
   .resource-grid, #content .posts, .operation-grid, .feature-grid { grid-template-columns: 1fr; gap: var(--space-4); }
@@ -303,3 +311,78 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Homepage examples: an index of NodeBox networks beside one interactive result. */
+.hero-figure { margin: 0; min-width: 0; }
+#content .hero-figure img { display: block; width: 100%; height: auto; margin: 0; border: 1px solid var(--line); }
+.example { margin: 0; min-width: 0; }
+.showcase { display: grid; grid-template-columns: minmax(260px, 1fr) 2fr; gap: var(--space-5); align-items: start; }
+.showcase .artwork-stage { max-height: calc(100vh - 160px); }
+.artwork-controls a + a { margin-left: var(--space-1); }
+.example-play { display: grid; place-items: center; flex: none; width: 32px; height: 32px; padding: 0; color: var(--ink); background: none; border: 1px solid var(--line); border-radius: 0; cursor: pointer; }
+.example-play:hover:not(:disabled) { color: var(--blue); border-color: var(--blue); }
+.example-play:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.example-play:disabled { opacity: .4; cursor: default; }
+.example-play .icon-play, .example-play[data-playing="true"] .icon-pause { display: block; }
+.example-play .icon-pause, .example-play[data-playing="true"] .icon-play { display: none; }
+.example-index { display: grid; border-top: 1px solid var(--line); }
+.example-index [role=tab] { display: grid; gap: var(--space-1); padding: var(--space-3) 0 var(--space-3) var(--space-3); font: inherit; color: var(--ink); background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; text-align: left; cursor: pointer; }
+.example-index [role=tab]:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+#content .example-index .entry-title { margin: 0; font-size: var(--text-entry); font-weight: var(--weight-heading); line-height: 1.2; }
+.example-index [role=tab]:hover:not([aria-selected=true]) .entry-title { color: var(--blue); }
+.example-index [aria-selected=true] { background: var(--selected); }
+.example-index [aria-selected=true] .entry-title { color: var(--white); }
+.example-nodes { display: flex; flex-wrap: wrap; gap: 0; margin-top: var(--space-1); }
+#content .example-nodes img { width: 28px; height: 28px; box-sizing: content-box; margin: 0; padding: 0 var(--space-1); border-left: 1px solid rgb(16 37 59 / .3); opacity: .45; }
+#content .example-nodes img:first-child { padding-left: 0; border-left: 0; }
+/* On the selected entry the icons are inverted to white; the filter inverts their rules too, so these are black. */
+#content .example-index [aria-selected=true] .example-nodes img { filter: invert(1); opacity: .85; border-left-color: rgb(0 0 0 / .4); }
+@media (max-width: 760px) {
+  .showcase { grid-template-columns: 1fr; gap: var(--space-3); }
+  .example-index { grid-auto-flow: column; grid-auto-columns: max-content; overflow-x: auto; border: 0; border-bottom: 1px solid var(--line); }
+  .example-index [role=tab] { padding: var(--space-1) var(--space-2); }
+  .example-index .entry-title { font-size: var(--text-control); font-weight: 500; }
+  .example-nodes { display: none; }
+}
+
+/* Theme button: shows the theme it switches to. */
+.theme-toggle { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; color: var(--ink); background: none; border: 1px solid var(--line); border-radius: 0; cursor: pointer; }
+.theme-toggle:hover { color: var(--blue); border-color: var(--blue); }
+.theme-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.theme-toggle .icon-sun { display: none; }
+:root:not([data-theme]) .theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .theme-toggle .icon-moon { display: none; } :root:not([data-theme]) .theme-toggle .icon-sun { display: block; } }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Dark theme: example drawings and images are exported in the light palette. */
+.artwork-stage svg [fill="#10253b"] { fill: light-dark(#10253b, #e8eef6); }
+.artwork-stage svg [stroke="#10253b"] { stroke: light-dark(#10253b, #e8eef6); }
+.artwork-stage svg [fill="#2355ed"] { fill: light-dark(#2355ed, #7c9cff); }
+.artwork-stage svg [stroke="#2355ed"] { stroke: light-dark(#2355ed, #7c9cff); }
+.artwork-stage svg [fill="#ffffff"] { fill: light-dark(#ffffff, #0a2441); }
+.artwork-stage svg [fill="#586571"] { fill: light-dark(#586571, #93a3b8); }
+.artwork-stage img { filter: var(--art-filter); }
+#content .hero-figure img, #content .software-figure img { filter: var(--shot-filter); }
+.highlight { background: transparent; color: inherit; }
+/* Filters cannot use light-dark(), so the dark theme sets them as variables. Black line icons turn light. */
+:root { --icon-filter: none; --art-filter: none; --shot-filter: none; --plot-ink: #10253b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --icon-filter: invert(1); --art-filter: invert(1) hue-rotate(180deg); --shot-filter: brightness(.9); --plot-ink: #fff; } }
+:root[data-theme="dark"] { --icon-filter: invert(1); --art-filter: invert(1) hue-rotate(180deg); --shot-filter: brightness(.9); --plot-ink: #fff; }
+.site-header .brand img, .operation-grid img, .community-mark img, #content .example-nodes img { filter: var(--icon-filter); }
+#content .example-index [aria-selected=true] .example-nodes img { filter: invert(1); }
+.artwork-stage svg [fill="#f5f5f0"] { fill: light-dark(#f5f5f0, #041a32); }
+.artwork-stage svg [stroke="#f5f5f0"] { stroke: light-dark(#f5f5f0, #041a32); }
+/* Thin light lines look weaker than thin dark ones, so the plotter lines are pure white in dark. The colour is set on the <use> elements, which the copied curve inherits; a rule on the curve itself does not update its copies. */
+.artwork-stage svg use { stroke: var(--plot-ink); }
+
+/* Work made by others with NodeBox. */
+.works-section h2 { margin: 0 0 var(--space-5); }
+.works-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); }
+.work { margin: 0; min-width: 0; }
+#content .work img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; margin: 0 0 var(--space-3); border: 1px solid var(--line); }
+.work figcaption { margin: 0; }
+#content .work .entry-title { margin: 0 0 var(--space-1); }
+.work p { margin: 0; color: var(--muted); font-size: var(--text-small); line-height: 1.5; }
+@media (max-width: 760px) { .works-grid { grid-template-columns: 1fr; gap: var(--space-4); } }
