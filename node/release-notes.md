@@ -3,6 +3,24 @@ layout: default
 title: NodeBox 3 Release Notes
 section: node
 ---
+Version 3.2.0 (4 November 2026)
+-------------------------------
+NodeBox 3.2 is faster when you drag a parameter, and it fixes the compound node on newer systems. Full notes are on [GitHub](https://github.com/nodebox/nodebox/releases/tag/v3.2.0).
+
+* NodeBox caches the result of every node and runs a node again only when its inputs, parameters or code change. Dragging a parameter on a large network stays smooth.
+* Rendering runs on its own background thread, so the interface keeps up while you drag.
+* Memory stays bounded during long animations and exports.
+* Handles keep the same size on screen when you zoom.
+* The compound node gives the same result as in 3.0 again. In 3.1 it could cut shapes in two.
+* SVG import handles common Illustrator and optimizer output that failed before. (Thanks to [zacaltair](https://github.com/zacaltair).)
+* Reload (Cmd-R) picks up changes to your code, and imported files are read again when they change on disk.
+* Pasted nodes land where you're looking and never on top of another node.
+* Movie export lets you choose the frame rate.
+* The examples browser opens on Basics. The Geocoding example works again; the Twitter example is gone because Twitter's API no longer answers.
+* The Mac app requires macOS 12 or later, on Apple Silicon. Intel Mac users should stay on [v3.0.52](https://github.com/nodebox/nodebox/releases/download/v3.0.52/NodeBox-3.0.52.dmg).
+* **If you write your own Python or Clojure code:** a node function now runs only when something it depends on changes. Don't change the objects your function receives; clone them first (`p = path.clone()`). If your function reads the clock, the network, a device, unseeded `random` or a file it opens itself, mark it as time-dependent: `my_function.timeDependent = True` in Python, `(defn ^:time-dependent my-function [x] ...)` in Clojure. Custom handles now draw in screen space: project points with `self.toScreen(x, y)`.
+* Files saved in 3.2 open in 3.1, and the other way around.
+
 Version 3.1.0 (14 June 2026)
 -------------------------------
 * NodeBox is now a **native Apple Silicon (arm64)** application — it no longer runs through Rosetta and will keep working on macOS releases after Apple removes Rosetta. The bundled Java runtime, ffmpeg, and native libraries are all native arm64.
