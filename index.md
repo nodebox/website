@@ -9,7 +9,7 @@ templateEngineOverride: liquid
     <div class="hero-intro">
       <h1 id="hero-title">Generative<br>design with<br><em>nodes.</em></h1>
       <p>NodeBox is an open-source tool for generative graphics and data visualization. Connect operations, change their parameters, and export the result.</p>
-      <div class="hero-actions"><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link" href="/node/documentation/">Documentation <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-actions"><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link" href="/node/documentation/">Documentation <span aria-hidden="true">↗</span></a><a class="text-link" href="https://nodebox.live/">NodeBox Live <span aria-hidden="true">↗</span></a></div>
     </div>
     <figure class="hero-figure"><img src="/media/node/features-nodes.png" alt="The NodeBox 3 editor, with a network of connected nodes and its generated graphics." width="1100" height="800" fetchpriority="high"></figure>
   </div>
@@ -26,8 +26,34 @@ templateEngineOverride: liquid
     <div><img src="/media/design/icons/scatter.svg" alt="" width="84" height="84"><h3>Variation</h3><p>Use repetition, randomness and changing values to produce variations from the same network.</p></div>
   </div>
 </section>
-<section class="software-section section-shell" aria-labelledby="software-title">
-  <div class="software-layout"><div class="software-intro"><h2 id="software-title">NodeBox 3</h2><p>The desktop application for Mac, Windows and Linux. It includes a library of nodes for working with graphics, text and data.</p><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link software-docs" href="/node/">More about NodeBox 3 ↗</a></div><figure class="software-figure"><img src="/node/documentation/using/math-lissajous.png" alt="The NodeBox 3 editor showing a Lissajous pattern and the network of nodes that draws it." width="1100" height="800" loading="lazy"><figcaption><a href="/node/documentation/tutorial/getting-started.html">Getting started with NodeBox 3 ↗</a></figcaption></figure></div>
+<section class="software-section section-shell" id="software" aria-labelledby="software-title">
+  <div class="idea-heading"><h2 id="software-title">NodeBox 3 and NodeBox Live</h2><p>Both build designs from connected nodes. NodeBox 3 is an application you install. NodeBox Live runs in your browser, where your projects can be shared and embedded.</p></div>
+  <div class="editions">
+    <article class="edition">
+      <img src="/node/documentation/using/math-lissajous.png" alt="The NodeBox 3 editor showing a Lissajous pattern and the network of nodes that draws it." width="1100" height="800" loading="lazy">
+      <h3 class="entry-title">NodeBox 3</h3>
+      <p>The desktop application for Mac, Windows and Linux. It includes a library of nodes for working with graphics, text and data.</p>
+      <div class="hero-actions"><a class="action-primary" href="/download/">Download <span aria-hidden="true">↓</span></a><a class="text-link" href="/node/">About NodeBox 3 ↗</a></div>
+    </article>
+    <article class="edition">
+      <img src="/media/design/software/nodebox-live.jpg" alt="NodeBox Live in a browser, with a network that reads a CSV file and the chart it draws." width="1200" height="883" loading="lazy">
+      <h3 class="entry-title">NodeBox Live</h3>
+      <p>The web application. Work with CSV and JSON data or a web API, write your own nodes in JavaScript, and share projects with other people.</p>
+      <div class="hero-actions"><a class="action-primary" href="https://nodebox.live/">Open NodeBox Live <span aria-hidden="true">↗</span></a><a class="text-link" href="/blog/2026/11/03/maak-nodebox-in-the-browser">How it began ↗</a></div>
+    </article>
+  </div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Differences between NodeBox 3 and NodeBox Live">
+    <table class="compare">
+      <thead><tr><td></td><th scope="col">NodeBox 3</th><th scope="col">NodeBox Live</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Runs</th><td>As an application on Mac, Windows and Linux.</td><td>In your browser. Nothing to install.</td></tr>
+        <tr><th scope="row">Output</th><td>PDF files, image sequences and movies.</td><td>Interactive graphics that run on web pages.</td></tr>
+        <tr><th scope="row">Your own nodes</th><td>Written in Java, Python or Clojure.</td><td>Written in JavaScript, in the editor.</td></tr>
+        <tr><th scope="row">Sharing</th><td>Documents are .ndbx files that you send around.</td><td>Projects are shared online, and others can remix them.</td></tr>
+        <tr><th scope="row">Getting started</th><td><a href="/download/">Download</a> and follow the <a href="/node/documentation/tutorial/getting-started.html">first tutorial</a>.</td><td><a href="https://nodebox.live/users/create">Sign up</a>. Help and examples are built into the editor.</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 <section class="works-section section-shell" aria-labelledby="works-title">
   <h2 id="works-title">Made with NodeBox</h2>

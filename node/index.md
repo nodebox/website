@@ -36,5 +36,6 @@ templateEngineOverride: liquid
 </div>
 <div class="product-notes">
   <section><h2>Getting started</h2><ul><li><a href="/download/">Download the application</a></li><li><a href="/node/documentation/tutorial/getting-started.html">Read the first tutorial</a></li><li><a href="/node/reference/">Browse the node reference</a></li></ul></section>
+  <section><h2>In the browser</h2><p>NodeBox Live runs in your browser, with nothing to install. It reads CSV and JSON data and web APIs, and you write your own nodes in JavaScript. <a href="https://nodebox.live/">Open NodeBox Live ↗</a></p></section>
   <section><h2>Sponsors</h2><p>YourKit supports open-source projects with its Java Profiler. Find out more about <a href="https://www.yourkit.com/java/profiler/">YourKit Java Profiler</a> and <a href="https://www.yourkit.com/.net/profiler/">YourKit .NET Profiler</a>.</p></section>
 </div>

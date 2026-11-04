@@ -23,6 +23,10 @@ templateEngineOverride: liquid
       <td class="linux"><button type="button" onclick="showLinuxDownloadInstructions()" class="button">Instructions</button><br>&nbsp;</td>
     </tr>
     <tr>
+      <td class="version"><a href="https://nodebox.live/">NodeBox Live</a><br><small>Runs in your browser</small></td>
+      <td colspan="3" class="mac windows linux"><a href="https://nodebox.live/" class="button">Open <span aria-hidden="true">↗</span></a><br><small>Nothing to download. <a href="https://nodebox.live/users/create">Sign up</a> to start a project.</small></td>
+    </tr>
+    <tr>
       <td class="version"><a href="/opengl/">NodeBox OpenGL</a><br><small>Version 1.7</small></td>
       <td colspan="3" class="mac windows linux"><a href="https://github.com/nodebox/nodebox-opengl/releases/download/v1.7/nodebox-gl-1.7.zip" class="button">Download</a></td>
     </tr>

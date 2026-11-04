@@ -3,7 +3,7 @@ layout: documentation
 title: Documentation
 templateEngineOverride: liquid
 ---
-<p>Start with the NodeBox 3 tutorials, or look up an operation in the <a href="/node/reference/">node reference</a>.</p>
+<p>Start with the NodeBox 3 tutorials, or look up an operation in the <a href="/node/reference/">node reference</a>. <a href="https://nodebox.live/">NodeBox Live</a> has its own help and examples built into the editor.</p>
 {% assign learning_heading = "h2" %}
 {% include "learning-links.html" %}
 

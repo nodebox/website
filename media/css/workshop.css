@@ -143,14 +143,6 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 .idea-heading p { max-width: 50ch; margin: 0; }
 .operation-grid > div { border-top: 1px solid var(--line); padding-top: var(--space-3); }
 .operation-grid h3 { margin: 0 0 var(--space-2); }
-.software-layout { display: grid; grid-template-columns: .85fr 1.4fr; gap: var(--space-5); align-items: center; }
-.software-intro h2 { margin: 0 0 var(--space-3); }
-.software-intro p { max-width: 36ch; }
-.software-docs { display: table; margin-top: var(--space-3); }
-.software-figure { margin: 0; padding: var(--space-4) 0 var(--space-3) var(--space-4); background: var(--wash); overflow: hidden; }
-#content .software-figure img { width: 100%; margin: 0; }
-.software-figure figcaption { padding: var(--space-3) var(--space-3) 0 0; }
-.software-figure figcaption a { color: var(--ink); }
 .journal-heading { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-4); }
 .journal-heading h2 { margin: 0; }
 .community-section { display: grid; grid-template-columns: 1fr 2fr; align-items: center; gap: var(--space-6); }
@@ -213,7 +205,7 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #content .product-hero .product-icon { width: 220px; height: auto; margin: 0 auto; }
 .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: var(--space-6); }
 .feature-grid .resource-image { max-width: 100%; }
-.product-notes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+.product-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
 .product-notes h2 { margin-top: 0; }
 .product-notes p { max-width: 60ch; }
 .table-scroll { max-width: 100%; overflow-x: auto; margin-bottom: var(--space-6); }
@@ -282,14 +274,12 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
   .hero-actions { gap: var(--space-2) var(--space-3); }
   .hero-actions .action-primary { gap: var(--space-3); padding-left: var(--space-2); padding-right: var(--space-2); }
   .section-shell { padding: var(--space-5) 0; }
-  .idea-heading, .software-layout, .community-section, .newsletter-section, .product-notes { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+  .idea-heading, .editions, .community-section, .newsletter-section, .product-notes { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
   .resource-grid, #content .posts, .operation-grid, .feature-grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .learning-links .resource-card, .operation-grid > div { display: grid; grid-template-columns: var(--icon-size) minmax(0, 1fr); column-gap: var(--space-3); }
   #content .learning-links .entry-icon, #content .operation-grid img { grid-row: 1 / 3; margin: 0; }
   .learning-links .entry-title, .learning-links p, .operation-grid h3, .operation-grid p { grid-column: 2; }
-  .software-figure { padding: var(--space-2) 0 var(--space-2) var(--space-2); }
-  .software-figure figcaption { padding-top: var(--space-2); }
-  .community-mark { display: none; }
+      .community-mark { display: none; }
   .newsletter-section form { width: 100%; }
   .newsletter-section button { padding-left: var(--space-2); padding-right: var(--space-2); }
   #documentation #content { display: block; }
@@ -364,8 +354,7 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 .artwork-stage svg [fill="#ffffff"] { fill: light-dark(#ffffff, #0a2441); }
 .artwork-stage svg [fill="#586571"] { fill: light-dark(#586571, #93a3b8); }
 .artwork-stage img { filter: var(--art-filter); }
-#content .hero-figure img, #content .software-figure img { filter: var(--shot-filter); }
-.highlight { background: transparent; color: inherit; }
+#content .hero-figure img, .highlight { background: transparent; color: inherit; }
 /* Filters cannot use light-dark(), so the dark theme sets them as variables. Black line icons turn light. */
 :root { --icon-filter: none; --art-filter: none; --shot-filter: none; --plot-ink: #10253b; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --icon-filter: invert(1); --art-filter: invert(1) hue-rotate(180deg); --shot-filter: brightness(.9); --plot-ink: #fff; } }
@@ -386,3 +375,17 @@ small, figcaption, .caption, .meta, .post-date { font-size: var(--text-small); l
 #content .work .entry-title { margin: 0 0 var(--space-1); }
 .work p { margin: 0; color: var(--muted); font-size: var(--text-small); line-height: 1.5; }
 @media (max-width: 760px) { .works-grid { grid-template-columns: 1fr; gap: var(--space-4); } }
+
+/* NodeBox 3 and NodeBox Live, side by side, with a table of differences. */
+.editions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); margin-bottom: var(--space-5); }
+.edition { min-width: 0; }
+#content .edition img { display: block; width: 100%; height: auto; aspect-ratio: 11 / 8; object-fit: cover; margin: 0 0 var(--space-3); border: 1px solid var(--line); }
+.edition .entry-title { margin: 0 0 var(--space-1); }
+.edition p { max-width: 46ch; margin: 0 0 var(--space-3); }
+.software-section .table-scroll { margin-bottom: 0; }
+.compare { width: 100%; min-width: 640px; border-collapse: collapse; font-size: var(--text-control); line-height: 1.5; }
+#content .compare th, #content .compare td { padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+#content .compare thead th { font-size: var(--text-body); font-weight: var(--weight-heading); }
+#content .compare tbody th { width: 18%; font-weight: var(--weight-heading); }
+#content .hero-figure img, #content .edition img { filter: var(--shot-filter); }
+@media (max-width: 760px) { .editions { grid-template-columns: 1fr; gap: var(--space-4); } }
